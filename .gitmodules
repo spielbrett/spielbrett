@@ -1,0 +1,12 @@
+[submodule "api"]
+	path = api
+	url = git@github.com:spielbrett/spielbrett-api.git
+[submodule "go"]
+	path = go
+	url = git@github.com:spielbrett/spielbrett-go.git
+[submodule "cpp"]
+	path = cpp
+	url = git@github.com:spielbrett/spielbrett-cpp.git
+[submodule "web"]
+	path = web
+	url = git@github.com:spielbrett/spielbrett-web.git
