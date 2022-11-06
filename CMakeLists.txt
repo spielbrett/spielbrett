@@ -19,5 +19,20 @@ else()
     FetchContent_MakeAvailable(spielbrett-api)
 endif()
 
+find_package(Boost 1.75.0)
+if (Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+endif()
+
+FetchContent_Declare(
+    open_spiel
+    GIT_REPOSITORY https://github.com/deepmind/open_spiel
+    GIT_TAG master
+    SOURCE_SUBDIR open_spiel
+)
+FetchContent_MakeAvailable(open_spiel)
+FetchContent_GetProperties(open_spiel)
+include_directories("${open_spiel_SOURCE_DIR}")
+
 add_executable(InstanceHost src/InstanceHost/main.cpp)
 target_link_libraries(InstanceHost spielbrett-api)
