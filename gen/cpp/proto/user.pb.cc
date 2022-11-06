@@ -21,25 +21,226 @@ namespace _pb = ::PROTOBUF_NAMESPACE_ID;
 namespace _pbi = _pb::internal;
 
 namespace user {
+PROTOBUF_CONSTEXPR RegisterUserRequest::RegisterUserRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.login_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct RegisterUserRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RegisterUserRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RegisterUserRequestDefaultTypeInternal() {}
+  union {
+    RegisterUserRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegisterUserRequestDefaultTypeInternal _RegisterUserRequest_default_instance_;
+PROTOBUF_CONSTEXPR RegisterUserResponse::RegisterUserResponse(
+    ::_pbi::ConstantInitialized) {}
+struct RegisterUserResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RegisterUserResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RegisterUserResponseDefaultTypeInternal() {}
+  union {
+    RegisterUserResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegisterUserResponseDefaultTypeInternal _RegisterUserResponse_default_instance_;
+PROTOBUF_CONSTEXPR LinkTelegramRequest::LinkTelegramRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.session_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.web_app_init_data_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct LinkTelegramRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LinkTelegramRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LinkTelegramRequestDefaultTypeInternal() {}
+  union {
+    LinkTelegramRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LinkTelegramRequestDefaultTypeInternal _LinkTelegramRequest_default_instance_;
+PROTOBUF_CONSTEXPR LinkTelegramResponse::LinkTelegramResponse(
+    ::_pbi::ConstantInitialized) {}
+struct LinkTelegramResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LinkTelegramResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LinkTelegramResponseDefaultTypeInternal() {}
+  union {
+    LinkTelegramResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LinkTelegramResponseDefaultTypeInternal _LinkTelegramResponse_default_instance_;
+PROTOBUF_CONSTEXPR LoginPassAuthRequest::LoginPassAuthRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.login_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.password_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct LoginPassAuthRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LoginPassAuthRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LoginPassAuthRequestDefaultTypeInternal() {}
+  union {
+    LoginPassAuthRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LoginPassAuthRequestDefaultTypeInternal _LoginPassAuthRequest_default_instance_;
+PROTOBUF_CONSTEXPR LoginPassAuthResponse::LoginPassAuthResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.session_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct LoginPassAuthResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR LoginPassAuthResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~LoginPassAuthResponseDefaultTypeInternal() {}
+  union {
+    LoginPassAuthResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LoginPassAuthResponseDefaultTypeInternal _LoginPassAuthResponse_default_instance_;
+PROTOBUF_CONSTEXPR TelegramAuthRequest::TelegramAuthRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.web_app_init_data_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct TelegramAuthRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TelegramAuthRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TelegramAuthRequestDefaultTypeInternal() {}
+  union {
+    TelegramAuthRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TelegramAuthRequestDefaultTypeInternal _TelegramAuthRequest_default_instance_;
+PROTOBUF_CONSTEXPR TelegramAuthResponse::TelegramAuthResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.session_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct TelegramAuthResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR TelegramAuthResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~TelegramAuthResponseDefaultTypeInternal() {}
+  union {
+    TelegramAuthResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TelegramAuthResponseDefaultTypeInternal _TelegramAuthResponse_default_instance_;
 }  // namespace user
+static ::_pb::Metadata file_level_metadata_proto_2fuser_2eproto[8];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_proto_2fuser_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_proto_2fuser_2eproto = nullptr;
-const uint32_t TableStruct_proto_2fuser_2eproto::offsets[1] = {};
-static constexpr ::_pbi::MigrationSchema* schemas = nullptr;
-static constexpr ::_pb::Message* const* file_default_instances = nullptr;
+
+const uint32_t TableStruct_proto_2fuser_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::user::RegisterUserRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::user::RegisterUserRequest, _impl_.login_),
+  PROTOBUF_FIELD_OFFSET(::user::RegisterUserRequest, _impl_.password_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::user::RegisterUserResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::user::LinkTelegramRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::user::LinkTelegramRequest, _impl_.session_id_),
+  PROTOBUF_FIELD_OFFSET(::user::LinkTelegramRequest, _impl_.web_app_init_data_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::user::LinkTelegramResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::user::LoginPassAuthRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::user::LoginPassAuthRequest, _impl_.login_),
+  PROTOBUF_FIELD_OFFSET(::user::LoginPassAuthRequest, _impl_.password_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::user::LoginPassAuthResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::user::LoginPassAuthResponse, _impl_.session_id_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::user::TelegramAuthRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::user::TelegramAuthRequest, _impl_.web_app_init_data_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::user::TelegramAuthResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::user::TelegramAuthResponse, _impl_.session_id_),
+};
+static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  { 0, -1, -1, sizeof(::user::RegisterUserRequest)},
+  { 8, -1, -1, sizeof(::user::RegisterUserResponse)},
+  { 14, -1, -1, sizeof(::user::LinkTelegramRequest)},
+  { 22, -1, -1, sizeof(::user::LinkTelegramResponse)},
+  { 28, -1, -1, sizeof(::user::LoginPassAuthRequest)},
+  { 36, -1, -1, sizeof(::user::LoginPassAuthResponse)},
+  { 43, -1, -1, sizeof(::user::TelegramAuthRequest)},
+  { 50, -1, -1, sizeof(::user::TelegramAuthResponse)},
+};
+
+static const ::_pb::Message* const file_default_instances[] = {
+  &::user::_RegisterUserRequest_default_instance_._instance,
+  &::user::_RegisterUserResponse_default_instance_._instance,
+  &::user::_LinkTelegramRequest_default_instance_._instance,
+  &::user::_LinkTelegramResponse_default_instance_._instance,
+  &::user::_LoginPassAuthRequest_default_instance_._instance,
+  &::user::_LoginPassAuthResponse_default_instance_._instance,
+  &::user::_TelegramAuthRequest_default_instance_._instance,
+  &::user::_TelegramAuthResponse_default_instance_._instance,
+};
 
 const char descriptor_table_protodef_proto_2fuser_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\020proto/user.proto\022\004user2\r\n\013UserServiceB"
-  "2Z0github.com/spielbrett/spielbrett-api/"
-  "gen/go/userb\006proto3"
+  "\n\020proto/user.proto\022\004user\"G\n\023RegisterUser"
+  "Request\022\024\n\005login\030\001 \001(\tR\005login\022\032\n\010passwor"
+  "d\030\002 \001(\tR\010password\"\026\n\024RegisterUserRespons"
+  "e\"_\n\023LinkTelegramRequest\022\035\n\nsession_id\030\001"
+  " \001(\tR\tsessionId\022)\n\021web_app_init_data\030\002 \001"
+  "(\tR\016webAppInitData\"\026\n\024LinkTelegramRespon"
+  "se\"H\n\024LoginPassAuthRequest\022\024\n\005login\030\001 \001("
+  "\tR\005login\022\032\n\010password\030\002 \001(\tR\010password\"6\n\025"
+  "LoginPassAuthResponse\022\035\n\nsession_id\030\001 \001("
+  "\tR\tsessionId\"@\n\023TelegramAuthRequest\022)\n\021w"
+  "eb_app_init_data\030\001 \001(\tR\016webAppInitData\"5"
+  "\n\024TelegramAuthResponse\022\035\n\nsession_id\030\001 \001"
+  "(\tR\tsessionId2\264\002\n\013UserService\022G\n\014Registe"
+  "rUser\022\031.user.RegisterUserRequest\032\032.user."
+  "RegisterUserResponse\"\000\022G\n\014LinkTelegram\022\031"
+  ".user.LinkTelegramRequest\032\032.user.LinkTel"
+  "egramResponse\"\000\022J\n\rLoginPassAuth\022\032.user."
+  "LoginPassAuthRequest\032\033.user.LoginPassAut"
+  "hResponse\"\000\022G\n\014TelegramAuth\022\031.user.Teleg"
+  "ramAuthRequest\032\032.user.TelegramAuthRespon"
+  "se\"\000B3Z1github.com/spielbrett/spielbrett"
+  "-api/gen/go/protob\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_proto_2fuser_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_proto_2fuser_2eproto = {
-    false, false, 99, descriptor_table_protodef_proto_2fuser_2eproto,
+    false, false, 865, descriptor_table_protodef_proto_2fuser_2eproto,
     "proto/user.proto",
-    &descriptor_table_proto_2fuser_2eproto_once, nullptr, 0, 0,
+    &descriptor_table_proto_2fuser_2eproto_once, nullptr, 0, 8,
     schemas, file_default_instances, TableStruct_proto_2fuser_2eproto::offsets,
-    nullptr, file_level_enum_descriptors_proto_2fuser_2eproto,
+    file_level_metadata_proto_2fuser_2eproto, file_level_enum_descriptors_proto_2fuser_2eproto,
     file_level_service_descriptors_proto_2fuser_2eproto,
 };
 PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_proto_2fuser_2eproto_getter() {
@@ -50,9 +251,1489 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_proto_2f
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_proto_2fuser_2eproto(&descriptor_table_proto_2fuser_2eproto);
 namespace user {
 
+// ===================================================================
+
+class RegisterUserRequest::_Internal {
+ public:
+};
+
+RegisterUserRequest::RegisterUserRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:user.RegisterUserRequest)
+}
+RegisterUserRequest::RegisterUserRequest(const RegisterUserRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RegisterUserRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.login_){}
+    , decltype(_impl_.password_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.login_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.login_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_login().empty()) {
+    _this->_impl_.login_.Set(from._internal_login(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.password_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_password().empty()) {
+    _this->_impl_.password_.Set(from._internal_password(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:user.RegisterUserRequest)
+}
+
+inline void RegisterUserRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.login_){}
+    , decltype(_impl_.password_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.login_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.login_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.password_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+RegisterUserRequest::~RegisterUserRequest() {
+  // @@protoc_insertion_point(destructor:user.RegisterUserRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RegisterUserRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.login_.Destroy();
+  _impl_.password_.Destroy();
+}
+
+void RegisterUserRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RegisterUserRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:user.RegisterUserRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.login_.ClearToEmpty();
+  _impl_.password_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RegisterUserRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string login = 1 [json_name = "login"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_login();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.RegisterUserRequest.login"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string password = 2 [json_name = "password"];
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_password();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.RegisterUserRequest.password"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RegisterUserRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:user.RegisterUserRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string login = 1 [json_name = "login"];
+  if (!this->_internal_login().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_login().data(), static_cast<int>(this->_internal_login().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.RegisterUserRequest.login");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_login(), target);
+  }
+
+  // string password = 2 [json_name = "password"];
+  if (!this->_internal_password().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_password().data(), static_cast<int>(this->_internal_password().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.RegisterUserRequest.password");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_password(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:user.RegisterUserRequest)
+  return target;
+}
+
+size_t RegisterUserRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:user.RegisterUserRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string login = 1 [json_name = "login"];
+  if (!this->_internal_login().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_login());
+  }
+
+  // string password = 2 [json_name = "password"];
+  if (!this->_internal_password().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_password());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RegisterUserRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RegisterUserRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RegisterUserRequest::GetClassData() const { return &_class_data_; }
+
+
+void RegisterUserRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RegisterUserRequest*>(&to_msg);
+  auto& from = static_cast<const RegisterUserRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:user.RegisterUserRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_login().empty()) {
+    _this->_internal_set_login(from._internal_login());
+  }
+  if (!from._internal_password().empty()) {
+    _this->_internal_set_password(from._internal_password());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RegisterUserRequest::CopyFrom(const RegisterUserRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:user.RegisterUserRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RegisterUserRequest::IsInitialized() const {
+  return true;
+}
+
+void RegisterUserRequest::InternalSwap(RegisterUserRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.login_, lhs_arena,
+      &other->_impl_.login_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.password_, lhs_arena,
+      &other->_impl_.password_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RegisterUserRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2fuser_2eproto_getter, &descriptor_table_proto_2fuser_2eproto_once,
+      file_level_metadata_proto_2fuser_2eproto[0]);
+}
+
+// ===================================================================
+
+class RegisterUserResponse::_Internal {
+ public:
+};
+
+RegisterUserResponse::RegisterUserResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:user.RegisterUserResponse)
+}
+RegisterUserResponse::RegisterUserResponse(const RegisterUserResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  RegisterUserResponse* const _this = this; (void)_this;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:user.RegisterUserResponse)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RegisterUserResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RegisterUserResponse::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata RegisterUserResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2fuser_2eproto_getter, &descriptor_table_proto_2fuser_2eproto_once,
+      file_level_metadata_proto_2fuser_2eproto[1]);
+}
+
+// ===================================================================
+
+class LinkTelegramRequest::_Internal {
+ public:
+};
+
+LinkTelegramRequest::LinkTelegramRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:user.LinkTelegramRequest)
+}
+LinkTelegramRequest::LinkTelegramRequest(const LinkTelegramRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  LinkTelegramRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.session_id_){}
+    , decltype(_impl_.web_app_init_data_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_session_id().empty()) {
+    _this->_impl_.session_id_.Set(from._internal_session_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.web_app_init_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.web_app_init_data_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_web_app_init_data().empty()) {
+    _this->_impl_.web_app_init_data_.Set(from._internal_web_app_init_data(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:user.LinkTelegramRequest)
+}
+
+inline void LinkTelegramRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.session_id_){}
+    , decltype(_impl_.web_app_init_data_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.web_app_init_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.web_app_init_data_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+LinkTelegramRequest::~LinkTelegramRequest() {
+  // @@protoc_insertion_point(destructor:user.LinkTelegramRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void LinkTelegramRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.session_id_.Destroy();
+  _impl_.web_app_init_data_.Destroy();
+}
+
+void LinkTelegramRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void LinkTelegramRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:user.LinkTelegramRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.session_id_.ClearToEmpty();
+  _impl_.web_app_init_data_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* LinkTelegramRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string session_id = 1 [json_name = "sessionId"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_session_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.LinkTelegramRequest.session_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string web_app_init_data = 2 [json_name = "webAppInitData"];
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_web_app_init_data();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.LinkTelegramRequest.web_app_init_data"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* LinkTelegramRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:user.LinkTelegramRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string session_id = 1 [json_name = "sessionId"];
+  if (!this->_internal_session_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_session_id().data(), static_cast<int>(this->_internal_session_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.LinkTelegramRequest.session_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_session_id(), target);
+  }
+
+  // string web_app_init_data = 2 [json_name = "webAppInitData"];
+  if (!this->_internal_web_app_init_data().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_web_app_init_data().data(), static_cast<int>(this->_internal_web_app_init_data().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.LinkTelegramRequest.web_app_init_data");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_web_app_init_data(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:user.LinkTelegramRequest)
+  return target;
+}
+
+size_t LinkTelegramRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:user.LinkTelegramRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string session_id = 1 [json_name = "sessionId"];
+  if (!this->_internal_session_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_session_id());
+  }
+
+  // string web_app_init_data = 2 [json_name = "webAppInitData"];
+  if (!this->_internal_web_app_init_data().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_web_app_init_data());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LinkTelegramRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    LinkTelegramRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LinkTelegramRequest::GetClassData() const { return &_class_data_; }
+
+
+void LinkTelegramRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<LinkTelegramRequest*>(&to_msg);
+  auto& from = static_cast<const LinkTelegramRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:user.LinkTelegramRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_session_id().empty()) {
+    _this->_internal_set_session_id(from._internal_session_id());
+  }
+  if (!from._internal_web_app_init_data().empty()) {
+    _this->_internal_set_web_app_init_data(from._internal_web_app_init_data());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LinkTelegramRequest::CopyFrom(const LinkTelegramRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:user.LinkTelegramRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LinkTelegramRequest::IsInitialized() const {
+  return true;
+}
+
+void LinkTelegramRequest::InternalSwap(LinkTelegramRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.session_id_, lhs_arena,
+      &other->_impl_.session_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.web_app_init_data_, lhs_arena,
+      &other->_impl_.web_app_init_data_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata LinkTelegramRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2fuser_2eproto_getter, &descriptor_table_proto_2fuser_2eproto_once,
+      file_level_metadata_proto_2fuser_2eproto[2]);
+}
+
+// ===================================================================
+
+class LinkTelegramResponse::_Internal {
+ public:
+};
+
+LinkTelegramResponse::LinkTelegramResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  // @@protoc_insertion_point(arena_constructor:user.LinkTelegramResponse)
+}
+LinkTelegramResponse::LinkTelegramResponse(const LinkTelegramResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  LinkTelegramResponse* const _this = this; (void)_this;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:user.LinkTelegramResponse)
+}
+
+
+
+
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LinkTelegramResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LinkTelegramResponse::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::PROTOBUF_NAMESPACE_ID::Metadata LinkTelegramResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2fuser_2eproto_getter, &descriptor_table_proto_2fuser_2eproto_once,
+      file_level_metadata_proto_2fuser_2eproto[3]);
+}
+
+// ===================================================================
+
+class LoginPassAuthRequest::_Internal {
+ public:
+};
+
+LoginPassAuthRequest::LoginPassAuthRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:user.LoginPassAuthRequest)
+}
+LoginPassAuthRequest::LoginPassAuthRequest(const LoginPassAuthRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  LoginPassAuthRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.login_){}
+    , decltype(_impl_.password_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.login_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.login_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_login().empty()) {
+    _this->_impl_.login_.Set(from._internal_login(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.password_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_password().empty()) {
+    _this->_impl_.password_.Set(from._internal_password(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:user.LoginPassAuthRequest)
+}
+
+inline void LoginPassAuthRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.login_){}
+    , decltype(_impl_.password_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.login_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.login_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.password_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.password_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+LoginPassAuthRequest::~LoginPassAuthRequest() {
+  // @@protoc_insertion_point(destructor:user.LoginPassAuthRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void LoginPassAuthRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.login_.Destroy();
+  _impl_.password_.Destroy();
+}
+
+void LoginPassAuthRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void LoginPassAuthRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:user.LoginPassAuthRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.login_.ClearToEmpty();
+  _impl_.password_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* LoginPassAuthRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string login = 1 [json_name = "login"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_login();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.LoginPassAuthRequest.login"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string password = 2 [json_name = "password"];
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          auto str = _internal_mutable_password();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.LoginPassAuthRequest.password"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* LoginPassAuthRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:user.LoginPassAuthRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string login = 1 [json_name = "login"];
+  if (!this->_internal_login().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_login().data(), static_cast<int>(this->_internal_login().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.LoginPassAuthRequest.login");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_login(), target);
+  }
+
+  // string password = 2 [json_name = "password"];
+  if (!this->_internal_password().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_password().data(), static_cast<int>(this->_internal_password().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.LoginPassAuthRequest.password");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_password(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:user.LoginPassAuthRequest)
+  return target;
+}
+
+size_t LoginPassAuthRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:user.LoginPassAuthRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string login = 1 [json_name = "login"];
+  if (!this->_internal_login().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_login());
+  }
+
+  // string password = 2 [json_name = "password"];
+  if (!this->_internal_password().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_password());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LoginPassAuthRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    LoginPassAuthRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LoginPassAuthRequest::GetClassData() const { return &_class_data_; }
+
+
+void LoginPassAuthRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<LoginPassAuthRequest*>(&to_msg);
+  auto& from = static_cast<const LoginPassAuthRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:user.LoginPassAuthRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_login().empty()) {
+    _this->_internal_set_login(from._internal_login());
+  }
+  if (!from._internal_password().empty()) {
+    _this->_internal_set_password(from._internal_password());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LoginPassAuthRequest::CopyFrom(const LoginPassAuthRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:user.LoginPassAuthRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginPassAuthRequest::IsInitialized() const {
+  return true;
+}
+
+void LoginPassAuthRequest::InternalSwap(LoginPassAuthRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.login_, lhs_arena,
+      &other->_impl_.login_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.password_, lhs_arena,
+      &other->_impl_.password_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata LoginPassAuthRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2fuser_2eproto_getter, &descriptor_table_proto_2fuser_2eproto_once,
+      file_level_metadata_proto_2fuser_2eproto[4]);
+}
+
+// ===================================================================
+
+class LoginPassAuthResponse::_Internal {
+ public:
+};
+
+LoginPassAuthResponse::LoginPassAuthResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:user.LoginPassAuthResponse)
+}
+LoginPassAuthResponse::LoginPassAuthResponse(const LoginPassAuthResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  LoginPassAuthResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.session_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_session_id().empty()) {
+    _this->_impl_.session_id_.Set(from._internal_session_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:user.LoginPassAuthResponse)
+}
+
+inline void LoginPassAuthResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.session_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+LoginPassAuthResponse::~LoginPassAuthResponse() {
+  // @@protoc_insertion_point(destructor:user.LoginPassAuthResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void LoginPassAuthResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.session_id_.Destroy();
+}
+
+void LoginPassAuthResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void LoginPassAuthResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:user.LoginPassAuthResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.session_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* LoginPassAuthResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string session_id = 1 [json_name = "sessionId"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_session_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.LoginPassAuthResponse.session_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* LoginPassAuthResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:user.LoginPassAuthResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string session_id = 1 [json_name = "sessionId"];
+  if (!this->_internal_session_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_session_id().data(), static_cast<int>(this->_internal_session_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.LoginPassAuthResponse.session_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_session_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:user.LoginPassAuthResponse)
+  return target;
+}
+
+size_t LoginPassAuthResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:user.LoginPassAuthResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string session_id = 1 [json_name = "sessionId"];
+  if (!this->_internal_session_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_session_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData LoginPassAuthResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    LoginPassAuthResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*LoginPassAuthResponse::GetClassData() const { return &_class_data_; }
+
+
+void LoginPassAuthResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<LoginPassAuthResponse*>(&to_msg);
+  auto& from = static_cast<const LoginPassAuthResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:user.LoginPassAuthResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_session_id().empty()) {
+    _this->_internal_set_session_id(from._internal_session_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void LoginPassAuthResponse::CopyFrom(const LoginPassAuthResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:user.LoginPassAuthResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginPassAuthResponse::IsInitialized() const {
+  return true;
+}
+
+void LoginPassAuthResponse::InternalSwap(LoginPassAuthResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.session_id_, lhs_arena,
+      &other->_impl_.session_id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata LoginPassAuthResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2fuser_2eproto_getter, &descriptor_table_proto_2fuser_2eproto_once,
+      file_level_metadata_proto_2fuser_2eproto[5]);
+}
+
+// ===================================================================
+
+class TelegramAuthRequest::_Internal {
+ public:
+};
+
+TelegramAuthRequest::TelegramAuthRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:user.TelegramAuthRequest)
+}
+TelegramAuthRequest::TelegramAuthRequest(const TelegramAuthRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TelegramAuthRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.web_app_init_data_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.web_app_init_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.web_app_init_data_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_web_app_init_data().empty()) {
+    _this->_impl_.web_app_init_data_.Set(from._internal_web_app_init_data(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:user.TelegramAuthRequest)
+}
+
+inline void TelegramAuthRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.web_app_init_data_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.web_app_init_data_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.web_app_init_data_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+TelegramAuthRequest::~TelegramAuthRequest() {
+  // @@protoc_insertion_point(destructor:user.TelegramAuthRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TelegramAuthRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.web_app_init_data_.Destroy();
+}
+
+void TelegramAuthRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TelegramAuthRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:user.TelegramAuthRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.web_app_init_data_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TelegramAuthRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string web_app_init_data = 1 [json_name = "webAppInitData"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_web_app_init_data();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.TelegramAuthRequest.web_app_init_data"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* TelegramAuthRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:user.TelegramAuthRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string web_app_init_data = 1 [json_name = "webAppInitData"];
+  if (!this->_internal_web_app_init_data().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_web_app_init_data().data(), static_cast<int>(this->_internal_web_app_init_data().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.TelegramAuthRequest.web_app_init_data");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_web_app_init_data(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:user.TelegramAuthRequest)
+  return target;
+}
+
+size_t TelegramAuthRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:user.TelegramAuthRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string web_app_init_data = 1 [json_name = "webAppInitData"];
+  if (!this->_internal_web_app_init_data().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_web_app_init_data());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TelegramAuthRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TelegramAuthRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TelegramAuthRequest::GetClassData() const { return &_class_data_; }
+
+
+void TelegramAuthRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TelegramAuthRequest*>(&to_msg);
+  auto& from = static_cast<const TelegramAuthRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:user.TelegramAuthRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_web_app_init_data().empty()) {
+    _this->_internal_set_web_app_init_data(from._internal_web_app_init_data());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TelegramAuthRequest::CopyFrom(const TelegramAuthRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:user.TelegramAuthRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TelegramAuthRequest::IsInitialized() const {
+  return true;
+}
+
+void TelegramAuthRequest::InternalSwap(TelegramAuthRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.web_app_init_data_, lhs_arena,
+      &other->_impl_.web_app_init_data_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TelegramAuthRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2fuser_2eproto_getter, &descriptor_table_proto_2fuser_2eproto_once,
+      file_level_metadata_proto_2fuser_2eproto[6]);
+}
+
+// ===================================================================
+
+class TelegramAuthResponse::_Internal {
+ public:
+};
+
+TelegramAuthResponse::TelegramAuthResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:user.TelegramAuthResponse)
+}
+TelegramAuthResponse::TelegramAuthResponse(const TelegramAuthResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  TelegramAuthResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.session_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_session_id().empty()) {
+    _this->_impl_.session_id_.Set(from._internal_session_id(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:user.TelegramAuthResponse)
+}
+
+inline void TelegramAuthResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.session_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.session_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+TelegramAuthResponse::~TelegramAuthResponse() {
+  // @@protoc_insertion_point(destructor:user.TelegramAuthResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void TelegramAuthResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.session_id_.Destroy();
+}
+
+void TelegramAuthResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void TelegramAuthResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:user.TelegramAuthResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.session_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* TelegramAuthResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string session_id = 1 [json_name = "sessionId"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_session_id();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "user.TelegramAuthResponse.session_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* TelegramAuthResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:user.TelegramAuthResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string session_id = 1 [json_name = "sessionId"];
+  if (!this->_internal_session_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_session_id().data(), static_cast<int>(this->_internal_session_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "user.TelegramAuthResponse.session_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_session_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:user.TelegramAuthResponse)
+  return target;
+}
+
+size_t TelegramAuthResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:user.TelegramAuthResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string session_id = 1 [json_name = "sessionId"];
+  if (!this->_internal_session_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_session_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TelegramAuthResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    TelegramAuthResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TelegramAuthResponse::GetClassData() const { return &_class_data_; }
+
+
+void TelegramAuthResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<TelegramAuthResponse*>(&to_msg);
+  auto& from = static_cast<const TelegramAuthResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:user.TelegramAuthResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_session_id().empty()) {
+    _this->_internal_set_session_id(from._internal_session_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void TelegramAuthResponse::CopyFrom(const TelegramAuthResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:user.TelegramAuthResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool TelegramAuthResponse::IsInitialized() const {
+  return true;
+}
+
+void TelegramAuthResponse::InternalSwap(TelegramAuthResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.session_id_, lhs_arena,
+      &other->_impl_.session_id_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata TelegramAuthResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2fuser_2eproto_getter, &descriptor_table_proto_2fuser_2eproto_once,
+      file_level_metadata_proto_2fuser_2eproto[7]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace user
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::user::RegisterUserRequest*
+Arena::CreateMaybeMessage< ::user::RegisterUserRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::user::RegisterUserRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::user::RegisterUserResponse*
+Arena::CreateMaybeMessage< ::user::RegisterUserResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::user::RegisterUserResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::user::LinkTelegramRequest*
+Arena::CreateMaybeMessage< ::user::LinkTelegramRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::user::LinkTelegramRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::user::LinkTelegramResponse*
+Arena::CreateMaybeMessage< ::user::LinkTelegramResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::user::LinkTelegramResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::user::LoginPassAuthRequest*
+Arena::CreateMaybeMessage< ::user::LoginPassAuthRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::user::LoginPassAuthRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::user::LoginPassAuthResponse*
+Arena::CreateMaybeMessage< ::user::LoginPassAuthResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::user::LoginPassAuthResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::user::TelegramAuthRequest*
+Arena::CreateMaybeMessage< ::user::TelegramAuthRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::user::TelegramAuthRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::user::TelegramAuthResponse*
+Arena::CreateMaybeMessage< ::user::TelegramAuthResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::user::TelegramAuthResponse >(arena);
+}
 PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)

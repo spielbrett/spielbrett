@@ -35,21 +35,101 @@ class UserService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    virtual ::grpc::Status RegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::user::RegisterUserResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::RegisterUserResponse>> AsyncRegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::RegisterUserResponse>>(AsyncRegisterUserRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::RegisterUserResponse>> PrepareAsyncRegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::RegisterUserResponse>>(PrepareAsyncRegisterUserRaw(context, request, cq));
+    }
+    virtual ::grpc::Status LinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::user::LinkTelegramResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::LinkTelegramResponse>> AsyncLinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::LinkTelegramResponse>>(AsyncLinkTelegramRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::LinkTelegramResponse>> PrepareAsyncLinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::LinkTelegramResponse>>(PrepareAsyncLinkTelegramRaw(context, request, cq));
+    }
+    virtual ::grpc::Status LoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::user::LoginPassAuthResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::LoginPassAuthResponse>> AsyncLoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::LoginPassAuthResponse>>(AsyncLoginPassAuthRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::LoginPassAuthResponse>> PrepareAsyncLoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::LoginPassAuthResponse>>(PrepareAsyncLoginPassAuthRaw(context, request, cq));
+    }
+    virtual ::grpc::Status TelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::user::TelegramAuthResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::TelegramAuthResponse>> AsyncTelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::TelegramAuthResponse>>(AsyncTelegramAuthRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::TelegramAuthResponse>> PrepareAsyncTelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::user::TelegramAuthResponse>>(PrepareAsyncTelegramAuthRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
+      virtual void RegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest* request, ::user::RegisterUserResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest* request, ::user::RegisterUserResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void LinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest* request, ::user::LinkTelegramResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void LinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest* request, ::user::LinkTelegramResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void LoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest* request, ::user::LoginPassAuthResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void LoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest* request, ::user::LoginPassAuthResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void TelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest* request, ::user::TelegramAuthResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void TelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest* request, ::user::TelegramAuthResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::user::RegisterUserResponse>* AsyncRegisterUserRaw(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::user::RegisterUserResponse>* PrepareAsyncRegisterUserRaw(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::user::LinkTelegramResponse>* AsyncLinkTelegramRaw(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::user::LinkTelegramResponse>* PrepareAsyncLinkTelegramRaw(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::user::LoginPassAuthResponse>* AsyncLoginPassAuthRaw(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::user::LoginPassAuthResponse>* PrepareAsyncLoginPassAuthRaw(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::user::TelegramAuthResponse>* AsyncTelegramAuthRaw(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::user::TelegramAuthResponse>* PrepareAsyncTelegramAuthRaw(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
+    ::grpc::Status RegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::user::RegisterUserResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::RegisterUserResponse>> AsyncRegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::RegisterUserResponse>>(AsyncRegisterUserRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::RegisterUserResponse>> PrepareAsyncRegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::RegisterUserResponse>>(PrepareAsyncRegisterUserRaw(context, request, cq));
+    }
+    ::grpc::Status LinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::user::LinkTelegramResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::LinkTelegramResponse>> AsyncLinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::LinkTelegramResponse>>(AsyncLinkTelegramRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::LinkTelegramResponse>> PrepareAsyncLinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::LinkTelegramResponse>>(PrepareAsyncLinkTelegramRaw(context, request, cq));
+    }
+    ::grpc::Status LoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::user::LoginPassAuthResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::LoginPassAuthResponse>> AsyncLoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::LoginPassAuthResponse>>(AsyncLoginPassAuthRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::LoginPassAuthResponse>> PrepareAsyncLoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::LoginPassAuthResponse>>(PrepareAsyncLoginPassAuthRaw(context, request, cq));
+    }
+    ::grpc::Status TelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::user::TelegramAuthResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::TelegramAuthResponse>> AsyncTelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::TelegramAuthResponse>>(AsyncTelegramAuthRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::TelegramAuthResponse>> PrepareAsyncTelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::user::TelegramAuthResponse>>(PrepareAsyncTelegramAuthRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
+      void RegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest* request, ::user::RegisterUserResponse* response, std::function<void(::grpc::Status)>) override;
+      void RegisterUser(::grpc::ClientContext* context, const ::user::RegisterUserRequest* request, ::user::RegisterUserResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void LinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest* request, ::user::LinkTelegramResponse* response, std::function<void(::grpc::Status)>) override;
+      void LinkTelegram(::grpc::ClientContext* context, const ::user::LinkTelegramRequest* request, ::user::LinkTelegramResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void LoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest* request, ::user::LoginPassAuthResponse* response, std::function<void(::grpc::Status)>) override;
+      void LoginPassAuth(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest* request, ::user::LoginPassAuthResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void TelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest* request, ::user::TelegramAuthResponse* response, std::function<void(::grpc::Status)>) override;
+      void TelegramAuth(::grpc::ClientContext* context, const ::user::TelegramAuthRequest* request, ::user::TelegramAuthResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -61,6 +141,18 @@ class UserService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
+    ::grpc::ClientAsyncResponseReader< ::user::RegisterUserResponse>* AsyncRegisterUserRaw(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::user::RegisterUserResponse>* PrepareAsyncRegisterUserRaw(::grpc::ClientContext* context, const ::user::RegisterUserRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::user::LinkTelegramResponse>* AsyncLinkTelegramRaw(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::user::LinkTelegramResponse>* PrepareAsyncLinkTelegramRaw(::grpc::ClientContext* context, const ::user::LinkTelegramRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::user::LoginPassAuthResponse>* AsyncLoginPassAuthRaw(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::user::LoginPassAuthResponse>* PrepareAsyncLoginPassAuthRaw(::grpc::ClientContext* context, const ::user::LoginPassAuthRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::user::TelegramAuthResponse>* AsyncTelegramAuthRaw(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::user::TelegramAuthResponse>* PrepareAsyncTelegramAuthRaw(::grpc::ClientContext* context, const ::user::TelegramAuthRequest& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_RegisterUser_;
+    const ::grpc::internal::RpcMethod rpcmethod_LinkTelegram_;
+    const ::grpc::internal::RpcMethod rpcmethod_LoginPassAuth_;
+    const ::grpc::internal::RpcMethod rpcmethod_TelegramAuth_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -68,13 +160,549 @@ class UserService final {
    public:
     Service();
     virtual ~Service();
+    virtual ::grpc::Status RegisterUser(::grpc::ServerContext* context, const ::user::RegisterUserRequest* request, ::user::RegisterUserResponse* response);
+    virtual ::grpc::Status LinkTelegram(::grpc::ServerContext* context, const ::user::LinkTelegramRequest* request, ::user::LinkTelegramResponse* response);
+    virtual ::grpc::Status LoginPassAuth(::grpc::ServerContext* context, const ::user::LoginPassAuthRequest* request, ::user::LoginPassAuthResponse* response);
+    virtual ::grpc::Status TelegramAuth(::grpc::ServerContext* context, const ::user::TelegramAuthRequest* request, ::user::TelegramAuthResponse* response);
   };
-  typedef Service AsyncService;
-  typedef Service CallbackService;
+  template <class BaseClass>
+  class WithAsyncMethod_RegisterUser : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RegisterUser() {
+      ::grpc::Service::MarkMethodAsync(0);
+    }
+    ~WithAsyncMethod_RegisterUser() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUser(::grpc::ServerContext* /*context*/, const ::user::RegisterUserRequest* /*request*/, ::user::RegisterUserResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterUser(::grpc::ServerContext* context, ::user::RegisterUserRequest* request, ::grpc::ServerAsyncResponseWriter< ::user::RegisterUserResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_LinkTelegram : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_LinkTelegram() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_LinkTelegram() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LinkTelegram(::grpc::ServerContext* /*context*/, const ::user::LinkTelegramRequest* /*request*/, ::user::LinkTelegramResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestLinkTelegram(::grpc::ServerContext* context, ::user::LinkTelegramRequest* request, ::grpc::ServerAsyncResponseWriter< ::user::LinkTelegramResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_LoginPassAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_LoginPassAuth() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_LoginPassAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoginPassAuth(::grpc::ServerContext* /*context*/, const ::user::LoginPassAuthRequest* /*request*/, ::user::LoginPassAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestLoginPassAuth(::grpc::ServerContext* context, ::user::LoginPassAuthRequest* request, ::grpc::ServerAsyncResponseWriter< ::user::LoginPassAuthResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_TelegramAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_TelegramAuth() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_TelegramAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TelegramAuth(::grpc::ServerContext* /*context*/, const ::user::TelegramAuthRequest* /*request*/, ::user::TelegramAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestTelegramAuth(::grpc::ServerContext* context, ::user::TelegramAuthRequest* request, ::grpc::ServerAsyncResponseWriter< ::user::TelegramAuthResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_RegisterUser<WithAsyncMethod_LinkTelegram<WithAsyncMethod_LoginPassAuth<WithAsyncMethod_TelegramAuth<Service > > > > AsyncService;
+  template <class BaseClass>
+  class WithCallbackMethod_RegisterUser : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RegisterUser() {
+      ::grpc::Service::MarkMethodCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::user::RegisterUserRequest, ::user::RegisterUserResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::user::RegisterUserRequest* request, ::user::RegisterUserResponse* response) { return this->RegisterUser(context, request, response); }));}
+    void SetMessageAllocatorFor_RegisterUser(
+        ::grpc::MessageAllocator< ::user::RegisterUserRequest, ::user::RegisterUserResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::user::RegisterUserRequest, ::user::RegisterUserResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_RegisterUser() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUser(::grpc::ServerContext* /*context*/, const ::user::RegisterUserRequest* /*request*/, ::user::RegisterUserResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RegisterUser(
+      ::grpc::CallbackServerContext* /*context*/, const ::user::RegisterUserRequest* /*request*/, ::user::RegisterUserResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_LinkTelegram : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_LinkTelegram() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::user::LinkTelegramRequest, ::user::LinkTelegramResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::user::LinkTelegramRequest* request, ::user::LinkTelegramResponse* response) { return this->LinkTelegram(context, request, response); }));}
+    void SetMessageAllocatorFor_LinkTelegram(
+        ::grpc::MessageAllocator< ::user::LinkTelegramRequest, ::user::LinkTelegramResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::user::LinkTelegramRequest, ::user::LinkTelegramResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_LinkTelegram() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LinkTelegram(::grpc::ServerContext* /*context*/, const ::user::LinkTelegramRequest* /*request*/, ::user::LinkTelegramResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* LinkTelegram(
+      ::grpc::CallbackServerContext* /*context*/, const ::user::LinkTelegramRequest* /*request*/, ::user::LinkTelegramResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_LoginPassAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_LoginPassAuth() {
+      ::grpc::Service::MarkMethodCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::user::LoginPassAuthRequest, ::user::LoginPassAuthResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::user::LoginPassAuthRequest* request, ::user::LoginPassAuthResponse* response) { return this->LoginPassAuth(context, request, response); }));}
+    void SetMessageAllocatorFor_LoginPassAuth(
+        ::grpc::MessageAllocator< ::user::LoginPassAuthRequest, ::user::LoginPassAuthResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::user::LoginPassAuthRequest, ::user::LoginPassAuthResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_LoginPassAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoginPassAuth(::grpc::ServerContext* /*context*/, const ::user::LoginPassAuthRequest* /*request*/, ::user::LoginPassAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* LoginPassAuth(
+      ::grpc::CallbackServerContext* /*context*/, const ::user::LoginPassAuthRequest* /*request*/, ::user::LoginPassAuthResponse* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithCallbackMethod_TelegramAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_TelegramAuth() {
+      ::grpc::Service::MarkMethodCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::user::TelegramAuthRequest, ::user::TelegramAuthResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::user::TelegramAuthRequest* request, ::user::TelegramAuthResponse* response) { return this->TelegramAuth(context, request, response); }));}
+    void SetMessageAllocatorFor_TelegramAuth(
+        ::grpc::MessageAllocator< ::user::TelegramAuthRequest, ::user::TelegramAuthResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::user::TelegramAuthRequest, ::user::TelegramAuthResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_TelegramAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TelegramAuth(::grpc::ServerContext* /*context*/, const ::user::TelegramAuthRequest* /*request*/, ::user::TelegramAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* TelegramAuth(
+      ::grpc::CallbackServerContext* /*context*/, const ::user::TelegramAuthRequest* /*request*/, ::user::TelegramAuthResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_RegisterUser<WithCallbackMethod_LinkTelegram<WithCallbackMethod_LoginPassAuth<WithCallbackMethod_TelegramAuth<Service > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
-  typedef Service StreamedUnaryService;
+  template <class BaseClass>
+  class WithGenericMethod_RegisterUser : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RegisterUser() {
+      ::grpc::Service::MarkMethodGeneric(0);
+    }
+    ~WithGenericMethod_RegisterUser() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUser(::grpc::ServerContext* /*context*/, const ::user::RegisterUserRequest* /*request*/, ::user::RegisterUserResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_LinkTelegram : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_LinkTelegram() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_LinkTelegram() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LinkTelegram(::grpc::ServerContext* /*context*/, const ::user::LinkTelegramRequest* /*request*/, ::user::LinkTelegramResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_LoginPassAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_LoginPassAuth() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_LoginPassAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoginPassAuth(::grpc::ServerContext* /*context*/, const ::user::LoginPassAuthRequest* /*request*/, ::user::LoginPassAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_TelegramAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_TelegramAuth() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_TelegramAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TelegramAuth(::grpc::ServerContext* /*context*/, const ::user::TelegramAuthRequest* /*request*/, ::user::TelegramAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_RegisterUser : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RegisterUser() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_RegisterUser() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUser(::grpc::ServerContext* /*context*/, const ::user::RegisterUserRequest* /*request*/, ::user::RegisterUserResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterUser(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_LinkTelegram : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_LinkTelegram() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_LinkTelegram() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LinkTelegram(::grpc::ServerContext* /*context*/, const ::user::LinkTelegramRequest* /*request*/, ::user::LinkTelegramResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestLinkTelegram(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_LoginPassAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_LoginPassAuth() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_LoginPassAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoginPassAuth(::grpc::ServerContext* /*context*/, const ::user::LoginPassAuthRequest* /*request*/, ::user::LoginPassAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestLoginPassAuth(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_TelegramAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_TelegramAuth() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_TelegramAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TelegramAuth(::grpc::ServerContext* /*context*/, const ::user::TelegramAuthRequest* /*request*/, ::user::TelegramAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestTelegramAuth(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RegisterUser : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RegisterUser() {
+      ::grpc::Service::MarkMethodRawCallback(0,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->RegisterUser(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_RegisterUser() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUser(::grpc::ServerContext* /*context*/, const ::user::RegisterUserRequest* /*request*/, ::user::RegisterUserResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RegisterUser(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_LinkTelegram : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_LinkTelegram() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->LinkTelegram(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_LinkTelegram() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LinkTelegram(::grpc::ServerContext* /*context*/, const ::user::LinkTelegramRequest* /*request*/, ::user::LinkTelegramResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* LinkTelegram(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_LoginPassAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_LoginPassAuth() {
+      ::grpc::Service::MarkMethodRawCallback(2,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->LoginPassAuth(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_LoginPassAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoginPassAuth(::grpc::ServerContext* /*context*/, const ::user::LoginPassAuthRequest* /*request*/, ::user::LoginPassAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* LoginPassAuth(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_TelegramAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_TelegramAuth() {
+      ::grpc::Service::MarkMethodRawCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TelegramAuth(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_TelegramAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status TelegramAuth(::grpc::ServerContext* /*context*/, const ::user::TelegramAuthRequest* /*request*/, ::user::TelegramAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* TelegramAuth(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_RegisterUser : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_RegisterUser() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::user::RegisterUserRequest, ::user::RegisterUserResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::user::RegisterUserRequest, ::user::RegisterUserResponse>* streamer) {
+                       return this->StreamedRegisterUser(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_RegisterUser() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RegisterUser(::grpc::ServerContext* /*context*/, const ::user::RegisterUserRequest* /*request*/, ::user::RegisterUserResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRegisterUser(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::user::RegisterUserRequest,::user::RegisterUserResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_LinkTelegram : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_LinkTelegram() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::user::LinkTelegramRequest, ::user::LinkTelegramResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::user::LinkTelegramRequest, ::user::LinkTelegramResponse>* streamer) {
+                       return this->StreamedLinkTelegram(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_LinkTelegram() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status LinkTelegram(::grpc::ServerContext* /*context*/, const ::user::LinkTelegramRequest* /*request*/, ::user::LinkTelegramResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedLinkTelegram(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::user::LinkTelegramRequest,::user::LinkTelegramResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_LoginPassAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_LoginPassAuth() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::user::LoginPassAuthRequest, ::user::LoginPassAuthResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::user::LoginPassAuthRequest, ::user::LoginPassAuthResponse>* streamer) {
+                       return this->StreamedLoginPassAuth(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_LoginPassAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status LoginPassAuth(::grpc::ServerContext* /*context*/, const ::user::LoginPassAuthRequest* /*request*/, ::user::LoginPassAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedLoginPassAuth(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::user::LoginPassAuthRequest,::user::LoginPassAuthResponse>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_TelegramAuth : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_TelegramAuth() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::user::TelegramAuthRequest, ::user::TelegramAuthResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::user::TelegramAuthRequest, ::user::TelegramAuthResponse>* streamer) {
+                       return this->StreamedTelegramAuth(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_TelegramAuth() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status TelegramAuth(::grpc::ServerContext* /*context*/, const ::user::TelegramAuthRequest* /*request*/, ::user::TelegramAuthResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedTelegramAuth(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::user::TelegramAuthRequest,::user::TelegramAuthResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_RegisterUser<WithStreamedUnaryMethod_LinkTelegram<WithStreamedUnaryMethod_LoginPassAuth<WithStreamedUnaryMethod_TelegramAuth<Service > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef Service StreamedService;
+  typedef WithStreamedUnaryMethod_RegisterUser<WithStreamedUnaryMethod_LinkTelegram<WithStreamedUnaryMethod_LoginPassAuth<WithStreamedUnaryMethod_TelegramAuth<Service > > > > StreamedService;
 };
 
 }  // namespace user

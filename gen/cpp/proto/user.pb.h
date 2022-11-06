@@ -23,11 +23,14 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
+#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
 #include <google/protobuf/generated_message_reflection.h>
+#include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_proto_2fuser_2eproto
@@ -42,13 +45,1246 @@ struct TableStruct_proto_2fuser_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_proto_2fuser_2eproto;
+namespace user {
+class LinkTelegramRequest;
+struct LinkTelegramRequestDefaultTypeInternal;
+extern LinkTelegramRequestDefaultTypeInternal _LinkTelegramRequest_default_instance_;
+class LinkTelegramResponse;
+struct LinkTelegramResponseDefaultTypeInternal;
+extern LinkTelegramResponseDefaultTypeInternal _LinkTelegramResponse_default_instance_;
+class LoginPassAuthRequest;
+struct LoginPassAuthRequestDefaultTypeInternal;
+extern LoginPassAuthRequestDefaultTypeInternal _LoginPassAuthRequest_default_instance_;
+class LoginPassAuthResponse;
+struct LoginPassAuthResponseDefaultTypeInternal;
+extern LoginPassAuthResponseDefaultTypeInternal _LoginPassAuthResponse_default_instance_;
+class RegisterUserRequest;
+struct RegisterUserRequestDefaultTypeInternal;
+extern RegisterUserRequestDefaultTypeInternal _RegisterUserRequest_default_instance_;
+class RegisterUserResponse;
+struct RegisterUserResponseDefaultTypeInternal;
+extern RegisterUserResponseDefaultTypeInternal _RegisterUserResponse_default_instance_;
+class TelegramAuthRequest;
+struct TelegramAuthRequestDefaultTypeInternal;
+extern TelegramAuthRequestDefaultTypeInternal _TelegramAuthRequest_default_instance_;
+class TelegramAuthResponse;
+struct TelegramAuthResponseDefaultTypeInternal;
+extern TelegramAuthResponseDefaultTypeInternal _TelegramAuthResponse_default_instance_;
+}  // namespace user
 PROTOBUF_NAMESPACE_OPEN
+template<> ::user::LinkTelegramRequest* Arena::CreateMaybeMessage<::user::LinkTelegramRequest>(Arena*);
+template<> ::user::LinkTelegramResponse* Arena::CreateMaybeMessage<::user::LinkTelegramResponse>(Arena*);
+template<> ::user::LoginPassAuthRequest* Arena::CreateMaybeMessage<::user::LoginPassAuthRequest>(Arena*);
+template<> ::user::LoginPassAuthResponse* Arena::CreateMaybeMessage<::user::LoginPassAuthResponse>(Arena*);
+template<> ::user::RegisterUserRequest* Arena::CreateMaybeMessage<::user::RegisterUserRequest>(Arena*);
+template<> ::user::RegisterUserResponse* Arena::CreateMaybeMessage<::user::RegisterUserResponse>(Arena*);
+template<> ::user::TelegramAuthRequest* Arena::CreateMaybeMessage<::user::TelegramAuthRequest>(Arena*);
+template<> ::user::TelegramAuthResponse* Arena::CreateMaybeMessage<::user::TelegramAuthResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace user {
 
 // ===================================================================
 
+class RegisterUserRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:user.RegisterUserRequest) */ {
+ public:
+  inline RegisterUserRequest() : RegisterUserRequest(nullptr) {}
+  ~RegisterUserRequest() override;
+  explicit PROTOBUF_CONSTEXPR RegisterUserRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
+  RegisterUserRequest(const RegisterUserRequest& from);
+  RegisterUserRequest(RegisterUserRequest&& from) noexcept
+    : RegisterUserRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RegisterUserRequest& operator=(const RegisterUserRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RegisterUserRequest& operator=(RegisterUserRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RegisterUserRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RegisterUserRequest* internal_default_instance() {
+    return reinterpret_cast<const RegisterUserRequest*>(
+               &_RegisterUserRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(RegisterUserRequest& a, RegisterUserRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RegisterUserRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RegisterUserRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RegisterUserRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RegisterUserRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RegisterUserRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RegisterUserRequest& from) {
+    RegisterUserRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RegisterUserRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "user.RegisterUserRequest";
+  }
+  protected:
+  explicit RegisterUserRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLoginFieldNumber = 1,
+    kPasswordFieldNumber = 2,
+  };
+  // string login = 1 [json_name = "login"];
+  void clear_login();
+  const std::string& login() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_login(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_login();
+  PROTOBUF_NODISCARD std::string* release_login();
+  void set_allocated_login(std::string* login);
+  private:
+  const std::string& _internal_login() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_login(const std::string& value);
+  std::string* _internal_mutable_login();
+  public:
+
+  // string password = 2 [json_name = "password"];
+  void clear_password();
+  const std::string& password() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_password(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_password();
+  PROTOBUF_NODISCARD std::string* release_password();
+  void set_allocated_password(std::string* password);
+  private:
+  const std::string& _internal_password() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_password(const std::string& value);
+  std::string* _internal_mutable_password();
+  public:
+
+  // @@protoc_insertion_point(class_scope:user.RegisterUserRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr login_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr password_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RegisterUserResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:user.RegisterUserResponse) */ {
+ public:
+  inline RegisterUserResponse() : RegisterUserResponse(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR RegisterUserResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RegisterUserResponse(const RegisterUserResponse& from);
+  RegisterUserResponse(RegisterUserResponse&& from) noexcept
+    : RegisterUserResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline RegisterUserResponse& operator=(const RegisterUserResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RegisterUserResponse& operator=(RegisterUserResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RegisterUserResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RegisterUserResponse* internal_default_instance() {
+    return reinterpret_cast<const RegisterUserResponse*>(
+               &_RegisterUserResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(RegisterUserResponse& a, RegisterUserResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RegisterUserResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RegisterUserResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RegisterUserResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RegisterUserResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const RegisterUserResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const RegisterUserResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "user.RegisterUserResponse";
+  }
+  protected:
+  explicit RegisterUserResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:user.RegisterUserResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+  };
+  friend struct ::TableStruct_proto_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class LinkTelegramRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:user.LinkTelegramRequest) */ {
+ public:
+  inline LinkTelegramRequest() : LinkTelegramRequest(nullptr) {}
+  ~LinkTelegramRequest() override;
+  explicit PROTOBUF_CONSTEXPR LinkTelegramRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  LinkTelegramRequest(const LinkTelegramRequest& from);
+  LinkTelegramRequest(LinkTelegramRequest&& from) noexcept
+    : LinkTelegramRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline LinkTelegramRequest& operator=(const LinkTelegramRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LinkTelegramRequest& operator=(LinkTelegramRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LinkTelegramRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const LinkTelegramRequest* internal_default_instance() {
+    return reinterpret_cast<const LinkTelegramRequest*>(
+               &_LinkTelegramRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(LinkTelegramRequest& a, LinkTelegramRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LinkTelegramRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LinkTelegramRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LinkTelegramRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LinkTelegramRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const LinkTelegramRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const LinkTelegramRequest& from) {
+    LinkTelegramRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(LinkTelegramRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "user.LinkTelegramRequest";
+  }
+  protected:
+  explicit LinkTelegramRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSessionIdFieldNumber = 1,
+    kWebAppInitDataFieldNumber = 2,
+  };
+  // string session_id = 1 [json_name = "sessionId"];
+  void clear_session_id();
+  const std::string& session_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_session_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_session_id();
+  PROTOBUF_NODISCARD std::string* release_session_id();
+  void set_allocated_session_id(std::string* session_id);
+  private:
+  const std::string& _internal_session_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_session_id(const std::string& value);
+  std::string* _internal_mutable_session_id();
+  public:
+
+  // string web_app_init_data = 2 [json_name = "webAppInitData"];
+  void clear_web_app_init_data();
+  const std::string& web_app_init_data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_web_app_init_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_web_app_init_data();
+  PROTOBUF_NODISCARD std::string* release_web_app_init_data();
+  void set_allocated_web_app_init_data(std::string* web_app_init_data);
+  private:
+  const std::string& _internal_web_app_init_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_web_app_init_data(const std::string& value);
+  std::string* _internal_mutable_web_app_init_data();
+  public:
+
+  // @@protoc_insertion_point(class_scope:user.LinkTelegramRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr web_app_init_data_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class LinkTelegramResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:user.LinkTelegramResponse) */ {
+ public:
+  inline LinkTelegramResponse() : LinkTelegramResponse(nullptr) {}
+  explicit PROTOBUF_CONSTEXPR LinkTelegramResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  LinkTelegramResponse(const LinkTelegramResponse& from);
+  LinkTelegramResponse(LinkTelegramResponse&& from) noexcept
+    : LinkTelegramResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline LinkTelegramResponse& operator=(const LinkTelegramResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LinkTelegramResponse& operator=(LinkTelegramResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LinkTelegramResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const LinkTelegramResponse* internal_default_instance() {
+    return reinterpret_cast<const LinkTelegramResponse*>(
+               &_LinkTelegramResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(LinkTelegramResponse& a, LinkTelegramResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LinkTelegramResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LinkTelegramResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LinkTelegramResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LinkTelegramResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const LinkTelegramResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const LinkTelegramResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "user.LinkTelegramResponse";
+  }
+  protected:
+  explicit LinkTelegramResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:user.LinkTelegramResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+  };
+  friend struct ::TableStruct_proto_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class LoginPassAuthRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:user.LoginPassAuthRequest) */ {
+ public:
+  inline LoginPassAuthRequest() : LoginPassAuthRequest(nullptr) {}
+  ~LoginPassAuthRequest() override;
+  explicit PROTOBUF_CONSTEXPR LoginPassAuthRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  LoginPassAuthRequest(const LoginPassAuthRequest& from);
+  LoginPassAuthRequest(LoginPassAuthRequest&& from) noexcept
+    : LoginPassAuthRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline LoginPassAuthRequest& operator=(const LoginPassAuthRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LoginPassAuthRequest& operator=(LoginPassAuthRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LoginPassAuthRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const LoginPassAuthRequest* internal_default_instance() {
+    return reinterpret_cast<const LoginPassAuthRequest*>(
+               &_LoginPassAuthRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(LoginPassAuthRequest& a, LoginPassAuthRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LoginPassAuthRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LoginPassAuthRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LoginPassAuthRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LoginPassAuthRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const LoginPassAuthRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const LoginPassAuthRequest& from) {
+    LoginPassAuthRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(LoginPassAuthRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "user.LoginPassAuthRequest";
+  }
+  protected:
+  explicit LoginPassAuthRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLoginFieldNumber = 1,
+    kPasswordFieldNumber = 2,
+  };
+  // string login = 1 [json_name = "login"];
+  void clear_login();
+  const std::string& login() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_login(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_login();
+  PROTOBUF_NODISCARD std::string* release_login();
+  void set_allocated_login(std::string* login);
+  private:
+  const std::string& _internal_login() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_login(const std::string& value);
+  std::string* _internal_mutable_login();
+  public:
+
+  // string password = 2 [json_name = "password"];
+  void clear_password();
+  const std::string& password() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_password(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_password();
+  PROTOBUF_NODISCARD std::string* release_password();
+  void set_allocated_password(std::string* password);
+  private:
+  const std::string& _internal_password() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_password(const std::string& value);
+  std::string* _internal_mutable_password();
+  public:
+
+  // @@protoc_insertion_point(class_scope:user.LoginPassAuthRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr login_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr password_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class LoginPassAuthResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:user.LoginPassAuthResponse) */ {
+ public:
+  inline LoginPassAuthResponse() : LoginPassAuthResponse(nullptr) {}
+  ~LoginPassAuthResponse() override;
+  explicit PROTOBUF_CONSTEXPR LoginPassAuthResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  LoginPassAuthResponse(const LoginPassAuthResponse& from);
+  LoginPassAuthResponse(LoginPassAuthResponse&& from) noexcept
+    : LoginPassAuthResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline LoginPassAuthResponse& operator=(const LoginPassAuthResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline LoginPassAuthResponse& operator=(LoginPassAuthResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const LoginPassAuthResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const LoginPassAuthResponse* internal_default_instance() {
+    return reinterpret_cast<const LoginPassAuthResponse*>(
+               &_LoginPassAuthResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(LoginPassAuthResponse& a, LoginPassAuthResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(LoginPassAuthResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(LoginPassAuthResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  LoginPassAuthResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<LoginPassAuthResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const LoginPassAuthResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const LoginPassAuthResponse& from) {
+    LoginPassAuthResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(LoginPassAuthResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "user.LoginPassAuthResponse";
+  }
+  protected:
+  explicit LoginPassAuthResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSessionIdFieldNumber = 1,
+  };
+  // string session_id = 1 [json_name = "sessionId"];
+  void clear_session_id();
+  const std::string& session_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_session_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_session_id();
+  PROTOBUF_NODISCARD std::string* release_session_id();
+  void set_allocated_session_id(std::string* session_id);
+  private:
+  const std::string& _internal_session_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_session_id(const std::string& value);
+  std::string* _internal_mutable_session_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:user.LoginPassAuthResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TelegramAuthRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:user.TelegramAuthRequest) */ {
+ public:
+  inline TelegramAuthRequest() : TelegramAuthRequest(nullptr) {}
+  ~TelegramAuthRequest() override;
+  explicit PROTOBUF_CONSTEXPR TelegramAuthRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TelegramAuthRequest(const TelegramAuthRequest& from);
+  TelegramAuthRequest(TelegramAuthRequest&& from) noexcept
+    : TelegramAuthRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline TelegramAuthRequest& operator=(const TelegramAuthRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TelegramAuthRequest& operator=(TelegramAuthRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TelegramAuthRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TelegramAuthRequest* internal_default_instance() {
+    return reinterpret_cast<const TelegramAuthRequest*>(
+               &_TelegramAuthRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(TelegramAuthRequest& a, TelegramAuthRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TelegramAuthRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TelegramAuthRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TelegramAuthRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TelegramAuthRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TelegramAuthRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TelegramAuthRequest& from) {
+    TelegramAuthRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TelegramAuthRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "user.TelegramAuthRequest";
+  }
+  protected:
+  explicit TelegramAuthRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kWebAppInitDataFieldNumber = 1,
+  };
+  // string web_app_init_data = 1 [json_name = "webAppInitData"];
+  void clear_web_app_init_data();
+  const std::string& web_app_init_data() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_web_app_init_data(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_web_app_init_data();
+  PROTOBUF_NODISCARD std::string* release_web_app_init_data();
+  void set_allocated_web_app_init_data(std::string* web_app_init_data);
+  private:
+  const std::string& _internal_web_app_init_data() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_web_app_init_data(const std::string& value);
+  std::string* _internal_mutable_web_app_init_data();
+  public:
+
+  // @@protoc_insertion_point(class_scope:user.TelegramAuthRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr web_app_init_data_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2fuser_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TelegramAuthResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:user.TelegramAuthResponse) */ {
+ public:
+  inline TelegramAuthResponse() : TelegramAuthResponse(nullptr) {}
+  ~TelegramAuthResponse() override;
+  explicit PROTOBUF_CONSTEXPR TelegramAuthResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TelegramAuthResponse(const TelegramAuthResponse& from);
+  TelegramAuthResponse(TelegramAuthResponse&& from) noexcept
+    : TelegramAuthResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline TelegramAuthResponse& operator=(const TelegramAuthResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TelegramAuthResponse& operator=(TelegramAuthResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TelegramAuthResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TelegramAuthResponse* internal_default_instance() {
+    return reinterpret_cast<const TelegramAuthResponse*>(
+               &_TelegramAuthResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(TelegramAuthResponse& a, TelegramAuthResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TelegramAuthResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TelegramAuthResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  TelegramAuthResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<TelegramAuthResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TelegramAuthResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const TelegramAuthResponse& from) {
+    TelegramAuthResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TelegramAuthResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "user.TelegramAuthResponse";
+  }
+  protected:
+  explicit TelegramAuthResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSessionIdFieldNumber = 1,
+  };
+  // string session_id = 1 [json_name = "sessionId"];
+  void clear_session_id();
+  const std::string& session_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_session_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_session_id();
+  PROTOBUF_NODISCARD std::string* release_session_id();
+  void set_allocated_session_id(std::string* session_id);
+  private:
+  const std::string& _internal_session_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_session_id(const std::string& value);
+  std::string* _internal_mutable_session_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:user.TelegramAuthResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr session_id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2fuser_2eproto;
+};
 // ===================================================================
 
 
@@ -58,9 +1294,503 @@ namespace user {
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// RegisterUserRequest
+
+// string login = 1 [json_name = "login"];
+inline void RegisterUserRequest::clear_login() {
+  _impl_.login_.ClearToEmpty();
+}
+inline const std::string& RegisterUserRequest::login() const {
+  // @@protoc_insertion_point(field_get:user.RegisterUserRequest.login)
+  return _internal_login();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RegisterUserRequest::set_login(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.login_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.RegisterUserRequest.login)
+}
+inline std::string* RegisterUserRequest::mutable_login() {
+  std::string* _s = _internal_mutable_login();
+  // @@protoc_insertion_point(field_mutable:user.RegisterUserRequest.login)
+  return _s;
+}
+inline const std::string& RegisterUserRequest::_internal_login() const {
+  return _impl_.login_.Get();
+}
+inline void RegisterUserRequest::_internal_set_login(const std::string& value) {
+  
+  _impl_.login_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RegisterUserRequest::_internal_mutable_login() {
+  
+  return _impl_.login_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RegisterUserRequest::release_login() {
+  // @@protoc_insertion_point(field_release:user.RegisterUserRequest.login)
+  return _impl_.login_.Release();
+}
+inline void RegisterUserRequest::set_allocated_login(std::string* login) {
+  if (login != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.login_.SetAllocated(login, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.login_.IsDefault()) {
+    _impl_.login_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.RegisterUserRequest.login)
+}
+
+// string password = 2 [json_name = "password"];
+inline void RegisterUserRequest::clear_password() {
+  _impl_.password_.ClearToEmpty();
+}
+inline const std::string& RegisterUserRequest::password() const {
+  // @@protoc_insertion_point(field_get:user.RegisterUserRequest.password)
+  return _internal_password();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RegisterUserRequest::set_password(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.password_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.RegisterUserRequest.password)
+}
+inline std::string* RegisterUserRequest::mutable_password() {
+  std::string* _s = _internal_mutable_password();
+  // @@protoc_insertion_point(field_mutable:user.RegisterUserRequest.password)
+  return _s;
+}
+inline const std::string& RegisterUserRequest::_internal_password() const {
+  return _impl_.password_.Get();
+}
+inline void RegisterUserRequest::_internal_set_password(const std::string& value) {
+  
+  _impl_.password_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RegisterUserRequest::_internal_mutable_password() {
+  
+  return _impl_.password_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RegisterUserRequest::release_password() {
+  // @@protoc_insertion_point(field_release:user.RegisterUserRequest.password)
+  return _impl_.password_.Release();
+}
+inline void RegisterUserRequest::set_allocated_password(std::string* password) {
+  if (password != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.password_.SetAllocated(password, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.password_.IsDefault()) {
+    _impl_.password_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.RegisterUserRequest.password)
+}
+
+// -------------------------------------------------------------------
+
+// RegisterUserResponse
+
+// -------------------------------------------------------------------
+
+// LinkTelegramRequest
+
+// string session_id = 1 [json_name = "sessionId"];
+inline void LinkTelegramRequest::clear_session_id() {
+  _impl_.session_id_.ClearToEmpty();
+}
+inline const std::string& LinkTelegramRequest::session_id() const {
+  // @@protoc_insertion_point(field_get:user.LinkTelegramRequest.session_id)
+  return _internal_session_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void LinkTelegramRequest::set_session_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.session_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.LinkTelegramRequest.session_id)
+}
+inline std::string* LinkTelegramRequest::mutable_session_id() {
+  std::string* _s = _internal_mutable_session_id();
+  // @@protoc_insertion_point(field_mutable:user.LinkTelegramRequest.session_id)
+  return _s;
+}
+inline const std::string& LinkTelegramRequest::_internal_session_id() const {
+  return _impl_.session_id_.Get();
+}
+inline void LinkTelegramRequest::_internal_set_session_id(const std::string& value) {
+  
+  _impl_.session_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* LinkTelegramRequest::_internal_mutable_session_id() {
+  
+  return _impl_.session_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* LinkTelegramRequest::release_session_id() {
+  // @@protoc_insertion_point(field_release:user.LinkTelegramRequest.session_id)
+  return _impl_.session_id_.Release();
+}
+inline void LinkTelegramRequest::set_allocated_session_id(std::string* session_id) {
+  if (session_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.session_id_.SetAllocated(session_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.session_id_.IsDefault()) {
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.LinkTelegramRequest.session_id)
+}
+
+// string web_app_init_data = 2 [json_name = "webAppInitData"];
+inline void LinkTelegramRequest::clear_web_app_init_data() {
+  _impl_.web_app_init_data_.ClearToEmpty();
+}
+inline const std::string& LinkTelegramRequest::web_app_init_data() const {
+  // @@protoc_insertion_point(field_get:user.LinkTelegramRequest.web_app_init_data)
+  return _internal_web_app_init_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void LinkTelegramRequest::set_web_app_init_data(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.web_app_init_data_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.LinkTelegramRequest.web_app_init_data)
+}
+inline std::string* LinkTelegramRequest::mutable_web_app_init_data() {
+  std::string* _s = _internal_mutable_web_app_init_data();
+  // @@protoc_insertion_point(field_mutable:user.LinkTelegramRequest.web_app_init_data)
+  return _s;
+}
+inline const std::string& LinkTelegramRequest::_internal_web_app_init_data() const {
+  return _impl_.web_app_init_data_.Get();
+}
+inline void LinkTelegramRequest::_internal_set_web_app_init_data(const std::string& value) {
+  
+  _impl_.web_app_init_data_.Set(value, GetArenaForAllocation());
+}
+inline std::string* LinkTelegramRequest::_internal_mutable_web_app_init_data() {
+  
+  return _impl_.web_app_init_data_.Mutable(GetArenaForAllocation());
+}
+inline std::string* LinkTelegramRequest::release_web_app_init_data() {
+  // @@protoc_insertion_point(field_release:user.LinkTelegramRequest.web_app_init_data)
+  return _impl_.web_app_init_data_.Release();
+}
+inline void LinkTelegramRequest::set_allocated_web_app_init_data(std::string* web_app_init_data) {
+  if (web_app_init_data != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.web_app_init_data_.SetAllocated(web_app_init_data, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.web_app_init_data_.IsDefault()) {
+    _impl_.web_app_init_data_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.LinkTelegramRequest.web_app_init_data)
+}
+
+// -------------------------------------------------------------------
+
+// LinkTelegramResponse
+
+// -------------------------------------------------------------------
+
+// LoginPassAuthRequest
+
+// string login = 1 [json_name = "login"];
+inline void LoginPassAuthRequest::clear_login() {
+  _impl_.login_.ClearToEmpty();
+}
+inline const std::string& LoginPassAuthRequest::login() const {
+  // @@protoc_insertion_point(field_get:user.LoginPassAuthRequest.login)
+  return _internal_login();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void LoginPassAuthRequest::set_login(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.login_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.LoginPassAuthRequest.login)
+}
+inline std::string* LoginPassAuthRequest::mutable_login() {
+  std::string* _s = _internal_mutable_login();
+  // @@protoc_insertion_point(field_mutable:user.LoginPassAuthRequest.login)
+  return _s;
+}
+inline const std::string& LoginPassAuthRequest::_internal_login() const {
+  return _impl_.login_.Get();
+}
+inline void LoginPassAuthRequest::_internal_set_login(const std::string& value) {
+  
+  _impl_.login_.Set(value, GetArenaForAllocation());
+}
+inline std::string* LoginPassAuthRequest::_internal_mutable_login() {
+  
+  return _impl_.login_.Mutable(GetArenaForAllocation());
+}
+inline std::string* LoginPassAuthRequest::release_login() {
+  // @@protoc_insertion_point(field_release:user.LoginPassAuthRequest.login)
+  return _impl_.login_.Release();
+}
+inline void LoginPassAuthRequest::set_allocated_login(std::string* login) {
+  if (login != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.login_.SetAllocated(login, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.login_.IsDefault()) {
+    _impl_.login_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.LoginPassAuthRequest.login)
+}
+
+// string password = 2 [json_name = "password"];
+inline void LoginPassAuthRequest::clear_password() {
+  _impl_.password_.ClearToEmpty();
+}
+inline const std::string& LoginPassAuthRequest::password() const {
+  // @@protoc_insertion_point(field_get:user.LoginPassAuthRequest.password)
+  return _internal_password();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void LoginPassAuthRequest::set_password(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.password_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.LoginPassAuthRequest.password)
+}
+inline std::string* LoginPassAuthRequest::mutable_password() {
+  std::string* _s = _internal_mutable_password();
+  // @@protoc_insertion_point(field_mutable:user.LoginPassAuthRequest.password)
+  return _s;
+}
+inline const std::string& LoginPassAuthRequest::_internal_password() const {
+  return _impl_.password_.Get();
+}
+inline void LoginPassAuthRequest::_internal_set_password(const std::string& value) {
+  
+  _impl_.password_.Set(value, GetArenaForAllocation());
+}
+inline std::string* LoginPassAuthRequest::_internal_mutable_password() {
+  
+  return _impl_.password_.Mutable(GetArenaForAllocation());
+}
+inline std::string* LoginPassAuthRequest::release_password() {
+  // @@protoc_insertion_point(field_release:user.LoginPassAuthRequest.password)
+  return _impl_.password_.Release();
+}
+inline void LoginPassAuthRequest::set_allocated_password(std::string* password) {
+  if (password != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.password_.SetAllocated(password, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.password_.IsDefault()) {
+    _impl_.password_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.LoginPassAuthRequest.password)
+}
+
+// -------------------------------------------------------------------
+
+// LoginPassAuthResponse
+
+// string session_id = 1 [json_name = "sessionId"];
+inline void LoginPassAuthResponse::clear_session_id() {
+  _impl_.session_id_.ClearToEmpty();
+}
+inline const std::string& LoginPassAuthResponse::session_id() const {
+  // @@protoc_insertion_point(field_get:user.LoginPassAuthResponse.session_id)
+  return _internal_session_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void LoginPassAuthResponse::set_session_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.session_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.LoginPassAuthResponse.session_id)
+}
+inline std::string* LoginPassAuthResponse::mutable_session_id() {
+  std::string* _s = _internal_mutable_session_id();
+  // @@protoc_insertion_point(field_mutable:user.LoginPassAuthResponse.session_id)
+  return _s;
+}
+inline const std::string& LoginPassAuthResponse::_internal_session_id() const {
+  return _impl_.session_id_.Get();
+}
+inline void LoginPassAuthResponse::_internal_set_session_id(const std::string& value) {
+  
+  _impl_.session_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* LoginPassAuthResponse::_internal_mutable_session_id() {
+  
+  return _impl_.session_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* LoginPassAuthResponse::release_session_id() {
+  // @@protoc_insertion_point(field_release:user.LoginPassAuthResponse.session_id)
+  return _impl_.session_id_.Release();
+}
+inline void LoginPassAuthResponse::set_allocated_session_id(std::string* session_id) {
+  if (session_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.session_id_.SetAllocated(session_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.session_id_.IsDefault()) {
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.LoginPassAuthResponse.session_id)
+}
+
+// -------------------------------------------------------------------
+
+// TelegramAuthRequest
+
+// string web_app_init_data = 1 [json_name = "webAppInitData"];
+inline void TelegramAuthRequest::clear_web_app_init_data() {
+  _impl_.web_app_init_data_.ClearToEmpty();
+}
+inline const std::string& TelegramAuthRequest::web_app_init_data() const {
+  // @@protoc_insertion_point(field_get:user.TelegramAuthRequest.web_app_init_data)
+  return _internal_web_app_init_data();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TelegramAuthRequest::set_web_app_init_data(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.web_app_init_data_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.TelegramAuthRequest.web_app_init_data)
+}
+inline std::string* TelegramAuthRequest::mutable_web_app_init_data() {
+  std::string* _s = _internal_mutable_web_app_init_data();
+  // @@protoc_insertion_point(field_mutable:user.TelegramAuthRequest.web_app_init_data)
+  return _s;
+}
+inline const std::string& TelegramAuthRequest::_internal_web_app_init_data() const {
+  return _impl_.web_app_init_data_.Get();
+}
+inline void TelegramAuthRequest::_internal_set_web_app_init_data(const std::string& value) {
+  
+  _impl_.web_app_init_data_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TelegramAuthRequest::_internal_mutable_web_app_init_data() {
+  
+  return _impl_.web_app_init_data_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TelegramAuthRequest::release_web_app_init_data() {
+  // @@protoc_insertion_point(field_release:user.TelegramAuthRequest.web_app_init_data)
+  return _impl_.web_app_init_data_.Release();
+}
+inline void TelegramAuthRequest::set_allocated_web_app_init_data(std::string* web_app_init_data) {
+  if (web_app_init_data != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.web_app_init_data_.SetAllocated(web_app_init_data, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.web_app_init_data_.IsDefault()) {
+    _impl_.web_app_init_data_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.TelegramAuthRequest.web_app_init_data)
+}
+
+// -------------------------------------------------------------------
+
+// TelegramAuthResponse
+
+// string session_id = 1 [json_name = "sessionId"];
+inline void TelegramAuthResponse::clear_session_id() {
+  _impl_.session_id_.ClearToEmpty();
+}
+inline const std::string& TelegramAuthResponse::session_id() const {
+  // @@protoc_insertion_point(field_get:user.TelegramAuthResponse.session_id)
+  return _internal_session_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TelegramAuthResponse::set_session_id(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.session_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:user.TelegramAuthResponse.session_id)
+}
+inline std::string* TelegramAuthResponse::mutable_session_id() {
+  std::string* _s = _internal_mutable_session_id();
+  // @@protoc_insertion_point(field_mutable:user.TelegramAuthResponse.session_id)
+  return _s;
+}
+inline const std::string& TelegramAuthResponse::_internal_session_id() const {
+  return _impl_.session_id_.Get();
+}
+inline void TelegramAuthResponse::_internal_set_session_id(const std::string& value) {
+  
+  _impl_.session_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* TelegramAuthResponse::_internal_mutable_session_id() {
+  
+  return _impl_.session_id_.Mutable(GetArenaForAllocation());
+}
+inline std::string* TelegramAuthResponse::release_session_id() {
+  // @@protoc_insertion_point(field_release:user.TelegramAuthResponse.session_id)
+  return _impl_.session_id_.Release();
+}
+inline void TelegramAuthResponse::set_allocated_session_id(std::string* session_id) {
+  if (session_id != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.session_id_.SetAllocated(session_id, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.session_id_.IsDefault()) {
+    _impl_.session_id_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:user.TelegramAuthResponse.session_id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
