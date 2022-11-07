@@ -8,6 +8,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(FetchContent)
 
+find_package(protobuf REQUIRED)
+find_package(gRPC CONFIG REQUIRED)
+
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/../api")
     add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../api" build)
 else()
@@ -34,5 +37,11 @@ FetchContent_MakeAvailable(open_spiel)
 FetchContent_GetProperties(open_spiel)
 include_directories("${open_spiel_SOURCE_DIR}")
 
-add_executable(InstanceHost src/InstanceHost/main.cpp)
-target_link_libraries(InstanceHost spielbrett-api)
+add_executable(InstanceHost
+    src/InstanceHost/main.cpp
+    src/InstanceHost/GRPCServer.cpp
+    src/InstanceHost/GRPCServerImpl.cpp
+    src/InstanceHost/Instance.cpp
+    src/InstanceHost/InstanceHost.cpp
+    src/InstanceHost/WebsocketServer.cpp)
+target_link_libraries(InstanceHost spielbrett-api gRPC::grpc++_reflection)
