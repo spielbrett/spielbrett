@@ -14,3 +14,7 @@
 	path = web
 	url = git@github.com:spielbrett/spielbrett-web.git
 	branch = main
+[submodule "python"]
+	path = python
+	url = git@github.com:spielbrett/spielbrett-python.git
+	branch = main
