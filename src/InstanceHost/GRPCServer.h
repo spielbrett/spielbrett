@@ -10,19 +10,18 @@
 class GRPCServer : public instance_host::InstanceHostService::Service
 {
 public:
-    GRPCServer() = delete;
     GRPCServer(InstanceHost &instanceHost);
 
     void run(const std::string &listenAddr);
 
     grpc::Status CreateInstance(
-        grpc::ServerContext* context,
-        const instance_host::CreateInstanceRequest* request,
-        instance_host::CreateInstanceResponse* response) override;
+        grpc::ServerContext *context,
+        const instance_host::CreateInstanceRequest *request,
+        instance_host::CreateInstanceResponse *response) override;
     grpc::Status TriggerEvent(
-        grpc::ServerContext* context,
-        const instance_host::TriggerEventRequest* request,
-        instance_host::TriggerEventResponse* response) override;
+        grpc::ServerContext *context,
+        const instance_host::TriggerEventRequest *request,
+        instance_host::TriggerEventResponse *response) override;
 
 private:
     InstanceHost &instanceHost;

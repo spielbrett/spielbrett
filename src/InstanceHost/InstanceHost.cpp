@@ -7,10 +7,10 @@
 
 #include <memory>
 
-InstanceHost::InstanceHost()
+InstanceHost::InstanceHost() :
+    websocketServer(std::make_shared<WebsocketServer>()),
+    grpcServer(std::make_shared<GRPCServer>(*this))
 {
-    websocketServer = std::make_shared<WebsocketServer>();
-    grpcServer = std::make_shared<GRPCServer>(*this);
 }
 
 int InstanceHost::run()

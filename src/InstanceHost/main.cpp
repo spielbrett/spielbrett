@@ -1,7 +1,7 @@
 #include "InstanceHost.h"
 
-#include <grpc++/ext/proto_server_reflection_plugin.h>
 #include <Python.h>
+#include <grpc++/ext/proto_server_reflection_plugin.h>
 
 int main()
 {
@@ -12,6 +12,6 @@ int main()
 
     InstanceHost instanceHost{};
     return instanceHost.run();
-    
+
     return 0;
 }
