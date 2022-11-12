@@ -22,10 +22,11 @@ else()
     FetchContent_MakeAvailable(spielbrett-api)
 endif()
 
-find_package(Boost 1.75.0)
-if (Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS})
-endif()
+find_package(PythonLibs REQUIRED)
+include_directories(${PYTHON_INCLUDE_DIRS})
+
+find_package(Boost 1.80.0 COMPONENTS python REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
 
 FetchContent_Declare(
     open_spiel
@@ -40,8 +41,11 @@ include_directories("${open_spiel_SOURCE_DIR}")
 add_executable(InstanceHost
     src/InstanceHost/main.cpp
     src/InstanceHost/GRPCServer.cpp
-    src/InstanceHost/GRPCServerImpl.cpp
     src/InstanceHost/Instance.cpp
     src/InstanceHost/InstanceHost.cpp
     src/InstanceHost/WebsocketServer.cpp)
-target_link_libraries(InstanceHost spielbrett-api gRPC::grpc++_reflection)
+target_link_libraries(InstanceHost
+    spielbrett-api
+    gRPC::grpc++_reflection
+    ${Boost_LIBRARIES}
+    ${PYTHON_LIBRARIES})
