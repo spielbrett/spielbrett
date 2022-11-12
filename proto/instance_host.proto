@@ -3,24 +3,24 @@ package instance_host;
 option go_package = "github.com/spielbrett/spielbrett-api/gen/go/proto";
 
 message CreateInstanceRequest {
-    string instance_type = 1;
+  string instance_type = 1;
 }
 
 message CreateInstanceResponse {
-    string instance_id = 1;
+  string instance_id = 1;
 }
 
 message TriggerEventRequest {
-    string instance_id = 1;
-    string event_name = 2;
-    bytes payload = 3;
+  string instance_id = 1;
+  string event_name = 2;
+  bytes payload = 3;
 }
 
 message TriggerEventResponse {
-    bytes payload = 1;
+  bytes payload = 1;
 }
 
 service InstanceHostService {
-    rpc CreateInstance(CreateInstanceRequest) returns (CreateInstanceResponse) {}
-    rpc TriggerEvent(TriggerEventRequest) returns (TriggerEventResponse) {}
+  rpc CreateInstance(CreateInstanceRequest) returns (CreateInstanceResponse) {}
+  rpc TriggerEvent(TriggerEventRequest) returns (TriggerEventResponse) {}
 }
