@@ -32,3 +32,11 @@ std::string InstanceHost::createInstance(const std::string &instanceType)
     instances[instanceId] = std::make_shared<Instance>(instanceType);
     return instanceId;
 }
+
+std::shared_ptr<Instance> InstanceHost::getInstance(const std::string &instanceId) const noexcept
+{
+    if (instances.count(instanceId) == 0) {
+        return nullptr;
+    }
+    return instances.at(instanceId);
+}

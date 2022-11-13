@@ -1,7 +1,7 @@
 #include "Instance.h"
 
-#include <stdexcept>
 #include <sstream>
+#include <stdexcept>
 
 Instance::Instance(const std::string &instanceType)
 {
@@ -18,4 +18,11 @@ Instance::Instance(const std::string &instanceType)
             throw std::runtime_error("Python exception occured");
         }
     }
+}
+
+void Instance::performAction(
+    const std::string &userId,
+    const std::string &actionName,
+    const std::string &payload)
+{
 }

@@ -1,6 +1,7 @@
 #include "GRPCServer.h"
 
 #include "InstanceHost.h"
+#include "proto/instance_host.pb.h"
 
 #include <cstddef>
 #include <grpc++/server_builder.h>
@@ -32,7 +33,7 @@ void GRPCServer::run(const std::string &listenAddr)
 void GRPCServer::stop()
 {
     if (server == nullptr) {
-        return; 
+        return;
     }
 
     server->Shutdown();
@@ -60,10 +61,16 @@ grpc::Status GRPCServer::CreateInstance(
     return grpc::Status::OK;
 }
 
-grpc::Status GRPCServer::TriggerEvent(
+grpc::Status GRPCServer::PerformAction(
     grpc::ServerContext *context,
-    const instance_host::TriggerEventRequest *request,
-    instance_host::TriggerEventResponse *response)
+    const instance_host::PerformActionRequest *request,
+    instance_host::PerformActionResponse *response)
 {
-    return grpc::Status(grpc::StatusCode::UNIMPLEMENTED, "not implemented yet");
+    auto instance = instanceHost.getInstance(request->instance_id());
+    if (instance == nullptr) {
+        return grpc::Status(grpc::StatusCode::NOT_FOUND, "instance not found");
+    }
+
+    instance->performAction(request->user_id(), request->action_name(), request->payload());
+    return grpc::Status::OK;
 }

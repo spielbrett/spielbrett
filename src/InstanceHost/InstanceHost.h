@@ -19,6 +19,7 @@ public:
     void stop();
 
     std::string createInstance(const std::string &instanceType);
+    std::shared_ptr<Instance> getInstance(const std::string &instanceId) const noexcept;
 
 private:
     std::unique_ptr<WebsocketServer> websocketServer;

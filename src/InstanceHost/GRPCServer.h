@@ -20,10 +20,10 @@ public:
         grpc::ServerContext *context,
         const instance_host::CreateInstanceRequest *request,
         instance_host::CreateInstanceResponse *response) override;
-    grpc::Status TriggerEvent(
+    grpc::Status PerformAction(
         grpc::ServerContext *context,
-        const instance_host::TriggerEventRequest *request,
-        instance_host::TriggerEventResponse *response) override;
+        const instance_host::PerformActionRequest *request,
+        instance_host::PerformActionResponse *response) override;
 
 private:
     InstanceHost &instanceHost;
