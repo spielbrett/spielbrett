@@ -1,6 +1,7 @@
 #include "Instance.h"
 
 #include <stdexcept>
+#include <sstream>
 
 Instance::Instance(const std::string &instanceType)
 {
@@ -8,6 +9,13 @@ Instance::Instance(const std::string &instanceType)
         instanceModule = boost::python::import(instanceType.c_str());
     }
     catch (const boost::python::error_already_set &) {
-        throw std::runtime_error("could not import Python module");
+        if (PyErr_ExceptionMatches(PyExc_ImportError)) {
+            std::stringstream ss;
+            ss << "failed to import module " << instanceType;
+            throw std::invalid_argument(ss.str());
+        }
+        else {
+            throw std::runtime_error("Python exception occured");
+        }
     }
 }

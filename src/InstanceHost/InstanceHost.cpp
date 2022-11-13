@@ -1,22 +1,29 @@
 #include "InstanceHost.h"
 
-#include "GRPCServer.h"
-
 #include <boost/lexical_cast.hpp>
 #include <boost/uuid/uuid_io.hpp>
 
+#include <future>
 #include <memory>
 
 InstanceHost::InstanceHost() :
-    websocketServer(std::make_shared<WebsocketServer>()),
-    grpcServer(std::make_shared<GRPCServer>(*this))
+    websocketServer(std::make_unique<WebsocketServer>()),
+    grpcServer(std::make_unique<GRPCServer>(*this))
 {
 }
 
-int InstanceHost::run()
+void InstanceHost::run()
 {
-    grpcServer->run("0.0.0.0:8000");
-    return 0;
+    if (grpcServer != nullptr) {
+        grpcServer->run("0.0.0.0:8000");
+    }
+}
+
+void InstanceHost::stop()
+{
+    if (grpcServer != nullptr) {
+        grpcServer->stop();
+    }
 }
 
 std::string InstanceHost::createInstance(const std::string &instanceType)

@@ -1,6 +1,7 @@
 #ifndef INSTANCE_HOST_H
 #define INSTANCE_HOST_H
 
+#include "GRPCServer.h"
 #include "Instance.h"
 #include "WebsocketServer.h"
 
@@ -9,20 +10,19 @@
 #include <memory>
 #include <unordered_map>
 
-class GRPCServer;
-
 class InstanceHost
 {
 public:
     InstanceHost();
 
-    int run();
+    void run();
+    void stop();
 
     std::string createInstance(const std::string &instanceType);
 
 private:
-    std::shared_ptr<WebsocketServer> websocketServer;
-    std::shared_ptr<GRPCServer> grpcServer;
+    std::unique_ptr<WebsocketServer> websocketServer;
+    std::unique_ptr<GRPCServer> grpcServer;
 
     std::unordered_map<std::string, std::shared_ptr<Instance>> instances;
     boost::uuids::random_generator generator;
