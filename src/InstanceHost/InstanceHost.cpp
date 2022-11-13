@@ -5,6 +5,8 @@
 
 #include <future>
 #include <memory>
+#include <mutex>
+#include <shared_mutex>
 
 InstanceHost::InstanceHost() :
     websocketServer(std::make_unique<WebsocketServer>()),
@@ -28,6 +30,8 @@ void InstanceHost::stop()
 
 std::string InstanceHost::createInstance(const std::string &instanceType)
 {
+    std::unique_lock lock(sm);
+
     auto instanceId = boost::lexical_cast<std::string>(generator());
     instances[instanceId] = std::make_shared<Instance>(instanceType);
     return instanceId;
@@ -35,6 +39,8 @@ std::string InstanceHost::createInstance(const std::string &instanceType)
 
 std::shared_ptr<Instance> InstanceHost::getInstance(const std::string &instanceId) const noexcept
 {
+    std::shared_lock lock(sm);
+
     if (instances.count(instanceId) == 0) {
         return nullptr;
     }

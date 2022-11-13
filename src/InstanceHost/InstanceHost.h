@@ -8,6 +8,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 
 #include <memory>
+#include <shared_mutex>
 #include <unordered_map>
 
 class InstanceHost
@@ -27,6 +28,8 @@ private:
 
     std::unordered_map<std::string, std::shared_ptr<Instance>> instances;
     boost::uuids::random_generator generator;
+
+    mutable std::shared_mutex sm;
 };
 
 #endif // INSTANCE_HOST_H
