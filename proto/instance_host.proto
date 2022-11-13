@@ -10,17 +10,18 @@ message CreateInstanceResponse {
   string instance_id = 1;
 }
 
-message TriggerEventRequest {
+message PerformActionRequest {
   string instance_id = 1;
-  string event_name = 2;
-  bytes payload = 3;
+  string user_id = 2;
+  string action_name = 3;
+  string payload = 4;
 }
 
-message TriggerEventResponse {
-  bytes payload = 1;
+message PerformActionResponse {
+  string payload = 1;
 }
 
 service InstanceHostService {
   rpc CreateInstance(CreateInstanceRequest) returns (CreateInstanceResponse) {}
-  rpc TriggerEvent(TriggerEventRequest) returns (TriggerEventResponse) {}
+  rpc PerformAction(PerformActionRequest) returns (PerformActionResponse) {}
 }

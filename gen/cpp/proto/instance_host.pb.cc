@@ -47,34 +47,35 @@ struct CreateInstanceResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateInstanceResponseDefaultTypeInternal _CreateInstanceResponse_default_instance_;
-PROTOBUF_CONSTEXPR TriggerEventRequest::TriggerEventRequest(
+PROTOBUF_CONSTEXPR PerformActionRequest::PerformActionRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.instance_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.event_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.action_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.payload_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct TriggerEventRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR TriggerEventRequestDefaultTypeInternal()
+struct PerformActionRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PerformActionRequestDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~TriggerEventRequestDefaultTypeInternal() {}
+  ~PerformActionRequestDefaultTypeInternal() {}
   union {
-    TriggerEventRequest _instance;
+    PerformActionRequest _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TriggerEventRequestDefaultTypeInternal _TriggerEventRequest_default_instance_;
-PROTOBUF_CONSTEXPR TriggerEventResponse::TriggerEventResponse(
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionRequestDefaultTypeInternal _PerformActionRequest_default_instance_;
+PROTOBUF_CONSTEXPR PerformActionResponse::PerformActionResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.payload_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
-struct TriggerEventResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR TriggerEventResponseDefaultTypeInternal()
+struct PerformActionResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PerformActionResponseDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
-  ~TriggerEventResponseDefaultTypeInternal() {}
+  ~PerformActionResponseDefaultTypeInternal() {}
   union {
-    TriggerEventResponse _instance;
+    PerformActionResponse _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TriggerEventResponseDefaultTypeInternal _TriggerEventResponse_default_instance_;
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionResponseDefaultTypeInternal _PerformActionResponse_default_instance_;
 }  // namespace instance_host
 static ::_pb::Metadata file_level_metadata_proto_2finstance_5fhost_2eproto[4];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_proto_2finstance_5fhost_2eproto = nullptr;
@@ -96,34 +97,35 @@ const uint32_t TableStruct_proto_2finstance_5fhost_2eproto::offsets[] PROTOBUF_S
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse, _impl_.instance_id_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::instance_host::TriggerEventRequest, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::instance_host::TriggerEventRequest, _impl_.instance_id_),
-  PROTOBUF_FIELD_OFFSET(::instance_host::TriggerEventRequest, _impl_.event_name_),
-  PROTOBUF_FIELD_OFFSET(::instance_host::TriggerEventRequest, _impl_.payload_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _impl_.instance_id_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _impl_.user_id_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _impl_.action_name_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _impl_.payload_),
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::instance_host::TriggerEventResponse, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::instance_host::TriggerEventResponse, _impl_.payload_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse, _impl_.payload_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::instance_host::CreateInstanceRequest)},
   { 7, -1, -1, sizeof(::instance_host::CreateInstanceResponse)},
-  { 14, -1, -1, sizeof(::instance_host::TriggerEventRequest)},
-  { 23, -1, -1, sizeof(::instance_host::TriggerEventResponse)},
+  { 14, -1, -1, sizeof(::instance_host::PerformActionRequest)},
+  { 24, -1, -1, sizeof(::instance_host::PerformActionResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::instance_host::_CreateInstanceRequest_default_instance_._instance,
   &::instance_host::_CreateInstanceResponse_default_instance_._instance,
-  &::instance_host::_TriggerEventRequest_default_instance_._instance,
-  &::instance_host::_TriggerEventResponse_default_instance_._instance,
+  &::instance_host::_PerformActionRequest_default_instance_._instance,
+  &::instance_host::_PerformActionResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_proto_2finstance_5fhost_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -131,21 +133,22 @@ const char descriptor_table_protodef_proto_2finstance_5fhost_2eproto[] PROTOBUF_
   "st\"<\n\025CreateInstanceRequest\022#\n\rinstance_"
   "type\030\001 \001(\tR\014instanceType\"9\n\026CreateInstan"
   "ceResponse\022\037\n\013instance_id\030\001 \001(\tR\ninstanc"
-  "eId\"o\n\023TriggerEventRequest\022\037\n\013instance_i"
-  "d\030\001 \001(\tR\ninstanceId\022\035\n\nevent_name\030\002 \001(\tR"
-  "\teventName\022\030\n\007payload\030\003 \001(\014R\007payload\"0\n\024"
-  "TriggerEventResponse\022\030\n\007payload\030\001 \001(\014R\007p"
-  "ayload2\321\001\n\023InstanceHostService\022_\n\016Create"
-  "Instance\022$.instance_host.CreateInstanceR"
-  "equest\032%.instance_host.CreateInstanceRes"
-  "ponse\"\000\022Y\n\014TriggerEvent\022\".instance_host."
-  "TriggerEventRequest\032#.instance_host.Trig"
-  "gerEventResponse\"\000B3Z1github.com/spielbr"
-  "ett/spielbrett-api/gen/go/protob\006proto3"
+  "eId\"\213\001\n\024PerformActionRequest\022\037\n\013instance"
+  "_id\030\001 \001(\tR\ninstanceId\022\027\n\007user_id\030\002 \001(\tR\006"
+  "userId\022\037\n\013action_name\030\003 \001(\tR\nactionName\022"
+  "\030\n\007payload\030\004 \001(\tR\007payload\"1\n\025PerformActi"
+  "onResponse\022\030\n\007payload\030\001 \001(\tR\007payload2\324\001\n"
+  "\023InstanceHostService\022_\n\016CreateInstance\022$"
+  ".instance_host.CreateInstanceRequest\032%.i"
+  "nstance_host.CreateInstanceResponse\"\000\022\\\n"
+  "\rPerformAction\022#.instance_host.PerformAc"
+  "tionRequest\032$.instance_host.PerformActio"
+  "nResponse\"\000B3Z1github.com/spielbrett/spi"
+  "elbrett-api/gen/go/protob\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_proto_2finstance_5fhost_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_proto_2finstance_5fhost_2eproto = {
-    false, false, 599, descriptor_table_protodef_proto_2finstance_5fhost_2eproto,
+    false, false, 632, descriptor_table_protodef_proto_2finstance_5fhost_2eproto,
     "proto/instance_host.proto",
     &descriptor_table_proto_2finstance_5fhost_2eproto_once, nullptr, 0, 4,
     schemas, file_default_instances, TableStruct_proto_2finstance_5fhost_2eproto::offsets,
@@ -568,22 +571,23 @@ void CreateInstanceResponse::InternalSwap(CreateInstanceResponse* other) {
 
 // ===================================================================
 
-class TriggerEventRequest::_Internal {
+class PerformActionRequest::_Internal {
  public:
 };
 
-TriggerEventRequest::TriggerEventRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+PerformActionRequest::PerformActionRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:instance_host.TriggerEventRequest)
+  // @@protoc_insertion_point(arena_constructor:instance_host.PerformActionRequest)
 }
-TriggerEventRequest::TriggerEventRequest(const TriggerEventRequest& from)
+PerformActionRequest::PerformActionRequest(const PerformActionRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  TriggerEventRequest* const _this = this; (void)_this;
+  PerformActionRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.instance_id_){}
-    , decltype(_impl_.event_name_){}
+    , decltype(_impl_.user_id_){}
+    , decltype(_impl_.action_name_){}
     , decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
@@ -596,12 +600,20 @@ TriggerEventRequest::TriggerEventRequest(const TriggerEventRequest& from)
     _this->_impl_.instance_id_.Set(from._internal_instance_id(), 
       _this->GetArenaForAllocation());
   }
-  _impl_.event_name_.InitDefault();
+  _impl_.user_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.event_name_.Set("", GetArenaForAllocation());
+    _impl_.user_id_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_event_name().empty()) {
-    _this->_impl_.event_name_.Set(from._internal_event_name(), 
+  if (!from._internal_user_id().empty()) {
+    _this->_impl_.user_id_.Set(from._internal_user_id(), 
+      _this->GetArenaForAllocation());
+  }
+  _impl_.action_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.action_name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_action_name().empty()) {
+    _this->_impl_.action_name_.Set(from._internal_action_name(), 
       _this->GetArenaForAllocation());
   }
   _impl_.payload_.InitDefault();
@@ -612,16 +624,17 @@ TriggerEventRequest::TriggerEventRequest(const TriggerEventRequest& from)
     _this->_impl_.payload_.Set(from._internal_payload(), 
       _this->GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:instance_host.TriggerEventRequest)
+  // @@protoc_insertion_point(copy_constructor:instance_host.PerformActionRequest)
 }
 
-inline void TriggerEventRequest::SharedCtor(
+inline void PerformActionRequest::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
       decltype(_impl_.instance_id_){}
-    , decltype(_impl_.event_name_){}
+    , decltype(_impl_.user_id_){}
+    , decltype(_impl_.action_name_){}
     , decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -629,9 +642,13 @@ inline void TriggerEventRequest::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.instance_id_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.event_name_.InitDefault();
+  _impl_.user_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.event_name_.Set("", GetArenaForAllocation());
+    _impl_.user_id_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.action_name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.action_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   _impl_.payload_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -639,8 +656,8 @@ inline void TriggerEventRequest::SharedCtor(
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-TriggerEventRequest::~TriggerEventRequest() {
-  // @@protoc_insertion_point(destructor:instance_host.TriggerEventRequest)
+PerformActionRequest::~PerformActionRequest() {
+  // @@protoc_insertion_point(destructor:instance_host.PerformActionRequest)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -648,30 +665,32 @@ TriggerEventRequest::~TriggerEventRequest() {
   SharedDtor();
 }
 
-inline void TriggerEventRequest::SharedDtor() {
+inline void PerformActionRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.instance_id_.Destroy();
-  _impl_.event_name_.Destroy();
+  _impl_.user_id_.Destroy();
+  _impl_.action_name_.Destroy();
   _impl_.payload_.Destroy();
 }
 
-void TriggerEventRequest::SetCachedSize(int size) const {
+void PerformActionRequest::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void TriggerEventRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:instance_host.TriggerEventRequest)
+void PerformActionRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:instance_host.PerformActionRequest)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.instance_id_.ClearToEmpty();
-  _impl_.event_name_.ClearToEmpty();
+  _impl_.user_id_.ClearToEmpty();
+  _impl_.action_name_.ClearToEmpty();
   _impl_.payload_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* TriggerEventRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* PerformActionRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
@@ -683,26 +702,37 @@ const char* TriggerEventRequest::_InternalParse(const char* ptr, ::_pbi::ParseCo
           auto str = _internal_mutable_instance_id();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "instance_host.TriggerEventRequest.instance_id"));
+          CHK_(::_pbi::VerifyUTF8(str, "instance_host.PerformActionRequest.instance_id"));
         } else
           goto handle_unusual;
         continue;
-      // string event_name = 2 [json_name = "eventName"];
+      // string user_id = 2 [json_name = "userId"];
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
-          auto str = _internal_mutable_event_name();
+          auto str = _internal_mutable_user_id();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "instance_host.TriggerEventRequest.event_name"));
+          CHK_(::_pbi::VerifyUTF8(str, "instance_host.PerformActionRequest.user_id"));
         } else
           goto handle_unusual;
         continue;
-      // bytes payload = 3 [json_name = "payload"];
+      // string action_name = 3 [json_name = "actionName"];
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          auto str = _internal_mutable_action_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "instance_host.PerformActionRequest.action_name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string payload = 4 [json_name = "payload"];
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           auto str = _internal_mutable_payload();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "instance_host.PerformActionRequest.payload"));
         } else
           goto handle_unusual;
         continue;
@@ -729,9 +759,9 @@ failure:
 #undef CHK_
 }
 
-uint8_t* TriggerEventRequest::_InternalSerialize(
+uint8_t* PerformActionRequest::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:instance_host.TriggerEventRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:instance_host.PerformActionRequest)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
@@ -740,37 +770,51 @@ uint8_t* TriggerEventRequest::_InternalSerialize(
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_instance_id().data(), static_cast<int>(this->_internal_instance_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "instance_host.TriggerEventRequest.instance_id");
+      "instance_host.PerformActionRequest.instance_id");
     target = stream->WriteStringMaybeAliased(
         1, this->_internal_instance_id(), target);
   }
 
-  // string event_name = 2 [json_name = "eventName"];
-  if (!this->_internal_event_name().empty()) {
+  // string user_id = 2 [json_name = "userId"];
+  if (!this->_internal_user_id().empty()) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_event_name().data(), static_cast<int>(this->_internal_event_name().length()),
+      this->_internal_user_id().data(), static_cast<int>(this->_internal_user_id().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "instance_host.TriggerEventRequest.event_name");
+      "instance_host.PerformActionRequest.user_id");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_event_name(), target);
+        2, this->_internal_user_id(), target);
   }
 
-  // bytes payload = 3 [json_name = "payload"];
+  // string action_name = 3 [json_name = "actionName"];
+  if (!this->_internal_action_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_action_name().data(), static_cast<int>(this->_internal_action_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "instance_host.PerformActionRequest.action_name");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_action_name(), target);
+  }
+
+  // string payload = 4 [json_name = "payload"];
   if (!this->_internal_payload().empty()) {
-    target = stream->WriteBytesMaybeAliased(
-        3, this->_internal_payload(), target);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_payload().data(), static_cast<int>(this->_internal_payload().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "instance_host.PerformActionRequest.payload");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_payload(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:instance_host.TriggerEventRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:instance_host.PerformActionRequest)
   return target;
 }
 
-size_t TriggerEventRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:instance_host.TriggerEventRequest)
+size_t PerformActionRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:instance_host.PerformActionRequest)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -784,34 +828,41 @@ size_t TriggerEventRequest::ByteSizeLong() const {
         this->_internal_instance_id());
   }
 
-  // string event_name = 2 [json_name = "eventName"];
-  if (!this->_internal_event_name().empty()) {
+  // string user_id = 2 [json_name = "userId"];
+  if (!this->_internal_user_id().empty()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_event_name());
+        this->_internal_user_id());
   }
 
-  // bytes payload = 3 [json_name = "payload"];
+  // string action_name = 3 [json_name = "actionName"];
+  if (!this->_internal_action_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_action_name());
+  }
+
+  // string payload = 4 [json_name = "payload"];
   if (!this->_internal_payload().empty()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_payload());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TriggerEventRequest::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PerformActionRequest::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    TriggerEventRequest::MergeImpl
+    PerformActionRequest::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TriggerEventRequest::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PerformActionRequest::GetClassData() const { return &_class_data_; }
 
 
-void TriggerEventRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<TriggerEventRequest*>(&to_msg);
-  auto& from = static_cast<const TriggerEventRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:instance_host.TriggerEventRequest)
+void PerformActionRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<PerformActionRequest*>(&to_msg);
+  auto& from = static_cast<const PerformActionRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:instance_host.PerformActionRequest)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -819,8 +870,11 @@ void TriggerEventRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, co
   if (!from._internal_instance_id().empty()) {
     _this->_internal_set_instance_id(from._internal_instance_id());
   }
-  if (!from._internal_event_name().empty()) {
-    _this->_internal_set_event_name(from._internal_event_name());
+  if (!from._internal_user_id().empty()) {
+    _this->_internal_set_user_id(from._internal_user_id());
+  }
+  if (!from._internal_action_name().empty()) {
+    _this->_internal_set_action_name(from._internal_action_name());
   }
   if (!from._internal_payload().empty()) {
     _this->_internal_set_payload(from._internal_payload());
@@ -828,18 +882,18 @@ void TriggerEventRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, co
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void TriggerEventRequest::CopyFrom(const TriggerEventRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:instance_host.TriggerEventRequest)
+void PerformActionRequest::CopyFrom(const PerformActionRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:instance_host.PerformActionRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TriggerEventRequest::IsInitialized() const {
+bool PerformActionRequest::IsInitialized() const {
   return true;
 }
 
-void TriggerEventRequest::InternalSwap(TriggerEventRequest* other) {
+void PerformActionRequest::InternalSwap(PerformActionRequest* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -849,8 +903,12 @@ void TriggerEventRequest::InternalSwap(TriggerEventRequest* other) {
       &other->_impl_.instance_id_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.event_name_, lhs_arena,
-      &other->_impl_.event_name_, rhs_arena
+      &_impl_.user_id_, lhs_arena,
+      &other->_impl_.user_id_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.action_name_, lhs_arena,
+      &other->_impl_.action_name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.payload_, lhs_arena,
@@ -858,7 +916,7 @@ void TriggerEventRequest::InternalSwap(TriggerEventRequest* other) {
   );
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata TriggerEventRequest::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata PerformActionRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_proto_2finstance_5fhost_2eproto_getter, &descriptor_table_proto_2finstance_5fhost_2eproto_once,
       file_level_metadata_proto_2finstance_5fhost_2eproto[2]);
@@ -866,19 +924,19 @@ void TriggerEventRequest::InternalSwap(TriggerEventRequest* other) {
 
 // ===================================================================
 
-class TriggerEventResponse::_Internal {
+class PerformActionResponse::_Internal {
  public:
 };
 
-TriggerEventResponse::TriggerEventResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+PerformActionResponse::PerformActionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
-  // @@protoc_insertion_point(arena_constructor:instance_host.TriggerEventResponse)
+  // @@protoc_insertion_point(arena_constructor:instance_host.PerformActionResponse)
 }
-TriggerEventResponse::TriggerEventResponse(const TriggerEventResponse& from)
+PerformActionResponse::PerformActionResponse(const PerformActionResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
-  TriggerEventResponse* const _this = this; (void)_this;
+  PerformActionResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
       decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}};
@@ -892,10 +950,10 @@ TriggerEventResponse::TriggerEventResponse(const TriggerEventResponse& from)
     _this->_impl_.payload_.Set(from._internal_payload(), 
       _this->GetArenaForAllocation());
   }
-  // @@protoc_insertion_point(copy_constructor:instance_host.TriggerEventResponse)
+  // @@protoc_insertion_point(copy_constructor:instance_host.PerformActionResponse)
 }
 
-inline void TriggerEventResponse::SharedCtor(
+inline void PerformActionResponse::SharedCtor(
     ::_pb::Arena* arena, bool is_message_owned) {
   (void)arena;
   (void)is_message_owned;
@@ -909,8 +967,8 @@ inline void TriggerEventResponse::SharedCtor(
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
-TriggerEventResponse::~TriggerEventResponse() {
-  // @@protoc_insertion_point(destructor:instance_host.TriggerEventResponse)
+PerformActionResponse::~PerformActionResponse() {
+  // @@protoc_insertion_point(destructor:instance_host.PerformActionResponse)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -918,17 +976,17 @@ TriggerEventResponse::~TriggerEventResponse() {
   SharedDtor();
 }
 
-inline void TriggerEventResponse::SharedDtor() {
+inline void PerformActionResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.payload_.Destroy();
 }
 
-void TriggerEventResponse::SetCachedSize(int size) const {
+void PerformActionResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
 
-void TriggerEventResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:instance_host.TriggerEventResponse)
+void PerformActionResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:instance_host.PerformActionResponse)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -937,18 +995,19 @@ void TriggerEventResponse::Clear() {
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-const char* TriggerEventResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+const char* PerformActionResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
   while (!ctx->Done(&ptr)) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bytes payload = 1 [json_name = "payload"];
+      // string payload = 1 [json_name = "payload"];
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           auto str = _internal_mutable_payload();
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "instance_host.PerformActionResponse.payload"));
         } else
           goto handle_unusual;
         continue;
@@ -975,15 +1034,19 @@ failure:
 #undef CHK_
 }
 
-uint8_t* TriggerEventResponse::_InternalSerialize(
+uint8_t* PerformActionResponse::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:instance_host.TriggerEventResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:instance_host.PerformActionResponse)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bytes payload = 1 [json_name = "payload"];
+  // string payload = 1 [json_name = "payload"];
   if (!this->_internal_payload().empty()) {
-    target = stream->WriteBytesMaybeAliased(
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_payload().data(), static_cast<int>(this->_internal_payload().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "instance_host.PerformActionResponse.payload");
+    target = stream->WriteStringMaybeAliased(
         1, this->_internal_payload(), target);
   }
 
@@ -991,39 +1054,39 @@ uint8_t* TriggerEventResponse::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:instance_host.TriggerEventResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:instance_host.PerformActionResponse)
   return target;
 }
 
-size_t TriggerEventResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:instance_host.TriggerEventResponse)
+size_t PerformActionResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:instance_host.PerformActionResponse)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bytes payload = 1 [json_name = "payload"];
+  // string payload = 1 [json_name = "payload"];
   if (!this->_internal_payload().empty()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::BytesSize(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_payload());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData TriggerEventResponse::_class_data_ = {
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PerformActionResponse::_class_data_ = {
     ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    TriggerEventResponse::MergeImpl
+    PerformActionResponse::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*TriggerEventResponse::GetClassData() const { return &_class_data_; }
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PerformActionResponse::GetClassData() const { return &_class_data_; }
 
 
-void TriggerEventResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<TriggerEventResponse*>(&to_msg);
-  auto& from = static_cast<const TriggerEventResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:instance_host.TriggerEventResponse)
+void PerformActionResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<PerformActionResponse*>(&to_msg);
+  auto& from = static_cast<const PerformActionResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:instance_host.PerformActionResponse)
   GOOGLE_DCHECK_NE(&from, _this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1034,18 +1097,18 @@ void TriggerEventResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void TriggerEventResponse::CopyFrom(const TriggerEventResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:instance_host.TriggerEventResponse)
+void PerformActionResponse::CopyFrom(const PerformActionResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:instance_host.PerformActionResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool TriggerEventResponse::IsInitialized() const {
+bool PerformActionResponse::IsInitialized() const {
   return true;
 }
 
-void TriggerEventResponse::InternalSwap(TriggerEventResponse* other) {
+void PerformActionResponse::InternalSwap(PerformActionResponse* other) {
   using std::swap;
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
@@ -1056,7 +1119,7 @@ void TriggerEventResponse::InternalSwap(TriggerEventResponse* other) {
   );
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata TriggerEventResponse::GetMetadata() const {
+::PROTOBUF_NAMESPACE_ID::Metadata PerformActionResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_proto_2finstance_5fhost_2eproto_getter, &descriptor_table_proto_2finstance_5fhost_2eproto_once,
       file_level_metadata_proto_2finstance_5fhost_2eproto[3]);
@@ -1073,13 +1136,13 @@ template<> PROTOBUF_NOINLINE ::instance_host::CreateInstanceResponse*
 Arena::CreateMaybeMessage< ::instance_host::CreateInstanceResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::instance_host::CreateInstanceResponse >(arena);
 }
-template<> PROTOBUF_NOINLINE ::instance_host::TriggerEventRequest*
-Arena::CreateMaybeMessage< ::instance_host::TriggerEventRequest >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::instance_host::TriggerEventRequest >(arena);
+template<> PROTOBUF_NOINLINE ::instance_host::PerformActionRequest*
+Arena::CreateMaybeMessage< ::instance_host::PerformActionRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::instance_host::PerformActionRequest >(arena);
 }
-template<> PROTOBUF_NOINLINE ::instance_host::TriggerEventResponse*
-Arena::CreateMaybeMessage< ::instance_host::TriggerEventResponse >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::instance_host::TriggerEventResponse >(arena);
+template<> PROTOBUF_NOINLINE ::instance_host::PerformActionResponse*
+Arena::CreateMaybeMessage< ::instance_host::PerformActionResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::instance_host::PerformActionResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

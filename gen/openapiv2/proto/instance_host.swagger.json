@@ -25,12 +25,11 @@
         }
       }
     },
-    "instance_hostTriggerEventResponse": {
+    "instance_hostPerformActionResponse": {
       "type": "object",
       "properties": {
         "payload": {
-          "type": "string",
-          "format": "byte"
+          "type": "string"
         }
       }
     },

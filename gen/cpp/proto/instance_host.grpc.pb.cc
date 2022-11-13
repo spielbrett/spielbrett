@@ -23,7 +23,7 @@ namespace instance_host {
 
 static const char* InstanceHostService_method_names[] = {
   "/instance_host.InstanceHostService/CreateInstance",
-  "/instance_host.InstanceHostService/TriggerEvent",
+  "/instance_host.InstanceHostService/PerformAction",
 };
 
 std::unique_ptr< InstanceHostService::Stub> InstanceHostService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -34,7 +34,7 @@ std::unique_ptr< InstanceHostService::Stub> InstanceHostService::NewStub(const s
 
 InstanceHostService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_CreateInstance_(InstanceHostService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_TriggerEvent_(InstanceHostService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_PerformAction_(InstanceHostService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status InstanceHostService::Stub::CreateInstance(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest& request, ::instance_host::CreateInstanceResponse* response) {
@@ -60,25 +60,25 @@ void InstanceHostService::Stub::async::CreateInstance(::grpc::ClientContext* con
   return result;
 }
 
-::grpc::Status InstanceHostService::Stub::TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::instance_host::TriggerEventResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::instance_host::TriggerEventRequest, ::instance_host::TriggerEventResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_TriggerEvent_, context, request, response);
+::grpc::Status InstanceHostService::Stub::PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::instance_host::PerformActionResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::instance_host::PerformActionRequest, ::instance_host::PerformActionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_PerformAction_, context, request, response);
 }
 
-void InstanceHostService::Stub::async::TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::instance_host::TriggerEventRequest, ::instance_host::TriggerEventResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TriggerEvent_, context, request, response, std::move(f));
+void InstanceHostService::Stub::async::PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::instance_host::PerformActionRequest, ::instance_host::PerformActionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PerformAction_, context, request, response, std::move(f));
 }
 
-void InstanceHostService::Stub::async::TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_TriggerEvent_, context, request, response, reactor);
+void InstanceHostService::Stub::async::PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_PerformAction_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::instance_host::TriggerEventResponse>* InstanceHostService::Stub::PrepareAsyncTriggerEventRaw(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::instance_host::TriggerEventResponse, ::instance_host::TriggerEventRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_TriggerEvent_, context, request);
+::grpc::ClientAsyncResponseReader< ::instance_host::PerformActionResponse>* InstanceHostService::Stub::PrepareAsyncPerformActionRaw(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::instance_host::PerformActionResponse, ::instance_host::PerformActionRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_PerformAction_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::instance_host::TriggerEventResponse>* InstanceHostService::Stub::AsyncTriggerEventRaw(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::instance_host::PerformActionResponse>* InstanceHostService::Stub::AsyncPerformActionRaw(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncTriggerEventRaw(context, request, cq);
+    this->PrepareAsyncPerformActionRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -97,12 +97,12 @@ InstanceHostService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       InstanceHostService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< InstanceHostService::Service, ::instance_host::TriggerEventRequest, ::instance_host::TriggerEventResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< InstanceHostService::Service, ::instance_host::PerformActionRequest, ::instance_host::PerformActionResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](InstanceHostService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::instance_host::TriggerEventRequest* req,
-             ::instance_host::TriggerEventResponse* resp) {
-               return service->TriggerEvent(ctx, req, resp);
+             const ::instance_host::PerformActionRequest* req,
+             ::instance_host::PerformActionResponse* resp) {
+               return service->PerformAction(ctx, req, resp);
              }, this)));
 }
 
@@ -116,7 +116,7 @@ InstanceHostService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status InstanceHostService::Service::TriggerEvent(::grpc::ServerContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response) {
+::grpc::Status InstanceHostService::Service::PerformAction(::grpc::ServerContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response) {
   (void) context;
   (void) request;
   (void) response;

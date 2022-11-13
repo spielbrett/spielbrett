@@ -42,20 +42,20 @@ class InstanceHostService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::CreateInstanceResponse>> PrepareAsyncCreateInstance(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::CreateInstanceResponse>>(PrepareAsyncCreateInstanceRaw(context, request, cq));
     }
-    virtual ::grpc::Status TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::instance_host::TriggerEventResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::TriggerEventResponse>> AsyncTriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::TriggerEventResponse>>(AsyncTriggerEventRaw(context, request, cq));
+    virtual ::grpc::Status PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::instance_host::PerformActionResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::PerformActionResponse>> AsyncPerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::PerformActionResponse>>(AsyncPerformActionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::TriggerEventResponse>> PrepareAsyncTriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::TriggerEventResponse>>(PrepareAsyncTriggerEventRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::PerformActionResponse>> PrepareAsyncPerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::PerformActionResponse>>(PrepareAsyncPerformActionRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void CreateInstance(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest* request, ::instance_host::CreateInstanceResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void CreateInstance(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest* request, ::instance_host::CreateInstanceResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -63,8 +63,8 @@ class InstanceHostService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::CreateInstanceResponse>* AsyncCreateInstanceRaw(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::CreateInstanceResponse>* PrepareAsyncCreateInstanceRaw(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::TriggerEventResponse>* AsyncTriggerEventRaw(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::TriggerEventResponse>* PrepareAsyncTriggerEventRaw(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::PerformActionResponse>* AsyncPerformActionRaw(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::instance_host::PerformActionResponse>* PrepareAsyncPerformActionRaw(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -76,20 +76,20 @@ class InstanceHostService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::CreateInstanceResponse>> PrepareAsyncCreateInstance(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::CreateInstanceResponse>>(PrepareAsyncCreateInstanceRaw(context, request, cq));
     }
-    ::grpc::Status TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::instance_host::TriggerEventResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::TriggerEventResponse>> AsyncTriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::TriggerEventResponse>>(AsyncTriggerEventRaw(context, request, cq));
+    ::grpc::Status PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::instance_host::PerformActionResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::PerformActionResponse>> AsyncPerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::PerformActionResponse>>(AsyncPerformActionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::TriggerEventResponse>> PrepareAsyncTriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::TriggerEventResponse>>(PrepareAsyncTriggerEventRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::PerformActionResponse>> PrepareAsyncPerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::instance_host::PerformActionResponse>>(PrepareAsyncPerformActionRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
       void CreateInstance(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest* request, ::instance_host::CreateInstanceResponse* response, std::function<void(::grpc::Status)>) override;
       void CreateInstance(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest* request, ::instance_host::CreateInstanceResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response, std::function<void(::grpc::Status)>) override;
-      void TriggerEvent(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response, std::function<void(::grpc::Status)>) override;
+      void PerformAction(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -103,10 +103,10 @@ class InstanceHostService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::instance_host::CreateInstanceResponse>* AsyncCreateInstanceRaw(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::instance_host::CreateInstanceResponse>* PrepareAsyncCreateInstanceRaw(::grpc::ClientContext* context, const ::instance_host::CreateInstanceRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::instance_host::TriggerEventResponse>* AsyncTriggerEventRaw(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::instance_host::TriggerEventResponse>* PrepareAsyncTriggerEventRaw(::grpc::ClientContext* context, const ::instance_host::TriggerEventRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::instance_host::PerformActionResponse>* AsyncPerformActionRaw(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::instance_host::PerformActionResponse>* PrepareAsyncPerformActionRaw(::grpc::ClientContext* context, const ::instance_host::PerformActionRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_CreateInstance_;
-    const ::grpc::internal::RpcMethod rpcmethod_TriggerEvent_;
+    const ::grpc::internal::RpcMethod rpcmethod_PerformAction_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -115,7 +115,7 @@ class InstanceHostService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status CreateInstance(::grpc::ServerContext* context, const ::instance_host::CreateInstanceRequest* request, ::instance_host::CreateInstanceResponse* response);
-    virtual ::grpc::Status TriggerEvent(::grpc::ServerContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response);
+    virtual ::grpc::Status PerformAction(::grpc::ServerContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_CreateInstance : public BaseClass {
@@ -138,26 +138,26 @@ class InstanceHostService final {
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_TriggerEvent : public BaseClass {
+  class WithAsyncMethod_PerformAction : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_TriggerEvent() {
+    WithAsyncMethod_PerformAction() {
       ::grpc::Service::MarkMethodAsync(1);
     }
-    ~WithAsyncMethod_TriggerEvent() override {
+    ~WithAsyncMethod_PerformAction() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TriggerEvent(::grpc::ServerContext* /*context*/, const ::instance_host::TriggerEventRequest* /*request*/, ::instance_host::TriggerEventResponse* /*response*/) override {
+    ::grpc::Status PerformAction(::grpc::ServerContext* /*context*/, const ::instance_host::PerformActionRequest* /*request*/, ::instance_host::PerformActionResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTriggerEvent(::grpc::ServerContext* context, ::instance_host::TriggerEventRequest* request, ::grpc::ServerAsyncResponseWriter< ::instance_host::TriggerEventResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestPerformAction(::grpc::ServerContext* context, ::instance_host::PerformActionRequest* request, ::grpc::ServerAsyncResponseWriter< ::instance_host::PerformActionResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_CreateInstance<WithAsyncMethod_TriggerEvent<Service > > AsyncService;
+  typedef WithAsyncMethod_CreateInstance<WithAsyncMethod_PerformAction<Service > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_CreateInstance : public BaseClass {
    private:
@@ -186,33 +186,33 @@ class InstanceHostService final {
       ::grpc::CallbackServerContext* /*context*/, const ::instance_host::CreateInstanceRequest* /*request*/, ::instance_host::CreateInstanceResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_TriggerEvent : public BaseClass {
+  class WithCallbackMethod_PerformAction : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_TriggerEvent() {
+    WithCallbackMethod_PerformAction() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::instance_host::TriggerEventRequest, ::instance_host::TriggerEventResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::instance_host::PerformActionRequest, ::instance_host::PerformActionResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::instance_host::TriggerEventRequest* request, ::instance_host::TriggerEventResponse* response) { return this->TriggerEvent(context, request, response); }));}
-    void SetMessageAllocatorFor_TriggerEvent(
-        ::grpc::MessageAllocator< ::instance_host::TriggerEventRequest, ::instance_host::TriggerEventResponse>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::instance_host::PerformActionRequest* request, ::instance_host::PerformActionResponse* response) { return this->PerformAction(context, request, response); }));}
+    void SetMessageAllocatorFor_PerformAction(
+        ::grpc::MessageAllocator< ::instance_host::PerformActionRequest, ::instance_host::PerformActionResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::instance_host::TriggerEventRequest, ::instance_host::TriggerEventResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::instance_host::PerformActionRequest, ::instance_host::PerformActionResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_TriggerEvent() override {
+    ~WithCallbackMethod_PerformAction() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TriggerEvent(::grpc::ServerContext* /*context*/, const ::instance_host::TriggerEventRequest* /*request*/, ::instance_host::TriggerEventResponse* /*response*/) override {
+    ::grpc::Status PerformAction(::grpc::ServerContext* /*context*/, const ::instance_host::PerformActionRequest* /*request*/, ::instance_host::PerformActionResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* TriggerEvent(
-      ::grpc::CallbackServerContext* /*context*/, const ::instance_host::TriggerEventRequest* /*request*/, ::instance_host::TriggerEventResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* PerformAction(
+      ::grpc::CallbackServerContext* /*context*/, const ::instance_host::PerformActionRequest* /*request*/, ::instance_host::PerformActionResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_CreateInstance<WithCallbackMethod_TriggerEvent<Service > > CallbackService;
+  typedef WithCallbackMethod_CreateInstance<WithCallbackMethod_PerformAction<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_CreateInstance : public BaseClass {
@@ -232,18 +232,18 @@ class InstanceHostService final {
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_TriggerEvent : public BaseClass {
+  class WithGenericMethod_PerformAction : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_TriggerEvent() {
+    WithGenericMethod_PerformAction() {
       ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithGenericMethod_TriggerEvent() override {
+    ~WithGenericMethod_PerformAction() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TriggerEvent(::grpc::ServerContext* /*context*/, const ::instance_host::TriggerEventRequest* /*request*/, ::instance_host::TriggerEventResponse* /*response*/) override {
+    ::grpc::Status PerformAction(::grpc::ServerContext* /*context*/, const ::instance_host::PerformActionRequest* /*request*/, ::instance_host::PerformActionResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -269,22 +269,22 @@ class InstanceHostService final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_TriggerEvent : public BaseClass {
+  class WithRawMethod_PerformAction : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_TriggerEvent() {
+    WithRawMethod_PerformAction() {
       ::grpc::Service::MarkMethodRaw(1);
     }
-    ~WithRawMethod_TriggerEvent() override {
+    ~WithRawMethod_PerformAction() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TriggerEvent(::grpc::ServerContext* /*context*/, const ::instance_host::TriggerEventRequest* /*request*/, ::instance_host::TriggerEventResponse* /*response*/) override {
+    ::grpc::Status PerformAction(::grpc::ServerContext* /*context*/, const ::instance_host::PerformActionRequest* /*request*/, ::instance_host::PerformActionResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestTriggerEvent(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestPerformAction(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -311,25 +311,25 @@ class InstanceHostService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_TriggerEvent : public BaseClass {
+  class WithRawCallbackMethod_PerformAction : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_TriggerEvent() {
+    WithRawCallbackMethod_PerformAction() {
       ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->TriggerEvent(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->PerformAction(context, request, response); }));
     }
-    ~WithRawCallbackMethod_TriggerEvent() override {
+    ~WithRawCallbackMethod_PerformAction() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status TriggerEvent(::grpc::ServerContext* /*context*/, const ::instance_host::TriggerEventRequest* /*request*/, ::instance_host::TriggerEventResponse* /*response*/) override {
+    ::grpc::Status PerformAction(::grpc::ServerContext* /*context*/, const ::instance_host::PerformActionRequest* /*request*/, ::instance_host::PerformActionResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* TriggerEvent(
+    virtual ::grpc::ServerUnaryReactor* PerformAction(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -360,35 +360,35 @@ class InstanceHostService final {
     virtual ::grpc::Status StreamedCreateInstance(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::instance_host::CreateInstanceRequest,::instance_host::CreateInstanceResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_TriggerEvent : public BaseClass {
+  class WithStreamedUnaryMethod_PerformAction : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_TriggerEvent() {
+    WithStreamedUnaryMethod_PerformAction() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::instance_host::TriggerEventRequest, ::instance_host::TriggerEventResponse>(
+          ::instance_host::PerformActionRequest, ::instance_host::PerformActionResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::instance_host::TriggerEventRequest, ::instance_host::TriggerEventResponse>* streamer) {
-                       return this->StreamedTriggerEvent(context,
+                     ::instance_host::PerformActionRequest, ::instance_host::PerformActionResponse>* streamer) {
+                       return this->StreamedPerformAction(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_TriggerEvent() override {
+    ~WithStreamedUnaryMethod_PerformAction() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status TriggerEvent(::grpc::ServerContext* /*context*/, const ::instance_host::TriggerEventRequest* /*request*/, ::instance_host::TriggerEventResponse* /*response*/) override {
+    ::grpc::Status PerformAction(::grpc::ServerContext* /*context*/, const ::instance_host::PerformActionRequest* /*request*/, ::instance_host::PerformActionResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedTriggerEvent(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::instance_host::TriggerEventRequest,::instance_host::TriggerEventResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedPerformAction(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::instance_host::PerformActionRequest,::instance_host::PerformActionResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_CreateInstance<WithStreamedUnaryMethod_TriggerEvent<Service > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_CreateInstance<WithStreamedUnaryMethod_PerformAction<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_CreateInstance<WithStreamedUnaryMethod_TriggerEvent<Service > > StreamedService;
+  typedef WithStreamedUnaryMethod_CreateInstance<WithStreamedUnaryMethod_PerformAction<Service > > StreamedService;
 };
 
 }  // namespace instance_host

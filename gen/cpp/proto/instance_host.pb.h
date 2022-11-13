@@ -51,18 +51,18 @@ extern CreateInstanceRequestDefaultTypeInternal _CreateInstanceRequest_default_i
 class CreateInstanceResponse;
 struct CreateInstanceResponseDefaultTypeInternal;
 extern CreateInstanceResponseDefaultTypeInternal _CreateInstanceResponse_default_instance_;
-class TriggerEventRequest;
-struct TriggerEventRequestDefaultTypeInternal;
-extern TriggerEventRequestDefaultTypeInternal _TriggerEventRequest_default_instance_;
-class TriggerEventResponse;
-struct TriggerEventResponseDefaultTypeInternal;
-extern TriggerEventResponseDefaultTypeInternal _TriggerEventResponse_default_instance_;
+class PerformActionRequest;
+struct PerformActionRequestDefaultTypeInternal;
+extern PerformActionRequestDefaultTypeInternal _PerformActionRequest_default_instance_;
+class PerformActionResponse;
+struct PerformActionResponseDefaultTypeInternal;
+extern PerformActionResponseDefaultTypeInternal _PerformActionResponse_default_instance_;
 }  // namespace instance_host
 PROTOBUF_NAMESPACE_OPEN
 template<> ::instance_host::CreateInstanceRequest* Arena::CreateMaybeMessage<::instance_host::CreateInstanceRequest>(Arena*);
 template<> ::instance_host::CreateInstanceResponse* Arena::CreateMaybeMessage<::instance_host::CreateInstanceResponse>(Arena*);
-template<> ::instance_host::TriggerEventRequest* Arena::CreateMaybeMessage<::instance_host::TriggerEventRequest>(Arena*);
-template<> ::instance_host::TriggerEventResponse* Arena::CreateMaybeMessage<::instance_host::TriggerEventResponse>(Arena*);
+template<> ::instance_host::PerformActionRequest* Arena::CreateMaybeMessage<::instance_host::PerformActionRequest>(Arena*);
+template<> ::instance_host::PerformActionResponse* Arena::CreateMaybeMessage<::instance_host::PerformActionResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace instance_host {
 
@@ -374,24 +374,24 @@ class CreateInstanceResponse final :
 };
 // -------------------------------------------------------------------
 
-class TriggerEventRequest final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:instance_host.TriggerEventRequest) */ {
+class PerformActionRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:instance_host.PerformActionRequest) */ {
  public:
-  inline TriggerEventRequest() : TriggerEventRequest(nullptr) {}
-  ~TriggerEventRequest() override;
-  explicit PROTOBUF_CONSTEXPR TriggerEventRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline PerformActionRequest() : PerformActionRequest(nullptr) {}
+  ~PerformActionRequest() override;
+  explicit PROTOBUF_CONSTEXPR PerformActionRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  TriggerEventRequest(const TriggerEventRequest& from);
-  TriggerEventRequest(TriggerEventRequest&& from) noexcept
-    : TriggerEventRequest() {
+  PerformActionRequest(const PerformActionRequest& from);
+  PerformActionRequest(PerformActionRequest&& from) noexcept
+    : PerformActionRequest() {
     *this = ::std::move(from);
   }
 
-  inline TriggerEventRequest& operator=(const TriggerEventRequest& from) {
+  inline PerformActionRequest& operator=(const PerformActionRequest& from) {
     CopyFrom(from);
     return *this;
   }
-  inline TriggerEventRequest& operator=(TriggerEventRequest&& from) noexcept {
+  inline PerformActionRequest& operator=(PerformActionRequest&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -414,20 +414,20 @@ class TriggerEventRequest final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const TriggerEventRequest& default_instance() {
+  static const PerformActionRequest& default_instance() {
     return *internal_default_instance();
   }
-  static inline const TriggerEventRequest* internal_default_instance() {
-    return reinterpret_cast<const TriggerEventRequest*>(
-               &_TriggerEventRequest_default_instance_);
+  static inline const PerformActionRequest* internal_default_instance() {
+    return reinterpret_cast<const PerformActionRequest*>(
+               &_PerformActionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     2;
 
-  friend void swap(TriggerEventRequest& a, TriggerEventRequest& b) {
+  friend void swap(PerformActionRequest& a, PerformActionRequest& b) {
     a.Swap(&b);
   }
-  inline void Swap(TriggerEventRequest* other) {
+  inline void Swap(PerformActionRequest* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -440,7 +440,7 @@ class TriggerEventRequest final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(TriggerEventRequest* other) {
+  void UnsafeArenaSwap(PerformActionRequest* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -448,14 +448,14 @@ class TriggerEventRequest final :
 
   // implements Message ----------------------------------------------
 
-  TriggerEventRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<TriggerEventRequest>(arena);
+  PerformActionRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<PerformActionRequest>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const TriggerEventRequest& from);
+  void CopyFrom(const PerformActionRequest& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const TriggerEventRequest& from) {
-    TriggerEventRequest::MergeImpl(*this, from);
+  void MergeFrom( const PerformActionRequest& from) {
+    PerformActionRequest::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -473,15 +473,15 @@ class TriggerEventRequest final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(TriggerEventRequest* other);
+  void InternalSwap(PerformActionRequest* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "instance_host.TriggerEventRequest";
+    return "instance_host.PerformActionRequest";
   }
   protected:
-  explicit TriggerEventRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit PerformActionRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -496,8 +496,9 @@ class TriggerEventRequest final :
 
   enum : int {
     kInstanceIdFieldNumber = 1,
-    kEventNameFieldNumber = 2,
-    kPayloadFieldNumber = 3,
+    kUserIdFieldNumber = 2,
+    kActionNameFieldNumber = 3,
+    kPayloadFieldNumber = 4,
   };
   // string instance_id = 1 [json_name = "instanceId"];
   void clear_instance_id();
@@ -513,21 +514,35 @@ class TriggerEventRequest final :
   std::string* _internal_mutable_instance_id();
   public:
 
-  // string event_name = 2 [json_name = "eventName"];
-  void clear_event_name();
-  const std::string& event_name() const;
+  // string user_id = 2 [json_name = "userId"];
+  void clear_user_id();
+  const std::string& user_id() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_event_name(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_event_name();
-  PROTOBUF_NODISCARD std::string* release_event_name();
-  void set_allocated_event_name(std::string* event_name);
+  void set_user_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* user_id);
   private:
-  const std::string& _internal_event_name() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_event_name(const std::string& value);
-  std::string* _internal_mutable_event_name();
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(const std::string& value);
+  std::string* _internal_mutable_user_id();
   public:
 
-  // bytes payload = 3 [json_name = "payload"];
+  // string action_name = 3 [json_name = "actionName"];
+  void clear_action_name();
+  const std::string& action_name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_action_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_action_name();
+  PROTOBUF_NODISCARD std::string* release_action_name();
+  void set_allocated_action_name(std::string* action_name);
+  private:
+  const std::string& _internal_action_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action_name(const std::string& value);
+  std::string* _internal_mutable_action_name();
+  public:
+
+  // string payload = 4 [json_name = "payload"];
   void clear_payload();
   const std::string& payload() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -541,7 +556,7 @@ class TriggerEventRequest final :
   std::string* _internal_mutable_payload();
   public:
 
-  // @@protoc_insertion_point(class_scope:instance_host.TriggerEventRequest)
+  // @@protoc_insertion_point(class_scope:instance_host.PerformActionRequest)
  private:
   class _Internal;
 
@@ -550,7 +565,8 @@ class TriggerEventRequest final :
   typedef void DestructorSkippable_;
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instance_id_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr event_name_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr action_name_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -559,24 +575,24 @@ class TriggerEventRequest final :
 };
 // -------------------------------------------------------------------
 
-class TriggerEventResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:instance_host.TriggerEventResponse) */ {
+class PerformActionResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:instance_host.PerformActionResponse) */ {
  public:
-  inline TriggerEventResponse() : TriggerEventResponse(nullptr) {}
-  ~TriggerEventResponse() override;
-  explicit PROTOBUF_CONSTEXPR TriggerEventResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  inline PerformActionResponse() : PerformActionResponse(nullptr) {}
+  ~PerformActionResponse() override;
+  explicit PROTOBUF_CONSTEXPR PerformActionResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  TriggerEventResponse(const TriggerEventResponse& from);
-  TriggerEventResponse(TriggerEventResponse&& from) noexcept
-    : TriggerEventResponse() {
+  PerformActionResponse(const PerformActionResponse& from);
+  PerformActionResponse(PerformActionResponse&& from) noexcept
+    : PerformActionResponse() {
     *this = ::std::move(from);
   }
 
-  inline TriggerEventResponse& operator=(const TriggerEventResponse& from) {
+  inline PerformActionResponse& operator=(const PerformActionResponse& from) {
     CopyFrom(from);
     return *this;
   }
-  inline TriggerEventResponse& operator=(TriggerEventResponse&& from) noexcept {
+  inline PerformActionResponse& operator=(PerformActionResponse&& from) noexcept {
     if (this == &from) return *this;
     if (GetOwningArena() == from.GetOwningArena()
   #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
@@ -599,20 +615,20 @@ class TriggerEventResponse final :
   static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
     return default_instance().GetMetadata().reflection;
   }
-  static const TriggerEventResponse& default_instance() {
+  static const PerformActionResponse& default_instance() {
     return *internal_default_instance();
   }
-  static inline const TriggerEventResponse* internal_default_instance() {
-    return reinterpret_cast<const TriggerEventResponse*>(
-               &_TriggerEventResponse_default_instance_);
+  static inline const PerformActionResponse* internal_default_instance() {
+    return reinterpret_cast<const PerformActionResponse*>(
+               &_PerformActionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     3;
 
-  friend void swap(TriggerEventResponse& a, TriggerEventResponse& b) {
+  friend void swap(PerformActionResponse& a, PerformActionResponse& b) {
     a.Swap(&b);
   }
-  inline void Swap(TriggerEventResponse* other) {
+  inline void Swap(PerformActionResponse* other) {
     if (other == this) return;
   #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
     if (GetOwningArena() != nullptr &&
@@ -625,7 +641,7 @@ class TriggerEventResponse final :
       ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
     }
   }
-  void UnsafeArenaSwap(TriggerEventResponse* other) {
+  void UnsafeArenaSwap(PerformActionResponse* other) {
     if (other == this) return;
     GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
     InternalSwap(other);
@@ -633,14 +649,14 @@ class TriggerEventResponse final :
 
   // implements Message ----------------------------------------------
 
-  TriggerEventResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
-    return CreateMaybeMessage<TriggerEventResponse>(arena);
+  PerformActionResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<PerformActionResponse>(arena);
   }
   using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const TriggerEventResponse& from);
+  void CopyFrom(const PerformActionResponse& from);
   using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const TriggerEventResponse& from) {
-    TriggerEventResponse::MergeImpl(*this, from);
+  void MergeFrom( const PerformActionResponse& from) {
+    PerformActionResponse::MergeImpl(*this, from);
   }
   private:
   static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
@@ -658,15 +674,15 @@ class TriggerEventResponse final :
   void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(TriggerEventResponse* other);
+  void InternalSwap(PerformActionResponse* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "instance_host.TriggerEventResponse";
+    return "instance_host.PerformActionResponse";
   }
   protected:
-  explicit TriggerEventResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+  explicit PerformActionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
   public:
 
@@ -682,7 +698,7 @@ class TriggerEventResponse final :
   enum : int {
     kPayloadFieldNumber = 1,
   };
-  // bytes payload = 1 [json_name = "payload"];
+  // string payload = 1 [json_name = "payload"];
   void clear_payload();
   const std::string& payload() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -696,7 +712,7 @@ class TriggerEventResponse final :
   std::string* _internal_mutable_payload();
   public:
 
-  // @@protoc_insertion_point(class_scope:instance_host.TriggerEventResponse)
+  // @@protoc_insertion_point(class_scope:instance_host.PerformActionResponse)
  private:
   class _Internal;
 
@@ -827,44 +843,44 @@ inline void CreateInstanceResponse::set_allocated_instance_id(std::string* insta
 
 // -------------------------------------------------------------------
 
-// TriggerEventRequest
+// PerformActionRequest
 
 // string instance_id = 1 [json_name = "instanceId"];
-inline void TriggerEventRequest::clear_instance_id() {
+inline void PerformActionRequest::clear_instance_id() {
   _impl_.instance_id_.ClearToEmpty();
 }
-inline const std::string& TriggerEventRequest::instance_id() const {
-  // @@protoc_insertion_point(field_get:instance_host.TriggerEventRequest.instance_id)
+inline const std::string& PerformActionRequest::instance_id() const {
+  // @@protoc_insertion_point(field_get:instance_host.PerformActionRequest.instance_id)
   return _internal_instance_id();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void TriggerEventRequest::set_instance_id(ArgT0&& arg0, ArgT... args) {
+void PerformActionRequest::set_instance_id(ArgT0&& arg0, ArgT... args) {
  
  _impl_.instance_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:instance_host.TriggerEventRequest.instance_id)
+  // @@protoc_insertion_point(field_set:instance_host.PerformActionRequest.instance_id)
 }
-inline std::string* TriggerEventRequest::mutable_instance_id() {
+inline std::string* PerformActionRequest::mutable_instance_id() {
   std::string* _s = _internal_mutable_instance_id();
-  // @@protoc_insertion_point(field_mutable:instance_host.TriggerEventRequest.instance_id)
+  // @@protoc_insertion_point(field_mutable:instance_host.PerformActionRequest.instance_id)
   return _s;
 }
-inline const std::string& TriggerEventRequest::_internal_instance_id() const {
+inline const std::string& PerformActionRequest::_internal_instance_id() const {
   return _impl_.instance_id_.Get();
 }
-inline void TriggerEventRequest::_internal_set_instance_id(const std::string& value) {
+inline void PerformActionRequest::_internal_set_instance_id(const std::string& value) {
   
   _impl_.instance_id_.Set(value, GetArenaForAllocation());
 }
-inline std::string* TriggerEventRequest::_internal_mutable_instance_id() {
+inline std::string* PerformActionRequest::_internal_mutable_instance_id() {
   
   return _impl_.instance_id_.Mutable(GetArenaForAllocation());
 }
-inline std::string* TriggerEventRequest::release_instance_id() {
-  // @@protoc_insertion_point(field_release:instance_host.TriggerEventRequest.instance_id)
+inline std::string* PerformActionRequest::release_instance_id() {
+  // @@protoc_insertion_point(field_release:instance_host.PerformActionRequest.instance_id)
   return _impl_.instance_id_.Release();
 }
-inline void TriggerEventRequest::set_allocated_instance_id(std::string* instance_id) {
+inline void PerformActionRequest::set_allocated_instance_id(std::string* instance_id) {
   if (instance_id != nullptr) {
     
   } else {
@@ -876,95 +892,145 @@ inline void TriggerEventRequest::set_allocated_instance_id(std::string* instance
     _impl_.instance_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:instance_host.TriggerEventRequest.instance_id)
+  // @@protoc_insertion_point(field_set_allocated:instance_host.PerformActionRequest.instance_id)
 }
 
-// string event_name = 2 [json_name = "eventName"];
-inline void TriggerEventRequest::clear_event_name() {
-  _impl_.event_name_.ClearToEmpty();
+// string user_id = 2 [json_name = "userId"];
+inline void PerformActionRequest::clear_user_id() {
+  _impl_.user_id_.ClearToEmpty();
 }
-inline const std::string& TriggerEventRequest::event_name() const {
-  // @@protoc_insertion_point(field_get:instance_host.TriggerEventRequest.event_name)
-  return _internal_event_name();
+inline const std::string& PerformActionRequest::user_id() const {
+  // @@protoc_insertion_point(field_get:instance_host.PerformActionRequest.user_id)
+  return _internal_user_id();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void TriggerEventRequest::set_event_name(ArgT0&& arg0, ArgT... args) {
+void PerformActionRequest::set_user_id(ArgT0&& arg0, ArgT... args) {
  
- _impl_.event_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:instance_host.TriggerEventRequest.event_name)
+ _impl_.user_id_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:instance_host.PerformActionRequest.user_id)
 }
-inline std::string* TriggerEventRequest::mutable_event_name() {
-  std::string* _s = _internal_mutable_event_name();
-  // @@protoc_insertion_point(field_mutable:instance_host.TriggerEventRequest.event_name)
+inline std::string* PerformActionRequest::mutable_user_id() {
+  std::string* _s = _internal_mutable_user_id();
+  // @@protoc_insertion_point(field_mutable:instance_host.PerformActionRequest.user_id)
   return _s;
 }
-inline const std::string& TriggerEventRequest::_internal_event_name() const {
-  return _impl_.event_name_.Get();
+inline const std::string& PerformActionRequest::_internal_user_id() const {
+  return _impl_.user_id_.Get();
 }
-inline void TriggerEventRequest::_internal_set_event_name(const std::string& value) {
+inline void PerformActionRequest::_internal_set_user_id(const std::string& value) {
   
-  _impl_.event_name_.Set(value, GetArenaForAllocation());
+  _impl_.user_id_.Set(value, GetArenaForAllocation());
 }
-inline std::string* TriggerEventRequest::_internal_mutable_event_name() {
+inline std::string* PerformActionRequest::_internal_mutable_user_id() {
   
-  return _impl_.event_name_.Mutable(GetArenaForAllocation());
+  return _impl_.user_id_.Mutable(GetArenaForAllocation());
 }
-inline std::string* TriggerEventRequest::release_event_name() {
-  // @@protoc_insertion_point(field_release:instance_host.TriggerEventRequest.event_name)
-  return _impl_.event_name_.Release();
+inline std::string* PerformActionRequest::release_user_id() {
+  // @@protoc_insertion_point(field_release:instance_host.PerformActionRequest.user_id)
+  return _impl_.user_id_.Release();
 }
-inline void TriggerEventRequest::set_allocated_event_name(std::string* event_name) {
-  if (event_name != nullptr) {
+inline void PerformActionRequest::set_allocated_user_id(std::string* user_id) {
+  if (user_id != nullptr) {
     
   } else {
     
   }
-  _impl_.event_name_.SetAllocated(event_name, GetArenaForAllocation());
+  _impl_.user_id_.SetAllocated(user_id, GetArenaForAllocation());
 #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.event_name_.IsDefault()) {
-    _impl_.event_name_.Set("", GetArenaForAllocation());
+  if (_impl_.user_id_.IsDefault()) {
+    _impl_.user_id_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:instance_host.TriggerEventRequest.event_name)
+  // @@protoc_insertion_point(field_set_allocated:instance_host.PerformActionRequest.user_id)
 }
 
-// bytes payload = 3 [json_name = "payload"];
-inline void TriggerEventRequest::clear_payload() {
+// string action_name = 3 [json_name = "actionName"];
+inline void PerformActionRequest::clear_action_name() {
+  _impl_.action_name_.ClearToEmpty();
+}
+inline const std::string& PerformActionRequest::action_name() const {
+  // @@protoc_insertion_point(field_get:instance_host.PerformActionRequest.action_name)
+  return _internal_action_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void PerformActionRequest::set_action_name(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.action_name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:instance_host.PerformActionRequest.action_name)
+}
+inline std::string* PerformActionRequest::mutable_action_name() {
+  std::string* _s = _internal_mutable_action_name();
+  // @@protoc_insertion_point(field_mutable:instance_host.PerformActionRequest.action_name)
+  return _s;
+}
+inline const std::string& PerformActionRequest::_internal_action_name() const {
+  return _impl_.action_name_.Get();
+}
+inline void PerformActionRequest::_internal_set_action_name(const std::string& value) {
+  
+  _impl_.action_name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* PerformActionRequest::_internal_mutable_action_name() {
+  
+  return _impl_.action_name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* PerformActionRequest::release_action_name() {
+  // @@protoc_insertion_point(field_release:instance_host.PerformActionRequest.action_name)
+  return _impl_.action_name_.Release();
+}
+inline void PerformActionRequest::set_allocated_action_name(std::string* action_name) {
+  if (action_name != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.action_name_.SetAllocated(action_name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.action_name_.IsDefault()) {
+    _impl_.action_name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:instance_host.PerformActionRequest.action_name)
+}
+
+// string payload = 4 [json_name = "payload"];
+inline void PerformActionRequest::clear_payload() {
   _impl_.payload_.ClearToEmpty();
 }
-inline const std::string& TriggerEventRequest::payload() const {
-  // @@protoc_insertion_point(field_get:instance_host.TriggerEventRequest.payload)
+inline const std::string& PerformActionRequest::payload() const {
+  // @@protoc_insertion_point(field_get:instance_host.PerformActionRequest.payload)
   return _internal_payload();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void TriggerEventRequest::set_payload(ArgT0&& arg0, ArgT... args) {
+void PerformActionRequest::set_payload(ArgT0&& arg0, ArgT... args) {
  
- _impl_.payload_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:instance_host.TriggerEventRequest.payload)
+ _impl_.payload_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:instance_host.PerformActionRequest.payload)
 }
-inline std::string* TriggerEventRequest::mutable_payload() {
+inline std::string* PerformActionRequest::mutable_payload() {
   std::string* _s = _internal_mutable_payload();
-  // @@protoc_insertion_point(field_mutable:instance_host.TriggerEventRequest.payload)
+  // @@protoc_insertion_point(field_mutable:instance_host.PerformActionRequest.payload)
   return _s;
 }
-inline const std::string& TriggerEventRequest::_internal_payload() const {
+inline const std::string& PerformActionRequest::_internal_payload() const {
   return _impl_.payload_.Get();
 }
-inline void TriggerEventRequest::_internal_set_payload(const std::string& value) {
+inline void PerformActionRequest::_internal_set_payload(const std::string& value) {
   
   _impl_.payload_.Set(value, GetArenaForAllocation());
 }
-inline std::string* TriggerEventRequest::_internal_mutable_payload() {
+inline std::string* PerformActionRequest::_internal_mutable_payload() {
   
   return _impl_.payload_.Mutable(GetArenaForAllocation());
 }
-inline std::string* TriggerEventRequest::release_payload() {
-  // @@protoc_insertion_point(field_release:instance_host.TriggerEventRequest.payload)
+inline std::string* PerformActionRequest::release_payload() {
+  // @@protoc_insertion_point(field_release:instance_host.PerformActionRequest.payload)
   return _impl_.payload_.Release();
 }
-inline void TriggerEventRequest::set_allocated_payload(std::string* payload) {
+inline void PerformActionRequest::set_allocated_payload(std::string* payload) {
   if (payload != nullptr) {
     
   } else {
@@ -976,49 +1042,49 @@ inline void TriggerEventRequest::set_allocated_payload(std::string* payload) {
     _impl_.payload_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:instance_host.TriggerEventRequest.payload)
+  // @@protoc_insertion_point(field_set_allocated:instance_host.PerformActionRequest.payload)
 }
 
 // -------------------------------------------------------------------
 
-// TriggerEventResponse
+// PerformActionResponse
 
-// bytes payload = 1 [json_name = "payload"];
-inline void TriggerEventResponse::clear_payload() {
+// string payload = 1 [json_name = "payload"];
+inline void PerformActionResponse::clear_payload() {
   _impl_.payload_.ClearToEmpty();
 }
-inline const std::string& TriggerEventResponse::payload() const {
-  // @@protoc_insertion_point(field_get:instance_host.TriggerEventResponse.payload)
+inline const std::string& PerformActionResponse::payload() const {
+  // @@protoc_insertion_point(field_get:instance_host.PerformActionResponse.payload)
   return _internal_payload();
 }
 template <typename ArgT0, typename... ArgT>
 inline PROTOBUF_ALWAYS_INLINE
-void TriggerEventResponse::set_payload(ArgT0&& arg0, ArgT... args) {
+void PerformActionResponse::set_payload(ArgT0&& arg0, ArgT... args) {
  
- _impl_.payload_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:instance_host.TriggerEventResponse.payload)
+ _impl_.payload_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:instance_host.PerformActionResponse.payload)
 }
-inline std::string* TriggerEventResponse::mutable_payload() {
+inline std::string* PerformActionResponse::mutable_payload() {
   std::string* _s = _internal_mutable_payload();
-  // @@protoc_insertion_point(field_mutable:instance_host.TriggerEventResponse.payload)
+  // @@protoc_insertion_point(field_mutable:instance_host.PerformActionResponse.payload)
   return _s;
 }
-inline const std::string& TriggerEventResponse::_internal_payload() const {
+inline const std::string& PerformActionResponse::_internal_payload() const {
   return _impl_.payload_.Get();
 }
-inline void TriggerEventResponse::_internal_set_payload(const std::string& value) {
+inline void PerformActionResponse::_internal_set_payload(const std::string& value) {
   
   _impl_.payload_.Set(value, GetArenaForAllocation());
 }
-inline std::string* TriggerEventResponse::_internal_mutable_payload() {
+inline std::string* PerformActionResponse::_internal_mutable_payload() {
   
   return _impl_.payload_.Mutable(GetArenaForAllocation());
 }
-inline std::string* TriggerEventResponse::release_payload() {
-  // @@protoc_insertion_point(field_release:instance_host.TriggerEventResponse.payload)
+inline std::string* PerformActionResponse::release_payload() {
+  // @@protoc_insertion_point(field_release:instance_host.PerformActionResponse.payload)
   return _impl_.payload_.Release();
 }
-inline void TriggerEventResponse::set_allocated_payload(std::string* payload) {
+inline void PerformActionResponse::set_allocated_payload(std::string* payload) {
   if (payload != nullptr) {
     
   } else {
@@ -1030,7 +1096,7 @@ inline void TriggerEventResponse::set_allocated_payload(std::string* payload) {
     _impl_.payload_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:instance_host.TriggerEventResponse.payload)
+  // @@protoc_insertion_point(field_set_allocated:instance_host.PerformActionResponse.payload)
 }
 
 #ifdef __GNUC__
