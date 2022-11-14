@@ -5,19 +5,24 @@
 
 #include <shared_mutex>
 #include <string>
+#include <unordered_map>
 
 class Instance
 {
 public:
-    Instance(const std::string &instanceType);
+    Instance(
+        const std::string &instanceType,
+        const std::vector<std::string> &userIds);
 
     void performAction(
         const std::string &userId,
         const std::string &actionName,
-        const std::string &payload);
+        const boost::python::list &payload);
 
 private:
     boost::python::object instanceObject;
+    std::vector<std::string> userIds;
+    std::unordered_map<std::string, int> playerIndices;
 
     mutable std::shared_mutex sm;
 };

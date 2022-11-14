@@ -19,7 +19,9 @@ public:
     int run();
     void stop();
 
-    std::string createInstance(const std::string &instanceType);
+    std::string createInstance(
+        const std::string &instanceType,
+        const std::vector<std::string> &userIds);
     std::shared_ptr<Instance> getInstance(const std::string &instanceId) const noexcept;
 
 private:

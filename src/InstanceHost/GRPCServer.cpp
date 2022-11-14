@@ -4,6 +4,7 @@
 #include "proto/instance_host.pb.h"
 
 #include <cstddef>
+#include <google/protobuf/wrappers.pb.h>
 #include <grpc++/server_builder.h>
 #include <grpcpp/completion_queue.h>
 #include <grpcpp/support/status.h>
@@ -52,10 +53,11 @@ grpc::Status GRPCServer::CreateInstance(
     const instance_host::CreateInstanceRequest *request,
     instance_host::CreateInstanceResponse *response)
 {
-    std::string instanceId;
+    std::vector<std::string> userIds(request->user_ids().begin(), request->user_ids().end());
 
+    std::string instanceId;
     try {
-        instanceId = instanceHost.createInstance(request->instance_type());
+        instanceId = instanceHost.createInstance(request->instance_type(), userIds);
     }
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
@@ -78,8 +80,21 @@ grpc::Status GRPCServer::PerformAction(
         return grpc::Status(grpc::StatusCode::NOT_FOUND, "instance not found");
     }
 
+    boost::python::list payload;
+    for (const auto &item : request->payload()) {
+        if (item.Is<google::protobuf::Int32Value>()) {
+            google::protobuf::Int32Value value;
+            item.UnpackTo(&value);
+            payload.append(value.value());
+        }
+        else {
+            // TODO: More types
+            return grpc::Status(grpc::StatusCode::UNIMPLEMENTED, "payload contains values of unsupported types");
+        }
+    }
+
     try {
-        instance->performAction(request->user_id(), request->action_name(), request->payload());
+        instance->performAction(request->user_id(), request->action_name(), payload);
     }
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());

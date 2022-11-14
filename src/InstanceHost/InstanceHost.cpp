@@ -38,12 +38,14 @@ void InstanceHost::stop()
     grpcServer->join();
 }
 
-std::string InstanceHost::createInstance(const std::string &instanceType)
+std::string InstanceHost::createInstance(
+    const std::string &instanceType,
+    const std::vector<std::string> &userIds)
 {
     std::unique_lock lock(sm);
 
     auto instanceId = boost::lexical_cast<std::string>(generator());
-    instances[instanceId] = std::make_shared<Instance>(instanceType);
+    instances[instanceId] = std::make_shared<Instance>(instanceType, userIds);
     return instanceId;
 }
 

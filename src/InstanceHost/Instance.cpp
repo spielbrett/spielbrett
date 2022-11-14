@@ -10,8 +10,13 @@
 #include <sstream>
 #include <stdexcept>
 
-Instance::Instance(const std::string &instanceType)
+Instance::Instance(const std::string &instanceType, const std::vector<std::string> &userIds) :
+    userIds(userIds)
 {
+    for (size_t i = 0; i < userIds.size(); i++) {
+        playerIndices[userIds[i]] = i;
+    }
+
     std::filesystem::path moduleDir(instanceType);
     auto jsonPath = moduleDir / std::filesystem::path("config.json");
 
@@ -82,9 +87,24 @@ Instance::Instance(const std::string &instanceType)
 void Instance::performAction(
     const std::string &userId,
     const std::string &actionName,
-    const std::string &payload)
+    const boost::python::list &payload)
 {
     std::unique_lock lock(sm);
 
-    // TODO: Apply action
+    if (!playerIndices.contains(userId)) {
+        std::stringstream ss;
+        ss << "user " << userId << " is not participating in the game";
+        throw std::invalid_argument(ss.str());
+    }
+
+    int playerIndex = playerIndices[userId];
+    try {
+        instanceObject.attr(actionName.c_str())(playerIndex, actionName.c_str(), *payload);
+    }
+    catch (const boost::python::error_already_set &) {
+        // TODO: Return traceback info instead of printing to console
+        PyErr_Print();
+
+        throw std::runtime_error("failed to apply action");
+    }
 }
