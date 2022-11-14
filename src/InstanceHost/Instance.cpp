@@ -6,6 +6,7 @@
 
 #include <filesystem>
 #include <iostream>
+#include <shared_mutex>
 #include <sstream>
 #include <stdexcept>
 
@@ -37,6 +38,9 @@ Instance::Instance(const std::string &instanceType)
 
     std::vector<std::string> tokens;
     boost::split(tokens, entryPoint, boost::is_any_of(":"));
+    if (tokens.size() != 2) {
+        throw std::runtime_error("invalid entrypoint format in config");
+    }
 
     auto moduleName = tokens[0];
     boost::python::object gameModule;
@@ -80,4 +84,7 @@ void Instance::performAction(
     const std::string &actionName,
     const std::string &payload)
 {
+    std::unique_lock lock(sm);
+
+    // TODO: Apply action
 }

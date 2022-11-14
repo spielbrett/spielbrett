@@ -78,6 +78,15 @@ grpc::Status GRPCServer::PerformAction(
         return grpc::Status(grpc::StatusCode::NOT_FOUND, "instance not found");
     }
 
-    instance->performAction(request->user_id(), request->action_name(), request->payload());
+    try {
+        instance->performAction(request->user_id(), request->action_name(), request->payload());
+    }
+    catch (std::invalid_argument &e) {
+        return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
+    }
+    catch (std::runtime_error &e) {
+        return grpc::Status(grpc::StatusCode::INTERNAL, e.what());
+    }
+
     return grpc::Status::OK;
 }

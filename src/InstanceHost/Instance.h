@@ -3,6 +3,7 @@
 
 #include <boost/python.hpp>
 
+#include <shared_mutex>
 #include <string>
 
 class Instance
@@ -17,6 +18,8 @@ public:
 
 private:
     boost::python::object instanceObject;
+
+    mutable std::shared_mutex sm;
 };
 
 #endif // INSTANCE_H
