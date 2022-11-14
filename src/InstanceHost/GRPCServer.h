@@ -14,6 +14,7 @@ public:
     GRPCServer(InstanceHost &instanceHost);
 
     void run(const std::string &listenAddr);
+    void join();
     void stop();
 
     grpc::Status CreateInstance(

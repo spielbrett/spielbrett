@@ -16,7 +16,7 @@ class InstanceHost
 public:
     InstanceHost();
 
-    void run();
+    int run();
     void stop();
 
     std::string createInstance(const std::string &instanceType);

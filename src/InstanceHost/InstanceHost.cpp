@@ -3,10 +3,12 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/uuid/uuid_io.hpp>
 
+#include <cstdlib>
 #include <future>
 #include <memory>
 #include <mutex>
 #include <shared_mutex>
+#include <stdexcept>
 
 InstanceHost::InstanceHost() :
     websocketServer(std::make_unique<WebsocketServer>()),
@@ -14,18 +16,26 @@ InstanceHost::InstanceHost() :
 {
 }
 
-void InstanceHost::run()
+int InstanceHost::run()
 {
-    if (grpcServer != nullptr) {
-        grpcServer->run("0.0.0.0:8000");
+    if (grpcServer == nullptr) {
+        throw std::runtime_error("gRPC server not instantiated");
     }
+
+    grpcServer->run("0.0.0.0:8000");
+    grpcServer->join();
+
+    return EXIT_SUCCESS;
 }
 
 void InstanceHost::stop()
 {
-    if (grpcServer != nullptr) {
-        grpcServer->stop();
+    if (grpcServer == nullptr) {
+        return;
     }
+
+    grpcServer->stop();
+    grpcServer->join();
 }
 
 std::string InstanceHost::createInstance(const std::string &instanceType)

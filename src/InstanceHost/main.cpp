@@ -21,6 +21,5 @@ int main()
 
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 
-    instanceHost.run();
-    return 0;
+    return instanceHost.run();
 }

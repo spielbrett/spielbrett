@@ -17,7 +17,7 @@ GRPCServer::GRPCServer(InstanceHost &instanceHost) :
 void GRPCServer::run(const std::string &listenAddr)
 {
     if (server != nullptr) {
-        return;
+        throw std::runtime_error("server already launched");
     }
 
     grpc::ServerBuilder builder;
@@ -25,7 +25,14 @@ void GRPCServer::run(const std::string &listenAddr)
     builder.RegisterService(this);
 
     server = builder.BuildAndStart();
-    std::cout << "Server listening on " << listenAddr << std::endl;
+    std::cout << "gRPC server listening on " << listenAddr << std::endl;
+}
+
+void GRPCServer::join()
+{
+    if (server == nullptr) {
+        return;
+    }
 
     server->Wait();
 }
@@ -37,7 +44,7 @@ void GRPCServer::stop()
     }
 
     server->Shutdown();
-    server = nullptr;
+    std::cout << "Shutting down the gRPC server..." << std::endl;
 }
 
 grpc::Status GRPCServer::CreateInstance(
