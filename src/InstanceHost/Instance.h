@@ -16,7 +16,7 @@ public:
         const std::string &payload);
 
 private:
-    boost::python::object instanceModule;
+    boost::python::object instanceObject;
 };
 
 #endif // INSTANCE_H

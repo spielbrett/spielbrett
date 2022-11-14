@@ -60,8 +60,8 @@ grpc::Status GRPCServer::CreateInstance(
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
     }
-    catch (std::runtime_error &) {
-        return grpc::Status(grpc::StatusCode::INTERNAL, "an error occured while creating instance");
+    catch (std::runtime_error &e) {
+        return grpc::Status(grpc::StatusCode::INTERNAL, e.what());
     }
 
     response->set_instance_id(instanceId);
