@@ -23,6 +23,7 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
+#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
 #include <google/protobuf/generated_message_reflection.h>
@@ -30,6 +31,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/any.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_proto_2finstance_5fhost_2eproto
@@ -189,8 +191,33 @@ class CreateInstanceRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kUserIdsFieldNumber = 2,
     kInstanceTypeFieldNumber = 1,
   };
+  // repeated string user_ids = 2 [json_name = "userIds"];
+  int user_ids_size() const;
+  private:
+  int _internal_user_ids_size() const;
+  public:
+  void clear_user_ids();
+  const std::string& user_ids(int index) const;
+  std::string* mutable_user_ids(int index);
+  void set_user_ids(int index, const std::string& value);
+  void set_user_ids(int index, std::string&& value);
+  void set_user_ids(int index, const char* value);
+  void set_user_ids(int index, const char* value, size_t size);
+  std::string* add_user_ids();
+  void add_user_ids(const std::string& value);
+  void add_user_ids(std::string&& value);
+  void add_user_ids(const char* value);
+  void add_user_ids(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& user_ids() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_user_ids();
+  private:
+  const std::string& _internal_user_ids(int index) const;
+  std::string* _internal_add_user_ids();
+  public:
+
   // string instance_type = 1 [json_name = "instanceType"];
   void clear_instance_type();
   const std::string& instance_type() const;
@@ -213,6 +240,7 @@ class CreateInstanceRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> user_ids_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instance_type_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -495,11 +523,29 @@ class PerformActionRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kPayloadFieldNumber = 4,
     kInstanceIdFieldNumber = 1,
     kUserIdFieldNumber = 2,
     kActionNameFieldNumber = 3,
-    kPayloadFieldNumber = 4,
   };
+  // repeated .google.protobuf.Any payload = 4 [json_name = "payload"];
+  int payload_size() const;
+  private:
+  int _internal_payload_size() const;
+  public:
+  void clear_payload();
+  ::PROTOBUF_NAMESPACE_ID::Any* mutable_payload(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::Any >*
+      mutable_payload();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Any& _internal_payload(int index) const;
+  ::PROTOBUF_NAMESPACE_ID::Any* _internal_add_payload();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Any& payload(int index) const;
+  ::PROTOBUF_NAMESPACE_ID::Any* add_payload();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::Any >&
+      payload() const;
+
   // string instance_id = 1 [json_name = "instanceId"];
   void clear_instance_id();
   const std::string& instance_id() const;
@@ -542,20 +588,6 @@ class PerformActionRequest final :
   std::string* _internal_mutable_action_name();
   public:
 
-  // string payload = 4 [json_name = "payload"];
-  void clear_payload();
-  const std::string& payload() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_payload(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_payload();
-  PROTOBUF_NODISCARD std::string* release_payload();
-  void set_allocated_payload(std::string* payload);
-  private:
-  const std::string& _internal_payload() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_payload(const std::string& value);
-  std::string* _internal_mutable_payload();
-  public:
-
   // @@protoc_insertion_point(class_scope:instance_host.PerformActionRequest)
  private:
   class _Internal;
@@ -564,10 +596,10 @@ class PerformActionRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::Any > payload_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instance_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr user_id_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr action_name_;
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -576,10 +608,9 @@ class PerformActionRequest final :
 // -------------------------------------------------------------------
 
 class PerformActionResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:instance_host.PerformActionResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:instance_host.PerformActionResponse) */ {
  public:
   inline PerformActionResponse() : PerformActionResponse(nullptr) {}
-  ~PerformActionResponse() override;
   explicit PROTOBUF_CONSTEXPR PerformActionResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   PerformActionResponse(const PerformActionResponse& from);
@@ -652,29 +683,15 @@ class PerformActionResponse final :
   PerformActionResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<PerformActionResponse>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
-  void CopyFrom(const PerformActionResponse& from);
-  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
-  void MergeFrom( const PerformActionResponse& from) {
-    PerformActionResponse::MergeImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const PerformActionResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
   }
-  private:
-  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const PerformActionResponse& from) {
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
   public:
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  uint8_t* _InternalSerialize(
-      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(PerformActionResponse* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -695,23 +712,6 @@ class PerformActionResponse final :
 
   // accessors -------------------------------------------------------
 
-  enum : int {
-    kPayloadFieldNumber = 1,
-  };
-  // string payload = 1 [json_name = "payload"];
-  void clear_payload();
-  const std::string& payload() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_payload(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_payload();
-  PROTOBUF_NODISCARD std::string* release_payload();
-  void set_allocated_payload(std::string* payload);
-  private:
-  const std::string& _internal_payload() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_payload(const std::string& value);
-  std::string* _internal_mutable_payload();
-  public:
-
   // @@protoc_insertion_point(class_scope:instance_host.PerformActionResponse)
  private:
   class _Internal;
@@ -720,10 +720,7 @@ class PerformActionResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_;
-    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
-  union { Impl_ _impl_; };
   friend struct ::TableStruct_proto_2finstance_5fhost_2eproto;
 };
 // ===================================================================
@@ -785,6 +782,81 @@ inline void CreateInstanceRequest::set_allocated_instance_type(std::string* inst
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:instance_host.CreateInstanceRequest.instance_type)
+}
+
+// repeated string user_ids = 2 [json_name = "userIds"];
+inline int CreateInstanceRequest::_internal_user_ids_size() const {
+  return _impl_.user_ids_.size();
+}
+inline int CreateInstanceRequest::user_ids_size() const {
+  return _internal_user_ids_size();
+}
+inline void CreateInstanceRequest::clear_user_ids() {
+  _impl_.user_ids_.Clear();
+}
+inline std::string* CreateInstanceRequest::add_user_ids() {
+  std::string* _s = _internal_add_user_ids();
+  // @@protoc_insertion_point(field_add_mutable:instance_host.CreateInstanceRequest.user_ids)
+  return _s;
+}
+inline const std::string& CreateInstanceRequest::_internal_user_ids(int index) const {
+  return _impl_.user_ids_.Get(index);
+}
+inline const std::string& CreateInstanceRequest::user_ids(int index) const {
+  // @@protoc_insertion_point(field_get:instance_host.CreateInstanceRequest.user_ids)
+  return _internal_user_ids(index);
+}
+inline std::string* CreateInstanceRequest::mutable_user_ids(int index) {
+  // @@protoc_insertion_point(field_mutable:instance_host.CreateInstanceRequest.user_ids)
+  return _impl_.user_ids_.Mutable(index);
+}
+inline void CreateInstanceRequest::set_user_ids(int index, const std::string& value) {
+  _impl_.user_ids_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:instance_host.CreateInstanceRequest.user_ids)
+}
+inline void CreateInstanceRequest::set_user_ids(int index, std::string&& value) {
+  _impl_.user_ids_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:instance_host.CreateInstanceRequest.user_ids)
+}
+inline void CreateInstanceRequest::set_user_ids(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.user_ids_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:instance_host.CreateInstanceRequest.user_ids)
+}
+inline void CreateInstanceRequest::set_user_ids(int index, const char* value, size_t size) {
+  _impl_.user_ids_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:instance_host.CreateInstanceRequest.user_ids)
+}
+inline std::string* CreateInstanceRequest::_internal_add_user_ids() {
+  return _impl_.user_ids_.Add();
+}
+inline void CreateInstanceRequest::add_user_ids(const std::string& value) {
+  _impl_.user_ids_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:instance_host.CreateInstanceRequest.user_ids)
+}
+inline void CreateInstanceRequest::add_user_ids(std::string&& value) {
+  _impl_.user_ids_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:instance_host.CreateInstanceRequest.user_ids)
+}
+inline void CreateInstanceRequest::add_user_ids(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.user_ids_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:instance_host.CreateInstanceRequest.user_ids)
+}
+inline void CreateInstanceRequest::add_user_ids(const char* value, size_t size) {
+  _impl_.user_ids_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:instance_host.CreateInstanceRequest.user_ids)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+CreateInstanceRequest::user_ids() const {
+  // @@protoc_insertion_point(field_list:instance_host.CreateInstanceRequest.user_ids)
+  return _impl_.user_ids_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+CreateInstanceRequest::mutable_user_ids() {
+  // @@protoc_insertion_point(field_mutable_list:instance_host.CreateInstanceRequest.user_ids)
+  return &_impl_.user_ids_;
 }
 
 // -------------------------------------------------------------------
@@ -995,109 +1067,46 @@ inline void PerformActionRequest::set_allocated_action_name(std::string* action_
   // @@protoc_insertion_point(field_set_allocated:instance_host.PerformActionRequest.action_name)
 }
 
-// string payload = 4 [json_name = "payload"];
-inline void PerformActionRequest::clear_payload() {
-  _impl_.payload_.ClearToEmpty();
+// repeated .google.protobuf.Any payload = 4 [json_name = "payload"];
+inline int PerformActionRequest::_internal_payload_size() const {
+  return _impl_.payload_.size();
 }
-inline const std::string& PerformActionRequest::payload() const {
-  // @@protoc_insertion_point(field_get:instance_host.PerformActionRequest.payload)
-  return _internal_payload();
+inline int PerformActionRequest::payload_size() const {
+  return _internal_payload_size();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void PerformActionRequest::set_payload(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.payload_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:instance_host.PerformActionRequest.payload)
-}
-inline std::string* PerformActionRequest::mutable_payload() {
-  std::string* _s = _internal_mutable_payload();
+inline ::PROTOBUF_NAMESPACE_ID::Any* PerformActionRequest::mutable_payload(int index) {
   // @@protoc_insertion_point(field_mutable:instance_host.PerformActionRequest.payload)
-  return _s;
+  return _impl_.payload_.Mutable(index);
 }
-inline const std::string& PerformActionRequest::_internal_payload() const {
-  return _impl_.payload_.Get();
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::Any >*
+PerformActionRequest::mutable_payload() {
+  // @@protoc_insertion_point(field_mutable_list:instance_host.PerformActionRequest.payload)
+  return &_impl_.payload_;
 }
-inline void PerformActionRequest::_internal_set_payload(const std::string& value) {
-  
-  _impl_.payload_.Set(value, GetArenaForAllocation());
+inline const ::PROTOBUF_NAMESPACE_ID::Any& PerformActionRequest::_internal_payload(int index) const {
+  return _impl_.payload_.Get(index);
 }
-inline std::string* PerformActionRequest::_internal_mutable_payload() {
-  
-  return _impl_.payload_.Mutable(GetArenaForAllocation());
+inline const ::PROTOBUF_NAMESPACE_ID::Any& PerformActionRequest::payload(int index) const {
+  // @@protoc_insertion_point(field_get:instance_host.PerformActionRequest.payload)
+  return _internal_payload(index);
 }
-inline std::string* PerformActionRequest::release_payload() {
-  // @@protoc_insertion_point(field_release:instance_host.PerformActionRequest.payload)
-  return _impl_.payload_.Release();
+inline ::PROTOBUF_NAMESPACE_ID::Any* PerformActionRequest::_internal_add_payload() {
+  return _impl_.payload_.Add();
 }
-inline void PerformActionRequest::set_allocated_payload(std::string* payload) {
-  if (payload != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.payload_.SetAllocated(payload, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.payload_.IsDefault()) {
-    _impl_.payload_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:instance_host.PerformActionRequest.payload)
+inline ::PROTOBUF_NAMESPACE_ID::Any* PerformActionRequest::add_payload() {
+  ::PROTOBUF_NAMESPACE_ID::Any* _add = _internal_add_payload();
+  // @@protoc_insertion_point(field_add:instance_host.PerformActionRequest.payload)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::PROTOBUF_NAMESPACE_ID::Any >&
+PerformActionRequest::payload() const {
+  // @@protoc_insertion_point(field_list:instance_host.PerformActionRequest.payload)
+  return _impl_.payload_;
 }
 
 // -------------------------------------------------------------------
 
 // PerformActionResponse
-
-// string payload = 1 [json_name = "payload"];
-inline void PerformActionResponse::clear_payload() {
-  _impl_.payload_.ClearToEmpty();
-}
-inline const std::string& PerformActionResponse::payload() const {
-  // @@protoc_insertion_point(field_get:instance_host.PerformActionResponse.payload)
-  return _internal_payload();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void PerformActionResponse::set_payload(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.payload_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:instance_host.PerformActionResponse.payload)
-}
-inline std::string* PerformActionResponse::mutable_payload() {
-  std::string* _s = _internal_mutable_payload();
-  // @@protoc_insertion_point(field_mutable:instance_host.PerformActionResponse.payload)
-  return _s;
-}
-inline const std::string& PerformActionResponse::_internal_payload() const {
-  return _impl_.payload_.Get();
-}
-inline void PerformActionResponse::_internal_set_payload(const std::string& value) {
-  
-  _impl_.payload_.Set(value, GetArenaForAllocation());
-}
-inline std::string* PerformActionResponse::_internal_mutable_payload() {
-  
-  return _impl_.payload_.Mutable(GetArenaForAllocation());
-}
-inline std::string* PerformActionResponse::release_payload() {
-  // @@protoc_insertion_point(field_release:instance_host.PerformActionResponse.payload)
-  return _impl_.payload_.Release();
-}
-inline void PerformActionResponse::set_allocated_payload(std::string* payload) {
-  if (payload != nullptr) {
-    
-  } else {
-    
-  }
-  _impl_.payload_.SetAllocated(payload, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.payload_.IsDefault()) {
-    _impl_.payload_.Set("", GetArenaForAllocation());
-  }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:instance_host.PerformActionResponse.payload)
-}
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop

@@ -2,8 +2,11 @@ syntax = "proto3";
 package instance_host;
 option go_package = "github.com/spielbrett/spielbrett-api/gen/go/proto";
 
+import "google/protobuf/any.proto";
+
 message CreateInstanceRequest {
   string instance_type = 1;
+  repeated string user_ids = 2;
 }
 
 message CreateInstanceResponse {
@@ -14,11 +17,10 @@ message PerformActionRequest {
   string instance_id = 1;
   string user_id = 2;
   string action_name = 3;
-  string payload = 4;
+  repeated google.protobuf.Any payload = 4;
 }
 
 message PerformActionResponse {
-  string payload = 1;
 }
 
 service InstanceHostService {

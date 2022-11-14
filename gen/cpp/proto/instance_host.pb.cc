@@ -23,7 +23,8 @@ namespace _pbi = _pb::internal;
 namespace instance_host {
 PROTOBUF_CONSTEXPR CreateInstanceRequest::CreateInstanceRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.instance_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.user_ids_)*/{}
+  , /*decltype(_impl_.instance_type_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CreateInstanceRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR CreateInstanceRequestDefaultTypeInternal()
@@ -49,10 +50,10 @@ struct CreateInstanceResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateInstanceResponseDefaultTypeInternal _CreateInstanceResponse_default_instance_;
 PROTOBUF_CONSTEXPR PerformActionRequest::PerformActionRequest(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.instance_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.payload_)*/{}
+  , /*decltype(_impl_.instance_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.user_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.action_name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.payload_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct PerformActionRequestDefaultTypeInternal {
   PROTOBUF_CONSTEXPR PerformActionRequestDefaultTypeInternal()
@@ -64,9 +65,7 @@ struct PerformActionRequestDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionRequestDefaultTypeInternal _PerformActionRequest_default_instance_;
 PROTOBUF_CONSTEXPR PerformActionResponse::PerformActionResponse(
-    ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.payload_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_._cached_size_)*/{}} {}
+    ::_pbi::ConstantInitialized) {}
 struct PerformActionResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR PerformActionResponseDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -89,6 +88,7 @@ const uint32_t TableStruct_proto_2finstance_5fhost_2eproto::offsets[] PROTOBUF_S
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceRequest, _impl_.instance_type_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceRequest, _impl_.user_ids_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -112,13 +112,12 @@ const uint32_t TableStruct_proto_2finstance_5fhost_2eproto::offsets[] PROTOBUF_S
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse, _impl_.payload_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::instance_host::CreateInstanceRequest)},
-  { 7, -1, -1, sizeof(::instance_host::CreateInstanceResponse)},
-  { 14, -1, -1, sizeof(::instance_host::PerformActionRequest)},
-  { 24, -1, -1, sizeof(::instance_host::PerformActionResponse)},
+  { 8, -1, -1, sizeof(::instance_host::CreateInstanceResponse)},
+  { 15, -1, -1, sizeof(::instance_host::PerformActionRequest)},
+  { 25, -1, -1, sizeof(::instance_host::PerformActionResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -130,27 +129,32 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_proto_2finstance_5fhost_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\031proto/instance_host.proto\022\rinstance_ho"
-  "st\"<\n\025CreateInstanceRequest\022#\n\rinstance_"
-  "type\030\001 \001(\tR\014instanceType\"9\n\026CreateInstan"
-  "ceResponse\022\037\n\013instance_id\030\001 \001(\tR\ninstanc"
-  "eId\"\213\001\n\024PerformActionRequest\022\037\n\013instance"
-  "_id\030\001 \001(\tR\ninstanceId\022\027\n\007user_id\030\002 \001(\tR\006"
-  "userId\022\037\n\013action_name\030\003 \001(\tR\nactionName\022"
-  "\030\n\007payload\030\004 \001(\tR\007payload\"1\n\025PerformActi"
-  "onResponse\022\030\n\007payload\030\001 \001(\tR\007payload2\324\001\n"
-  "\023InstanceHostService\022_\n\016CreateInstance\022$"
-  ".instance_host.CreateInstanceRequest\032%.i"
-  "nstance_host.CreateInstanceResponse\"\000\022\\\n"
-  "\rPerformAction\022#.instance_host.PerformAc"
-  "tionRequest\032$.instance_host.PerformActio"
-  "nResponse\"\000B3Z1github.com/spielbrett/spi"
-  "elbrett-api/gen/go/protob\006proto3"
+  "st\032\031google/protobuf/any.proto\"W\n\025CreateI"
+  "nstanceRequest\022#\n\rinstance_type\030\001 \001(\tR\014i"
+  "nstanceType\022\031\n\010user_ids\030\002 \003(\tR\007userIds\"9"
+  "\n\026CreateInstanceResponse\022\037\n\013instance_id\030"
+  "\001 \001(\tR\ninstanceId\"\241\001\n\024PerformActionReque"
+  "st\022\037\n\013instance_id\030\001 \001(\tR\ninstanceId\022\027\n\007u"
+  "ser_id\030\002 \001(\tR\006userId\022\037\n\013action_name\030\003 \001("
+  "\tR\nactionName\022.\n\007payload\030\004 \003(\0132\024.google."
+  "protobuf.AnyR\007payload\"\027\n\025PerformActionRe"
+  "sponse2\324\001\n\023InstanceHostService\022_\n\016Create"
+  "Instance\022$.instance_host.CreateInstanceR"
+  "equest\032%.instance_host.CreateInstanceRes"
+  "ponse\"\000\022\\\n\rPerformAction\022#.instance_host"
+  ".PerformActionRequest\032$.instance_host.Pe"
+  "rformActionResponse\"\000B3Z1github.com/spie"
+  "lbrett/spielbrett-api/gen/go/protob\006prot"
+  "o3"
   ;
+static const ::_pbi::DescriptorTable* const descriptor_table_proto_2finstance_5fhost_2eproto_deps[1] = {
+  &::descriptor_table_google_2fprotobuf_2fany_2eproto,
+};
 static ::_pbi::once_flag descriptor_table_proto_2finstance_5fhost_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_proto_2finstance_5fhost_2eproto = {
-    false, false, 632, descriptor_table_protodef_proto_2finstance_5fhost_2eproto,
+    false, false, 682, descriptor_table_protodef_proto_2finstance_5fhost_2eproto,
     "proto/instance_host.proto",
-    &descriptor_table_proto_2finstance_5fhost_2eproto_once, nullptr, 0, 4,
+    &descriptor_table_proto_2finstance_5fhost_2eproto_once, descriptor_table_proto_2finstance_5fhost_2eproto_deps, 1, 4,
     schemas, file_default_instances, TableStruct_proto_2finstance_5fhost_2eproto::offsets,
     file_level_metadata_proto_2finstance_5fhost_2eproto, file_level_enum_descriptors_proto_2finstance_5fhost_2eproto,
     file_level_service_descriptors_proto_2finstance_5fhost_2eproto,
@@ -179,7 +183,8 @@ CreateInstanceRequest::CreateInstanceRequest(const CreateInstanceRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   CreateInstanceRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.instance_type_){}
+      decltype(_impl_.user_ids_){from._impl_.user_ids_}
+    , decltype(_impl_.instance_type_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -199,7 +204,8 @@ inline void CreateInstanceRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.instance_type_){}
+      decltype(_impl_.user_ids_){arena}
+    , decltype(_impl_.instance_type_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.instance_type_.InitDefault();
@@ -219,6 +225,7 @@ CreateInstanceRequest::~CreateInstanceRequest() {
 
 inline void CreateInstanceRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.user_ids_.~RepeatedPtrField();
   _impl_.instance_type_.Destroy();
 }
 
@@ -232,6 +239,7 @@ void CreateInstanceRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.user_ids_.Clear();
   _impl_.instance_type_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -249,6 +257,21 @@ const char* CreateInstanceRequest::_InternalParse(const char* ptr, ::_pbi::Parse
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "instance_host.CreateInstanceRequest.instance_type"));
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated string user_ids = 2 [json_name = "userIds"];
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_user_ids();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "instance_host.CreateInstanceRequest.user_ids"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -291,6 +314,16 @@ uint8_t* CreateInstanceRequest::_InternalSerialize(
         1, this->_internal_instance_type(), target);
   }
 
+  // repeated string user_ids = 2 [json_name = "userIds"];
+  for (int i = 0, n = this->_internal_user_ids_size(); i < n; i++) {
+    const auto& s = this->_internal_user_ids(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "instance_host.CreateInstanceRequest.user_ids");
+    target = stream->WriteString(2, s, target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -306,6 +339,14 @@ size_t CreateInstanceRequest::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated string user_ids = 2 [json_name = "userIds"];
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.user_ids_.size());
+  for (int i = 0, n = _impl_.user_ids_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.user_ids_.Get(i));
+  }
 
   // string instance_type = 1 [json_name = "instanceType"];
   if (!this->_internal_instance_type().empty()) {
@@ -332,6 +373,7 @@ void CreateInstanceRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, 
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.user_ids_.MergeFrom(from._impl_.user_ids_);
   if (!from._internal_instance_type().empty()) {
     _this->_internal_set_instance_type(from._internal_instance_type());
   }
@@ -354,6 +396,7 @@ void CreateInstanceRequest::InternalSwap(CreateInstanceRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.user_ids_.InternalSwap(&other->_impl_.user_ids_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.instance_type_, lhs_arena,
       &other->_impl_.instance_type_, rhs_arena
@@ -575,6 +618,9 @@ class PerformActionRequest::_Internal {
  public:
 };
 
+void PerformActionRequest::clear_payload() {
+  _impl_.payload_.Clear();
+}
 PerformActionRequest::PerformActionRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -585,10 +631,10 @@ PerformActionRequest::PerformActionRequest(const PerformActionRequest& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   PerformActionRequest* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.instance_id_){}
+      decltype(_impl_.payload_){from._impl_.payload_}
+    , decltype(_impl_.instance_id_){}
     , decltype(_impl_.user_id_){}
     , decltype(_impl_.action_name_){}
-    , decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
@@ -616,14 +662,6 @@ PerformActionRequest::PerformActionRequest(const PerformActionRequest& from)
     _this->_impl_.action_name_.Set(from._internal_action_name(), 
       _this->GetArenaForAllocation());
   }
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_payload().empty()) {
-    _this->_impl_.payload_.Set(from._internal_payload(), 
-      _this->GetArenaForAllocation());
-  }
   // @@protoc_insertion_point(copy_constructor:instance_host.PerformActionRequest)
 }
 
@@ -632,10 +670,10 @@ inline void PerformActionRequest::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.instance_id_){}
+      decltype(_impl_.payload_){arena}
+    , decltype(_impl_.instance_id_){}
     , decltype(_impl_.user_id_){}
     , decltype(_impl_.action_name_){}
-    , decltype(_impl_.payload_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.instance_id_.InitDefault();
@@ -650,10 +688,6 @@ inline void PerformActionRequest::SharedCtor(
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.action_name_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 PerformActionRequest::~PerformActionRequest() {
@@ -667,10 +701,10 @@ PerformActionRequest::~PerformActionRequest() {
 
 inline void PerformActionRequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.payload_.~RepeatedPtrField();
   _impl_.instance_id_.Destroy();
   _impl_.user_id_.Destroy();
   _impl_.action_name_.Destroy();
-  _impl_.payload_.Destroy();
 }
 
 void PerformActionRequest::SetCachedSize(int size) const {
@@ -683,10 +717,10 @@ void PerformActionRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.payload_.Clear();
   _impl_.instance_id_.ClearToEmpty();
   _impl_.user_id_.ClearToEmpty();
   _impl_.action_name_.ClearToEmpty();
-  _impl_.payload_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -726,13 +760,16 @@ const char* PerformActionRequest::_InternalParse(const char* ptr, ::_pbi::ParseC
         } else
           goto handle_unusual;
         continue;
-      // string payload = 4 [json_name = "payload"];
+      // repeated .google.protobuf.Any payload = 4 [json_name = "payload"];
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
-          auto str = _internal_mutable_payload();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "instance_host.PerformActionRequest.payload"));
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_payload(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<34>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -795,14 +832,12 @@ uint8_t* PerformActionRequest::_InternalSerialize(
         3, this->_internal_action_name(), target);
   }
 
-  // string payload = 4 [json_name = "payload"];
-  if (!this->_internal_payload().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_payload().data(), static_cast<int>(this->_internal_payload().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "instance_host.PerformActionRequest.payload");
-    target = stream->WriteStringMaybeAliased(
-        4, this->_internal_payload(), target);
+  // repeated .google.protobuf.Any payload = 4 [json_name = "payload"];
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_payload_size()); i < n; i++) {
+    const auto& repfield = this->_internal_payload(i);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+        InternalWriteMessage(4, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -820,6 +855,13 @@ size_t PerformActionRequest::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated .google.protobuf.Any payload = 4 [json_name = "payload"];
+  total_size += 1UL * this->_internal_payload_size();
+  for (const auto& msg : this->_impl_.payload_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
 
   // string instance_id = 1 [json_name = "instanceId"];
   if (!this->_internal_instance_id().empty()) {
@@ -842,13 +884,6 @@ size_t PerformActionRequest::ByteSizeLong() const {
         this->_internal_action_name());
   }
 
-  // string payload = 4 [json_name = "payload"];
-  if (!this->_internal_payload().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_payload());
-  }
-
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -867,6 +902,7 @@ void PerformActionRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.payload_.MergeFrom(from._impl_.payload_);
   if (!from._internal_instance_id().empty()) {
     _this->_internal_set_instance_id(from._internal_instance_id());
   }
@@ -875,9 +911,6 @@ void PerformActionRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, c
   }
   if (!from._internal_action_name().empty()) {
     _this->_internal_set_action_name(from._internal_action_name());
-  }
-  if (!from._internal_payload().empty()) {
-    _this->_internal_set_payload(from._internal_payload());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -898,6 +931,7 @@ void PerformActionRequest::InternalSwap(PerformActionRequest* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.payload_.InternalSwap(&other->_impl_.payload_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.instance_id_, lhs_arena,
       &other->_impl_.instance_id_, rhs_arena
@@ -909,10 +943,6 @@ void PerformActionRequest::InternalSwap(PerformActionRequest* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.action_name_, lhs_arena,
       &other->_impl_.action_name_, rhs_arena
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.payload_, lhs_arena,
-      &other->_impl_.payload_, rhs_arena
   );
 }
 
@@ -930,194 +960,31 @@ class PerformActionResponse::_Internal {
 
 PerformActionResponse::PerformActionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor(arena, is_message_owned);
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
   // @@protoc_insertion_point(arena_constructor:instance_host.PerformActionResponse)
 }
 PerformActionResponse::PerformActionResponse(const PerformActionResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
   PerformActionResponse* const _this = this; (void)_this;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){}
-    , /*decltype(_impl_._cached_size_)*/{}};
-
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_payload().empty()) {
-    _this->_impl_.payload_.Set(from._internal_payload(), 
-      _this->GetArenaForAllocation());
-  }
   // @@protoc_insertion_point(copy_constructor:instance_host.PerformActionResponse)
 }
 
-inline void PerformActionResponse::SharedCtor(
-    ::_pb::Arena* arena, bool is_message_owned) {
-  (void)arena;
-  (void)is_message_owned;
-  new (&_impl_) Impl_{
-      decltype(_impl_.payload_){}
-    , /*decltype(_impl_._cached_size_)*/{}
-  };
-  _impl_.payload_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.payload_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-}
 
-PerformActionResponse::~PerformActionResponse() {
-  // @@protoc_insertion_point(destructor:instance_host.PerformActionResponse)
-  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
-  (void)arena;
-    return;
-  }
-  SharedDtor();
-}
 
-inline void PerformActionResponse::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.payload_.Destroy();
-}
 
-void PerformActionResponse::SetCachedSize(int size) const {
-  _impl_._cached_size_.Set(size);
-}
-
-void PerformActionResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:instance_host.PerformActionResponse)
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  _impl_.payload_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-}
-
-const char* PerformActionResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    uint32_t tag;
-    ptr = ::_pbi::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string payload = 1 [json_name = "payload"];
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
-          auto str = _internal_mutable_payload();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "instance_host.PerformActionResponse.payload"));
-        } else
-          goto handle_unusual;
-        continue;
-      default:
-        goto handle_unusual;
-    }  // switch
-  handle_unusual:
-    if ((tag == 0) || ((tag & 7) == 4)) {
-      CHK_(ptr);
-      ctx->SetLastTag(tag);
-      goto message_done;
-    }
-    ptr = UnknownFieldParse(
-        tag,
-        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-        ptr, ctx);
-    CHK_(ptr != nullptr);
-  }  // while
-message_done:
-  return ptr;
-failure:
-  ptr = nullptr;
-  goto message_done;
-#undef CHK_
-}
-
-uint8_t* PerformActionResponse::_InternalSerialize(
-    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:instance_host.PerformActionResponse)
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
-
-  // string payload = 1 [json_name = "payload"];
-  if (!this->_internal_payload().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_payload().data(), static_cast<int>(this->_internal_payload().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "instance_host.PerformActionResponse.payload");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_payload(), target);
-  }
-
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:instance_host.PerformActionResponse)
-  return target;
-}
-
-size_t PerformActionResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:instance_host.PerformActionResponse)
-  size_t total_size = 0;
-
-  uint32_t cached_has_bits = 0;
-  // Prevent compiler warnings about cached_has_bits being unused
-  (void) cached_has_bits;
-
-  // string payload = 1 [json_name = "payload"];
-  if (!this->_internal_payload().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_payload());
-  }
-
-  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
-}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PerformActionResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
-    PerformActionResponse::MergeImpl
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
+    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PerformActionResponse::GetClassData() const { return &_class_data_; }
 
 
-void PerformActionResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
-  auto* const _this = static_cast<PerformActionResponse*>(&to_msg);
-  auto& from = static_cast<const PerformActionResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:instance_host.PerformActionResponse)
-  GOOGLE_DCHECK_NE(&from, _this);
-  uint32_t cached_has_bits = 0;
-  (void) cached_has_bits;
 
-  if (!from._internal_payload().empty()) {
-    _this->_internal_set_payload(from._internal_payload());
-  }
-  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-}
 
-void PerformActionResponse::CopyFrom(const PerformActionResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:instance_host.PerformActionResponse)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
 
-bool PerformActionResponse::IsInitialized() const {
-  return true;
-}
 
-void PerformActionResponse::InternalSwap(PerformActionResponse* other) {
-  using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
-  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.payload_, lhs_arena,
-      &other->_impl_.payload_, rhs_arena
-  );
-}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PerformActionResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
