@@ -6,6 +6,7 @@
 
 #include <filesystem>
 #include <iostream>
+#include <optional>
 #include <shared_mutex>
 #include <sstream>
 #include <stdexcept>
@@ -93,12 +94,36 @@ boost::python::object importClass(const std::string &moduleName, const std::stri
     }
     catch (const boost::python::error_already_set &) {
         std::stringstream ss;
-        ss << "failed to load class " << className << "from" << moduleName;
+        ss << "failed to load class " << className << " from " << moduleName;
         throw std::invalid_argument(ss.str());
     }
 
     return gameClass;
 }
+
+// TODO: Get rid of the static variable
+std::optional<boost::python::object> jinja2 = std::nullopt;
+
+boost::python::object getJinja2()
+{
+    if (!jinja2.has_value()) {
+        jinja2 = boost::python::import("jinja2");
+    }
+    return jinja2.value();
+}
+
+boost::python::object readUITemplate(const std::string &moduleDir, const std::string &ui)
+{
+    std::filesystem::path moduleDirPath(moduleDir);
+    auto uiPath = moduleDirPath / std::filesystem::path(ui);
+
+    std::stringstream ss;
+    std::ifstream uiFile(uiPath);
+    ss << uiFile.rdbuf();
+
+    return getJinja2().attr("Template")(ss.str());
+}
+
 } // namespace
 
 Instance::Instance(const std::string &instanceType, const std::vector<std::string> &userIds) :
@@ -111,7 +136,16 @@ Instance::Instance(const std::string &instanceType, const std::vector<std::strin
     auto [moduleName, className] = parseEntrypoint(config.entrypoint);
 
     auto gameClass = importClass(moduleName, className);
-    initializeInstanceObject(gameClass);
+    try {
+        instanceObject = gameClass();
+    }
+    catch (const boost::python::error_already_set &) {
+        std::stringstream ss;
+        ss << "failed to instantiate an instance object";
+        throw std::invalid_argument(ss.str());
+    }
+
+    uiTemplate = readUITemplate(instanceType, config.ui);
 }
 
 void Instance::performAction(const std::string &userId, const std::string &action)
@@ -124,9 +158,9 @@ void Instance::performAction(const std::string &userId, const std::string &actio
         throw std::invalid_argument(ss.str());
     }
 
-    int playerIndex = playerIndices[userId];
+    auto playerIndex = playerIndices.at(userId);
     try {
-        instanceObject.attr("perform_action")(userId, action);
+        instanceObject.attr("perform_action")(playerIndex, action);
     }
     catch (const boost::python::error_already_set &) {
         // TODO: Return traceback info instead of printing to console
@@ -136,14 +170,39 @@ void Instance::performAction(const std::string &userId, const std::string &actio
     }
 }
 
-void Instance::initializeInstanceObject(boost::python::object cls)
+std::unordered_map<std::string, std::string> Instance::renderMarkup() const
 {
-    try {
-        instanceObject = cls();
+    std::unordered_map<std::string, std::string> markup;
+    for (const auto &userId : userIds) {
+        markup[userId] = renderMarkup(userId);
     }
-    catch (const boost::python::error_already_set &) {
+    return markup;
+}
+
+std::string Instance::renderMarkup(const std::string &userId) const
+{
+    // TODO: Maybe shared_lock is enough?
+    std::unique_lock lock(sm);
+
+    if (!playerIndices.contains(userId)) {
         std::stringstream ss;
-        ss << "failed to instantiate an instance object";
+        ss << "user " << userId << " is not participating in the game";
         throw std::invalid_argument(ss.str());
+    }
+
+    auto playerIndex = playerIndices.at(userId);
+    try {
+        auto observation = instanceObject.attr("observe")(playerIndex);
+
+        boost::python::dict observationDict = boost::python::extract<boost::python::dict>(observation);
+        observationDict["player_index"] = playerIndex;
+
+        auto result = uiTemplate.attr("render")(observationDict);
+        return boost::python::extract<std::string>(result);
+    }
+    catch (boost::python::error_already_set &) {
+        PyErr_Print();
+
+        throw std::runtime_error("failed to render template");
     }
 }

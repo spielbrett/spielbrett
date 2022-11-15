@@ -56,17 +56,25 @@ grpc::Status GRPCServer::CreateInstance(
     std::vector<std::string> userIds(request->user_ids().begin(), request->user_ids().end());
 
     std::string instanceId;
+    std::unordered_map<std::string, std::string> markup;
     try {
         instanceId = instanceHost.createInstance(request->instance_type(), userIds);
+        auto instance = instanceHost.getInstance(instanceId);
+        markup = instance->renderMarkup();
     }
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
     }
-    catch (std::runtime_error &e) {
+    catch (std::exception &e) {
         return grpc::Status(grpc::StatusCode::INTERNAL, e.what());
     }
 
     response->set_instance_id(instanceId);
+    auto &responseMarkup = *response->mutable_markup();
+    for (const auto &[k, v] : markup) {
+        responseMarkup[k] = v;
+    }
+
     return grpc::Status::OK;
 }
 
@@ -80,14 +88,21 @@ grpc::Status GRPCServer::PerformAction(
         return grpc::Status(grpc::StatusCode::NOT_FOUND, "instance not found");
     }
 
+    std::unordered_map<std::string, std::string> markup;
     try {
         instance->performAction(request->user_id(), request->action());
+        markup = instance->renderMarkup();
     }
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
     }
-    catch (std::runtime_error &e) {
+    catch (std::exception &e) {
         return grpc::Status(grpc::StatusCode::INTERNAL, e.what());
+    }
+
+    auto &responseMarkup = *response->mutable_markup();
+    for (const auto &[k, v] : markup) {
+        responseMarkup[k] = v;
     }
 
     return grpc::Status::OK;
