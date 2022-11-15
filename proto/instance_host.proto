@@ -17,8 +17,7 @@ message CreateInstanceResponse {
 message PerformActionRequest {
   string instance_id = 1;
   string user_id = 2;
-  string action_name = 3;
-  repeated google.protobuf.Any payload = 4;
+  string action = 3;
 }
 
 message PerformActionResponse {
