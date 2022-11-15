@@ -44,7 +44,7 @@ std::string InstanceHost::createInstance(
 {
     std::unique_lock lock(sm);
 
-    auto instanceId = boost::lexical_cast<std::string>(generator());
+    auto instanceId = generateInstanceId();
     instances[instanceId] = std::make_shared<Instance>(instanceType, userIds);
     return instanceId;
 }
@@ -53,8 +53,13 @@ std::shared_ptr<Instance> InstanceHost::getInstance(const std::string &instanceI
 {
     std::shared_lock lock(sm);
 
-    if (instances.count(instanceId) == 0) {
+    if (!instances.contains(instanceId)) {
         return nullptr;
     }
     return instances.at(instanceId);
+}
+
+std::string InstanceHost::generateInstanceId() noexcept
+{
+    return boost::lexical_cast<std::string>(generator());
 }

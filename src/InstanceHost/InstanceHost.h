@@ -22,7 +22,8 @@ public:
     std::string createInstance(
         const std::string &instanceType,
         const std::vector<std::string> &userIds);
-    std::shared_ptr<Instance> getInstance(const std::string &instanceId) const noexcept;
+    std::shared_ptr<Instance> getInstance(
+        const std::string &instanceId) const noexcept;
 
 private:
     std::unique_ptr<WebsocketServer> websocketServer;
@@ -32,6 +33,8 @@ private:
     boost::uuids::random_generator generator;
 
     mutable std::shared_mutex sm;
+
+    std::string generateInstanceId() noexcept;
 };
 
 #endif // INSTANCE_HOST_H

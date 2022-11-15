@@ -16,15 +16,17 @@ public:
 
     void performAction(
         const std::string &userId,
-        const std::string &actionName,
-        const boost::python::list &payload);
+        const std::string &actionName);
 
 private:
     boost::python::object instanceObject;
+
     std::vector<std::string> userIds;
     std::unordered_map<std::string, int> playerIndices;
 
     mutable std::shared_mutex sm;
+
+    void initializeInstanceObject(boost::python::object cls);
 };
 
 #endif // INSTANCE_H

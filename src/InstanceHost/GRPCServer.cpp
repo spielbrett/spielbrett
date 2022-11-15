@@ -80,21 +80,8 @@ grpc::Status GRPCServer::PerformAction(
         return grpc::Status(grpc::StatusCode::NOT_FOUND, "instance not found");
     }
 
-    boost::python::list payload;
-    for (const auto &item : request->payload()) {
-        if (item.Is<google::protobuf::Int32Value>()) {
-            google::protobuf::Int32Value value;
-            item.UnpackTo(&value);
-            payload.append(value.value());
-        }
-        else {
-            // TODO: More types
-            return grpc::Status(grpc::StatusCode::UNIMPLEMENTED, "payload contains values of unsupported types");
-        }
-    }
-
     try {
-        instance->performAction(request->user_id(), request->action_name(), payload);
+        instance->performAction(request->user_id(), request->action());
     }
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());

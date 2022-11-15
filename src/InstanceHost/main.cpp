@@ -19,6 +19,7 @@ int main()
     // Single Python interpreter per single InstanceHost process
     Py_Initialize();
 
+    // TODO: Enable this only in debug builds when multiple build configurations are supported
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 
     return instanceHost.run();

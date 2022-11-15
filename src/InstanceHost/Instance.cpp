@@ -10,29 +10,45 @@
 #include <sstream>
 #include <stdexcept>
 
-Instance::Instance(const std::string &instanceType, const std::vector<std::string> &userIds) :
-    userIds(userIds)
+namespace
 {
-    for (size_t i = 0; i < userIds.size(); i++) {
-        playerIndices[userIds[i]] = i;
+struct ModuleConfig {
+    std::string entrypoint;
+    std::string ui;
+
+    ModuleConfig(const std::string &entrypoint, const std::string &ui) :
+        entrypoint(entrypoint), ui(ui) {}
+};
+
+template<typename T>
+inline void initializeReverseIndex(const std::vector<T> &v, std::unordered_map<T, int> &m)
+{
+    for (typename std::vector<T>::size_type i = 0; i < v.size(); i++) {
+        m[v[i]] = i;
     }
+}
 
-    std::filesystem::path moduleDir(instanceType);
-    auto jsonPath = moduleDir / std::filesystem::path("config.json");
+std::filesystem::path getConfigPath(const std::string &moduleName)
+{
+    std::filesystem::path moduleDir(moduleName);
+    return moduleDir / std::filesystem::path("config.json");
+}
 
+ModuleConfig parseConfig(const std::filesystem::path &configPath)
+{
     boost::property_tree::ptree config;
     try {
-        boost::property_tree::read_json(jsonPath.string(), config);
+        boost::property_tree::read_json(configPath, config);
     }
     catch (boost::property_tree::json_parser_error &) {
         std::stringstream ss;
-        ss << "failed to parse " << jsonPath;
+        ss << "failed to parse " << configPath;
         throw std::runtime_error(ss.str());
     }
 
-    std::string entryPoint, ui;
+    std::string entrypoint, ui;
     try {
-        entryPoint = config.get<std::string>("entrypoint");
+        entrypoint = config.get<std::string>("entrypoint");
         ui = config.get<std::string>("ui");
     }
     catch (boost::property_tree::ptree_error &e) {
@@ -41,13 +57,21 @@ Instance::Instance(const std::string &instanceType, const std::vector<std::strin
         throw std::runtime_error(ss.str());
     }
 
-    std::vector<std::string> tokens;
-    boost::split(tokens, entryPoint, boost::is_any_of(":"));
-    if (tokens.size() != 2) {
-        throw std::runtime_error("invalid entrypoint format in config");
-    }
+    return {entrypoint, ui};
+}
 
-    auto moduleName = tokens[0];
+std::pair<std::string, std::string> parseEntrypoint(const std::string &entrypoint)
+{
+    std::vector<std::string> tokens;
+    boost::split(tokens, entrypoint, boost::is_any_of(":"));
+    if (tokens.size() != 2) {
+        throw std::runtime_error("invalid entrypoint format");
+    }
+    return {tokens[0], tokens[1]};
+}
+
+boost::python::object importClass(const std::string &moduleName, const std::string &className)
+{
     boost::python::object gameModule;
     try {
         gameModule = boost::python::import(moduleName.c_str());
@@ -63,7 +87,6 @@ Instance::Instance(const std::string &instanceType, const std::vector<std::strin
         }
     }
 
-    auto className = tokens[1];
     boost::python::object gameClass;
     try {
         gameClass = gameModule.attr(className.c_str());
@@ -74,20 +97,24 @@ Instance::Instance(const std::string &instanceType, const std::vector<std::strin
         throw std::invalid_argument(ss.str());
     }
 
-    try {
-        instanceObject = gameClass();
-    }
-    catch (const boost::python::error_already_set &) {
-        std::stringstream ss;
-        ss << "failed to instantiate class " << className << "from" << moduleName;
-        throw std::invalid_argument(ss.str());
-    }
+    return gameClass;
+}
+} // namespace
+
+Instance::Instance(const std::string &instanceType, const std::vector<std::string> &userIds) :
+    userIds(userIds)
+{
+    initializeReverseIndex(userIds, playerIndices);
+
+    auto configPath = getConfigPath(instanceType);
+    auto config = parseConfig(configPath);
+    auto [moduleName, className] = parseEntrypoint(config.entrypoint);
+
+    auto gameClass = importClass(moduleName, className);
+    initializeInstanceObject(gameClass);
 }
 
-void Instance::performAction(
-    const std::string &userId,
-    const std::string &actionName,
-    const boost::python::list &payload)
+void Instance::performAction(const std::string &userId, const std::string &action)
 {
     std::unique_lock lock(sm);
 
@@ -99,12 +126,24 @@ void Instance::performAction(
 
     int playerIndex = playerIndices[userId];
     try {
-        instanceObject.attr(actionName.c_str())(playerIndex, actionName.c_str(), *payload);
+        instanceObject.attr("perform_action")(userId, action);
     }
     catch (const boost::python::error_already_set &) {
         // TODO: Return traceback info instead of printing to console
         PyErr_Print();
 
-        throw std::runtime_error("failed to apply action");
+        throw std::runtime_error("failed to perform action");
+    }
+}
+
+void Instance::initializeInstanceObject(boost::python::object cls)
+{
+    try {
+        instanceObject = cls();
+    }
+    catch (const boost::python::error_already_set &) {
+        std::stringstream ss;
+        ss << "failed to instantiate an instance object";
+        throw std::invalid_argument(ss.str());
     }
 }
