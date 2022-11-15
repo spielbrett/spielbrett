@@ -11,6 +11,7 @@ message CreateInstanceRequest {
 
 message CreateInstanceResponse {
   string instance_id = 1;
+  map<string, string> markup = 2;
 }
 
 message PerformActionRequest {
@@ -21,9 +22,11 @@ message PerformActionRequest {
 }
 
 message PerformActionResponse {
+  map<string, string> markup = 1;
 }
 
 service InstanceHostService {
   rpc CreateInstance(CreateInstanceRequest) returns (CreateInstanceResponse) {}
   rpc PerformAction(PerformActionRequest) returns (PerformActionResponse) {}
 }
+

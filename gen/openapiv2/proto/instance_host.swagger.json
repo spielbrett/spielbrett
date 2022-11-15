@@ -22,11 +22,25 @@
       "properties": {
         "instanceId": {
           "type": "string"
+        },
+        "markup": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
     "instance_hostPerformActionResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "markup": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
     },
     "protobufAny": {
       "type": "object",

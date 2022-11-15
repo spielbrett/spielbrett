@@ -23,13 +23,15 @@
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/arena.h>
 #include <google/protobuf/arenastring.h>
-#include <google/protobuf/generated_message_bases.h>
 #include <google/protobuf/generated_message_util.h>
 #include <google/protobuf/metadata_lite.h>
 #include <google/protobuf/generated_message_reflection.h>
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/map.h>  // IWYU pragma: export
+#include <google/protobuf/map_entry.h>
+#include <google/protobuf/map_field_inl.h>
 #include <google/protobuf/unknown_field_set.h>
 #include <google/protobuf/any.pb.h>
 // @@protoc_insertion_point(includes)
@@ -53,18 +55,26 @@ extern CreateInstanceRequestDefaultTypeInternal _CreateInstanceRequest_default_i
 class CreateInstanceResponse;
 struct CreateInstanceResponseDefaultTypeInternal;
 extern CreateInstanceResponseDefaultTypeInternal _CreateInstanceResponse_default_instance_;
+class CreateInstanceResponse_MarkupEntry_DoNotUse;
+struct CreateInstanceResponse_MarkupEntry_DoNotUseDefaultTypeInternal;
+extern CreateInstanceResponse_MarkupEntry_DoNotUseDefaultTypeInternal _CreateInstanceResponse_MarkupEntry_DoNotUse_default_instance_;
 class PerformActionRequest;
 struct PerformActionRequestDefaultTypeInternal;
 extern PerformActionRequestDefaultTypeInternal _PerformActionRequest_default_instance_;
 class PerformActionResponse;
 struct PerformActionResponseDefaultTypeInternal;
 extern PerformActionResponseDefaultTypeInternal _PerformActionResponse_default_instance_;
+class PerformActionResponse_MarkupEntry_DoNotUse;
+struct PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal;
+extern PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal _PerformActionResponse_MarkupEntry_DoNotUse_default_instance_;
 }  // namespace instance_host
 PROTOBUF_NAMESPACE_OPEN
 template<> ::instance_host::CreateInstanceRequest* Arena::CreateMaybeMessage<::instance_host::CreateInstanceRequest>(Arena*);
 template<> ::instance_host::CreateInstanceResponse* Arena::CreateMaybeMessage<::instance_host::CreateInstanceResponse>(Arena*);
+template<> ::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse* Arena::CreateMaybeMessage<::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse>(Arena*);
 template<> ::instance_host::PerformActionRequest* Arena::CreateMaybeMessage<::instance_host::PerformActionRequest>(Arena*);
 template<> ::instance_host::PerformActionResponse* Arena::CreateMaybeMessage<::instance_host::PerformActionResponse>(Arena*);
+template<> ::instance_host::PerformActionResponse_MarkupEntry_DoNotUse* Arena::CreateMaybeMessage<::instance_host::PerformActionResponse_MarkupEntry_DoNotUse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace instance_host {
 
@@ -249,6 +259,34 @@ class CreateInstanceRequest final :
 };
 // -------------------------------------------------------------------
 
+class CreateInstanceResponse_MarkupEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<CreateInstanceResponse_MarkupEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<CreateInstanceResponse_MarkupEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  CreateInstanceResponse_MarkupEntry_DoNotUse();
+  explicit PROTOBUF_CONSTEXPR CreateInstanceResponse_MarkupEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit CreateInstanceResponse_MarkupEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const CreateInstanceResponse_MarkupEntry_DoNotUse& other);
+  static const CreateInstanceResponse_MarkupEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const CreateInstanceResponse_MarkupEntry_DoNotUse*>(&_CreateInstanceResponse_MarkupEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "instance_host.CreateInstanceResponse.MarkupEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "instance_host.CreateInstanceResponse.MarkupEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  friend struct ::TableStruct_proto_2finstance_5fhost_2eproto;
+};
+
+// -------------------------------------------------------------------
+
 class CreateInstanceResponse final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:instance_host.CreateInstanceResponse) */ {
  public:
@@ -297,7 +335,7 @@ class CreateInstanceResponse final :
                &_CreateInstanceResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(CreateInstanceResponse& a, CreateInstanceResponse& b) {
     a.Swap(&b);
@@ -358,6 +396,8 @@ class CreateInstanceResponse final :
   protected:
   explicit CreateInstanceResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
   public:
 
   static const ClassData _class_data_;
@@ -367,11 +407,30 @@ class CreateInstanceResponse final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
   enum : int {
+    kMarkupFieldNumber = 2,
     kInstanceIdFieldNumber = 1,
   };
+  // map<string, string> markup = 2 [json_name = "markup"];
+  int markup_size() const;
+  private:
+  int _internal_markup_size() const;
+  public:
+  void clear_markup();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_markup() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_markup();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      markup() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_markup();
+
   // string instance_id = 1 [json_name = "instanceId"];
   void clear_instance_id();
   const std::string& instance_id() const;
@@ -394,6 +453,11 @@ class CreateInstanceResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+        CreateInstanceResponse_MarkupEntry_DoNotUse,
+        std::string, std::string,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> markup_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instance_id_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -450,7 +514,7 @@ class PerformActionRequest final :
                &_PerformActionRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(PerformActionRequest& a, PerformActionRequest& b) {
     a.Swap(&b);
@@ -607,10 +671,39 @@ class PerformActionRequest final :
 };
 // -------------------------------------------------------------------
 
+class PerformActionResponse_MarkupEntry_DoNotUse : public ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PerformActionResponse_MarkupEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> {
+public:
+  typedef ::PROTOBUF_NAMESPACE_ID::internal::MapEntry<PerformActionResponse_MarkupEntry_DoNotUse, 
+    std::string, std::string,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> SuperType;
+  PerformActionResponse_MarkupEntry_DoNotUse();
+  explicit PROTOBUF_CONSTEXPR PerformActionResponse_MarkupEntry_DoNotUse(
+      ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+  explicit PerformActionResponse_MarkupEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  void MergeFrom(const PerformActionResponse_MarkupEntry_DoNotUse& other);
+  static const PerformActionResponse_MarkupEntry_DoNotUse* internal_default_instance() { return reinterpret_cast<const PerformActionResponse_MarkupEntry_DoNotUse*>(&_PerformActionResponse_MarkupEntry_DoNotUse_default_instance_); }
+  static bool ValidateKey(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "instance_host.PerformActionResponse.MarkupEntry.key");
+ }
+  static bool ValidateValue(std::string* s) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(s->data(), static_cast<int>(s->size()), ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::PARSE, "instance_host.PerformActionResponse.MarkupEntry.value");
+ }
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  friend struct ::TableStruct_proto_2finstance_5fhost_2eproto;
+};
+
+// -------------------------------------------------------------------
+
 class PerformActionResponse final :
-    public ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:instance_host.PerformActionResponse) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:instance_host.PerformActionResponse) */ {
  public:
   inline PerformActionResponse() : PerformActionResponse(nullptr) {}
+  ~PerformActionResponse() override;
   explicit PROTOBUF_CONSTEXPR PerformActionResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
   PerformActionResponse(const PerformActionResponse& from);
@@ -654,7 +747,7 @@ class PerformActionResponse final :
                &_PerformActionResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(PerformActionResponse& a, PerformActionResponse& b) {
     a.Swap(&b);
@@ -683,15 +776,29 @@ class PerformActionResponse final :
   PerformActionResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
     return CreateMaybeMessage<PerformActionResponse>(arena);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const PerformActionResponse& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const PerformActionResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const PerformActionResponse& from) {
+    PerformActionResponse::MergeImpl(*this, from);
   }
-  using ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const PerformActionResponse& from) {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
   public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PerformActionResponse* other);
 
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
@@ -701,6 +808,8 @@ class PerformActionResponse final :
   protected:
   explicit PerformActionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                        bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
   public:
 
   static const ClassData _class_data_;
@@ -710,7 +819,28 @@ class PerformActionResponse final :
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
+
+  enum : int {
+    kMarkupFieldNumber = 1,
+  };
+  // map<string, string> markup = 1 [json_name = "markup"];
+  int markup_size() const;
+  private:
+  int _internal_markup_size() const;
+  public:
+  void clear_markup();
+  private:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      _internal_markup() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      _internal_mutable_markup();
+  public:
+  const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+      markup() const;
+  ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+      mutable_markup();
 
   // @@protoc_insertion_point(class_scope:instance_host.PerformActionResponse)
  private:
@@ -720,7 +850,14 @@ class PerformActionResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::MapField<
+        PerformActionResponse_MarkupEntry_DoNotUse,
+        std::string, std::string,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING,
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_STRING> markup_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_proto_2finstance_5fhost_2eproto;
 };
 // ===================================================================
@@ -861,6 +998,8 @@ CreateInstanceRequest::mutable_user_ids() {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // CreateInstanceResponse
 
 // string instance_id = 1 [json_name = "instanceId"];
@@ -911,6 +1050,35 @@ inline void CreateInstanceResponse::set_allocated_instance_id(std::string* insta
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:instance_host.CreateInstanceResponse.instance_id)
+}
+
+// map<string, string> markup = 2 [json_name = "markup"];
+inline int CreateInstanceResponse::_internal_markup_size() const {
+  return _impl_.markup_.size();
+}
+inline int CreateInstanceResponse::markup_size() const {
+  return _internal_markup_size();
+}
+inline void CreateInstanceResponse::clear_markup() {
+  _impl_.markup_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+CreateInstanceResponse::_internal_markup() const {
+  return _impl_.markup_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+CreateInstanceResponse::markup() const {
+  // @@protoc_insertion_point(field_map:instance_host.CreateInstanceResponse.markup)
+  return _internal_markup();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+CreateInstanceResponse::_internal_mutable_markup() {
+  return _impl_.markup_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+CreateInstanceResponse::mutable_markup() {
+  // @@protoc_insertion_point(field_mutable_map:instance_host.CreateInstanceResponse.markup)
+  return _internal_mutable_markup();
 }
 
 // -------------------------------------------------------------------
@@ -1106,11 +1274,46 @@ PerformActionRequest::payload() const {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // PerformActionResponse
+
+// map<string, string> markup = 1 [json_name = "markup"];
+inline int PerformActionResponse::_internal_markup_size() const {
+  return _impl_.markup_.size();
+}
+inline int PerformActionResponse::markup_size() const {
+  return _internal_markup_size();
+}
+inline void PerformActionResponse::clear_markup() {
+  _impl_.markup_.Clear();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+PerformActionResponse::_internal_markup() const {
+  return _impl_.markup_.GetMap();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >&
+PerformActionResponse::markup() const {
+  // @@protoc_insertion_point(field_map:instance_host.PerformActionResponse.markup)
+  return _internal_markup();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+PerformActionResponse::_internal_mutable_markup() {
+  return _impl_.markup_.MutableMap();
+}
+inline ::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >*
+PerformActionResponse::mutable_markup() {
+  // @@protoc_insertion_point(field_mutable_map:instance_host.PerformActionResponse.markup)
+  return _internal_mutable_markup();
+}
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

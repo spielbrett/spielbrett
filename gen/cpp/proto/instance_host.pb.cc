@@ -35,9 +35,21 @@ struct CreateInstanceRequestDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateInstanceRequestDefaultTypeInternal _CreateInstanceRequest_default_instance_;
+PROTOBUF_CONSTEXPR CreateInstanceResponse_MarkupEntry_DoNotUse::CreateInstanceResponse_MarkupEntry_DoNotUse(
+    ::_pbi::ConstantInitialized) {}
+struct CreateInstanceResponse_MarkupEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateInstanceResponse_MarkupEntry_DoNotUseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateInstanceResponse_MarkupEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    CreateInstanceResponse_MarkupEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateInstanceResponse_MarkupEntry_DoNotUseDefaultTypeInternal _CreateInstanceResponse_MarkupEntry_DoNotUse_default_instance_;
 PROTOBUF_CONSTEXPR CreateInstanceResponse::CreateInstanceResponse(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.instance_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.markup_)*/{::_pbi::ConstantInitialized()}
+  , /*decltype(_impl_.instance_id_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct CreateInstanceResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR CreateInstanceResponseDefaultTypeInternal()
@@ -64,8 +76,21 @@ struct PerformActionRequestDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionRequestDefaultTypeInternal _PerformActionRequest_default_instance_;
-PROTOBUF_CONSTEXPR PerformActionResponse::PerformActionResponse(
+PROTOBUF_CONSTEXPR PerformActionResponse_MarkupEntry_DoNotUse::PerformActionResponse_MarkupEntry_DoNotUse(
     ::_pbi::ConstantInitialized) {}
+struct PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    PerformActionResponse_MarkupEntry_DoNotUse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal _PerformActionResponse_MarkupEntry_DoNotUse_default_instance_;
+PROTOBUF_CONSTEXPR PerformActionResponse::PerformActionResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.markup_)*/{::_pbi::ConstantInitialized()}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
 struct PerformActionResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR PerformActionResponseDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -76,7 +101,7 @@ struct PerformActionResponseDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionResponseDefaultTypeInternal _PerformActionResponse_default_instance_;
 }  // namespace instance_host
-static ::_pb::Metadata file_level_metadata_proto_2finstance_5fhost_2eproto[4];
+static ::_pb::Metadata file_level_metadata_proto_2finstance_5fhost_2eproto[6];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_proto_2finstance_5fhost_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_proto_2finstance_5fhost_2eproto = nullptr;
 
@@ -89,6 +114,16 @@ const uint32_t TableStruct_proto_2finstance_5fhost_2eproto::offsets[] PROTOBUF_S
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceRequest, _impl_.instance_type_),
   PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceRequest, _impl_.user_ids_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse, value_),
+  0,
+  1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -96,6 +131,7 @@ const uint32_t TableStruct_proto_2finstance_5fhost_2eproto::offsets[] PROTOBUF_S
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse, _impl_.instance_id_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::CreateInstanceResponse, _impl_.markup_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -106,24 +142,39 @@ const uint32_t TableStruct_proto_2finstance_5fhost_2eproto::offsets[] PROTOBUF_S
   PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _impl_.user_id_),
   PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _impl_.action_name_),
   PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionRequest, _impl_.payload_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse_MarkupEntry_DoNotUse, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse_MarkupEntry_DoNotUse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse_MarkupEntry_DoNotUse, key_),
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse_MarkupEntry_DoNotUse, value_),
+  0,
+  1,
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::instance_host::PerformActionResponse, _impl_.markup_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::instance_host::CreateInstanceRequest)},
-  { 8, -1, -1, sizeof(::instance_host::CreateInstanceResponse)},
-  { 15, -1, -1, sizeof(::instance_host::PerformActionRequest)},
-  { 25, -1, -1, sizeof(::instance_host::PerformActionResponse)},
+  { 8, 16, -1, sizeof(::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse)},
+  { 18, -1, -1, sizeof(::instance_host::CreateInstanceResponse)},
+  { 26, -1, -1, sizeof(::instance_host::PerformActionRequest)},
+  { 36, 44, -1, sizeof(::instance_host::PerformActionResponse_MarkupEntry_DoNotUse)},
+  { 46, -1, -1, sizeof(::instance_host::PerformActionResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::instance_host::_CreateInstanceRequest_default_instance_._instance,
+  &::instance_host::_CreateInstanceResponse_MarkupEntry_DoNotUse_default_instance_._instance,
   &::instance_host::_CreateInstanceResponse_default_instance_._instance,
   &::instance_host::_PerformActionRequest_default_instance_._instance,
+  &::instance_host::_PerformActionResponse_MarkupEntry_DoNotUse_default_instance_._instance,
   &::instance_host::_PerformActionResponse_default_instance_._instance,
 };
 
@@ -131,30 +182,36 @@ const char descriptor_table_protodef_proto_2finstance_5fhost_2eproto[] PROTOBUF_
   "\n\031proto/instance_host.proto\022\rinstance_ho"
   "st\032\031google/protobuf/any.proto\"W\n\025CreateI"
   "nstanceRequest\022#\n\rinstance_type\030\001 \001(\tR\014i"
-  "nstanceType\022\031\n\010user_ids\030\002 \003(\tR\007userIds\"9"
-  "\n\026CreateInstanceResponse\022\037\n\013instance_id\030"
-  "\001 \001(\tR\ninstanceId\"\241\001\n\024PerformActionReque"
-  "st\022\037\n\013instance_id\030\001 \001(\tR\ninstanceId\022\027\n\007u"
-  "ser_id\030\002 \001(\tR\006userId\022\037\n\013action_name\030\003 \001("
-  "\tR\nactionName\022.\n\007payload\030\004 \003(\0132\024.google."
-  "protobuf.AnyR\007payload\"\027\n\025PerformActionRe"
-  "sponse2\324\001\n\023InstanceHostService\022_\n\016Create"
-  "Instance\022$.instance_host.CreateInstanceR"
-  "equest\032%.instance_host.CreateInstanceRes"
-  "ponse\"\000\022\\\n\rPerformAction\022#.instance_host"
-  ".PerformActionRequest\032$.instance_host.Pe"
-  "rformActionResponse\"\000B3Z1github.com/spie"
-  "lbrett/spielbrett-api/gen/go/protob\006prot"
-  "o3"
+  "nstanceType\022\031\n\010user_ids\030\002 \003(\tR\007userIds\"\277"
+  "\001\n\026CreateInstanceResponse\022\037\n\013instance_id"
+  "\030\001 \001(\tR\ninstanceId\022I\n\006markup\030\002 \003(\01321.ins"
+  "tance_host.CreateInstanceResponse.Markup"
+  "EntryR\006markup\0329\n\013MarkupEntry\022\020\n\003key\030\001 \001("
+  "\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"\241\001\n\024Per"
+  "formActionRequest\022\037\n\013instance_id\030\001 \001(\tR\n"
+  "instanceId\022\027\n\007user_id\030\002 \001(\tR\006userId\022\037\n\013a"
+  "ction_name\030\003 \001(\tR\nactionName\022.\n\007payload\030"
+  "\004 \003(\0132\024.google.protobuf.AnyR\007payload\"\234\001\n"
+  "\025PerformActionResponse\022H\n\006markup\030\001 \003(\01320"
+  ".instance_host.PerformActionResponse.Mar"
+  "kupEntryR\006markup\0329\n\013MarkupEntry\022\020\n\003key\030\001"
+  " \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\0012\324\001\n\023"
+  "InstanceHostService\022_\n\016CreateInstance\022$."
+  "instance_host.CreateInstanceRequest\032%.in"
+  "stance_host.CreateInstanceResponse\"\000\022\\\n\r"
+  "PerformAction\022#.instance_host.PerformAct"
+  "ionRequest\032$.instance_host.PerformAction"
+  "Response\"\000B3Z1github.com/spielbrett/spie"
+  "lbrett-api/gen/go/protob\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_proto_2finstance_5fhost_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fany_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_proto_2finstance_5fhost_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_proto_2finstance_5fhost_2eproto = {
-    false, false, 682, descriptor_table_protodef_proto_2finstance_5fhost_2eproto,
+    false, false, 951, descriptor_table_protodef_proto_2finstance_5fhost_2eproto,
     "proto/instance_host.proto",
-    &descriptor_table_proto_2finstance_5fhost_2eproto_once, descriptor_table_proto_2finstance_5fhost_2eproto_deps, 1, 4,
+    &descriptor_table_proto_2finstance_5fhost_2eproto_once, descriptor_table_proto_2finstance_5fhost_2eproto_deps, 1, 6,
     schemas, file_default_instances, TableStruct_proto_2finstance_5fhost_2eproto::offsets,
     file_level_metadata_proto_2finstance_5fhost_2eproto, file_level_enum_descriptors_proto_2finstance_5fhost_2eproto,
     file_level_service_descriptors_proto_2finstance_5fhost_2eproto,
@@ -411,6 +468,20 @@ void CreateInstanceRequest::InternalSwap(CreateInstanceRequest* other) {
 
 // ===================================================================
 
+CreateInstanceResponse_MarkupEntry_DoNotUse::CreateInstanceResponse_MarkupEntry_DoNotUse() {}
+CreateInstanceResponse_MarkupEntry_DoNotUse::CreateInstanceResponse_MarkupEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void CreateInstanceResponse_MarkupEntry_DoNotUse::MergeFrom(const CreateInstanceResponse_MarkupEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata CreateInstanceResponse_MarkupEntry_DoNotUse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2finstance_5fhost_2eproto_getter, &descriptor_table_proto_2finstance_5fhost_2eproto_once,
+      file_level_metadata_proto_2finstance_5fhost_2eproto[1]);
+}
+
+// ===================================================================
+
 class CreateInstanceResponse::_Internal {
  public:
 };
@@ -419,16 +490,21 @@ CreateInstanceResponse::CreateInstanceResponse(::PROTOBUF_NAMESPACE_ID::Arena* a
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor(arena, is_message_owned);
+  if (arena != nullptr && !is_message_owned) {
+    arena->OwnCustomDestructor(this, &CreateInstanceResponse::ArenaDtor);
+  }
   // @@protoc_insertion_point(arena_constructor:instance_host.CreateInstanceResponse)
 }
 CreateInstanceResponse::CreateInstanceResponse(const CreateInstanceResponse& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   CreateInstanceResponse* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.instance_id_){}
+      /*decltype(_impl_.markup_)*/{}
+    , decltype(_impl_.instance_id_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.markup_.MergeFrom(from._impl_.markup_);
   _impl_.instance_id_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.instance_id_.Set("", GetArenaForAllocation());
@@ -445,7 +521,8 @@ inline void CreateInstanceResponse::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.instance_id_){}
+      /*decltype(_impl_.markup_)*/{::_pbi::ArenaInitialized(), arena}
+    , decltype(_impl_.instance_id_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
   _impl_.instance_id_.InitDefault();
@@ -458,6 +535,7 @@ CreateInstanceResponse::~CreateInstanceResponse() {
   // @@protoc_insertion_point(destructor:instance_host.CreateInstanceResponse)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
+    ArenaDtor(this);
     return;
   }
   SharedDtor();
@@ -465,9 +543,15 @@ CreateInstanceResponse::~CreateInstanceResponse() {
 
 inline void CreateInstanceResponse::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.markup_.Destruct();
+  _impl_.markup_.~MapField();
   _impl_.instance_id_.Destroy();
 }
 
+void CreateInstanceResponse::ArenaDtor(void* object) {
+  CreateInstanceResponse* _this = reinterpret_cast< CreateInstanceResponse* >(object);
+  _this->_impl_.markup_.Destruct();
+}
 void CreateInstanceResponse::SetCachedSize(int size) const {
   _impl_._cached_size_.Set(size);
 }
@@ -478,6 +562,7 @@ void CreateInstanceResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.markup_.Clear();
   _impl_.instance_id_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -495,6 +580,19 @@ const char* CreateInstanceResponse::_InternalParse(const char* ptr, ::_pbi::Pars
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "instance_host.CreateInstanceResponse.instance_id"));
+        } else
+          goto handle_unusual;
+        continue;
+      // map<string, string> markup = 2 [json_name = "markup"];
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&_impl_.markup_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
         } else
           goto handle_unusual;
         continue;
@@ -537,6 +635,36 @@ uint8_t* CreateInstanceResponse::_InternalSerialize(
         1, this->_internal_instance_id(), target);
   }
 
+  // map<string, string> markup = 2 [json_name = "markup"];
+  if (!this->_internal_markup().empty()) {
+    using MapType = ::_pb::Map<std::string, std::string>;
+    using WireHelper = CreateInstanceResponse_MarkupEntry_DoNotUse::Funcs;
+    const auto& map_field = this->_internal_markup();
+    auto check_utf8 = [](const MapType::value_type& entry) {
+      (void)entry;
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.first.data(), static_cast<int>(entry.first.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "instance_host.CreateInstanceResponse.MarkupEntry.key");
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.second.data(), static_cast<int>(entry.second.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "instance_host.CreateInstanceResponse.MarkupEntry.value");
+    };
+
+    if (stream->IsSerializationDeterministic() && map_field.size() > 1) {
+      for (const auto& entry : ::_pbi::MapSorterPtr<MapType>(map_field)) {
+        target = WireHelper::InternalSerialize(2, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    } else {
+      for (const auto& entry : map_field) {
+        target = WireHelper::InternalSerialize(2, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    }
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -552,6 +680,15 @@ size_t CreateInstanceResponse::ByteSizeLong() const {
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // map<string, string> markup = 2 [json_name = "markup"];
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_markup_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_markup().begin();
+      it != this->_internal_markup().end(); ++it) {
+    total_size += CreateInstanceResponse_MarkupEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
 
   // string instance_id = 1 [json_name = "instanceId"];
   if (!this->_internal_instance_id().empty()) {
@@ -578,6 +715,7 @@ void CreateInstanceResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg,
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_impl_.markup_.MergeFrom(from._impl_.markup_);
   if (!from._internal_instance_id().empty()) {
     _this->_internal_set_instance_id(from._internal_instance_id());
   }
@@ -600,6 +738,7 @@ void CreateInstanceResponse::InternalSwap(CreateInstanceResponse* other) {
   auto* lhs_arena = GetArenaForAllocation();
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.markup_.InternalSwap(&other->_impl_.markup_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.instance_id_, lhs_arena,
       &other->_impl_.instance_id_, rhs_arena
@@ -609,7 +748,7 @@ void CreateInstanceResponse::InternalSwap(CreateInstanceResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata CreateInstanceResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_proto_2finstance_5fhost_2eproto_getter, &descriptor_table_proto_2finstance_5fhost_2eproto_once,
-      file_level_metadata_proto_2finstance_5fhost_2eproto[1]);
+      file_level_metadata_proto_2finstance_5fhost_2eproto[2]);
 }
 
 // ===================================================================
@@ -949,7 +1088,21 @@ void PerformActionRequest::InternalSwap(PerformActionRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata PerformActionRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_proto_2finstance_5fhost_2eproto_getter, &descriptor_table_proto_2finstance_5fhost_2eproto_once,
-      file_level_metadata_proto_2finstance_5fhost_2eproto[2]);
+      file_level_metadata_proto_2finstance_5fhost_2eproto[3]);
+}
+
+// ===================================================================
+
+PerformActionResponse_MarkupEntry_DoNotUse::PerformActionResponse_MarkupEntry_DoNotUse() {}
+PerformActionResponse_MarkupEntry_DoNotUse::PerformActionResponse_MarkupEntry_DoNotUse(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+    : SuperType(arena) {}
+void PerformActionResponse_MarkupEntry_DoNotUse::MergeFrom(const PerformActionResponse_MarkupEntry_DoNotUse& other) {
+  MergeFromInternal(other);
+}
+::PROTOBUF_NAMESPACE_ID::Metadata PerformActionResponse_MarkupEntry_DoNotUse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_proto_2finstance_5fhost_2eproto_getter, &descriptor_table_proto_2finstance_5fhost_2eproto_once,
+      file_level_metadata_proto_2finstance_5fhost_2eproto[4]);
 }
 
 // ===================================================================
@@ -960,36 +1113,215 @@ class PerformActionResponse::_Internal {
 
 PerformActionResponse::PerformActionResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  if (arena != nullptr && !is_message_owned) {
+    arena->OwnCustomDestructor(this, &PerformActionResponse::ArenaDtor);
+  }
   // @@protoc_insertion_point(arena_constructor:instance_host.PerformActionResponse)
 }
 PerformActionResponse::PerformActionResponse(const PerformActionResponse& from)
-  : ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase() {
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
   PerformActionResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      /*decltype(_impl_.markup_)*/{}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.markup_.MergeFrom(from._impl_.markup_);
   // @@protoc_insertion_point(copy_constructor:instance_host.PerformActionResponse)
 }
 
+inline void PerformActionResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      /*decltype(_impl_.markup_)*/{::_pbi::ArenaInitialized(), arena}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
 
+PerformActionResponse::~PerformActionResponse() {
+  // @@protoc_insertion_point(destructor:instance_host.PerformActionResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    ArenaDtor(this);
+    return;
+  }
+  SharedDtor();
+}
 
+inline void PerformActionResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.markup_.Destruct();
+  _impl_.markup_.~MapField();
+}
 
+void PerformActionResponse::ArenaDtor(void* object) {
+  PerformActionResponse* _this = reinterpret_cast< PerformActionResponse* >(object);
+  _this->_impl_.markup_.Destruct();
+}
+void PerformActionResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void PerformActionResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:instance_host.PerformActionResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.markup_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* PerformActionResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // map<string, string> markup = 1 [json_name = "markup"];
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(&_impl_.markup_, ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* PerformActionResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:instance_host.PerformActionResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // map<string, string> markup = 1 [json_name = "markup"];
+  if (!this->_internal_markup().empty()) {
+    using MapType = ::_pb::Map<std::string, std::string>;
+    using WireHelper = PerformActionResponse_MarkupEntry_DoNotUse::Funcs;
+    const auto& map_field = this->_internal_markup();
+    auto check_utf8 = [](const MapType::value_type& entry) {
+      (void)entry;
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.first.data(), static_cast<int>(entry.first.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "instance_host.PerformActionResponse.MarkupEntry.key");
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+        entry.second.data(), static_cast<int>(entry.second.length()),
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+        "instance_host.PerformActionResponse.MarkupEntry.value");
+    };
+
+    if (stream->IsSerializationDeterministic() && map_field.size() > 1) {
+      for (const auto& entry : ::_pbi::MapSorterPtr<MapType>(map_field)) {
+        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    } else {
+      for (const auto& entry : map_field) {
+        target = WireHelper::InternalSerialize(1, entry.first, entry.second, target, stream);
+        check_utf8(entry);
+      }
+    }
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:instance_host.PerformActionResponse)
+  return target;
+}
+
+size_t PerformActionResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:instance_host.PerformActionResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // map<string, string> markup = 1 [json_name = "markup"];
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(this->_internal_markup_size());
+  for (::PROTOBUF_NAMESPACE_ID::Map< std::string, std::string >::const_iterator
+      it = this->_internal_markup().begin();
+      it != this->_internal_markup().end(); ++it) {
+    total_size += PerformActionResponse_MarkupEntry_DoNotUse::Funcs::ByteSizeLong(it->first, it->second);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
 
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData PerformActionResponse::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::CopyImpl,
-    ::PROTOBUF_NAMESPACE_ID::internal::ZeroFieldsBase::MergeImpl,
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    PerformActionResponse::MergeImpl
 };
 const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*PerformActionResponse::GetClassData() const { return &_class_data_; }
 
 
+void PerformActionResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<PerformActionResponse*>(&to_msg);
+  auto& from = static_cast<const PerformActionResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:instance_host.PerformActionResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
+  _this->_impl_.markup_.MergeFrom(from._impl_.markup_);
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
 
+void PerformActionResponse::CopyFrom(const PerformActionResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:instance_host.PerformActionResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
 
+bool PerformActionResponse::IsInitialized() const {
+  return true;
+}
 
+void PerformActionResponse::InternalSwap(PerformActionResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.markup_.InternalSwap(&other->_impl_.markup_);
+}
 
 ::PROTOBUF_NAMESPACE_ID::Metadata PerformActionResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_proto_2finstance_5fhost_2eproto_getter, &descriptor_table_proto_2finstance_5fhost_2eproto_once,
-      file_level_metadata_proto_2finstance_5fhost_2eproto[3]);
+      file_level_metadata_proto_2finstance_5fhost_2eproto[5]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -999,6 +1331,10 @@ template<> PROTOBUF_NOINLINE ::instance_host::CreateInstanceRequest*
 Arena::CreateMaybeMessage< ::instance_host::CreateInstanceRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::instance_host::CreateInstanceRequest >(arena);
 }
+template<> PROTOBUF_NOINLINE ::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse*
+Arena::CreateMaybeMessage< ::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse >(arena);
+}
 template<> PROTOBUF_NOINLINE ::instance_host::CreateInstanceResponse*
 Arena::CreateMaybeMessage< ::instance_host::CreateInstanceResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::instance_host::CreateInstanceResponse >(arena);
@@ -1006,6 +1342,10 @@ Arena::CreateMaybeMessage< ::instance_host::CreateInstanceResponse >(Arena* aren
 template<> PROTOBUF_NOINLINE ::instance_host::PerformActionRequest*
 Arena::CreateMaybeMessage< ::instance_host::PerformActionRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::instance_host::PerformActionRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::instance_host::PerformActionResponse_MarkupEntry_DoNotUse*
+Arena::CreateMaybeMessage< ::instance_host::PerformActionResponse_MarkupEntry_DoNotUse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::instance_host::PerformActionResponse_MarkupEntry_DoNotUse >(arena);
 }
 template<> PROTOBUF_NOINLINE ::instance_host::PerformActionResponse*
 Arena::CreateMaybeMessage< ::instance_host::PerformActionResponse >(Arena* arena) {
