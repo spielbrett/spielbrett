@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/spielbrett/spielbrett-api/gen/go/proto"
+	proto "github.com/spielbrett/spielbrett-api/gen/go/proto/services/user"
 	"github.com/spielbrett/spielbrett-go/internal/app/user"
 )
 

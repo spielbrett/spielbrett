@@ -7,7 +7,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/spielbrett/spielbrett-api/gen/go/proto"
+	instanceProto "github.com/spielbrett/spielbrett-api/gen/go/proto/services/instance"
+	instanceHostProto "github.com/spielbrett/spielbrett-api/gen/go/proto/services/instance_host"
+	userProto "github.com/spielbrett/spielbrett-api/gen/go/proto/services/user"
 	"github.com/spielbrett/spielbrett-go/internal/app"
 	"github.com/spielbrett/spielbrett-go/internal/grpc/instance"
 	"github.com/spielbrett/spielbrett-go/internal/grpc/user"
@@ -16,6 +18,7 @@ import (
 	mongodriver "go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/reflection"
 )
 
@@ -34,6 +37,10 @@ func main() {
 	if !ok {
 		log.Fatal("MONGO_ENDPOINT not set")
 	}
+	instanceHostEndpoint, ok := os.LookupEnv("INSTANCE_HOST_ENDPOINT")
+	if !ok {
+		log.Fatal("INSTANCE_HOST_ENDPOINT not set")
+	}
 
 	ctx, cancel := context.WithTimeout(context.Background(), MONGO_TIMEOUT)
 	defer cancel()
@@ -41,9 +48,16 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	storage := mongo.NewStorage(mongoClient)
-	app := app.NewApp(storage)
+
+	conn, err := grpc.Dial(instanceHostEndpoint, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+	instanceHostClient := instanceHostProto.NewInstanceHostServiceClient(conn)
+
+	app := app.NewApp(storage, instanceHostClient, instanceHostEndpoint)
 
 	bot, err := telegram.NewBot(app, botToken)
 	if err != nil {
@@ -59,8 +73,8 @@ func main() {
 	var opts []grpc.ServerOption
 	grpcServer := grpc.NewServer(opts...)
 
-	proto.RegisterInstanceServiceServer(grpcServer, instance.NewGRPCService(app.InstanceService))
-	proto.RegisterUserServiceServer(grpcServer, user.NewGRPCService(app.UserService))
+	instanceProto.RegisterInstanceServiceServer(grpcServer, instance.NewGRPCService(app.InstanceService))
+	userProto.RegisterUserServiceServer(grpcServer, user.NewGRPCService(app.UserService))
 	reflection.Register(grpcServer)
 
 	grpcServer.Serve(lis)

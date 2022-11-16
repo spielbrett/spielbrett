@@ -3,7 +3,7 @@ package instance
 import (
 	"context"
 
-	"github.com/spielbrett/spielbrett-api/gen/go/proto"
+	proto "github.com/spielbrett/spielbrett-api/gen/go/proto/services/instance"
 	"github.com/spielbrett/spielbrett-go/internal/app/instance"
 )
 
