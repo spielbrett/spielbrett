@@ -1,7 +1,7 @@
 #include "GRPCServer.h"
 
 #include "InstanceHost.h"
-#include "proto/instance_host.pb.h"
+#include "proto/services/instance_host/instance_host.pb.h"
 
 #include <cstddef>
 #include <google/protobuf/wrappers.pb.h>
@@ -50,8 +50,8 @@ void GRPCServer::stop()
 
 grpc::Status GRPCServer::CreateInstance(
     grpc::ServerContext *context,
-    const instance_host::CreateInstanceRequest *request,
-    instance_host::CreateInstanceResponse *response)
+    const spielbrett::services::instance_host::CreateInstanceRequest *request,
+    spielbrett::services::instance_host::CreateInstanceResponse *response)
 {
     std::vector<std::string> userIds(request->user_ids().begin(), request->user_ids().end());
 
@@ -80,8 +80,8 @@ grpc::Status GRPCServer::CreateInstance(
 
 grpc::Status GRPCServer::PerformAction(
     grpc::ServerContext *context,
-    const instance_host::PerformActionRequest *request,
-    instance_host::PerformActionResponse *response)
+    const spielbrett::services::instance_host::PerformActionRequest *request,
+    spielbrett::services::instance_host::PerformActionResponse *response)
 {
     auto instance = instanceHost.getInstance(request->instance_id());
     if (instance == nullptr) {
