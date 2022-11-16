@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "proto/user.proto",
+    "title": "proto/services/instance/instance.proto",
     "version": "version not set"
   },
   "tags": [
     {
-      "name": "UserService"
+      "name": "InstanceService"
     }
   ],
   "consumes": [
@@ -46,24 +46,13 @@
         }
       }
     },
-    "userLinkTelegramResponse": {
-      "type": "object"
-    },
-    "userLoginPassAuthResponse": {
+    "servicesinstanceCreateInstanceResponse": {
       "type": "object",
       "properties": {
-        "sessionId": {
+        "instanceId": {
           "type": "string"
-        }
-      }
-    },
-    "userRegisterUserResponse": {
-      "type": "object"
-    },
-    "userTelegramAuthResponse": {
-      "type": "object",
-      "properties": {
-        "sessionId": {
+        },
+        "endpoint": {
           "type": "string"
         }
       }

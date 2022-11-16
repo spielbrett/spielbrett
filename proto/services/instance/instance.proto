@@ -1,6 +1,6 @@
 syntax = "proto3";
-package instance;
-option go_package = "github.com/spielbrett/spielbrett-api/gen/go/proto";
+package spielbrett.services.instance;
+option go_package = "github.com/spielbrett/spielbrett-api/gen/go/proto/services/instance";
 
 message CreateInstanceRequest {
   string session_id = 1;

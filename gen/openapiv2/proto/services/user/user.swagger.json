@@ -1,12 +1,12 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "proto/instance_host.proto",
+    "title": "proto/services/user/user.proto",
     "version": "version not set"
   },
   "tags": [
     {
-      "name": "InstanceHostService"
+      "name": "UserService"
     }
   ],
   "consumes": [
@@ -17,31 +17,6 @@
   ],
   "paths": {},
   "definitions": {
-    "instance_hostCreateInstanceResponse": {
-      "type": "object",
-      "properties": {
-        "instanceId": {
-          "type": "string"
-        },
-        "markup": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
-    "instance_hostPerformActionResponse": {
-      "type": "object",
-      "properties": {
-        "markup": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -68,6 +43,28 @@
           "items": {
             "$ref": "#/definitions/protobufAny"
           }
+        }
+      }
+    },
+    "userLinkTelegramResponse": {
+      "type": "object"
+    },
+    "userLoginPassAuthResponse": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string"
+        }
+      }
+    },
+    "userRegisterUserResponse": {
+      "type": "object"
+    },
+    "userTelegramAuthResponse": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string"
         }
       }
     }
