@@ -4,6 +4,8 @@
 #include <grpc++/ext/proto_server_reflection_plugin.h>
 
 #include <csignal>
+#include <cstdlib>
+#include <iostream>
 
 InstanceHost instanceHost{};
 
@@ -22,5 +24,11 @@ int main()
     // TODO: Enable this only in debug builds when multiple build configurations are supported
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 
-    return instanceHost.run();
+    const char *grpcListenAddr = std::getenv("GRPC_LISTEN_ADDR");
+    if (grpcListenAddr == nullptr) {
+        std::cerr << "GRPC_LISTEN_ADDR not set" << std::endl;
+        return EXIT_FAILURE;
+    }
+
+    return instanceHost.run(std::string(grpcListenAddr));
 }

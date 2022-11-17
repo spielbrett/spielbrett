@@ -16,7 +16,7 @@ class InstanceHost
 public:
     InstanceHost();
 
-    int run();
+    int run(const std::string &grpcListenAddr);
     void stop();
 
     std::string createInstance(

@@ -16,13 +16,13 @@ InstanceHost::InstanceHost() :
 {
 }
 
-int InstanceHost::run()
+int InstanceHost::run(const std::string &grpcListenAddr)
 {
     if (grpcServer == nullptr) {
         throw std::runtime_error("gRPC server not instantiated");
     }
 
-    grpcServer->run("0.0.0.0:8000");
+    grpcServer->run(grpcListenAddr);
     grpcServer->join();
 
     return EXIT_SUCCESS;
