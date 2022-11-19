@@ -101,18 +101,18 @@ boost::python::object importClass(const std::string &moduleName, const std::stri
     return gameClass;
 }
 
-// TODO: Get rid of the static variable
-std::optional<boost::python::object> jinja2 = std::nullopt;
+// TODO: Just use native Mustache implementation
+std::optional<boost::python::object> chevron = std::nullopt;
 
-boost::python::object getJinja2()
+boost::python::object getChevron()
 {
-    if (!jinja2.has_value()) {
-        jinja2 = boost::python::import("jinja2");
+    if (!chevron.has_value()) {
+        chevron = boost::python::import("chevron");
     }
-    return jinja2.value();
+    return chevron.value();
 }
 
-boost::python::object readUITemplate(const std::string &moduleDir, const std::string &ui)
+boost::python::str readUITemplate(const std::string &moduleDir, const std::string &ui)
 {
     std::filesystem::path moduleDirPath(moduleDir);
     auto uiPath = moduleDirPath / std::filesystem::path(ui);
@@ -121,7 +121,7 @@ boost::python::object readUITemplate(const std::string &moduleDir, const std::st
     std::ifstream uiFile(uiPath);
     ss << uiFile.rdbuf();
 
-    return getJinja2().attr("Template")(ss.str());
+    return ss.str().c_str();
 }
 
 } // namespace
@@ -197,7 +197,7 @@ std::string Instance::renderMarkup(const std::string &userId) const
         boost::python::dict observationDict = boost::python::extract<boost::python::dict>(observation);
         observationDict["player_index"] = playerIndex;
 
-        auto result = uiTemplate.attr("render")(observationDict);
+        auto result = getChevron().attr("render")(uiTemplate, observationDict);
         return boost::python::extract<std::string>(result);
     }
     catch (boost::python::error_already_set &) {

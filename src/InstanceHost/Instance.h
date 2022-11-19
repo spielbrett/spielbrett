@@ -23,7 +23,7 @@ public:
 
 private:
     boost::python::object instanceObject;
-    boost::python::object uiTemplate;
+    boost::python::str uiTemplate;
 
     std::vector<std::string> userIds;
     std::unordered_map<std::string, int> playerIndices;
