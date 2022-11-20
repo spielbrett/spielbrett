@@ -101,18 +101,7 @@ boost::python::object importClass(const std::string &moduleName, const std::stri
     return gameClass;
 }
 
-// TODO: Just use native Mustache implementation
-std::optional<boost::python::object> chevron = std::nullopt;
-
-boost::python::object getChevron()
-{
-    if (!chevron.has_value()) {
-        chevron = boost::python::import("chevron");
-    }
-    return chevron.value();
-}
-
-boost::python::str readUITemplate(const std::string &moduleDir, const std::string &ui)
+std::string readUITemplate(const std::string &moduleDir, const std::string &ui)
 {
     std::filesystem::path moduleDirPath(moduleDir);
     auto uiPath = moduleDirPath / std::filesystem::path(ui);
@@ -121,7 +110,7 @@ boost::python::str readUITemplate(const std::string &moduleDir, const std::strin
     std::ifstream uiFile(uiPath);
     ss << uiFile.rdbuf();
 
-    return ss.str().c_str();
+    return ss.str();
 }
 
 } // namespace
@@ -150,59 +139,15 @@ Instance::Instance(const std::string &instanceType, const std::vector<std::strin
 
 void Instance::performAction(const std::string &userId, const std::string &action)
 {
-    std::unique_lock lock(sm);
-
-    if (!playerIndices.contains(userId)) {
-        std::stringstream ss;
-        ss << "user " << userId << " is not participating in the game";
-        throw std::invalid_argument(ss.str());
-    }
-
-    auto playerIndex = playerIndices.at(userId);
-    try {
-        instanceObject.attr("perform_action")(playerIndex, action);
-    }
-    catch (const boost::python::error_already_set &) {
-        // TODO: Return traceback info instead of printing to console
-        PyErr_Print();
-
-        throw std::runtime_error("failed to perform action");
-    }
+    throw std::logic_error("not implemented");
 }
 
 std::unordered_map<std::string, std::string> Instance::renderMarkup() const
 {
-    std::unordered_map<std::string, std::string> markup;
-    for (const auto &userId : userIds) {
-        markup[userId] = renderMarkup(userId);
-    }
-    return markup;
+    throw std::logic_error("not implemented");
 }
 
 std::string Instance::renderMarkup(const std::string &userId) const
 {
-    // TODO: Maybe shared_lock is enough?
-    std::unique_lock lock(sm);
-
-    if (!playerIndices.contains(userId)) {
-        std::stringstream ss;
-        ss << "user " << userId << " is not participating in the game";
-        throw std::invalid_argument(ss.str());
-    }
-
-    auto playerIndex = playerIndices.at(userId);
-    try {
-        auto observation = instanceObject.attr("observe")(playerIndex);
-
-        boost::python::dict observationDict = boost::python::extract<boost::python::dict>(observation);
-        observationDict["player_index"] = playerIndex;
-
-        auto result = getChevron().attr("render")(uiTemplate, observationDict);
-        return boost::python::extract<std::string>(result);
-    }
-    catch (boost::python::error_already_set &) {
-        PyErr_Print();
-
-        throw std::runtime_error("failed to render template");
-    }
+    throw std::logic_error("not implemented");
 }
