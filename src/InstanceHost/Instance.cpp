@@ -71,14 +71,14 @@ std::pair<std::string, std::string> parseEntrypoint(const std::string &entrypoin
     return {tokens[0], tokens[1]};
 }
 
-boost::python::object importClass(const std::string &moduleName, const std::string &className)
+pybind11::object importClass(const std::string &moduleName, const std::string &className)
 {
-    boost::python::object gameModule;
+    pybind11::object gameModule;
     try {
-        gameModule = boost::python::import(moduleName.c_str());
+        gameModule = pybind11::module_::import(moduleName.c_str());
     }
-    catch (const boost::python::error_already_set &) {
-        if (PyErr_ExceptionMatches(PyExc_ImportError)) {
+    catch (const pybind11::error_already_set &e) {
+        if (e.matches(PyExc_ImportError)) {
             std::stringstream ss;
             ss << "failed to import module " << moduleName;
             throw std::invalid_argument(ss.str());
@@ -88,11 +88,11 @@ boost::python::object importClass(const std::string &moduleName, const std::stri
         }
     }
 
-    boost::python::object gameClass;
+    pybind11::object gameClass;
     try {
-        gameClass = gameModule.attr(className.c_str());
+        gameClass = gameModule.attr(pybind11::str(className));
     }
-    catch (const boost::python::error_already_set &) {
+    catch (const pybind11::error_already_set &) {
         std::stringstream ss;
         ss << "failed to load class " << className << " from " << moduleName;
         throw std::invalid_argument(ss.str());
@@ -128,7 +128,7 @@ Instance::Instance(const std::string &instanceType, const std::vector<std::strin
     try {
         instanceObject = gameClass();
     }
-    catch (const boost::python::error_already_set &) {
+    catch (const pybind11::error_already_set &) {
         std::stringstream ss;
         ss << "failed to instantiate an instance object";
         throw std::invalid_argument(ss.str());

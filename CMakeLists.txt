@@ -22,11 +22,8 @@ else()
     FetchContent_MakeAvailable(spielbrett-api)
 endif()
 
-find_package(PythonLibs REQUIRED)
-include_directories(${PYTHON_INCLUDE_DIRS})
-
-find_package(Boost 1.80.0 COMPONENTS python REQUIRED)
-include_directories(${Boost_INCLUDE_DIRS})
+find_package(Boost 1.80.0 REQUIRED)
+find_package(pybind11 REQUIRED)
 
 add_executable(InstanceHost
     src/InstanceHost/main.cpp
@@ -37,5 +34,4 @@ add_executable(InstanceHost
 target_link_libraries(InstanceHost
     spielbrett-api
     gRPC::grpc++_reflection
-    ${Boost_LIBRARIES}
-    ${PYTHON_LIBRARIES})
+    pybind11::embed)

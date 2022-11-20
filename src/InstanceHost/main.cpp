@@ -1,6 +1,7 @@
 #include "InstanceHost.h"
 
-#include <Python.h>
+#include <pybind11/embed.h>
+
 #include <grpc++/ext/proto_server_reflection_plugin.h>
 
 #include <csignal>
@@ -19,7 +20,7 @@ int main()
     std::signal(SIGINT, handleShutdown);
 
     // Single Python interpreter per single InstanceHost process
-    Py_Initialize();
+    pybind11::scoped_interpreter guard{};
 
     // TODO: Enable this only in debug builds when multiple build configurations are supported
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();

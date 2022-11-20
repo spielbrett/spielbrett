@@ -1,7 +1,7 @@
 #ifndef INSTANCE_H
 #define INSTANCE_H
 
-#include <boost/python.hpp>
+#include <pybind11/embed.h>
 
 #include <shared_mutex>
 #include <string>
@@ -22,7 +22,7 @@ public:
     std::string renderMarkup(const std::string &userId) const;
 
 private:
-    boost::python::object instanceObject;
+    pybind11::object instanceObject;
     std::string uiTemplate;
 
     std::vector<std::string> userIds;
