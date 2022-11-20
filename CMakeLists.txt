@@ -25,13 +25,31 @@ endif()
 find_package(Boost 1.80.0 REQUIRED)
 find_package(pybind11 REQUIRED)
 
-add_executable(InstanceHost
+if(NOT DEFINED OPEN_SPIEL_ROOT_DIR)
+    message(FATAL_ERROR "OPEN_SPIEL_ROOT_DIR not defined")
+endif()
+
+add_executable(
+    InstanceHost
     src/InstanceHost/main.cpp
     src/InstanceHost/GRPCServer.cpp
     src/InstanceHost/Instance.cpp
     src/InstanceHost/InstanceHost.cpp
-    src/InstanceHost/WebsocketServer.cpp)
-target_link_libraries(InstanceHost
+    src/InstanceHost/WebsocketServer.cpp
+)
+target_include_directories(
+    InstanceHost PRIVATE
+    "${OPEN_SPIEL_ROOT_DIR}"
+    "${OPEN_SPIEL_ROOT_DIR}/open_spiel/abseil-cpp"
+)
+target_link_directories(
+    InstanceHost PRIVATE
+    "${OPEN_SPIEL_ROOT_DIR}/build"
+)
+target_link_libraries(
+    InstanceHost
     spielbrett-api
     gRPC::grpc++_reflection
-    pybind11::embed)
+    pybind11::embed
+    open_spiel
+)
