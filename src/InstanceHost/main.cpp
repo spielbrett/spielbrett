@@ -17,7 +17,11 @@ void handleShutdown(int signal)
 
 int main()
 {
-    std::signal(SIGINT, handleShutdown);
+    const char *grpcListenAddr = std::getenv("GRPC_LISTEN_ADDR");
+    if (grpcListenAddr == nullptr) {
+        std::cerr << "GRPC_LISTEN_ADDR not set" << std::endl;
+        return EXIT_FAILURE;
+    }
 
     // Single Python interpreter per single InstanceHost process
     pybind11::scoped_interpreter guard{};
@@ -25,11 +29,6 @@ int main()
     // TODO: Enable this only in debug builds when multiple build configurations are supported
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 
-    const char *grpcListenAddr = std::getenv("GRPC_LISTEN_ADDR");
-    if (grpcListenAddr == nullptr) {
-        std::cerr << "GRPC_LISTEN_ADDR not set" << std::endl;
-        return EXIT_FAILURE;
-    }
-
+    std::signal(SIGINT, handleShutdown);
     return instanceHost.run(std::string(grpcListenAddr));
 }
