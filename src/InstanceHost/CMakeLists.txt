@@ -1,9 +1,12 @@
 add_executable(
     InstanceHost
     main.cpp
+    Board.cpp
     GRPCServer.cpp
     Instance.cpp
     InstanceHost.cpp
+    OpenSpielGame.cpp
+    PyGameClass.cpp
     WebsocketServer.cpp
 )
 target_include_directories(
@@ -20,6 +23,7 @@ target_link_libraries(
     spielbrett-api
     gRPC::grpc++_reflection
     nlohmann_json::nlohmann_json
+    pugixml::pugixml
     pybind11::embed
     open_spiel
 )

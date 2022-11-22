@@ -1,4 +1,6 @@
+#include "GRPCServer.h"
 #include "InstanceHost.h"
+#include "WebsocketServer.h"
 
 #include <pybind11/embed.h>
 
@@ -7,28 +9,54 @@
 #include <csignal>
 #include <cstdlib>
 #include <iostream>
+#include <memory>
+#include <thread>
 
-InstanceHost instanceHost{};
+std::unique_ptr<GRPCServer> grpcServer;
+std::unique_ptr<WebsocketServer> websocketServer;
 
 void handleShutdown(int signal)
 {
-    instanceHost.stop();
+    if (grpcServer != nullptr) {
+        grpcServer->stop();
+    }
+    if (websocketServer != nullptr) {
+        websocketServer->stop();
+    }
 }
 
 int main()
 {
+    std::signal(SIGINT, handleShutdown);
+
     const char *grpcListenAddr = std::getenv("GRPC_LISTEN_ADDR");
     if (grpcListenAddr == nullptr) {
         std::cerr << "GRPC_LISTEN_ADDR not set" << std::endl;
         return EXIT_FAILURE;
     }
+    const char *websocketListenAddr = std::getenv("WEBSOCKET_LISTEN_ADDR");
+    if (websocketListenAddr == nullptr) {
+        std::cerr << "WEBSOCKET_LISTEN_ADDR not set" << std::endl;
+        return EXIT_FAILURE;
+    }
 
     // Single Python interpreter per single InstanceHost process
     pybind11::scoped_interpreter guard{};
+    pybind11::gil_scoped_release release{};
 
-    // TODO: Enable this only in debug builds when multiple build configurations are supported
+    auto instanceHost = std::make_shared<InstanceHost>();
+
+    // TODO: Enable reflection only in debug builds when multiple build configurations are supported
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 
-    std::signal(SIGINT, handleShutdown);
-    return instanceHost.run(std::string(grpcListenAddr));
+    grpcServer = std::make_unique<GRPCServer>(instanceHost);
+    grpcServer->run(grpcListenAddr);
+
+    websocketServer = std::make_unique<WebsocketServer>(instanceHost);
+    websocketServer->run(websocketListenAddr);
+
+    grpcServer->join();
+    websocketServer->join();
+
+    return EXIT_SUCCESS;
 }

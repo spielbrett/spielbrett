@@ -1,6 +1,11 @@
 #ifndef INSTANCE_H
 #define INSTANCE_H
 
+#include "Board.h"
+
+#include "OpenSpielGame.h"
+#include "PyGameClass.h"
+
 #include <pybind11/embed.h>
 
 #include <shared_mutex>
@@ -16,19 +21,23 @@ public:
 
     void performAction(
         const std::string &userId,
-        const std::string &actionName);
+        const std::string &action);
 
     std::unordered_map<std::string, std::string> renderMarkup() const;
     std::string renderMarkup(const std::string &userId) const;
 
 private:
-    pybind11::object instanceObject;
-    std::string uiTemplate;
+    std::unique_ptr<PyGameClass> gameClass;
+    std::unique_ptr<Board> board;
 
     std::vector<std::string> userIds;
     std::unordered_map<std::string, int> playerIndices;
 
+    std::shared_ptr<const OpenSpielGame> openSpielGame;
+
     mutable std::shared_mutex sm;
+
+    std::string doRenderMarkup(const std::string &userId) const;
 };
 
 #endif // INSTANCE_H

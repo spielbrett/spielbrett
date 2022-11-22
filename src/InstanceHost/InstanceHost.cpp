@@ -10,34 +10,6 @@
 #include <shared_mutex>
 #include <stdexcept>
 
-InstanceHost::InstanceHost() :
-    websocketServer(std::make_unique<WebsocketServer>()),
-    grpcServer(std::make_unique<GRPCServer>(*this))
-{
-}
-
-int InstanceHost::run(const std::string &grpcListenAddr)
-{
-    if (grpcServer == nullptr) {
-        throw std::runtime_error("gRPC server not instantiated");
-    }
-
-    grpcServer->run(grpcListenAddr);
-    grpcServer->join();
-
-    return EXIT_SUCCESS;
-}
-
-void InstanceHost::stop()
-{
-    if (grpcServer == nullptr) {
-        return;
-    }
-
-    grpcServer->stop();
-    grpcServer->join();
-}
-
 std::string InstanceHost::createInstance(
     const std::string &instanceType,
     const std::vector<std::string> &userIds)
@@ -59,7 +31,7 @@ std::shared_ptr<Instance> InstanceHost::getInstance(const std::string &instanceI
     return instances.at(instanceId);
 }
 
-std::string InstanceHost::generateInstanceId() noexcept
+std::string InstanceHost::generateInstanceId() const noexcept
 {
     return boost::lexical_cast<std::string>(generator());
 }

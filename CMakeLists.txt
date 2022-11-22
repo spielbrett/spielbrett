@@ -23,6 +23,8 @@ else()
 endif()
 
 find_package(Boost 1.80.0 REQUIRED)
+find_package(nlohmann_json 3.2.0 REQUIRED)
+find_package(pugixml 1.13 REQUIRED)
 find_package(pybind11 REQUIRED)
 
 if(NOT DEFINED ENV{OPEN_SPIEL_ROOT_DIR})

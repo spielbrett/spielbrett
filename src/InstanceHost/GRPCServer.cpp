@@ -1,16 +1,14 @@
 #include "GRPCServer.h"
 
-#include "InstanceHost.h"
-#include "proto/services/instance_host/instance_host.pb.h"
-
-#include <cstddef>
 #include <google/protobuf/wrappers.pb.h>
 #include <grpc++/server_builder.h>
 #include <grpcpp/completion_queue.h>
 #include <grpcpp/support/status.h>
+
+#include <cstddef>
 #include <stdexcept>
 
-GRPCServer::GRPCServer(InstanceHost &instanceHost) :
+GRPCServer::GRPCServer(std::shared_ptr<InstanceHost> instanceHost) :
     instanceHost(instanceHost)
 {
 }
@@ -58,15 +56,15 @@ grpc::Status GRPCServer::CreateInstance(
     std::string instanceId;
     std::unordered_map<std::string, std::string> markup;
     try {
-        instanceId = instanceHost.createInstance(request->instance_type(), userIds);
-        auto instance = instanceHost.getInstance(instanceId);
+        instanceId = instanceHost->createInstance(request->instance_type(), userIds);
+        auto instance = instanceHost->getInstance(instanceId);
         markup = instance->renderMarkup();
     }
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
     }
     catch (std::exception &e) {
-        return grpc::Status(grpc::StatusCode::INTERNAL, e.what());
+        return grpc::Status(grpc::StatusCode::UNKNOWN, e.what());
     }
 
     response->set_instance_id(instanceId);
@@ -83,7 +81,7 @@ grpc::Status GRPCServer::PerformAction(
     const spielbrett::services::instance_host::PerformActionRequest *request,
     spielbrett::services::instance_host::PerformActionResponse *response)
 {
-    auto instance = instanceHost.getInstance(request->instance_id());
+    auto instance = instanceHost->getInstance(request->instance_id());
     if (instance == nullptr) {
         return grpc::Status(grpc::StatusCode::NOT_FOUND, "instance not found");
     }
@@ -97,7 +95,7 @@ grpc::Status GRPCServer::PerformAction(
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
     }
     catch (std::exception &e) {
-        return grpc::Status(grpc::StatusCode::INTERNAL, e.what());
+        return grpc::Status(grpc::StatusCode::UNKNOWN, e.what());
     }
 
     auto &responseMarkup = *response->mutable_markup();
