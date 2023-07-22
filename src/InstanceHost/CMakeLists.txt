@@ -6,6 +6,7 @@ add_executable(
     GRPCServer.cpp
     Instance.cpp
     InstanceHost.cpp
+    ObjectFactory.cpp
     OpenSpielGame.cpp
     PyGameClass.cpp
     WebsocketServer.cpp

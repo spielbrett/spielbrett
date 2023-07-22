@@ -1,5 +1,7 @@
 #include "Board.h"
 
+#include "ObjectFactory.h"
+
 #include <iostream>
 #include <memory>
 #include <sstream>
@@ -14,15 +16,15 @@ Board::Board(const std::string &xml)
 
     const auto layoutNode = root.child("Layout");
     for (const auto node : layoutNode.children()) {
-        layout.emplace_back(node);
+        layout.push_back(ObjectFactory::defaultFactory().construct(node));
     }
     const auto publicInformationNode = root.child("PublicInformation");
     for (const auto node : publicInformationNode.children()) {
-        publicInformation.emplace_back(node);
+        publicInformation.push_back(ObjectFactory::defaultFactory().construct(node));
     }
     const auto privateInformationNode = root.child("PrivateInformation");
     for (const auto node : privateInformationNode.children()) {
-        privateInformation.emplace_back(node);
+        privateInformation.push_back(ObjectFactory::defaultFactory().construct(node));
     }
 }
 
