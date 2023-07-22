@@ -1,6 +1,7 @@
 add_executable(
     InstanceHost
     main.cpp
+    BoardObjects/Object.cpp
     Board.cpp
     GRPCServer.cpp
     Instance.cpp
