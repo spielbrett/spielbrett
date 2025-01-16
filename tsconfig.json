@@ -1,19 +1,7 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
-  "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "public/*"],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "src/*": ["src/*"]
-    },
-    "types": [
-      "svelte",
-      "svelte/store",
-      "svelte/motion",
-      "svelte/transition",
-      "svelte/animate",
-      "svelte/easing"
-    ]
-  }
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
