@@ -1,5 +1,4 @@
-#ifndef PY_GAME_CLASS
-#define PY_GAME_CLASS
+#pragma once
 
 #include <pybind11/embed.h>
 
@@ -51,5 +50,3 @@ public:
 private:
     std::unique_ptr<pybind11::object> gameClass;
 };
-
-#endif // PY_GAME_CLASS

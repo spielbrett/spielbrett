@@ -32,7 +32,7 @@ func (b *Bot) HandleAction(c telebot.Context) error {
 	userId := strconv.FormatInt(c.Sender().ID, 10)
 	action := tokens[2]
 
-	markup, err := b.app.InstanceService.PerformAction(instanceId, userId, action)
+	markup, err := b.app.InstanceManager.PerformAction(instanceId, userId, action)
 	if err != nil {
 		return err
 	}

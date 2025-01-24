@@ -1,12 +1,13 @@
 add_executable(
     InstanceHost
     main.cpp
-    BoardObjects/Object.cpp
+    Objects/Object.cpp
+    Objects/ObjectFactory.cpp
+    Objects/Primitive.cpp
     Board.cpp
     GRPCServer.cpp
     Instance.cpp
     InstanceHost.cpp
-    ObjectFactory.cpp
     OpenSpielGame.cpp
     PyGameClass.cpp
     WebsocketServer.cpp

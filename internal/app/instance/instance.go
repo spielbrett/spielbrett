@@ -3,24 +3,20 @@ package instance
 import (
 	"context"
 
-	"github.com/spielbrett/spielbrett/gen/go/proto/services/instance_host"
-	"github.com/spielbrett/spielbrett/internal/storage"
+	"github.com/spielbrett/spielbrett/gen/go/proto/instance_host"
 	"github.com/spielbrett/spielbrett/internal/types/instance"
 )
 
 type Service struct {
-	storage              storage.Storage
 	instanceHostClient   instance_host.InstanceHostServiceClient
 	instanceHostEndpoint string
 }
 
 func NewService(
-	storage storage.Storage,
 	instanceHostClient instance_host.InstanceHostServiceClient,
 	instanceHostEndpoint string,
 ) *Service {
 	return &Service{
-		storage:              storage,
 		instanceHostClient:   instanceHostClient,
 		instanceHostEndpoint: instanceHostEndpoint,
 	}

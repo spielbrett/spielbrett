@@ -1,0 +1,12 @@
+syntax = "proto3";
+package spielbrett_api.instance_host;
+option go_package = "github.com/spielbrett/spielbrett/gen/go/proto/instance_host";
+
+import "google/protobuf/any.proto";
+
+import "proto/instance_host/messages.proto";
+
+service InstanceHostService {
+  rpc CreateInstance(CreateInstanceRequest) returns (CreateInstanceResponse) {}
+  rpc PerformAction(PerformActionRequest) returns (PerformActionResponse) {}
+}

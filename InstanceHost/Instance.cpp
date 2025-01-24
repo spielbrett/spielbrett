@@ -126,7 +126,7 @@ std::shared_ptr<OpenSpielGame> makeOpenSpielGame(
 
 } // namespace
 
-Instance::Instance(const std::string &instanceType, const std::vector<std::string> &userIds) :
+Instance::Instance(const std::string &instanceType, const std::vector<UserID> &userIds) :
     userIds(userIds)
 {
     initializeReverseIndex(userIds, playerIndices);
@@ -143,7 +143,7 @@ Instance::Instance(const std::string &instanceType, const std::vector<std::strin
     openSpielGame = makeOpenSpielGame(instanceType, config, *board, *gameClass, playerIndices.size());
 }
 
-void Instance::performAction(const std::string &userId, const std::string &action)
+void Instance::performAction(const std::string &userId, const std::string &action, const ActionArgs &args)
 {
     std::unique_lock lock(sm);
 
@@ -154,15 +154,25 @@ void Instance::performAction(const std::string &userId, const std::string &actio
     }
     auto playerIndex = playerIndices.at(userId);
 
-    auto gameObject = gameClass->instantiate(*board);
-    gameObject->attr(pybind11::str(action))(userId);
+    if (board->tryPerformNativeAction(playerIndex, action, args)) {
+        return;
+    }
+
+    // TODO: Decide when it should be called
+    // auto gameObject = gameClass->instantiate(*board);
+    // gameObject->attr(pybind11::str(action))(userId, *pybind11::cast(args));
 }
 
-std::unordered_map<std::string, std::string> Instance::renderMarkup() const
+std::vector<Action> Instance::getAvailableActions() const
+{
+    throw std::logic_error("not implemented");
+}
+
+std::unordered_map<UserID, std::string> Instance::renderMarkup() const
 {
     std::shared_lock lock(sm);
 
-    std::unordered_map<std::string, std::string> result;
+    std::unordered_map<UserID, std::string> result;
     for (const auto &userId : userIds) {
         result[userId] = doRenderMarkup(userId);
     }
@@ -170,7 +180,7 @@ std::unordered_map<std::string, std::string> Instance::renderMarkup() const
     return result;
 }
 
-std::string Instance::renderMarkup(const std::string &userId) const
+std::string Instance::renderMarkup(const UserID &userId) const
 {
     std::shared_lock lock(sm);
 
@@ -183,7 +193,7 @@ std::string Instance::renderMarkup(const std::string &userId) const
     return doRenderMarkup(userId);
 }
 
-std::string Instance::doRenderMarkup(const std::string &userId) const
+std::string Instance::doRenderMarkup(const UserID &userId) const
 {
     auto playerIndex = playerIndices.at(userId);
 

@@ -40,7 +40,7 @@ func (b *Bot) HandleCreate(c telebot.Context) error {
 		userIds = append(userIds, strconv.FormatInt(userId, 10))
 	}
 
-	instance, gameMarkup, err := b.app.InstanceService.CreateInstance(instanceType, userIds)
+	instance, gameMarkup, err := b.app.InstanceManager.CreateInstance(instanceType, userIds)
 	if err != nil {
 		return c.Reply("Failed to create a game. Please try again.")
 	}

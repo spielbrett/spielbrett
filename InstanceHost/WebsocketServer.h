@@ -1,5 +1,4 @@
-#ifndef WEBSOCKET_SERVER_H
-#define WEBSOCKET_SERVER_H
+#pragma once
 
 #include "InstanceHost.h"
 
@@ -17,5 +16,3 @@ public:
 private:
     std::shared_ptr<InstanceHost> instanceHost;
 };
-
-#endif // WEBSOCKET_SERVER_H

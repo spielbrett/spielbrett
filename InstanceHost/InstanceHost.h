@@ -1,5 +1,4 @@
-#ifndef INSTANCE_HOST_H
-#define INSTANCE_HOST_H
+#pragma once
 
 #include "Instance.h"
 
@@ -9,22 +8,22 @@
 #include <shared_mutex>
 #include <unordered_map>
 
+using InstanceID = std::string;
+
 class InstanceHost
 {
 public:
-    std::string createInstance(
+    InstanceID createInstance(
         const std::string &instanceType,
-        const std::vector<std::string> &userIds);
+        const std::vector<UserID> &userIds);
     std::shared_ptr<Instance> getInstance(
-        const std::string &instanceId) const noexcept;
+        const InstanceID &instanceId) const noexcept;
 
 private:
-    std::unordered_map<std::string, std::shared_ptr<Instance>> instances;
+    std::unordered_map<InstanceID, std::shared_ptr<Instance>> instances;
 
     mutable std::shared_mutex sm;
-    mutable boost::uuids::random_generator generator;
+    boost::uuids::random_generator generator;
 
-    std::string generateInstanceId() const noexcept;
+    InstanceID generateInstanceId() noexcept;
 };
-
-#endif // INSTANCE_HOST_H

@@ -1,15 +1,15 @@
-#ifndef GRPC_SERVER_H
-#define GRPC_SERVER_H
+#pragma once
 
+#include "Instance.h"
 #include "InstanceHost.h"
 
-#include <proto/services/instance_host/instance_host.grpc.pb.h>
+#include "proto/instance_host/service.grpc.pb.h"
 
 #include <grpc++/server.h>
 
 #include <memory>
 
-class GRPCServer : public spielbrett::services::instance_host::InstanceHostService::Service
+class GRPCServer : public spielbrett_api::instance_host::InstanceHostService::Service
 {
 public:
     GRPCServer(std::shared_ptr<InstanceHost> instanceHost);
@@ -20,16 +20,14 @@ public:
 
     grpc::Status CreateInstance(
         grpc::ServerContext *context,
-        const spielbrett::services::instance_host::CreateInstanceRequest *request,
-        spielbrett::services::instance_host::CreateInstanceResponse *response) override;
+        const spielbrett_api::instance_host::CreateInstanceRequest *request,
+        spielbrett_api::instance_host::CreateInstanceResponse *response) override;
     grpc::Status PerformAction(
         grpc::ServerContext *context,
-        const spielbrett::services::instance_host::PerformActionRequest *request,
-        spielbrett::services::instance_host::PerformActionResponse *response) override;
+        const spielbrett_api::instance_host::PerformActionRequest *request,
+        spielbrett_api::instance_host::PerformActionResponse *response) override;
 
 private:
     std::shared_ptr<InstanceHost> instanceHost;
     std::unique_ptr<grpc::Server> server;
 };
-
-#endif // GRPC_SERVER_H

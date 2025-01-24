@@ -48,13 +48,13 @@ void GRPCServer::stop()
 
 grpc::Status GRPCServer::CreateInstance(
     grpc::ServerContext *context,
-    const spielbrett::services::instance_host::CreateInstanceRequest *request,
-    spielbrett::services::instance_host::CreateInstanceResponse *response)
+    const spielbrett_api::instance_host::CreateInstanceRequest *request,
+    spielbrett_api::instance_host::CreateInstanceResponse *response)
 {
-    std::vector<std::string> userIds(request->user_ids().begin(), request->user_ids().end());
+    std::vector<UserID> userIds(request->user_ids().begin(), request->user_ids().end());
 
-    std::string instanceId;
-    std::unordered_map<std::string, std::string> markup;
+    InstanceID instanceId;
+    std::unordered_map<UserID, std::string> markup;
     try {
         instanceId = instanceHost->createInstance(request->instance_type(), userIds);
         auto instance = instanceHost->getInstance(instanceId);
@@ -78,17 +78,17 @@ grpc::Status GRPCServer::CreateInstance(
 
 grpc::Status GRPCServer::PerformAction(
     grpc::ServerContext *context,
-    const spielbrett::services::instance_host::PerformActionRequest *request,
-    spielbrett::services::instance_host::PerformActionResponse *response)
+    const spielbrett_api::instance_host::PerformActionRequest *request,
+    spielbrett_api::instance_host::PerformActionResponse *response)
 {
     auto instance = instanceHost->getInstance(request->instance_id());
     if (instance == nullptr) {
         return grpc::Status(grpc::StatusCode::NOT_FOUND, "instance not found");
     }
 
-    std::unordered_map<std::string, std::string> markup;
+    std::unordered_map<UserID, std::string> markup;
     try {
-        instance->performAction(request->user_id(), request->action());
+        instance->performAction(request->user_id(), request->action(), {}); // TODO: Args
         markup = instance->renderMarkup();
     }
     catch (std::invalid_argument &e) {

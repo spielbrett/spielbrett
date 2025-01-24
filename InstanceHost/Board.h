@@ -1,7 +1,6 @@
-#ifndef BOARD_H
-#define BOARD_H
+#pragma once
 
-#include "BoardObjects/Object.h"
+#include "Objects/Object.h"
 #include "PyGameClass.h"
 
 #include <pybind11/embed.h>
@@ -10,6 +9,9 @@
 
 #include <stack>
 #include <string>
+
+using ActionArgs = std::vector<std::string>;
+using Action = std::pair<std::string, ActionArgs>;
 
 class Board
 {
@@ -24,10 +26,10 @@ public:
     bool hasPrivateInformation() const;
     int numDistinctActions() const;
 
+    bool tryPerformNativeAction(int playerIndex, const std::string &action, const ActionArgs &args);
+
 private:
     std::vector<Object> layout;
     std::vector<Object> publicInformation;
     std::vector<Object> privateInformation;
 };
-
-#endif // BOARD_H

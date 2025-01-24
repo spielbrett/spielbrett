@@ -10,9 +10,9 @@
 #include <shared_mutex>
 #include <stdexcept>
 
-std::string InstanceHost::createInstance(
+InstanceID InstanceHost::createInstance(
     const std::string &instanceType,
-    const std::vector<std::string> &userIds)
+    const std::vector<UserID> &userIds)
 {
     std::unique_lock lock(sm);
 
@@ -21,7 +21,7 @@ std::string InstanceHost::createInstance(
     return instanceId;
 }
 
-std::shared_ptr<Instance> InstanceHost::getInstance(const std::string &instanceId) const noexcept
+std::shared_ptr<Instance> InstanceHost::getInstance(const InstanceID &instanceId) const noexcept
 {
     std::shared_lock lock(sm);
 
@@ -31,7 +31,7 @@ std::shared_ptr<Instance> InstanceHost::getInstance(const std::string &instanceI
     return instances.at(instanceId);
 }
 
-std::string InstanceHost::generateInstanceId() const noexcept
+InstanceID InstanceHost::generateInstanceId() noexcept
 {
-    return boost::lexical_cast<std::string>(generator());
+    return boost::lexical_cast<InstanceID>(generator());
 }

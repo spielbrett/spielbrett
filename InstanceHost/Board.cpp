@@ -1,11 +1,12 @@
 #include "Board.h"
 
-#include "ObjectFactory.h"
+#include "Objects/ObjectFactory.h"
 
 #include <iostream>
 #include <memory>
 #include <sstream>
 #include <stdexcept>
+#include <string>
 
 Board::Board(const std::string &xml)
 {
@@ -76,6 +77,11 @@ bool Board::hasPrivateInformation() const
 }
 
 int Board::numDistinctActions() const
+{
+    throw std::logic_error("not implemented");
+}
+
+bool Board::tryPerformNativeAction(int playerIndex, const std::string &action, const ActionArgs &args)
 {
     throw std::logic_error("not implemented");
 }

@@ -1,5 +1,4 @@
-#ifndef OPEN_SPIEL_GAME
-#define OPEN_SPIEL_GAME
+#pragma once
 
 #include <open_spiel/spiel.h>
 
@@ -44,5 +43,3 @@ public:
 private:
     open_spiel::GameInfo gameInfo;
 };
-
-#endif // OPEN_SPIEL_GAME
