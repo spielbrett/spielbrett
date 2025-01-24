@@ -14,3 +14,6 @@
 	path = web
 	url = git@github.com:spielbrett/spielbrett-web.git
 	branch = main
+[submodule "deps/open_spiel"]
+	path = deps/open_spiel
+	url = git@github.com:google-deepmind/open_spiel.git
