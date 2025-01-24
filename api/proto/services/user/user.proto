@@ -1,0 +1,41 @@
+syntax = "proto3";
+package spielbrett.services.user;
+option go_package = "github.com/spielbrett/spielbrett-api/gen/go/proto/services/user";
+
+message RegisterUserRequest {
+  string login = 1;
+  string password = 2;
+}
+
+message RegisterUserResponse {}
+
+message LinkTelegramRequest {
+  string session_id = 1;
+  string web_app_init_data = 2;
+}
+
+message LinkTelegramResponse {}
+
+message LoginPassAuthRequest {
+  string login = 1;
+  string password = 2;
+}
+
+message LoginPassAuthResponse {
+  string session_id = 1;
+}
+
+message TelegramAuthRequest {
+  string web_app_init_data = 1;
+}
+
+message TelegramAuthResponse {
+  string session_id = 1;
+}
+
+service UserService {
+  rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {}
+  rpc LinkTelegram(LinkTelegramRequest) returns (LinkTelegramResponse) {}
+  rpc LoginPassAuth(LoginPassAuthRequest) returns (LoginPassAuthResponse) {}
+  rpc TelegramAuth(TelegramAuthRequest) returns (TelegramAuthResponse) {}
+}

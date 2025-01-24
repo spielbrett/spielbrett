@@ -1,0 +1,17 @@
+syntax = "proto3";
+package spielbrett.services.instance;
+option go_package = "github.com/spielbrett/spielbrett-api/gen/go/proto/services/instance";
+
+message CreateInstanceRequest {
+  string session_id = 1;
+  string instance_type = 2;
+}
+
+message CreateInstanceResponse {
+  string instance_id = 1;
+  string endpoint = 2;
+}
+
+service InstanceService {
+  rpc CreateInstance(CreateInstanceRequest) returns (CreateInstanceResponse) {}
+}
