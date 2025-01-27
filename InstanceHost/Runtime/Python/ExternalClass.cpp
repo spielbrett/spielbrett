@@ -19,11 +19,11 @@ ExternalClass::~ExternalClass()
     pyClass = nullptr;
 }
 
-std::unique_ptr<ExternalClass::Object> ExternalClass::instantiateAndLink(std::weak_ptr<Spielbrett::Object> linkedObject)
+std::unique_ptr<ExternalClass::Object> ExternalClass::instantiateAndLink(Spielbrett::Board::Object *boardObject)
 {
     // GIL will be acquired by the ExternalClass::Object
     auto object = std::unique_ptr<ExternalClass::Object>(new ExternalClass::Object(*pyClass));
-    object->link(linkedObject);
+    object->linkBoardObject(boardObject);
     return object;
 }
 
@@ -33,9 +33,10 @@ ExternalClass::Object::Object(pybind11::object &pyClass)
     pyObject = pyClass();
 }
 
-void ExternalClass::Object::link(std::weak_ptr<Spielbrett::Object> linkedObject)
+void ExternalClass::Object::linkBoardObject(Spielbrett::Board::Object *boardObject)
 {
-    pyObject.attr("__linked_object") = linkedObject;
+    // TODO: There must certainly be a safer and saner way to do this?
+    pyObject.attr("__board_object") = reinterpret_cast<std::uintptr_t>(boardObject);
 }
 
 void ExternalClass::Object::performAction(int playerIndex, const std::string &action, const std::vector<std::string> &args)

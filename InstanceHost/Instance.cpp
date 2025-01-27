@@ -17,12 +17,19 @@
 
 namespace
 {
+
+struct ObjectEntry {
+    std::string moduleName;
+    std::string className;
+    std::string templatePath;
+};
+
 struct GameConfig {
-    std::string gameClass;
-    std::string board;
+    std::string blueprint;
     int minPlayers;
     int maxPlayers;
     int moveLimit;
+    std::unordered_map<std::string, ObjectEntry> objects;
 };
 
 template<typename T>
@@ -36,37 +43,47 @@ inline void initializeReverseIndex(const std::vector<T> &v, std::unordered_map<T
 std::filesystem::path getConfigPath(const std::string &moduleName)
 {
     std::filesystem::path moduleDir(moduleName);
-    return moduleDir / std::filesystem::path("config.json");
+    return moduleDir / std::filesystem::path("game.json");
+}
+
+std::pair<std::string, std::string> parseClassName(const std::string &className)
+{
+    std::vector<std::string> tokens;
+    boost::split(tokens, className, boost::is_any_of(":"));
+    if (tokens.size() != 2) {
+        throw std::runtime_error("invalid class name format");
+    }
+    return {tokens[0], tokens[1]};
 }
 
 GameConfig parseConfig(const std::filesystem::path &configPath)
 {
     std::ifstream ifs(configPath);
-    auto config = nlohmann::json::parse(ifs);
+    auto configJson = nlohmann::json::parse(ifs);
 
-    return {
-        .gameClass = config["game_class"],
-        .board = config["board"],
-        .minPlayers = config["min_players"],
-        .maxPlayers = config["max_players"],
-        .moveLimit = config["move_limit"],
+    auto config = GameConfig{
+        .blueprint = configJson["blueprint"],
+        .minPlayers = configJson["min_players"],
+        .maxPlayers = configJson["max_players"],
+        .moveLimit = configJson["move_limit"],
     };
-}
 
-std::pair<std::string, std::string> parseGameClass(const std::string &gameClass)
-{
-    std::vector<std::string> tokens;
-    boost::split(tokens, gameClass, boost::is_any_of(":"));
-    if (tokens.size() != 2) {
-        throw std::runtime_error("invalid game_class format");
+    for (const auto& [name, entry] : configJson["objects"].items()) {
+        auto [moduleName, className] = parseClassName(entry["class"]);
+        config.objects[name] = {
+            .moduleName = moduleName,
+            .className = className,
+            .templatePath = entry["template"]
+        };
     }
-    return {tokens[0], tokens[1]};
+
+    return config;
 }
 
-std::string importBoardXml(const std::string &moduleDir, const std::string &boardXmlPath)
+std::string readFile(const std::string &moduleDir, const std::string &path)
 {
     std::filesystem::path moduleDirPath(moduleDir);
-    auto fullPath = moduleDirPath / std::filesystem::path(boardXmlPath);
+    auto fullPath = moduleDirPath / std::filesystem::path(path);
 
     std::stringstream ss;
     std::ifstream uiFile(fullPath);
@@ -133,10 +150,12 @@ Instance::Instance(const std::string &instanceType, const std::vector<UserID> &u
     auto configPath = getConfigPath(instanceType);
     auto config = parseConfig(configPath);
 
-    auto boardXml = importBoardXml(instanceType, config.board);
-    board = std::make_unique<Board>(runtime, boardXml);
+    for (auto &[name, entry] : config.objects) {
+        runtime.loadClass(name, entry.moduleName, entry.className);
+    }
 
-    auto [moduleName, className] = parseGameClass(config.gameClass);
+    auto blueprintXml = readFile(instanceType, config.blueprint);
+    board = std::make_unique<Board>(runtime, blueprintXml);
 
     openSpielGame = makeOpenSpielGame(instanceType, config, *board, playerIndices.size());
 }

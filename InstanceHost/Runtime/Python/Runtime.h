@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../Board.h"
 #include "../IObject.h"
 #include "../IRuntime.h"
 #include "ExternalClass.h"
@@ -10,10 +11,13 @@ class Runtime : public IRuntime
 {
 public:
     Runtime();
-    std::unique_ptr<IObject> createObjectAndLink(const std::string &objectName, const Object &linkedObject) override;
+
+    void loadClass(const std::string &objectName, const std::string &moduleName, const std::string &className);
+
+    std::unique_ptr<IObject> createAndLinkObject(const std::string &objectName, Board::Object *boardObject) override;
 
 private:
-    std::unordered_map<std::string, ExternalClass> externalClasses;
+    std::unordered_map<std::string, std::unique_ptr<ExternalClass>> externalClasses;
 };
 
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "IObject.h"
-#include "../Object.h"
+#include "../Board.h"
 
 namespace Spielbrett::Runtime {
 
@@ -9,7 +9,7 @@ class IRuntime {
 public:
     virtual ~IRuntime() = default;
 
-    virtual std::unique_ptr<IObject> createObjectAndLink(const std::string &objectName, const Object &linkedObject) = 0;
+    virtual std::unique_ptr<IObject> createAndLinkObject(const std::string &objectName, Board::Object *boardObject) = 0;
 };
 
 }

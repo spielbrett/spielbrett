@@ -1,15 +1,13 @@
 #pragma once
 
 #include "../IObject.h"
-#include "../../Object.h"
+#include "../../Board.h"
 
 #include <pybind11/embed.h>
 
 #include <string>
 
 namespace Spielbrett::Runtime::Python {
-
-class Board;
 
 class ExternalClass
 {
@@ -30,7 +28,7 @@ public:
         Object(Object &&) = delete;
         Object &operator=(Object &&) = delete;
 
-        void link(std::weak_ptr<Spielbrett::Object> linkedObject);
+        void linkBoardObject(Spielbrett::Board::Object *boardObject);
 
         // Instantiating the object acquires the GIL. It is then held throughout the whole lifetime of the object.
         // Destructors are called in reverse order, so gil_scoped_acquire must preceed the instantiated pybind11::object
@@ -44,14 +42,11 @@ public:
     ExternalClass(const std::string &moduleName, const std::string &className);
     ~ExternalClass();
 
-    std::unique_ptr<Object> instantiateAndLink(std::weak_ptr<Spielbrett::Object> linkedObject);
+    std::unique_ptr<Object> instantiateAndLink(Spielbrett::Board::Object *boardObject);
 
 private:
     ExternalClass(const ExternalClass &other) = delete;
     ExternalClass &operator=(const ExternalClass &other) = delete;
-
-    ExternalClass(ExternalClass &&other) = delete;
-    ExternalClass &operator=(ExternalClass &&other) = delete;
 
     std::unique_ptr<pybind11::object> pyClass;
 };

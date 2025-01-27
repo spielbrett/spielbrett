@@ -9,7 +9,6 @@ add_executable(
     GRPCServer.cpp
     Instance.cpp
     InstanceHost.cpp
-    Object.cpp
     OpenSpielGame.cpp
     WebsocketServer.cpp
 )
