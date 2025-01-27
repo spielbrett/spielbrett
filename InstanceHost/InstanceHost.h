@@ -10,7 +10,9 @@
 
 using InstanceID = std::string;
 
-class InstanceHost
+namespace Spielbrett {
+
+class InstanceHost final
 {
 public:
     InstanceID createInstance(
@@ -27,3 +29,5 @@ private:
 
     InstanceID generateInstanceId() noexcept;
 };
+
+}

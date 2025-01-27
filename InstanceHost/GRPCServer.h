@@ -9,10 +9,12 @@
 
 #include <memory>
 
-class GRPCServer : public spielbrett_api::instance_host::InstanceHostService::Service
+namespace Spielbrett {
+
+class GRPCServer final : public spielbrett_api::instance_host::InstanceHostService::Service
 {
 public:
-    GRPCServer(std::shared_ptr<InstanceHost> instanceHost);
+    explicit GRPCServer(std::shared_ptr<InstanceHost> instanceHost);
 
     void run(const std::string &listenAddr);
     void join();
@@ -31,3 +33,5 @@ private:
     std::shared_ptr<InstanceHost> instanceHost;
     std::unique_ptr<grpc::Server> server;
 };
+
+}

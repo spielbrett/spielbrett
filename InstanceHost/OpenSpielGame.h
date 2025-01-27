@@ -4,7 +4,9 @@
 
 #include <memory>
 
-class OpenSpielState : public open_spiel::State
+namespace Spielbrett {
+
+class OpenSpielState final : public open_spiel::State
 {
 public:
     OpenSpielState(std::shared_ptr<const open_spiel::Game> game);
@@ -43,3 +45,5 @@ public:
 private:
     open_spiel::GameInfo gameInfo;
 };
+
+}

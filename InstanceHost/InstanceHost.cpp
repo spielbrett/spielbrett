@@ -10,6 +10,8 @@
 #include <shared_mutex>
 #include <stdexcept>
 
+namespace Spielbrett {
+
 InstanceID InstanceHost::createInstance(
     const std::string &instanceType,
     const std::vector<UserID> &userIds)
@@ -34,4 +36,6 @@ std::shared_ptr<Instance> InstanceHost::getInstance(const InstanceID &instanceId
 InstanceID InstanceHost::generateInstanceId() noexcept
 {
     return boost::lexical_cast<InstanceID>(generator());
+}
+
 }

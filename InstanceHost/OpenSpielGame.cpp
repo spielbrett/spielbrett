@@ -2,6 +2,8 @@
 
 #include <stdexcept>
 
+namespace Spielbrett {
+
 OpenSpielState::OpenSpielState(std::shared_ptr<const open_spiel::Game> game) :
     open_spiel::State(game)
 {
@@ -91,4 +93,6 @@ int OpenSpielGame::MaxGameLength() const
 std::unique_ptr<open_spiel::State> OpenSpielGame::NewInitialState() const
 {
     return std::make_unique<OpenSpielState>(shared_from_this());
+}
+
 }

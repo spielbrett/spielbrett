@@ -3,7 +3,7 @@
 #include "Board.h"
 
 #include "OpenSpielGame.h"
-#include "PyGameClass.h"
+#include "Runtime/Python/Runtime.h"
 
 #include <pybind11/embed.h>
 
@@ -11,9 +11,11 @@
 #include <string>
 #include <unordered_map>
 
+namespace Spielbrett {
+
 using UserID = std::string;
 
-class Instance
+class Instance final
 {
 public:
     Instance(
@@ -24,14 +26,12 @@ public:
         const UserID &userId,
         const std::string &action,
         const ActionArgs &args);
-    
-    std::vector<Action> getAvailableActions() const;
 
-    std::unordered_map<UserID, std::string> renderMarkup() const;
-    std::string renderMarkup(const UserID &userId) const;
+    std::unordered_map<UserID, std::string> render() const;
+    std::string render(const UserID &userId) const;
 
 private:
-    std::unique_ptr<PyGameClass> gameClass;
+    Runtime::Python::Runtime runtime;
     std::unique_ptr<Board> board;
     std::vector<std::pair<UserID, Action>> history;
 
@@ -42,5 +42,7 @@ private:
 
     mutable std::shared_mutex sm;
 
-    std::string doRenderMarkup(const UserID &userId) const;
+    std::string doRender(const UserID &userId) const;
 };
+
+}

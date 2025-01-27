@@ -12,8 +12,8 @@
 #include <memory>
 #include <thread>
 
-std::unique_ptr<GRPCServer> grpcServer;
-std::unique_ptr<WebsocketServer> websocketServer;
+std::unique_ptr<Spielbrett::GRPCServer> grpcServer;
+std::unique_ptr<Spielbrett::WebsocketServer> websocketServer;
 
 void handleShutdown(int signal)
 {
@@ -44,15 +44,15 @@ int main()
     pybind11::scoped_interpreter guard{};
     pybind11::gil_scoped_release release{};
 
-    auto instanceHost = std::make_shared<InstanceHost>();
+    auto instanceHost = std::make_shared<Spielbrett::InstanceHost>();
 
     // TODO: Enable reflection only in debug builds when multiple build configurations are supported
     grpc::reflection::InitProtoReflectionServerBuilderPlugin();
 
-    grpcServer = std::make_unique<GRPCServer>(instanceHost);
+    grpcServer = std::make_unique<Spielbrett::GRPCServer>(instanceHost);
     grpcServer->run(grpcListenAddr);
 
-    websocketServer = std::make_unique<WebsocketServer>(instanceHost);
+    websocketServer = std::make_unique<Spielbrett::WebsocketServer>(instanceHost);
     websocketServer->run(websocketListenAddr);
 
     grpcServer->join();

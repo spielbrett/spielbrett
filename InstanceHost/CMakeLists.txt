@@ -1,15 +1,16 @@
 add_executable(
     InstanceHost
     main.cpp
-    Objects/Object.cpp
-    Objects/ObjectFactory.cpp
-    Objects/Primitive.cpp
+    Runtime/Python/ExternalClass.cpp
+    Runtime/Python/Object.cpp
+    Runtime/Python/ObjectBindings.cpp
+    Runtime/Python/Runtime.cpp
     Board.cpp
     GRPCServer.cpp
     Instance.cpp
     InstanceHost.cpp
+    Object.cpp
     OpenSpielGame.cpp
-    PyGameClass.cpp
     WebsocketServer.cpp
 )
 target_include_directories(

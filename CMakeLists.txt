@@ -18,6 +18,8 @@ set(OPEN_SPIEL_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/deps/open_spiel")
 set(gen_source_dir "${CMAKE_CURRENT_SOURCE_DIR}/gen/cpp")
 file(GLOB_RECURSE gen_sources CONFIGURE_DEPENDS "${gen_source_dir}/*.cc")
 
+add_definitions(-DBOOST_ASIO_NO_DEPRECATED)
+
 add_library(spielbrett-api STATIC ${gen_sources})
 target_include_directories(spielbrett-api PRIVATE ${Protobuf_INCLUDE_DIRS})
 target_include_directories(spielbrett-api PUBLIC "${gen_source_dir}")

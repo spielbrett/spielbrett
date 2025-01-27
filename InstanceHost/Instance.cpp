@@ -10,11 +10,9 @@
 #include <fstream>
 #include <iostream>
 #include <memory>
-#include <optional>
 #include <shared_mutex>
 #include <sstream>
 #include <stdexcept>
-#include <thread>
 #include <unordered_map>
 
 namespace
@@ -77,11 +75,10 @@ std::string importBoardXml(const std::string &moduleDir, const std::string &boar
     return ss.str();
 }
 
-std::shared_ptr<OpenSpielGame> makeOpenSpielGame(
+std::shared_ptr<Spielbrett::OpenSpielGame> makeOpenSpielGame(
     const std::string &instanceType,
     const GameConfig &config,
-    const Board &board,
-    const PyGameClass &gameClass,
+    const Spielbrett::Board &board,
     int numPlayers)
 {
     open_spiel::GameType::Information information;
@@ -121,10 +118,12 @@ std::shared_ptr<OpenSpielGame> makeOpenSpielGame(
     auto params = open_spiel::GameParameters{
         {"num_players", open_spiel::GameParameter(numPlayers)}};
 
-    return std::make_shared<OpenSpielGame>(gameType, gameInfo, params);
+    return std::make_shared<Spielbrett::OpenSpielGame>(gameType, gameInfo, params);
 }
 
 } // namespace
+
+namespace Spielbrett {
 
 Instance::Instance(const std::string &instanceType, const std::vector<UserID> &userIds) :
     userIds(userIds)
@@ -135,12 +134,11 @@ Instance::Instance(const std::string &instanceType, const std::vector<UserID> &u
     auto config = parseConfig(configPath);
 
     auto boardXml = importBoardXml(instanceType, config.board);
-    board = std::make_unique<Board>(boardXml);
+    board = std::make_unique<Board>(runtime, boardXml);
 
     auto [moduleName, className] = parseGameClass(config.gameClass);
-    gameClass = std::make_unique<PyGameClass>(moduleName, className);
 
-    openSpielGame = makeOpenSpielGame(instanceType, config, *board, *gameClass, playerIndices.size());
+    openSpielGame = makeOpenSpielGame(instanceType, config, *board, playerIndices.size());
 }
 
 void Instance::performAction(const std::string &userId, const std::string &action, const ActionArgs &args)
@@ -154,33 +152,24 @@ void Instance::performAction(const std::string &userId, const std::string &actio
     }
     auto playerIndex = playerIndices.at(userId);
 
-    if (board->tryPerformNativeAction(playerIndex, action, args)) {
+    if (board->performAction(playerIndex, action, args)) {
         return;
     }
-
-    // TODO: Decide when it should be called
-    // auto gameObject = gameClass->instantiate(*board);
-    // gameObject->attr(pybind11::str(action))(userId, *pybind11::cast(args));
 }
 
-std::vector<Action> Instance::getAvailableActions() const
-{
-    throw std::logic_error("not implemented");
-}
-
-std::unordered_map<UserID, std::string> Instance::renderMarkup() const
+std::unordered_map<UserID, std::string> Instance::render() const
 {
     std::shared_lock lock(sm);
 
     std::unordered_map<UserID, std::string> result;
     for (const auto &userId : userIds) {
-        result[userId] = doRenderMarkup(userId);
+        result[userId] = doRender(userId);
     }
 
     return result;
 }
 
-std::string Instance::renderMarkup(const UserID &userId) const
+std::string Instance::render(const UserID &userId) const
 {
     std::shared_lock lock(sm);
 
@@ -190,12 +179,14 @@ std::string Instance::renderMarkup(const UserID &userId) const
         throw std::invalid_argument(ss.str());
     }
 
-    return doRenderMarkup(userId);
+    return doRender(userId);
 }
 
-std::string Instance::doRenderMarkup(const UserID &userId) const
+std::string Instance::doRender(const UserID &userId) const
 {
     auto playerIndex = playerIndices.at(userId);
 
-    return board->render(*gameClass, playerIndex);
+    return board->render(playerIndex);
+}
+
 }

@@ -8,6 +8,8 @@
 #include <cstddef>
 #include <stdexcept>
 
+namespace Spielbrett {
+
 GRPCServer::GRPCServer(std::shared_ptr<InstanceHost> instanceHost) :
     instanceHost(instanceHost)
 {
@@ -58,7 +60,7 @@ grpc::Status GRPCServer::CreateInstance(
     try {
         instanceId = instanceHost->createInstance(request->instance_type(), userIds);
         auto instance = instanceHost->getInstance(instanceId);
-        markup = instance->renderMarkup();
+        markup = instance->render();
     }
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
@@ -89,7 +91,7 @@ grpc::Status GRPCServer::PerformAction(
     std::unordered_map<UserID, std::string> markup;
     try {
         instance->performAction(request->user_id(), request->action(), {}); // TODO: Args
-        markup = instance->renderMarkup();
+        markup = instance->render();
     }
     catch (std::invalid_argument &e) {
         return grpc::Status(grpc::StatusCode::INVALID_ARGUMENT, e.what());
@@ -104,4 +106,6 @@ grpc::Status GRPCServer::PerformAction(
     }
 
     return grpc::Status::OK;
+}
+
 }

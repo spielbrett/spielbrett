@@ -1,35 +1,35 @@
 #pragma once
 
-#include "Objects/Object.h"
-#include "PyGameClass.h"
+#include "Object.h"
+#include "Runtime/IObject.h"
+#include "Runtime/IRuntime.h"
 
 #include <pybind11/embed.h>
-
 #include <pugixml.hpp>
 
-#include <stack>
 #include <string>
 
 using ActionArgs = std::vector<std::string>;
 using Action = std::pair<std::string, ActionArgs>;
 
-class Board
+namespace Spielbrett {
+
+class Board final
 {
 public:
-    Board(const std::string &xml);
+    Board(Runtime::IRuntime &runtime, const std::string &blueprintXml);
 
-    std::string render(PyGameClass &gameClass, int playerIndex) const;
-
-    std::unique_ptr<Board> stripPresentation() const;
-    std::unique_ptr<Board> clone() const;
+    // TODO: Copy and move constructors
 
     bool hasPrivateInformation() const;
     int numDistinctActions() const;
 
-    bool tryPerformNativeAction(int playerIndex, const std::string &action, const ActionArgs &args);
+    bool performAction(int playerIndex, const std::string &action, const ActionArgs &args);
+    std::string render(int playerIndex) const;
 
 private:
-    std::vector<Object> layout;
-    std::vector<Object> publicInformation;
-    std::vector<Object> privateInformation;
+    std::vector<Object> objects;
+    std::vector<Action> actions;
 };
+
+}
