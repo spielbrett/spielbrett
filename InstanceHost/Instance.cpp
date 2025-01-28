@@ -150,12 +150,15 @@ Instance::Instance(const std::string &instanceType, const std::vector<UserID> &u
     auto configPath = getConfigPath(instanceType);
     auto config = parseConfig(configPath);
 
+    std::unordered_map<std::string, std::string> templates;
     for (auto &[name, entry] : config.objects) {
         runtime.loadClass(name, entry.moduleName, entry.className);
+        auto templateStr = readFile(instanceType, entry.templatePath);
+        templates.emplace(name, templateStr);
     }
 
     auto blueprintXml = readFile(instanceType, config.blueprint);
-    board = std::make_unique<Board>(runtime, blueprintXml);
+    board = std::make_unique<Board>(runtime, blueprintXml, templates);
 
     openSpielGame = makeOpenSpielGame(instanceType, config, *board, playerIndices.size());
 }

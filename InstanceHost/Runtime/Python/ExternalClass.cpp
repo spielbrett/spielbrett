@@ -39,6 +39,11 @@ void ExternalClass::Object::linkBoardObject(Spielbrett::Board::Object *boardObje
     pyObject.attr("__board_object") = reinterpret_cast<std::uintptr_t>(boardObject);
 }
 
+void ExternalClass::Object::setTemplate(const std::string &templateStr)
+{
+    pyObject.attr("__template") = templateStr;
+}
+
 void ExternalClass::Object::performAction(int playerIndex, const std::string &action, const std::vector<std::string> &args)
 {
     pyObject.attr(pybind11::cast(action))(*pybind11::cast(args));

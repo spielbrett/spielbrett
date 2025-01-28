@@ -15,5 +15,7 @@ PYBIND11_EMBEDDED_MODULE(spielbrett, m)
             },
             [](Object &object, std::uintptr_t value) {
                 object.setBoardObject(reinterpret_cast<Spielbrett::Board::Object *>(value));
-            });
+            })
+        .def_property("__template", &Object::getTemplate, &Object::setTemplate)
+        .def("render", &Object::render);
 }

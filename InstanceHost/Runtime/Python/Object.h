@@ -15,8 +15,14 @@ public:
     Board::Object *getBoardObject() const;
     void setBoardObject(Board::Object *boardObject);
 
+    std::string getTemplate() const;
+    void setTemplate(const std::string &templateStr);
+
+    std::string render(int playerIndex) const;
+
 private:
     Board::Object *boardObject;
+    std::string templateStr;
 };
 
 }

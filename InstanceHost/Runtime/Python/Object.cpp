@@ -16,4 +16,20 @@ void Object::setBoardObject(Board::Object *boardObject)
     this->boardObject = boardObject;
 }
 
+std::string Object::getTemplate() const
+{
+    return templateStr;
+}
+
+void Object::setTemplate(const std::string &templateStr)
+{
+    this->templateStr = templateStr;
+}
+
+std::string Object::render(int playerIndex) const
+{
+    // TODO: Actually render template
+    return getTemplate();
+}
+
 }

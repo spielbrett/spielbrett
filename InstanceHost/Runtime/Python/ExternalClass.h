@@ -15,6 +15,8 @@ public:
     class Object : public Runtime::IObject
     {
     public:
+        void setTemplate(const std::string &templateStr) override;
+
         void performAction(int playerIndex, const std::string &action, const std::vector<std::string> &args) override;
         double getObservation(int playerIndex, const std::string &observation) override;
         std::string render(int playerIndex) override;

@@ -24,13 +24,18 @@ public:
     class Object final
     {
     public:
+        std::string getName() const;
+
         void move(std::weak_ptr<Object> newParent, int order);
 
+        std::string render(int playerIndex) const;
+
     private:
-        Object(Board &board, std::size_t indexInBoard);
+        Object(const std::string &name, Board &board, std::size_t indexInBoard);
     
         void setRuntimeObject(std::shared_ptr<Runtime::IObject> runtimeObject);
 
+        std::string name;
         Board &board;
         std::size_t indexInBoard;
 
@@ -42,7 +47,7 @@ public:
         friend class Board;
     };
 
-    Board(Runtime::IRuntime &runtime, const std::string &blueprintXml);
+    Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const std::unordered_map<std::string, std::string> &templates);
 
     // TODO: Copy and move constructors
 
@@ -53,6 +58,8 @@ public:
     std::string render(int playerIndex) const;
 
 private:
+    std::shared_ptr<Object> getRoot() const;
+
     std::vector<std::shared_ptr<Object>> objects;
     std::vector<Action> actions;
 };
