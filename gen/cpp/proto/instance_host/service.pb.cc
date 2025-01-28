@@ -47,8 +47,8 @@ const char descriptor_table_protodef_proto_2finstance_5fhost_2fservice_2eproto[]
     "z\n\rPerformAction\0222.spielbrett_api.instan"
     "ce_host.PerformActionRequest\0323.spielbret"
     "t_api.instance_host.PerformActionRespons"
-    "e\"\000BAZ\?github.com/spielbrett/spielbrett-"
-    "api/gen/go/proto/instance_hostb\006proto3"
+    "e\"\000B=Z;github.com/spielbrett/spielbrett/"
+    "gen/go/proto/instance_hostb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_proto_2finstance_5fhost_2fservice_2eproto_deps[2] =
     {
@@ -59,7 +59,7 @@ static ::absl::once_flag descriptor_table_proto_2finstance_5fhost_2fservice_2epr
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_proto_2finstance_5fhost_2fservice_2eproto = {
     false,
     false,
-    478,
+    474,
     descriptor_table_protodef_proto_2finstance_5fhost_2fservice_2eproto,
     "proto/instance_host/service.proto",
     &descriptor_table_proto_2finstance_5fhost_2fservice_2eproto_once,

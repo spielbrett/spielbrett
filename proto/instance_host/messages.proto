@@ -17,8 +17,9 @@ message CreateInstanceResponse {
 message PerformActionRequest {
   string instance_id = 1;
   string user_id = 2;
-  string action = 3;
-  repeated string args = 4;
+  uint64 object_id = 3;
+  string action = 4;
+  repeated string args = 5;
 }
 
 message PerformActionResponse {

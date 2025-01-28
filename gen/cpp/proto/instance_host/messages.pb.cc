@@ -57,6 +57,7 @@ inline constexpr PerformActionRequest::Impl_::Impl_(
         action_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
+        object_id_{::uint64_t{0u}},
         _cached_size_{0} {}
 
 template <typename>
@@ -228,6 +229,7 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.instance_id_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.user_id_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.object_id_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.action_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.args_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse_MarkupEntry_DoNotUse, _impl_._has_bits_),
@@ -259,8 +261,8 @@ static const ::_pbi::MigrationSchema
         {10, 20, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse)},
         {22, -1, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceResponse)},
         {32, -1, -1, sizeof(::spielbrett_api::instance_host::PerformActionRequest)},
-        {44, 54, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse_MarkupEntry_DoNotUse)},
-        {56, -1, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse)},
+        {45, 55, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse_MarkupEntry_DoNotUse)},
+        {57, -1, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::spielbrett_api::instance_host::_CreateInstanceRequest_default_instance_._instance,
@@ -281,17 +283,17 @@ const char descriptor_table_protodef_proto_2finstance_5fhost_2fmessages_2eproto[
     "Id\022X\n\006markup\030\002 \003(\0132@.spielbrett_api.inst"
     "ance_host.CreateInstanceResponse.MarkupE"
     "ntryR\006markup\0329\n\013MarkupEntry\022\020\n\003key\030\001 \001(\t"
-    "R\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"|\n\024Perfo"
-    "rmActionRequest\022\037\n\013instance_id\030\001 \001(\tR\nin"
-    "stanceId\022\027\n\007user_id\030\002 \001(\tR\006userId\022\026\n\006act"
-    "ion\030\003 \001(\tR\006action\022\022\n\004args\030\004 \003(\tR\004args\"\253\001"
-    "\n\025PerformActionResponse\022W\n\006markup\030\001 \003(\0132"
-    "\?.spielbrett_api.instance_host.PerformAc"
-    "tionResponse.MarkupEntryR\006markup\0329\n\013Mark"
-    "upEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\t"
-    "R\005value:\0028\001BAZ\?github.com/spielbrett/spi"
-    "elbrett-api/gen/go/proto/instance_hostb\006"
-    "proto3"
+    "R\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"\231\001\n\024Perf"
+    "ormActionRequest\022\037\n\013instance_id\030\001 \001(\tR\ni"
+    "nstanceId\022\027\n\007user_id\030\002 \001(\tR\006userId\022\033\n\tob"
+    "ject_id\030\003 \001(\004R\010objectId\022\026\n\006action\030\004 \001(\tR"
+    "\006action\022\022\n\004args\030\005 \003(\tR\004args\"\253\001\n\025PerformA"
+    "ctionResponse\022W\n\006markup\030\001 \003(\0132\?.spielbre"
+    "tt_api.instance_host.PerformActionRespon"
+    "se.MarkupEntryR\006markup\0329\n\013MarkupEntry\022\020\n"
+    "\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028"
+    "\001B=Z;github.com/spielbrett/spielbrett/ge"
+    "n/go/proto/instance_hostb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto_deps[1] =
     {
@@ -301,7 +303,7 @@ static ::absl::once_flag descriptor_table_proto_2finstance_5fhost_2fmessages_2ep
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto = {
     false,
     false,
-    766,
+    792,
     descriptor_table_protodef_proto_2finstance_5fhost_2fmessages_2eproto,
     "proto/instance_host/messages.proto",
     &descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto_once,
@@ -1024,6 +1026,7 @@ PerformActionRequest::PerformActionRequest(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.object_id_ = from._impl_.object_id_;
 
   // @@protoc_insertion_point(copy_constructor:spielbrett_api.instance_host.PerformActionRequest)
 }
@@ -1038,6 +1041,7 @@ inline PROTOBUF_NDEBUG_INLINE PerformActionRequest::Impl_::Impl_(
 
 inline void PerformActionRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.object_id_ = {};
 }
 PerformActionRequest::~PerformActionRequest() {
   // @@protoc_insertion_point(destructor:spielbrett_api.instance_host.PerformActionRequest)
@@ -1101,15 +1105,15 @@ const ::google::protobuf::internal::ClassData* PerformActionRequest::GetClassDat
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 4, 0, 86, 2> PerformActionRequest::_table_ = {
+const ::_pbi::TcParseTable<3, 5, 0, 86, 2> PerformActionRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    4, 24,  // max_field_number, fast_idx_mask
+    5, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967280,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    4,  // num_field_entries
+    5,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     _class_data_.base(),
@@ -1119,18 +1123,24 @@ const ::_pbi::TcParseTable<2, 4, 0, 86, 2> PerformActionRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::PerformActionRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // repeated string args = 4 [json_name = "args"];
-    {::_pbi::TcParser::FastUR1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.args_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // string instance_id = 1 [json_name = "instanceId"];
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.instance_id_)}},
     // string user_id = 2 [json_name = "userId"];
     {::_pbi::TcParser::FastUS1,
      {18, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.user_id_)}},
-    // string action = 3 [json_name = "action"];
+    // uint64 object_id = 3 [json_name = "objectId"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(PerformActionRequest, _impl_.object_id_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.object_id_)}},
+    // string action = 4 [json_name = "action"];
     {::_pbi::TcParser::FastUS1,
-     {26, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.action_)}},
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.action_)}},
+    // repeated string args = 5 [json_name = "args"];
+    {::_pbi::TcParser::FastUR1,
+     {42, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.args_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
   }}, {{
@@ -1140,16 +1150,19 @@ const ::_pbi::TcParseTable<2, 4, 0, 86, 2> PerformActionRequest::_table_ = {
     // string user_id = 2 [json_name = "userId"];
     {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.user_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string action = 3 [json_name = "action"];
+    // uint64 object_id = 3 [json_name = "objectId"];
+    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.object_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // string action = 4 [json_name = "action"];
     {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.action_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // repeated string args = 4 [json_name = "args"];
+    // repeated string args = 5 [json_name = "args"];
     {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.args_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
   }},
   // no aux_entries
   {{
-    "\61\13\7\6\4\0\0\0"
+    "\61\13\7\0\6\4\0\0"
     "spielbrett_api.instance_host.PerformActionRequest"
     "instance_id"
     "user_id"
@@ -1169,6 +1182,7 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
   _impl_.instance_id_.ClearToEmpty();
   _impl_.user_id_.ClearToEmpty();
   _impl_.action_.ClearToEmpty();
+  _impl_.object_id_ = ::uint64_t{0u};
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1203,20 +1217,27 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
             target = stream->WriteStringMaybeAliased(2, _s, target);
           }
 
-          // string action = 3 [json_name = "action"];
+          // uint64 object_id = 3 [json_name = "objectId"];
+          if (this_._internal_object_id() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+                3, this_._internal_object_id(), target);
+          }
+
+          // string action = 4 [json_name = "action"];
           if (!this_._internal_action().empty()) {
             const std::string& _s = this_._internal_action();
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.PerformActionRequest.action");
-            target = stream->WriteStringMaybeAliased(3, _s, target);
+            target = stream->WriteStringMaybeAliased(4, _s, target);
           }
 
-          // repeated string args = 4 [json_name = "args"];
+          // repeated string args = 5 [json_name = "args"];
           for (int i = 0, n = this_._internal_args_size(); i < n; ++i) {
             const auto& s = this_._internal_args().Get(i);
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
                 s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.PerformActionRequest.args");
-            target = stream->WriteString(4, s, target);
+            target = stream->WriteString(5, s, target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -1244,7 +1265,7 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated string args = 4 [json_name = "args"];
+            // repeated string args = 5 [json_name = "args"];
             {
               total_size +=
                   1 * ::google::protobuf::internal::FromIntSize(this_._internal_args().size());
@@ -1265,10 +1286,15 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_user_id());
             }
-            // string action = 3 [json_name = "action"];
+            // string action = 4 [json_name = "action"];
             if (!this_._internal_action().empty()) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_action());
+            }
+            // uint64 object_id = 3 [json_name = "objectId"];
+            if (this_._internal_object_id() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+                  this_._internal_object_id());
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -1293,6 +1319,9 @@ void PerformActionRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, co
   if (!from._internal_action().empty()) {
     _this->_internal_set_action(from._internal_action());
   }
+  if (from._internal_object_id() != 0) {
+    _this->_impl_.object_id_ = from._impl_.object_id_;
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1313,6 +1342,7 @@ void PerformActionRequest::InternalSwap(PerformActionRequest* PROTOBUF_RESTRICT 
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.instance_id_, &other->_impl_.instance_id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_id_, &other->_impl_.user_id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, &other->_impl_.action_, arena);
+        swap(_impl_.object_id_, other->_impl_.object_id_);
 }
 
 ::google::protobuf::Metadata PerformActionRequest::GetMetadata() const {

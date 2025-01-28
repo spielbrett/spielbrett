@@ -22,12 +22,12 @@ public:
         const InstanceID &instanceId) const noexcept;
 
 private:
+    InstanceID generateInstanceId() noexcept;
+
     std::unordered_map<InstanceID, std::shared_ptr<Instance>> instances;
 
     mutable std::shared_mutex sm;
     boost::uuids::random_generator generator;
-
-    InstanceID generateInstanceId() noexcept;
 };
 
 }

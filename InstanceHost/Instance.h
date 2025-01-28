@@ -24,6 +24,7 @@ public:
 
     void performAction(
         const UserID &userId,
+        Board::Object::Id objectId,
         const std::string &action,
         const ActionArgs &args);
 
@@ -31,18 +32,18 @@ public:
     std::string render(const UserID &userId) const;
 
 private:
-    Runtime::Python::Runtime runtime;
-    std::unique_ptr<Board> board;
-    std::vector<std::pair<UserID, Action>> history;
+    std::string doRender(const UserID &userId) const;
 
     std::vector<UserID> userIds;
     std::unordered_map<UserID, int> playerIndices;
 
+    Runtime::Python::Runtime runtime;
+    std::unique_ptr<Board> board;
     std::shared_ptr<const OpenSpielGame> openSpielGame;
 
-    mutable std::shared_mutex sm;
+    std::vector<std::pair<UserID, Action>> history;
 
-    std::string doRender(const UserID &userId) const;
+    mutable std::shared_mutex sm;
 };
 
 }

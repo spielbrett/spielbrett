@@ -163,7 +163,7 @@ Instance::Instance(const std::string &instanceType, const std::vector<UserID> &u
     openSpielGame = makeOpenSpielGame(instanceType, config, *board, playerIndices.size());
 }
 
-void Instance::performAction(const std::string &userId, const std::string &action, const ActionArgs &args)
+void Instance::performAction(const std::string &userId, Board::Object::Id objectId, const std::string &action, const ActionArgs &args)
 {
     std::unique_lock lock(sm);
 
@@ -174,9 +174,7 @@ void Instance::performAction(const std::string &userId, const std::string &actio
     }
     auto playerIndex = playerIndices.at(userId);
 
-    if (board->performAction(playerIndex, action, args)) {
-        return;
-    }
+    board->performAction(playerIndex, objectId, action, args);
 }
 
 std::unordered_map<UserID, std::string> Instance::render() const

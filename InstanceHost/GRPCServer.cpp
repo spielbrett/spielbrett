@@ -90,7 +90,8 @@ grpc::Status GRPCServer::PerformAction(
 
     std::unordered_map<UserID, std::string> markup;
     try {
-        instance->performAction(request->user_id(), request->action(), {}); // TODO: Args
+        std::vector<std::string> args(request->args().begin(), request->args().end());
+        instance->performAction(request->user_id(), request->object_id(), request->action(), args);
         markup = instance->render();
     }
     catch (std::invalid_argument &e) {

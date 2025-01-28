@@ -275,12 +275,13 @@ class PerformActionRequest final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
-    kArgsFieldNumber = 4,
+    kArgsFieldNumber = 5,
     kInstanceIdFieldNumber = 1,
     kUserIdFieldNumber = 2,
-    kActionFieldNumber = 3,
+    kActionFieldNumber = 4,
+    kObjectIdFieldNumber = 3,
   };
-  // repeated string args = 4 [json_name = "args"];
+  // repeated string args = 5 [json_name = "args"];
   int args_size() const;
   private:
   int _internal_args_size() const;
@@ -334,7 +335,7 @@ class PerformActionRequest final : public ::google::protobuf::Message
   std::string* _internal_mutable_user_id();
 
   public:
-  // string action = 3 [json_name = "action"];
+  // string action = 4 [json_name = "action"];
   void clear_action() ;
   const std::string& action() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -350,12 +351,22 @@ class PerformActionRequest final : public ::google::protobuf::Message
   std::string* _internal_mutable_action();
 
   public:
+  // uint64 object_id = 3 [json_name = "objectId"];
+  void clear_object_id() ;
+  ::uint64_t object_id() const;
+  void set_object_id(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_object_id() const;
+  void _internal_set_object_id(::uint64_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:spielbrett_api.instance_host.PerformActionRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 4, 0,
+      3, 5, 0,
       86, 2>
       _table_;
 
@@ -377,6 +388,7 @@ class PerformActionRequest final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr instance_id_;
     ::google::protobuf::internal::ArenaStringPtr user_id_;
     ::google::protobuf::internal::ArenaStringPtr action_;
+    ::uint64_t object_id_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1367,7 +1379,29 @@ inline void PerformActionRequest::set_allocated_user_id(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:spielbrett_api.instance_host.PerformActionRequest.user_id)
 }
 
-// string action = 3 [json_name = "action"];
+// uint64 object_id = 3 [json_name = "objectId"];
+inline void PerformActionRequest::clear_object_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.object_id_ = ::uint64_t{0u};
+}
+inline ::uint64_t PerformActionRequest::object_id() const {
+  // @@protoc_insertion_point(field_get:spielbrett_api.instance_host.PerformActionRequest.object_id)
+  return _internal_object_id();
+}
+inline void PerformActionRequest::set_object_id(::uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:spielbrett_api.instance_host.PerformActionRequest.object_id)
+}
+inline ::uint64_t PerformActionRequest::_internal_object_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.object_id_;
+}
+inline void PerformActionRequest::_internal_set_object_id(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.object_id_ = value;
+}
+
+// string action = 4 [json_name = "action"];
 inline void PerformActionRequest::clear_action() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.action_.ClearToEmpty();
@@ -1415,7 +1449,7 @@ inline void PerformActionRequest::set_allocated_action(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:spielbrett_api.instance_host.PerformActionRequest.action)
 }
 
-// repeated string args = 4 [json_name = "args"];
+// repeated string args = 5 [json_name = "args"];
 inline int PerformActionRequest::_internal_args_size() const {
   return _internal_args().size();
 }

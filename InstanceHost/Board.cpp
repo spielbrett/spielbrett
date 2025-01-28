@@ -2,11 +2,13 @@
 #include "Runtime/IObject.h"
 #include "Runtime/IRuntime.h"
 
+#include <__algorithm/remove.h>
 #include <pybind11/cast.h>
 
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <unordered_map>
 
 namespace Spielbrett {
 
@@ -29,6 +31,10 @@ Board::Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const 
         auto objectIndex = objects.size();
         auto &object = objects.emplace_back(new Object(node.name(), *this, objectIndex));
 
+        for (auto attribute = node.first_attribute(); attribute; attribute = attribute.next_attribute()) {
+            object->setState(attribute.name(), std::stod(attribute.value()));
+        }
+
         auto runtimeObject = runtime.createAndLinkObject(node.name(), object.get());
         runtimeObject->setTemplate(templates.at(node.name()));
         object->setRuntimeObject(std::move(runtimeObject));
@@ -47,8 +53,8 @@ Board::Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const 
 
 bool Board::hasPrivateInformation() const
 {
-    // TODO: Implement this
-    return false;
+    // TODO: Allow this to be set to false and enforced
+    return true;
 }
 
 int Board::numDistinctActions() const
@@ -56,9 +62,30 @@ int Board::numDistinctActions() const
     return actions.size();
 }
 
-bool Board::performAction(int playerIndex, const std::string &action, const ActionArgs &args)
+void Board::move(Object::Id objectId, Object::Id newParentId, int order)
 {
-    throw std::logic_error("not implemented");
+    auto &oldParentChildren = objects[objectId]->parent.lock()->children;
+    oldParentChildren.erase(std::remove_if(oldParentChildren.begin(), oldParentChildren.end(), [objectId](auto val) {
+        return val.lock()->getId() == objectId;
+    }));
+    objects[objectId]->parent.reset();
+
+    auto &newParentChildren = objects[newParentId]->children;
+    auto insertPos = newParentChildren.begin();
+    if (order < 0) {
+        order = newParentChildren.size() + order + 1;
+    }
+    if (order > newParentChildren.size()) {
+        order = newParentChildren.size();
+    }
+    std::advance(insertPos, order);
+    newParentChildren.insert(insertPos, objects[objectId]);
+    objects[objectId]->parent = objects[newParentId];
+}
+
+void Board::performAction(int playerIndex, Object::Id objectId, const std::string &action, const ActionArgs &args)
+{
+    objects.at(objectId)->performAction(playerIndex, action, args);
 }
 
 std::string Board::render(int playerIndex) const
@@ -71,8 +98,8 @@ std::shared_ptr<Board::Object> Board::getRoot() const
     return objects[0];
 }
 
-Board::Object::Object(const std::string &name, Board &board, std::size_t indexInBoard) :
-    name(name), board(board), indexInBoard(indexInBoard)
+Board::Object::Object(const std::string &name, Board &board, Id id) :
+    name(name), board(board), id(id)
 {
 }
 
@@ -81,9 +108,49 @@ std::string Board::Object::getName() const
     return name;
 }
 
+Board::Object::Id Board::Object::getId() const
+{
+    return id;
+}
+
+std::shared_ptr<Runtime::IObject> Board::Object::getRuntimeObject() const
+{
+    return runtimeObject;
+}
+
+std::weak_ptr<Board::Object> Board::Object::getParent() const
+{
+    return parent;
+}
+
+std::vector<std::weak_ptr<Board::Object>> Board::Object::getChildren() const
+{
+    return children;
+}
+
+std::unordered_map<std::string, double> Board::Object::getState() const
+{
+    return state;
+}
+
+void Board::Object::setState(const std::string &key, double value)
+{
+    state[key] = value;
+}
+
+void Board::Object::move(Board::Object::Id newParentId, int order)
+{
+    board.move(id, newParentId, order);
+}
+
+void Board::Object::performAction(int playerIndex, const std::string &action, const ActionArgs &args)
+{
+    runtimeObject->performAction(playerIndex, action, args);
+}
+
 std::string Board::Object::render(int playerIndex) const
 {
-    return runtimeObject->render(playerIndex);
+    return std::format("<Object id=\"{0}\">{1}</Object>", id, runtimeObject->renderTemplate(playerIndex));
 }
 
 void Board::Object::setRuntimeObject(std::shared_ptr<Runtime::IObject> runtimeObject)

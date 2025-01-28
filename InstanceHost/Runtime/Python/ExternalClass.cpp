@@ -33,6 +33,16 @@ ExternalClass::Object::Object(pybind11::object &pyClass)
     pyObject = pyClass();
 }
 
+pybind11::object &ExternalClass::Object::operator*()
+{
+    return pyObject;
+}
+
+pybind11::object *ExternalClass::Object::operator->()
+{
+    return &pyObject;
+}
+
 void ExternalClass::Object::linkBoardObject(Spielbrett::Board::Object *boardObject)
 {
     // TODO: There must certainly be a safer and saner way to do this?
@@ -49,14 +59,9 @@ void ExternalClass::Object::performAction(int playerIndex, const std::string &ac
     pyObject.attr(pybind11::cast(action))(*pybind11::cast(args));
 }
 
-double ExternalClass::Object::getObservation(int playerIndex, const std::string &observation)
+std::string ExternalClass::Object::renderTemplate(int playerIndex)
 {
-    return pyObject.attr(pybind11::cast(observation))(playerIndex).cast<double>();
-}
-
-std::string ExternalClass::Object::render(int playerIndex)
-{
-    return pyObject.attr("render")(playerIndex).cast<std::string>();
+    return pyObject.attr("__render_template")(playerIndex).cast<std::string>();
 }
 
 }

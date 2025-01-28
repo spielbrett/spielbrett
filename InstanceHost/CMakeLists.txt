@@ -1,9 +1,10 @@
 add_executable(
     InstanceHost
     main.cpp
+    Runtime/Python/Decorators.cpp
     Runtime/Python/ExternalClass.cpp
     Runtime/Python/Object.cpp
-    Runtime/Python/ObjectBindings.cpp
+    Runtime/Python/Module.cpp
     Runtime/Python/Runtime.cpp
     Board.cpp
     GRPCServer.cpp
