@@ -2,8 +2,6 @@
 
 #include "../../Board.h"
 
-#include <memory>
-
 namespace Spielbrett::Runtime::Python
 {
 
@@ -15,14 +13,18 @@ public:
     Board::Object *getBoardObject() const;
     void setBoardObject(Board::Object *boardObject);
 
-    std::string getTemplate() const;
+    pybind11::object getTemplate() const;
     void setTemplate(const std::string &templateStr);
 
-    std::string render(int playerIndex) const;
+    std::string render(pybind11::object self, int playerIndex) const;
 
 private:
+    static pybind11::module getJinja2();
+
     Board::Object *boardObject;
-    std::string templateStr;
+    pybind11::object templateObj;
+
+    static std::optional<pybind11::module> jinja2;
 };
 
 }

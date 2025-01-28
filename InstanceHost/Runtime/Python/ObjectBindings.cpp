@@ -4,6 +4,8 @@
 
 using namespace Spielbrett::Runtime::Python;
 
+using namespace pybind11::literals;
+
 PYBIND11_EMBEDDED_MODULE(spielbrett, m)
 {
     pybind11::class_<Object>(m, "Object")
@@ -17,5 +19,9 @@ PYBIND11_EMBEDDED_MODULE(spielbrett, m)
                 object.setBoardObject(reinterpret_cast<Spielbrett::Board::Object *>(value));
             })
         .def_property("__template", &Object::getTemplate, &Object::setTemplate)
-        .def("render", &Object::render);
+        .def("render", [](pybind11::object self, int playerIndex) {
+            pybind11::dict context("playerIndex"_a = playerIndex);
+            context.attr("update")(self.attr("__dict__"));
+            return self.attr("__template").attr("render")(**context).cast<std::string>();
+        });
 }

@@ -16,20 +16,24 @@ void Object::setBoardObject(Board::Object *boardObject)
     this->boardObject = boardObject;
 }
 
-std::string Object::getTemplate() const
+pybind11::object Object::getTemplate() const
 {
-    return templateStr;
+    return templateObj;
 }
 
 void Object::setTemplate(const std::string &templateStr)
 {
-    this->templateStr = templateStr;
+    this->templateObj = getJinja2().attr("Template")(templateStr);
 }
 
-std::string Object::render(int playerIndex) const
+pybind11::module Object::getJinja2()
 {
-    // TODO: Actually render template
-    return getTemplate();
+    if (!Object::jinja2.has_value()) {
+        Object::jinja2 = pybind11::module_::import("jinja2");
+    }
+    return Object::jinja2.value();
 }
+
+std::optional<pybind11::module> Object::jinja2 = std::nullopt;
 
 }
