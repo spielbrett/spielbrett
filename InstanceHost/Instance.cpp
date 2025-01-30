@@ -175,6 +175,7 @@ void Instance::performAction(const std::string &userId, const Board::Action &act
     auto playerIndex = playerIndices.at(userId);
 
     board->performAction(playerIndex, action);
+    history.emplace_back(userId, action);
 }
 
 std::unordered_map<UserID, std::pair<std::string, std::vector<Board::Action>>> Instance::render() const
