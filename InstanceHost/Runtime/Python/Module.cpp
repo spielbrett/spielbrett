@@ -39,4 +39,7 @@ PYBIND11_EMBEDDED_MODULE(spielbrett, m)
 
     m.def("observation", &observation);
     m.def("action", &action);
+
+    m.attr("PLAYER_INDEX_CHANCE") = -1;
+    m.attr("PLAYER_INDEX_SIMULTANEOUS") = -2;
 }
