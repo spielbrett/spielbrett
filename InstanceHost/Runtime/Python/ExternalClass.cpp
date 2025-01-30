@@ -1,6 +1,7 @@
 #include "ExternalClass.h"
 
 #include <memory>
+#include <pybind11/stl.h>
 
 namespace Spielbrett::Runtime::Python {
 
@@ -54,10 +55,25 @@ void ExternalClass::Object::setTemplate(const std::string &templateStr)
     pyObject.attr("__template") = templateStr;
 }
 
+std::vector<Board::Object::Action> ExternalClass::Object::getAllActions()
+{
+    return pyObject.attr("__actions").cast<std::vector<Board::Object::Action>>();
+}
+
+std::vector<Board::Object::Action> ExternalClass::Object::getValidActions(int playerIndex)
+{
+    return pyObject.attr("__get_valid_actions")(playerIndex).cast<std::vector<Board::Object::Action>>();
+}
+
 void ExternalClass::Object::performAction(int playerIndex, const Board::Object::Action &action)
 {
     const auto &[actionName, actionArgs] = action;
     pyObject.attr(pybind11::cast(actionName))(*pybind11::cast(actionArgs));
+}
+
+Board::Object::State ExternalClass::Object::observe(int playerIndex)
+{
+    return pyObject.attr("__observe")(playerIndex).cast<Board::Object::State>();
 }
 
 std::string ExternalClass::Object::renderContents(int playerIndex)

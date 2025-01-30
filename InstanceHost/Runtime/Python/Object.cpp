@@ -25,6 +25,16 @@ pybind11::module getBuiltins()
     return builtins.value();
 }
 
+std::optional<pybind11::module> itertools = std::nullopt;
+
+pybind11::module getItertools()
+{
+    if (!itertools.has_value()) {
+        itertools = pybind11::module_::import("itertools");
+    }
+    return itertools.value();
+}
+
 std::optional<pybind11::module> jinja2 = std::nullopt;
 
 pybind11::module getJinja2()
@@ -43,7 +53,7 @@ Object::Object()
 {
 }
 
-pybind11::object Object::getAttr(pybind11::str name)
+pybind11::object Object::getAttr(pybind11::str name) const
 {
     auto state = getState();
     if (state.contains(name)) {
@@ -210,6 +220,62 @@ pybind11::list Object::getDecoratedMethods(pybind11::object self)
     }
 
     return methods;
+}
+
+pybind11::list Object::getActions(pybind11::object self)
+{
+    pybind11::list actions;
+
+    for (auto methodName : getDecoratedMethods(self)) {
+        auto method = self.attr(methodName);
+        auto methodType = pybind11::getattr(method, "_method_type").cast<MethodType>();
+        if (methodType != MethodType::ACTION) {
+            continue;
+        }
+        pybind11::list args;
+        for (const auto &argTuple : method.attr("_args")) {
+            auto selector = argTuple.cast<pybind11::tuple>()[0];
+            if (pybind11::isinstance<pybind11::function>(selector)) {
+                args.append(selector());
+            }
+            else {
+                args.append(selector);
+            }
+        }
+        for (auto argSet : getItertools().attr("product")(*args)) {
+            actions.append(pybind11::make_tuple(methodName, argSet));
+        }
+    }
+
+    return actions;
+}
+
+pybind11::list Object::getValidActions(pybind11::object self, pybind11::int_ playerIndex)
+{
+    pybind11::list actions = getActions(self);
+    pybind11::list validActions;
+
+    for (const auto &action : actions) {
+        auto actionTuple = action.cast<pybind11::tuple>();
+        auto actionName = actionTuple[0];
+        auto actionArgs = actionTuple[1];
+
+        for (size_t i = 0; i < getBuiltins().attr("len")(actionArgs).cast<size_t>(); i++) {
+            auto validator = self.attr(actionName).attr("_args").cast<pybind11::tuple>()[1];
+            bool valid;
+            if (pybind11::isinstance<pybind11::function>(validator)) {
+                valid = validator(playerIndex, *actionArgs[pybind11::slice(std::nullopt, i, std::nullopt)]).cast<bool>();
+            }
+            else {
+                valid = validator.cast<bool>();
+            }
+            if (valid) {
+                validActions.append(action);
+            }
+        }
+    }
+    
+    return validActions;
 }
 
 }

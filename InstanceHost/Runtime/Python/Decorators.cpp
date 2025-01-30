@@ -4,7 +4,7 @@ namespace Spielbrett::Runtime::Python {
 
 pybind11::function observation(pybind11::args args, pybind11::kwargs kwargs) 
 {
-    if (args.size() == 1 && kwargs.size() == 0) {
+    if (args.size() == 1 && kwargs.size() == 0 && pybind11::isinstance<pybind11::function>(args[0])) {
         auto f = args[0];
         f.attr("_method_type") = MethodType::OBSERVATION;
         f.attr("_visible") = true;
@@ -20,7 +20,7 @@ pybind11::function observation(pybind11::args args, pybind11::kwargs kwargs)
 
 pybind11::function action(pybind11::args args) 
 {
-    if (args.size() == 1) {
+    if (args.size() == 1 && pybind11::isinstance<pybind11::function>(args[0])) {
         auto f = args[0];
         f.attr("_method_type") = MethodType::ACTION;
         f.attr("_args") = pybind11::make_tuple();

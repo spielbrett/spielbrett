@@ -27,7 +27,9 @@ PYBIND11_EMBEDDED_MODULE(spielbrett, m)
         .def_property("__state", &Object::getState, &Object::setState)
         .def("_observe", &Object::observe)
         .def("_render", &Object::render)
-        .def("_render_contents", &Object::renderContents);
+        .def("_render_contents", &Object::renderContents)
+        .def_property_readonly("__actions", &Object::getActions)
+        .def("__get_valid_actions", &Object::getValidActions);
 
     pybind11::enum_<MethodType>(m, "MethodType")
         .value("None", MethodType::NONE)

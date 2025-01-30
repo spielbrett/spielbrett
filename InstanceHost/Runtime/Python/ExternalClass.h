@@ -19,7 +19,12 @@ public:
         pybind11::object *operator->();
 
         void setTemplate(const std::string &templateStr) override;
+
+        std::vector<Board::Object::Action> getAllActions() override;
+        std::vector<Board::Object::Action> getValidActions(int playerIndex) override;
         void performAction(int playerIndex, const Board::Object::Action &action) override;
+
+        Board::Object::State observe(int playerIndex) override;
         std::string renderContents(int playerIndex) override;
 
     private:

@@ -38,7 +38,11 @@ public:
 
         void move(Board::Object::Id newParentId, int order);
 
+        std::vector<Action> getAllActions() const;
+        std::vector<Action> getValidActions(int playerIndex) const;
         void performAction(int playerIndex, const Action &action);
+
+        State observe(int playerIndex) const;
         std::string render(int playerIndex) const;
 
     private:

@@ -10,7 +10,7 @@ class Object
 public:
     Object();
 
-    pybind11::object getAttr(pybind11::str name);
+    pybind11::object getAttr(pybind11::str name) const;
     static void setAttr(pybind11::object self, pybind11::str name, pybind11::object value);
 
     pybind11::object getParent() const;
@@ -32,6 +32,9 @@ public:
 
     static pybind11::dict observe(pybind11::object self, pybind11::int_ playerIndex);
     static pybind11::str renderContents(pybind11::object self, pybind11::int_ playerIndex);
+
+    static pybind11::list getActions(pybind11::object self);
+    static pybind11::list getValidActions(pybind11::object self, pybind11::int_ playerIndex);
 
 private:
     static pybind11::list getDecoratedMethods(pybind11::object self);

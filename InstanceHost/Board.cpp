@@ -49,6 +49,12 @@ Board::Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const 
             queue.emplace(child, objectIndex);
         }
     }
+
+    for (const auto &object : objects) {
+        for (const auto &objectAction : object->getRuntimeObject()->getAllActions()) {
+            actions.emplace_back(object->getId(), objectAction.first, objectAction.second);
+        }
+    }
 }
 
 bool Board::hasPrivateInformation() const
@@ -144,9 +150,24 @@ void Board::Object::move(Board::Object::Id newParentId, int order)
     board.move(id, newParentId, order);
 }
 
+std::vector<Board::Object::Action> Board::Object::getAllActions() const
+{
+    return runtimeObject->getAllActions();
+}
+
+std::vector<Board::Object::Action> Board::Object::getValidActions(int playerIndex) const
+{
+    return runtimeObject->getValidActions(playerIndex);
+}
+
 void Board::Object::performAction(int playerIndex, const Action &action)
 {
     runtimeObject->performAction(playerIndex, action);
+}
+
+Board::Object::State Board::Object::observe(int playerIndex) const
+{
+    return runtimeObject->observe(playerIndex);
 }
 
 std::string Board::Object::render(int playerIndex) const
