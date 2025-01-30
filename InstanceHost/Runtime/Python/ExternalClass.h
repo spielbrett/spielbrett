@@ -19,8 +19,8 @@ public:
         pybind11::object *operator->();
 
         void setTemplate(const std::string &templateStr) override;
-        void performAction(int playerIndex, const std::string &action, const std::vector<std::string> &args) override;
-        std::string renderTemplate(int playerIndex) override;
+        void performAction(int playerIndex, const Board::Object::Action &action) override;
+        std::string renderContents(int playerIndex) override;
 
     private:
         Object(pybind11::object &pyClass);
@@ -35,6 +35,7 @@ public:
 
         // Instantiating the object acquires the GIL. It is then held throughout the whole lifetime of the object.
         // Destructors are called in reverse order, so gil_scoped_acquire must preceed the instantiated pybind11::object
+        // TODO: GIL should be acquired in more granular manner
         pybind11::gil_scoped_acquire acquire{};
 
         pybind11::object pyObject;

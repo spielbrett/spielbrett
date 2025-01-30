@@ -9,10 +9,10 @@ PYBIND11_EMBEDDED_MODULE(spielbrett, m)
 {
     pybind11::class_<Object>(m, "Object")
         .def(pybind11::init<>())
-        .def("render", &Object::render)
+        .def("__getattr__", &Object::getAttr)
+        .def("__setattr__", &Object::setAttr)
         .def_property_readonly("parent", &Object::getParent)
         .def_property_readonly("children", &Object::getChildren)
-        .def_property("state", &Object::getState, &Object::setState)
         .def("move", &Object::move)
         .def_property(
             "__board_object",
@@ -24,9 +24,17 @@ PYBIND11_EMBEDDED_MODULE(spielbrett, m)
             })
         .def_property("__template", &Object::getTemplate, &Object::setTemplate)
         .def_property_readonly("__id", &Object::getId)
-        .def("__render_template", [](pybind11::object self, int playerIndex) -> std::string {
-            return Object::renderTemplate(self, playerIndex);
-        });
+        .def_property("__state", &Object::getState, &Object::setState)
+        .def("_observe", &Object::observe)
+        .def("_render", &Object::render)
+        .def("_render_contents", &Object::renderContents);
+
+    pybind11::enum_<MethodType>(m, "MethodType")
+        .value("None", MethodType::NONE)
+        .value("Observation", MethodType::OBSERVATION)
+        .value("Action", MethodType::ACTION)
+        .export_values();
 
     m.def("observation", &observation);
+    m.def("action", &action);
 }

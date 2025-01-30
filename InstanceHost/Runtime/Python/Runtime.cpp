@@ -1,5 +1,6 @@
 #include "Runtime.h"
 #include "ExternalClass.h"
+
 #include <stdexcept>
 
 namespace Spielbrett::Runtime::Python {

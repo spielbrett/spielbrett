@@ -10,33 +10,34 @@ class Object
 public:
     Object();
 
-    std::string render(int playerIndex) const;
+    pybind11::object getAttr(pybind11::str name);
+    static void setAttr(pybind11::object self, pybind11::str name, pybind11::object value);
 
     pybind11::object getParent() const;
     pybind11::list getChildren() const;
-
-    pybind11::dict getState() const;
-    void setState(const std::string &key, double value);
-
-    void move(pybind11::object newParent, int order);
+    void move(pybind11::object newParent, pybind11::int_ order);
 
     Board::Object *getBoardObject() const;
     void setBoardObject(Board::Object *boardObject);
 
     pybind11::object getTemplate() const;
-    void setTemplate(const std::string &templateStr);
+    void setTemplate(pybind11::str templateStr);
 
-    Board::Object::Id getId() const;
+    pybind11::object getId() const;
 
-    static pybind11::str renderTemplate(pybind11::object self, int playerIndex);
+    pybind11::dict getState() const;
+    void setState(pybind11::str key, pybind11::float_ value);
+
+    pybind11::str render(pybind11::int_ playerIndex) const;
+
+    static pybind11::dict observe(pybind11::object self, pybind11::int_ playerIndex);
+    static pybind11::str renderContents(pybind11::object self, pybind11::int_ playerIndex);
 
 private:
-    static pybind11::module getJinja2();
+    static pybind11::list getDecoratedMethods(pybind11::object self);
 
     Board::Object *boardObject;
     pybind11::object templateObj;
-
-    static std::optional<pybind11::module> jinja2;
 };
 
 }

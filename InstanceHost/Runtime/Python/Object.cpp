@@ -1,7 +1,41 @@
 #include "Object.h"
+#include "Decorators.h"
 #include "ExternalClass.h"
 
+#include <unordered_set>
+
 using namespace pybind11::literals;
+
+namespace {
+
+// TODO: Deduce this automatically
+static const std::unordered_set<std::string> DEFINED_PUBLIC_ATTRIBUTES = {
+    "parent",
+    "children",
+    "move"
+};
+
+std::optional<pybind11::module> builtins = std::nullopt;
+
+pybind11::module getBuiltins()
+{
+    if (!builtins.has_value()) {
+        builtins = pybind11::module_::import("builtins");
+    }
+    return builtins.value();
+}
+
+std::optional<pybind11::module> jinja2 = std::nullopt;
+
+pybind11::module getJinja2()
+{
+    if (!jinja2.has_value()) {
+        jinja2 = pybind11::module_::import("jinja2");
+    }
+    return jinja2.value();
+}
+
+}
 
 namespace Spielbrett::Runtime::Python {
 
@@ -9,12 +43,28 @@ Object::Object()
 {
 }
 
-std::string Object::render(int playerIndex) const
+pybind11::object Object::getAttr(pybind11::str name)
 {
-    if (boardObject != nullptr) {
-        return this->boardObject->render(playerIndex);
+    auto state = getState();
+    if (state.contains(name)) {
+        return state[name];
     }
-    return "";
+    else {
+        throw pybind11::attribute_error("attribute not found");
+    }
+}
+
+void Object::setAttr(pybind11::object self, pybind11::str name, pybind11::object value)
+{
+    if (name.cast<std::string>() == "__state") {
+        getBuiltins().attr("object").attr("__setattr__")(self, name, value);
+    }
+    else if (self.attr("__state").contains(name)) {
+        self.attr("__state")[name] = value;
+    }
+    else {
+        getBuiltins().attr("object").attr("__setattr__")(self, name, value);
+    }
 }
 
 pybind11::object Object::getParent() const
@@ -42,31 +92,6 @@ pybind11::list Object::getChildren() const
     return result;
 }
 
-pybind11::dict Object::getState() const
-{
-    pybind11::dict state;
-    if (boardObject != nullptr) {
-        for (const auto &[key, value] : boardObject->getState()) {
-            state[pybind11::cast(key)] = value;
-        }
-    }
-    return state;
-}
-
-void Object::setState(const std::string &key, double value)
-{
-    if (boardObject != nullptr) {
-        boardObject->setState(key, value);
-    }
-}
-
-void Object::move(pybind11::object newParent, int order)
-{
-    if (boardObject != nullptr) {
-        boardObject->move(newParent.attr("__id").cast<Board::Object::Id>(), order);
-    }
-}
-
 Board::Object *Object::getBoardObject() const
 {
     return boardObject;
@@ -82,46 +107,109 @@ pybind11::object Object::getTemplate() const
     return templateObj;
 }
 
-void Object::setTemplate(const std::string &templateStr)
+void Object::setTemplate(pybind11::str templateStr)
 {
     this->templateObj = getJinja2().attr("Template")(templateStr);
 }
 
-Board::Object::Id Object::getId() const
+pybind11::object Object::getId() const
 {
     if (boardObject != nullptr) {
-        return boardObject->getId();
+        return pybind11::cast(boardObject->getId());
     }
-    return -1;
+    return pybind11::none{};
 }
 
-pybind11::str Object::renderTemplate(pybind11::object self, int playerIndex)
+pybind11::dict Object::getState() const
 {
-    pybind11::dict context;
-    context.attr("update")(self.attr("state"));
+    pybind11::dict state;
+    if (boardObject != nullptr) {
+        for (const auto &[key, value] : boardObject->getState()) {
+            state[pybind11::cast(key)] = value;
+        }
+    }
+    return state;
+}
 
-    for (auto memberName : self.attr("__dir__")()) {
-        // TODO: Handle decorator
-        if (!memberName.attr("startswith")("observation_").cast<bool>()) {
+
+void Object::setState(pybind11::str key, pybind11::float_ value)
+{
+    if (boardObject != nullptr) {
+        boardObject->setState(key, value);
+    }
+}
+
+void Object::move(pybind11::object newParent, pybind11::int_ order)
+{
+    if (boardObject != nullptr) {
+        boardObject->move(newParent.attr("__id").cast<Board::Object::Id>(), order);
+    }
+}
+
+pybind11::str Object::render(pybind11::int_ playerIndex) const
+{
+    if (boardObject != nullptr) {
+        return boardObject->render(playerIndex);
+    }
+    return "";
+}
+
+pybind11::dict Object::observe(pybind11::object self, pybind11::int_ playerIndex)
+{
+    pybind11::dict observedState;
+
+    // TODO: Add state in public information games
+    // observedState.attr("update")(self.attr("__state"));
+
+    for (auto methodName : getDecoratedMethods(self)) {
+        auto method = self.attr(methodName);
+        auto methodType = pybind11::getattr(method, "_method_type").cast<MethodType>();
+        if (methodType != MethodType::OBSERVATION) {
             continue;
         }
-        auto member = self.attr(memberName);
-        context[memberName.attr("removeprefix")("observation_")] = member(playerIndex);
+        auto visible= method.attr("_visible");
+        if (pybind11::isinstance<pybind11::function>(visible) && visible(playerIndex) || visible.cast<bool>()) {
+            observedState[methodName] = method(playerIndex);
+        }
+    }
+
+    return observedState;
+}
+
+pybind11::str Object::renderContents(pybind11::object self, pybind11::int_ playerIndex)
+{
+    pybind11::list childRenders;
+    for (auto child : self.attr("children")) {
+        childRenders.append(child.attr("_render")(playerIndex));
     }
 
     return self.attr("__template").attr("render")(
         "player_index"_a = playerIndex,
-        "children"_a = self.attr("children"),
-        **context).cast<std::string>();
+        "children"_a = childRenders,
+        **observe(self, playerIndex));
 }
 
-pybind11::module Object::getJinja2()
+pybind11::list Object::getDecoratedMethods(pybind11::object self)
 {
-    if (!Object::jinja2.has_value()) {
-        Object::jinja2 = pybind11::module_::import("jinja2");
+    pybind11::list methods;
+
+    for (auto memberName : self.attr("__dir__")()) {
+        if (memberName.attr("startswith")("_").cast<bool>()) {
+            continue;
+        }
+        if (DEFINED_PUBLIC_ATTRIBUTES.contains(memberName.cast<std::string>())) {
+            continue;
+        }
+        auto attr = self.attr(memberName);
+        if (!pybind11::isinstance<pybind11::function>(attr)) {
+            continue;
+        }
+        if (pybind11::hasattr(self.attr(memberName), "_method_type")) {
+            methods.append(memberName);
+        }
     }
-    return Object::jinja2.value();
+
+    return methods;
 }
 
-std::optional<pybind11::module> Object::jinja2 = std::nullopt;
 }

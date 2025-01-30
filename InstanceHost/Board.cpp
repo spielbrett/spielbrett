@@ -83,9 +83,10 @@ void Board::move(Object::Id objectId, Object::Id newParentId, int order)
     objects[objectId]->parent = objects[newParentId];
 }
 
-void Board::performAction(int playerIndex, Object::Id objectId, const std::string &action, const ActionArgs &args)
+void Board::performAction(int playerIndex, const Action &action)
 {
-    objects.at(objectId)->performAction(playerIndex, action, args);
+    const auto &[objectId, actionName, actionArgs] = action;
+    objects.at(objectId)->performAction(playerIndex, {actionName, actionArgs});
 }
 
 std::string Board::render(int playerIndex) const
@@ -143,14 +144,14 @@ void Board::Object::move(Board::Object::Id newParentId, int order)
     board.move(id, newParentId, order);
 }
 
-void Board::Object::performAction(int playerIndex, const std::string &action, const ActionArgs &args)
+void Board::Object::performAction(int playerIndex, const Action &action)
 {
-    runtimeObject->performAction(playerIndex, action, args);
+    runtimeObject->performAction(playerIndex, action);
 }
 
 std::string Board::Object::render(int playerIndex) const
 {
-    return std::format("<Object id=\"{0}\">{1}</Object>", id, runtimeObject->renderTemplate(playerIndex));
+    return std::format("<Object>{}</Object>", runtimeObject->renderContents(playerIndex));
 }
 
 void Board::Object::setRuntimeObject(std::shared_ptr<Runtime::IObject> runtimeObject)

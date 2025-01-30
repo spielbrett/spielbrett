@@ -1,19 +1,15 @@
 #pragma once
 
-#include "Runtime/IObject.h"
-
 #include <pybind11/embed.h>
 #include <pugixml.hpp>
 
 #include <string>
 
-using ActionArgs = std::vector<std::string>;
-using Action = std::pair<std::string, ActionArgs>;
-
 namespace Spielbrett {
 
 namespace Runtime {
 
+class IObject;
 class IRuntime;
 
 }
@@ -26,6 +22,9 @@ public:
     public:
         using Id = std::size_t;
 
+        using State = std::unordered_map<std::string, double>;
+        using Action = std::pair<std::string, std::vector<std::string>>;
+
         std::string getName() const;
         Id getId() const;
 
@@ -34,12 +33,12 @@ public:
         std::weak_ptr<Object> getParent() const;
         std::vector<std::weak_ptr<Object>> getChildren() const;
 
-        std::unordered_map<std::string, double> getState() const;
+        State getState() const;
         void setState(const std::string &key, double value);
 
         void move(Board::Object::Id newParentId, int order);
 
-        void performAction(int playerIndex, const std::string &action, const ActionArgs &args);
+        void performAction(int playerIndex, const Action &action);
         std::string render(int playerIndex) const;
 
     private:
@@ -61,6 +60,8 @@ public:
         friend class Board;
     };
 
+    using Action = std::tuple<Object::Id, std::string, std::vector<std::string>>;
+
     Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const std::unordered_map<std::string, std::string> &templates);
 
     // TODO: Copy and move constructors
@@ -70,7 +71,7 @@ public:
 
     void move(Object::Id objectId, Object::Id newParent, int order);
 
-    void performAction(int playerIndex, Object::Id objectId, const std::string &action, const ActionArgs &args);
+    void performAction(int playerIndex, const Action &action);
     std::string render(int playerIndex) const;
 
 private:

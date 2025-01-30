@@ -24,9 +24,7 @@ public:
 
     void performAction(
         const UserID &userId,
-        Board::Object::Id objectId,
-        const std::string &action,
-        const ActionArgs &args);
+        const Board::Action &action);
 
     std::unordered_map<UserID, std::string> render() const;
     std::string render(const UserID &userId) const;
@@ -41,7 +39,7 @@ private:
     std::unique_ptr<Board> board;
     std::shared_ptr<const OpenSpielGame> openSpielGame;
 
-    std::vector<std::pair<UserID, Action>> history;
+    std::vector<std::pair<UserID, Board::Action>> history;
 
     mutable std::shared_mutex sm;
 };

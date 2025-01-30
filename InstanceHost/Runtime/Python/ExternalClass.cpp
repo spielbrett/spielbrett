@@ -54,14 +54,15 @@ void ExternalClass::Object::setTemplate(const std::string &templateStr)
     pyObject.attr("__template") = templateStr;
 }
 
-void ExternalClass::Object::performAction(int playerIndex, const std::string &action, const std::vector<std::string> &args)
+void ExternalClass::Object::performAction(int playerIndex, const Board::Object::Action &action)
 {
-    pyObject.attr(pybind11::cast(action))(*pybind11::cast(args));
+    const auto &[actionName, actionArgs] = action;
+    pyObject.attr(pybind11::cast(actionName))(*pybind11::cast(actionArgs));
 }
 
-std::string ExternalClass::Object::renderTemplate(int playerIndex)
+std::string ExternalClass::Object::renderContents(int playerIndex)
 {
-    return pyObject.attr("__render_template")(playerIndex).cast<std::string>();
+    return pyObject.attr("_render_contents")(playerIndex).cast<std::string>();
 }
 
 }
