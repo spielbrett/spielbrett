@@ -122,4 +122,9 @@ std::string ExternalClass::Object::renderContents(int playerIndex)
     return pyObject.attr("_render_contents")(playerIndex).cast<std::string>();
 }
 
+double ExternalClass::Object::score(int playerIndex)
+{
+    return pyObject.attr("score")(playerIndex).cast<double>();
+}
+
 }

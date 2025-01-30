@@ -27,6 +27,8 @@ public:
         Board::Object::State observe(int playerIndex) override;
         std::string renderContents(int playerIndex) override;
 
+        double score(int playerIndex) override;
+
     private:
         Object(pybind11::object &pyClass);
 

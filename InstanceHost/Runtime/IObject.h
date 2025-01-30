@@ -18,6 +18,8 @@ public:
 
     virtual Board::Object::State observe(int playerIndex) = 0;
     virtual std::string renderContents(int playerIndex) = 0;
+
+    virtual double score(int playerIndex) = 0;
 };
 
 }

@@ -196,6 +196,7 @@ pybind11::str Object::renderContents(pybind11::object self, pybind11::int_ playe
     return self.attr("__template").attr("render")(
         "player_index"_a = playerIndex,
         "children"_a = childRenders,
+        "score"_a = self.attr("score"),
         **observe(self, playerIndex));
 }
 
