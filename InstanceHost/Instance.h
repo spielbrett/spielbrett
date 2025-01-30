@@ -26,11 +26,11 @@ public:
         const UserID &userId,
         const Board::Action &action);
 
-    std::unordered_map<UserID, std::string> render() const;
-    std::string render(const UserID &userId) const;
+    std::unordered_map<UserID, std::pair<std::string, std::vector<Board::Action>>> render() const;
+    std::pair<std::string, std::vector<Board::Action>> render(const UserID &userId) const;
 
 private:
-    std::string doRender(const UserID &userId) const;
+    std::pair<std::string, std::vector<Board::Action>> doRender(const UserID &userId) const;
 
     std::vector<UserID> userIds;
     std::unordered_map<UserID, int> playerIndices;

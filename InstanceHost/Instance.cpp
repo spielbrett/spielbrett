@@ -177,11 +177,11 @@ void Instance::performAction(const std::string &userId, const Board::Action &act
     board->performAction(playerIndex, action);
 }
 
-std::unordered_map<UserID, std::string> Instance::render() const
+std::unordered_map<UserID, std::pair<std::string, std::vector<Board::Action>>> Instance::render() const
 {
     std::shared_lock lock(sm);
 
-    std::unordered_map<UserID, std::string> result;
+    std::unordered_map<UserID, std::pair<std::string, std::vector<Board::Action>>> result;
     for (const auto &userId : userIds) {
         result[userId] = doRender(userId);
     }
@@ -189,7 +189,7 @@ std::unordered_map<UserID, std::string> Instance::render() const
     return result;
 }
 
-std::string Instance::render(const UserID &userId) const
+std::pair<std::string, std::vector<Board::Action>> Instance::render(const UserID &userId) const
 {
     std::shared_lock lock(sm);
 
@@ -202,7 +202,7 @@ std::string Instance::render(const UserID &userId) const
     return doRender(userId);
 }
 
-std::string Instance::doRender(const UserID &userId) const
+std::pair<std::string, std::vector<Board::Action>> Instance::doRender(const UserID &userId) const
 {
     auto playerIndex = playerIndices.at(userId);
 

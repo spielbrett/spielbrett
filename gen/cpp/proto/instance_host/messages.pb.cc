@@ -44,41 +44,6 @@ struct PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal _PerformActionResponse_MarkupEntry_DoNotUse_default_instance_;
-
-inline constexpr PerformActionRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : args_{},
-        instance_id_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        user_id_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        action_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        object_id_{::uint64_t{0u}},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR PerformActionRequest::PerformActionRequest(::_pbi::ConstantInitialized)
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-    : ::google::protobuf::Message(_class_data_.base()),
-#else   // PROTOBUF_CUSTOM_VTABLE
-    : ::google::protobuf::Message(),
-#endif  // PROTOBUF_CUSTOM_VTABLE
-      _impl_(::_pbi::ConstantInitialized()) {
-}
-struct PerformActionRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR PerformActionRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~PerformActionRequestDefaultTypeInternal() {}
-  union {
-    PerformActionRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionRequestDefaultTypeInternal _PerformActionRequest_default_instance_;
               template <typename>
 PROTOBUF_CONSTEXPR CreateInstanceResponse_MarkupEntry_DoNotUse::CreateInstanceResponse_MarkupEntry_DoNotUse(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -126,9 +91,132 @@ struct CreateInstanceRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateInstanceRequestDefaultTypeInternal _CreateInstanceRequest_default_instance_;
 
+inline constexpr Action::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : args_{},
+        _args_cached_byte_size_{0},
+        action_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        object_id_{::uint64_t{0u}},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Action::Action(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ActionDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ActionDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ActionDefaultTypeInternal() {}
+  union {
+    Action _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ActionDefaultTypeInternal _Action_default_instance_;
+
+inline constexpr PerformActionRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        instance_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        user_id_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        action_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR PerformActionRequest::PerformActionRequest(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct PerformActionRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PerformActionRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PerformActionRequestDefaultTypeInternal() {}
+  union {
+    PerformActionRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionRequestDefaultTypeInternal _PerformActionRequest_default_instance_;
+
+inline constexpr Actions::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : actions_{},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Actions::Actions(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct ActionsDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ActionsDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ActionsDefaultTypeInternal() {}
+  union {
+    Actions _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ActionsDefaultTypeInternal _Actions_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR PerformActionResponse_ActionsEntry_DoNotUse::PerformActionResponse_ActionsEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : PerformActionResponse_ActionsEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : PerformActionResponse_ActionsEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct PerformActionResponse_ActionsEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PerformActionResponse_ActionsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PerformActionResponse_ActionsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    PerformActionResponse_ActionsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PerformActionResponse_ActionsEntry_DoNotUseDefaultTypeInternal _PerformActionResponse_ActionsEntry_DoNotUse_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR CreateInstanceResponse_ActionsEntry_DoNotUse::CreateInstanceResponse_ActionsEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : CreateInstanceResponse_ActionsEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : CreateInstanceResponse_ActionsEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct CreateInstanceResponse_ActionsEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CreateInstanceResponse_ActionsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CreateInstanceResponse_ActionsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    CreateInstanceResponse_ActionsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CreateInstanceResponse_ActionsEntry_DoNotUseDefaultTypeInternal _CreateInstanceResponse_ActionsEntry_DoNotUse_default_instance_;
+
 inline constexpr PerformActionResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : markup_{},
+        actions_{},
         _cached_size_{0} {}
 
 template <typename>
@@ -154,6 +242,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr CreateInstanceResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : markup_{},
+        actions_{},
         instance_id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -188,6 +277,26 @@ const ::uint32_t
     TableStruct_proto_2finstance_5fhost_2fmessages_2eproto::offsets[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
         protodesc_cold) = {
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::Action, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::Action, _impl_.object_id_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::Action, _impl_.action_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::Action, _impl_.args_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::Actions, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::Actions, _impl_.actions_),
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceRequest, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -209,6 +318,18 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse, _impl_.value_),
         0,
         1,
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse_ActionsEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -219,7 +340,8 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse, _impl_.instance_id_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse, _impl_.markup_),
-        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::CreateInstanceResponse, _impl_.actions_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -229,9 +351,10 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.instance_id_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.user_id_),
-        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.object_id_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.action_),
-        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionRequest, _impl_.args_),
+        ~0u,
+        ~0u,
+        0,
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse_MarkupEntry_DoNotUse, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse_MarkupEntry_DoNotUse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -244,6 +367,18 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse_MarkupEntry_DoNotUse, _impl_.value_),
         0,
         1,
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse_ActionsEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse_ActionsEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse_ActionsEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse_ActionsEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -253,47 +388,70 @@ const ::uint32_t
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse, _impl_.markup_),
+        PROTOBUF_FIELD_OFFSET(::spielbrett_api::instance_host::PerformActionResponse, _impl_.actions_),
 };
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceRequest)},
-        {10, 20, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse)},
-        {22, -1, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceResponse)},
-        {32, -1, -1, sizeof(::spielbrett_api::instance_host::PerformActionRequest)},
-        {45, 55, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse_MarkupEntry_DoNotUse)},
-        {57, -1, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse)},
+        {0, -1, -1, sizeof(::spielbrett_api::instance_host::Action)},
+        {11, -1, -1, sizeof(::spielbrett_api::instance_host::Actions)},
+        {20, -1, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceRequest)},
+        {30, 40, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceResponse_MarkupEntry_DoNotUse)},
+        {42, 52, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceResponse_ActionsEntry_DoNotUse)},
+        {54, -1, -1, sizeof(::spielbrett_api::instance_host::CreateInstanceResponse)},
+        {65, 76, -1, sizeof(::spielbrett_api::instance_host::PerformActionRequest)},
+        {79, 89, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse_MarkupEntry_DoNotUse)},
+        {91, 101, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse_ActionsEntry_DoNotUse)},
+        {103, -1, -1, sizeof(::spielbrett_api::instance_host::PerformActionResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
+    &::spielbrett_api::instance_host::_Action_default_instance_._instance,
+    &::spielbrett_api::instance_host::_Actions_default_instance_._instance,
     &::spielbrett_api::instance_host::_CreateInstanceRequest_default_instance_._instance,
     &::spielbrett_api::instance_host::_CreateInstanceResponse_MarkupEntry_DoNotUse_default_instance_._instance,
+    &::spielbrett_api::instance_host::_CreateInstanceResponse_ActionsEntry_DoNotUse_default_instance_._instance,
     &::spielbrett_api::instance_host::_CreateInstanceResponse_default_instance_._instance,
     &::spielbrett_api::instance_host::_PerformActionRequest_default_instance_._instance,
     &::spielbrett_api::instance_host::_PerformActionResponse_MarkupEntry_DoNotUse_default_instance_._instance,
+    &::spielbrett_api::instance_host::_PerformActionResponse_ActionsEntry_DoNotUse_default_instance_._instance,
     &::spielbrett_api::instance_host::_PerformActionResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_proto_2finstance_5fhost_2fmessages_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n\"proto/instance_host/messages.proto\022\034sp"
     "ielbrett_api.instance_host\032\031google/proto"
-    "buf/any.proto\"W\n\025CreateInstanceRequest\022#"
-    "\n\rinstance_type\030\001 \001(\tR\014instanceType\022\031\n\010u"
-    "ser_ids\030\002 \003(\tR\007userIds\"\316\001\n\026CreateInstanc"
-    "eResponse\022\037\n\013instance_id\030\001 \001(\tR\ninstance"
-    "Id\022X\n\006markup\030\002 \003(\0132@.spielbrett_api.inst"
-    "ance_host.CreateInstanceResponse.MarkupE"
-    "ntryR\006markup\0329\n\013MarkupEntry\022\020\n\003key\030\001 \001(\t"
-    "R\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"\231\001\n\024Perf"
-    "ormActionRequest\022\037\n\013instance_id\030\001 \001(\tR\ni"
-    "nstanceId\022\027\n\007user_id\030\002 \001(\tR\006userId\022\033\n\tob"
-    "ject_id\030\003 \001(\004R\010objectId\022\026\n\006action\030\004 \001(\tR"
-    "\006action\022\022\n\004args\030\005 \003(\tR\004args\"\253\001\n\025PerformA"
-    "ctionResponse\022W\n\006markup\030\001 \003(\0132\?.spielbre"
-    "tt_api.instance_host.PerformActionRespon"
-    "se.MarkupEntryR\006markup\0329\n\013MarkupEntry\022\020\n"
-    "\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028"
-    "\001B=Z;github.com/spielbrett/spielbrett/ge"
-    "n/go/proto/instance_hostb\006proto3"
+    "buf/any.proto\"Q\n\006Action\022\033\n\tobject_id\030\001 \001"
+    "(\004R\010objectId\022\026\n\006action\030\002 \001(\tR\006action\022\022\n\004"
+    "args\030\003 \003(\004R\004args\"I\n\007Actions\022>\n\007actions\030\001"
+    " \003(\0132$.spielbrett_api.instance_host.Acti"
+    "onR\007actions\"W\n\025CreateInstanceRequest\022#\n\r"
+    "instance_type\030\001 \001(\tR\014instanceType\022\031\n\010use"
+    "r_ids\030\002 \003(\tR\007userIds\"\216\003\n\026CreateInstanceR"
+    "esponse\022\037\n\013instance_id\030\001 \001(\tR\ninstanceId"
+    "\022X\n\006markup\030\002 \003(\0132@.spielbrett_api.instan"
+    "ce_host.CreateInstanceResponse.MarkupEnt"
+    "ryR\006markup\022[\n\007actions\030\003 \003(\0132A.spielbrett"
+    "_api.instance_host.CreateInstanceRespons"
+    "e.ActionsEntryR\007actions\0329\n\013MarkupEntry\022\020"
+    "\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\002"
+    "8\001\032a\n\014ActionsEntry\022\020\n\003key\030\001 \001(\tR\003key\022;\n\005"
+    "value\030\002 \001(\0132%.spielbrett_api.instance_ho"
+    "st.ActionsR\005value:\0028\001\"\216\001\n\024PerformActionR"
+    "equest\022\037\n\013instance_id\030\001 \001(\tR\ninstanceId\022"
+    "\027\n\007user_id\030\002 \001(\tR\006userId\022<\n\006action\030\003 \001(\013"
+    "2$.spielbrett_api.instance_host.ActionR\006"
+    "action\"\352\002\n\025PerformActionResponse\022W\n\006mark"
+    "up\030\001 \003(\0132\?.spielbrett_api.instance_host."
+    "PerformActionResponse.MarkupEntryR\006marku"
+    "p\022Z\n\007actions\030\002 \003(\0132@.spielbrett_api.inst"
+    "ance_host.PerformActionResponse.ActionsE"
+    "ntryR\007actions\0329\n\013MarkupEntry\022\020\n\003key\030\001 \001("
+    "\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032a\n\014Acti"
+    "onsEntry\022\020\n\003key\030\001 \001(\tR\003key\022;\n\005value\030\002 \001("
+    "\0132%.spielbrett_api.instance_host.Actions"
+    "R\005value:\0028\001B=Z;github.com/spielbrett/spi"
+    "elbrett/gen/go/proto/instance_hostb\006prot"
+    "o3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto_deps[1] =
     {
@@ -303,13 +461,13 @@ static ::absl::once_flag descriptor_table_proto_2finstance_5fhost_2fmessages_2ep
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto = {
     false,
     false,
-    792,
+    1322,
     descriptor_table_protodef_proto_2finstance_5fhost_2fmessages_2eproto,
     "proto/instance_host/messages.proto",
     &descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto_once,
     descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto_deps,
     1,
-    6,
+    10,
     schemas,
     file_default_instances,
     TableStruct_proto_2finstance_5fhost_2fmessages_2eproto::offsets,
@@ -318,6 +476,549 @@ PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_proto_2finstan
 };
 namespace spielbrett_api {
 namespace instance_host {
+// ===================================================================
+
+class Action::_Internal {
+ public:
+};
+
+Action::Action(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:spielbrett_api.instance_host.Action)
+}
+inline PROTOBUF_NDEBUG_INLINE Action::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::spielbrett_api::instance_host::Action& from_msg)
+      : args_{visibility, arena, from.args_},
+        _args_cached_byte_size_{0},
+        action_(arena, from.action_),
+        _cached_size_{0} {}
+
+Action::Action(
+    ::google::protobuf::Arena* arena,
+    const Action& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  Action* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.object_id_ = from._impl_.object_id_;
+
+  // @@protoc_insertion_point(copy_constructor:spielbrett_api.instance_host.Action)
+}
+inline PROTOBUF_NDEBUG_INLINE Action::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : args_{visibility, arena},
+        _args_cached_byte_size_{0},
+        action_(arena),
+        _cached_size_{0} {}
+
+inline void Action::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.object_id_ = {};
+}
+Action::~Action() {
+  // @@protoc_insertion_point(destructor:spielbrett_api.instance_host.Action)
+  SharedDtor(*this);
+}
+inline void Action::SharedDtor(MessageLite& self) {
+  Action& this_ = static_cast<Action&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.action_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* Action::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) Action(arena);
+}
+constexpr auto Action::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(Action, _impl_.args_) +
+          decltype(Action::_impl_.args_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(Action), alignof(Action), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&Action::PlacementNew_,
+                                 sizeof(Action),
+                                 alignof(Action));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull Action::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_Action_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &Action::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<Action>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &Action::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<Action>(), &Action::ByteSizeLong,
+            &Action::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(Action, _impl_._cached_size_),
+        false,
+    },
+    &Action::kDescriptorMethods,
+    &descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* Action::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 50, 2> Action::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::Action>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint64 object_id = 1 [json_name = "objectId"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(Action, _impl_.object_id_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(Action, _impl_.object_id_)}},
+    // string action = 2 [json_name = "action"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Action, _impl_.action_)}},
+    // repeated uint64 args = 3 [json_name = "args"];
+    {::_pbi::TcParser::FastV64P1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(Action, _impl_.args_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint64 object_id = 1 [json_name = "objectId"];
+    {PROTOBUF_FIELD_OFFSET(Action, _impl_.object_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // string action = 2 [json_name = "action"];
+    {PROTOBUF_FIELD_OFFSET(Action, _impl_.action_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated uint64 args = 3 [json_name = "args"];
+    {PROTOBUF_FIELD_OFFSET(Action, _impl_.args_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kPackedUInt64)},
+  }},
+  // no aux_entries
+  {{
+    "\43\0\6\0\0\0\0\0"
+    "spielbrett_api.instance_host.Action"
+    "action"
+  }},
+};
+
+PROTOBUF_NOINLINE void Action::Clear() {
+// @@protoc_insertion_point(message_clear_start:spielbrett_api.instance_host.Action)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.args_.Clear();
+  _impl_.action_.ClearToEmpty();
+  _impl_.object_id_ = ::uint64_t{0u};
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* Action::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const Action& this_ = static_cast<const Action&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* Action::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const Action& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:spielbrett_api.instance_host.Action)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint64 object_id = 1 [json_name = "objectId"];
+          if (this_._internal_object_id() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+                1, this_._internal_object_id(), target);
+          }
+
+          // string action = 2 [json_name = "action"];
+          if (!this_._internal_action().empty()) {
+            const std::string& _s = this_._internal_action();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.Action.action");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // repeated uint64 args = 3 [json_name = "args"];
+          {
+            int byte_size = this_._impl_._args_cached_byte_size_.Get();
+            if (byte_size > 0) {
+              target = stream->WriteUInt64Packed(
+                  3, this_._internal_args(), byte_size, target);
+            }
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:spielbrett_api.instance_host.Action)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t Action::ByteSizeLong(const MessageLite& base) {
+          const Action& this_ = static_cast<const Action&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t Action::ByteSizeLong() const {
+          const Action& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:spielbrett_api.instance_host.Action)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated uint64 args = 3 [json_name = "args"];
+            {
+              total_size +=
+                  ::_pbi::WireFormatLite::UInt64SizeWithPackedTagSize(
+                      this_._internal_args(), 1,
+                      this_._impl_._args_cached_byte_size_);
+            }
+          }
+           {
+            // string action = 2 [json_name = "action"];
+            if (!this_._internal_action().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_action());
+            }
+            // uint64 object_id = 1 [json_name = "objectId"];
+            if (this_._internal_object_id() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+                  this_._internal_object_id());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void Action::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<Action*>(&to_msg);
+  auto& from = static_cast<const Action&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:spielbrett_api.instance_host.Action)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_args()->MergeFrom(from._internal_args());
+  if (!from._internal_action().empty()) {
+    _this->_internal_set_action(from._internal_action());
+  }
+  if (from._internal_object_id() != 0) {
+    _this->_impl_.object_id_ = from._impl_.object_id_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Action::CopyFrom(const Action& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:spielbrett_api.instance_host.Action)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Action::InternalSwap(Action* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.args_.InternalSwap(&other->_impl_.args_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, &other->_impl_.action_, arena);
+        swap(_impl_.object_id_, other->_impl_.object_id_);
+}
+
+::google::protobuf::Metadata Action::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class Actions::_Internal {
+ public:
+};
+
+Actions::Actions(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:spielbrett_api.instance_host.Actions)
+}
+inline PROTOBUF_NDEBUG_INLINE Actions::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::spielbrett_api::instance_host::Actions& from_msg)
+      : actions_{visibility, arena, from.actions_},
+        _cached_size_{0} {}
+
+Actions::Actions(
+    ::google::protobuf::Arena* arena,
+    const Actions& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  Actions* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:spielbrett_api.instance_host.Actions)
+}
+inline PROTOBUF_NDEBUG_INLINE Actions::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : actions_{visibility, arena},
+        _cached_size_{0} {}
+
+inline void Actions::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+Actions::~Actions() {
+  // @@protoc_insertion_point(destructor:spielbrett_api.instance_host.Actions)
+  SharedDtor(*this);
+}
+inline void Actions::SharedDtor(MessageLite& self) {
+  Actions& this_ = static_cast<Actions&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* Actions::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) Actions(arena);
+}
+constexpr auto Actions::InternalNewImpl_() {
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(Actions, _impl_.actions_) +
+          decltype(Actions::_impl_.actions_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+        sizeof(Actions), alignof(Actions), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&Actions::PlacementNew_,
+                                 sizeof(Actions),
+                                 alignof(Actions));
+  }
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull Actions::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_Actions_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &Actions::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<Actions>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &Actions::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<Actions>(), &Actions::ByteSizeLong,
+            &Actions::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(Actions, _impl_._cached_size_),
+        false,
+    },
+    &Actions::kDescriptorMethods,
+    &descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* Actions::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 1, 0, 2> Actions::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::Actions>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // repeated .spielbrett_api.instance_host.Action actions = 1 [json_name = "actions"];
+    {::_pbi::TcParser::FastMtR1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Actions, _impl_.actions_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .spielbrett_api.instance_host.Action actions = 1 [json_name = "actions"];
+    {PROTOBUF_FIELD_OFFSET(Actions, _impl_.actions_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::Action>()},
+  }}, {{
+  }},
+};
+
+PROTOBUF_NOINLINE void Actions::Clear() {
+// @@protoc_insertion_point(message_clear_start:spielbrett_api.instance_host.Actions)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.actions_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* Actions::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const Actions& this_ = static_cast<const Actions&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* Actions::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const Actions& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:spielbrett_api.instance_host.Actions)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // repeated .spielbrett_api.instance_host.Action actions = 1 [json_name = "actions"];
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_actions_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_actions().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    1, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:spielbrett_api.instance_host.Actions)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t Actions::ByteSizeLong(const MessageLite& base) {
+          const Actions& this_ = static_cast<const Actions&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t Actions::ByteSizeLong() const {
+          const Actions& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:spielbrett_api.instance_host.Actions)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .spielbrett_api.instance_host.Action actions = 1 [json_name = "actions"];
+            {
+              total_size += 1UL * this_._internal_actions_size();
+              for (const auto& msg : this_._internal_actions()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void Actions::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<Actions*>(&to_msg);
+  auto& from = static_cast<const Actions&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:spielbrett_api.instance_host.Actions)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_actions()->MergeFrom(
+      from._internal_actions());
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Actions::CopyFrom(const Actions& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:spielbrett_api.instance_host.Actions)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Actions::InternalSwap(Actions* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.actions_.InternalSwap(&other->_impl_.actions_);
+}
+
+::google::protobuf::Metadata Actions::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
 // ===================================================================
 
 class CreateInstanceRequest::_Internal {
@@ -686,6 +1387,96 @@ const ::_pbi::TcParseTable<1, 2, 0, 80, 2> CreateInstanceResponse_MarkupEntry_Do
 
 // ===================================================================
 
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              CreateInstanceResponse_ActionsEntry_DoNotUse::CreateInstanceResponse_ActionsEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              CreateInstanceResponse_ActionsEntry_DoNotUse::CreateInstanceResponse_ActionsEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              CreateInstanceResponse_ActionsEntry_DoNotUse::CreateInstanceResponse_ActionsEntry_DoNotUse() : SuperType() {}
+              CreateInstanceResponse_ActionsEntry_DoNotUse::CreateInstanceResponse_ActionsEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* CreateInstanceResponse_ActionsEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) CreateInstanceResponse_ActionsEntry_DoNotUse(arena);
+              }
+              constexpr auto CreateInstanceResponse_ActionsEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(CreateInstanceResponse_ActionsEntry_DoNotUse),
+                                                          alignof(CreateInstanceResponse_ActionsEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull CreateInstanceResponse_ActionsEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_CreateInstanceResponse_ActionsEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &CreateInstanceResponse_ActionsEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<CreateInstanceResponse_ActionsEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &CreateInstanceResponse_ActionsEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &CreateInstanceResponse_ActionsEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &CreateInstanceResponse_ActionsEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* CreateInstanceResponse_ActionsEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 76, 2> CreateInstanceResponse_ActionsEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::CreateInstanceResponse_ActionsEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .spielbrett_api.instance_host.Actions value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .spielbrett_api.instance_host.Actions value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(CreateInstanceResponse_ActionsEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::Actions>()},
+  }}, {{
+    "\100\3\0\0\0\0\0\0"
+    "spielbrett_api.instance_host.CreateInstanceResponse.ActionsEntry"
+    "key"
+  }},
+};
+
+// ===================================================================
+
 class CreateInstanceResponse::_Internal {
  public:
 };
@@ -703,6 +1494,7 @@ inline PROTOBUF_NDEBUG_INLINE CreateInstanceResponse::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::spielbrett_api::instance_host::CreateInstanceResponse& from_msg)
       : markup_{visibility, arena, from.markup_},
+        actions_{visibility, arena, from.actions_},
         instance_id_(arena, from.instance_id_),
         _cached_size_{0} {}
 
@@ -726,6 +1518,7 @@ inline PROTOBUF_NDEBUG_INLINE CreateInstanceResponse::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : markup_{visibility, arena},
+        actions_{visibility, arena},
         instance_id_(arena),
         _cached_size_{0} {}
 
@@ -756,6 +1549,14 @@ constexpr auto CreateInstanceResponse::InternalNewImpl_() {
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(CreateInstanceResponse, _impl_.markup_) +
           decltype(CreateInstanceResponse::_impl_.markup_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(CreateInstanceResponse, _impl_.actions_) +
+          decltype(CreateInstanceResponse::_impl_.actions_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(CreateInstanceResponse, _impl_.actions_) +
+          decltype(CreateInstanceResponse::_impl_.actions_)::
               InternalGetArenaOffsetAlt(
                   ::google::protobuf::Message::internal_visibility()),
   });
@@ -796,16 +1597,16 @@ const ::google::protobuf::internal::ClassData* CreateInstanceResponse::GetClassD
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 2, 1, 77, 2> CreateInstanceResponse::_table_ = {
+const ::_pbi::TcParseTable<0, 3, 3, 84, 2> CreateInstanceResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 0,  // max_field_number, fast_idx_mask
+    3, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
-    1,  // num_aux_entries
+    3,  // num_field_entries
+    3,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -826,16 +1627,25 @@ const ::_pbi::TcParseTable<0, 2, 1, 77, 2> CreateInstanceResponse::_table_ = {
     // map<string, string> markup = 2 [json_name = "markup"];
     {PROTOBUF_FIELD_OFFSET(CreateInstanceResponse, _impl_.markup_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // map<string, .spielbrett_api.instance_host.Actions> actions = 3 [json_name = "actions"];
+    {PROTOBUF_FIELD_OFFSET(CreateInstanceResponse, _impl_.actions_), 0, 1,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
     {::_pbi::TcParser::GetMapAuxInfo<
         decltype(CreateInstanceResponse()._impl_.markup_)>(
         1, 0, 0, 9,
         9)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(CreateInstanceResponse()._impl_.actions_)>(
+        1, 0, 0, 9,
+        11)},
+    {::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::Actions>()},
   }}, {{
-    "\63\13\6\0\0\0\0\0"
+    "\63\13\6\7\0\0\0\0"
     "spielbrett_api.instance_host.CreateInstanceResponse"
     "instance_id"
     "markup"
+    "actions"
   }},
 };
 
@@ -847,6 +1657,7 @@ PROTOBUF_NOINLINE void CreateInstanceResponse::Clear() {
   (void) cached_has_bits;
 
   _impl_.markup_.Clear();
+  _impl_.actions_.Clear();
   _impl_.instance_id_.ClearToEmpty();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -907,6 +1718,33 @@ PROTOBUF_NOINLINE void CreateInstanceResponse::Clear() {
             }
           }
 
+          // map<string, .spielbrett_api.instance_host.Actions> actions = 3 [json_name = "actions"];
+          if (!this_._internal_actions().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, ::spielbrett_api::instance_host::Actions,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_MESSAGE>;
+            const auto& field = this_._internal_actions();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    3, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.CreateInstanceResponse.actions");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    3, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.CreateInstanceResponse.actions");
+              }
+            }
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -942,6 +1780,16 @@ PROTOBUF_NOINLINE void CreateInstanceResponse::Clear() {
                                                _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
               }
             }
+            // map<string, .spielbrett_api.instance_host.Actions> actions = 3 [json_name = "actions"];
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_actions_size());
+              for (const auto& entry : this_._internal_actions()) {
+                total_size += _pbi::MapEntryFuncs<std::string, ::spielbrett_api::instance_host::Actions,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_MESSAGE>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
           }
            {
             // string instance_id = 1 [json_name = "instanceId"];
@@ -963,6 +1811,7 @@ void CreateInstanceResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, 
   (void) cached_has_bits;
 
   _this->_impl_.markup_.MergeFrom(from._impl_.markup_);
+  _this->_impl_.actions_.MergeFrom(from._impl_.actions_);
   if (!from._internal_instance_id().empty()) {
     _this->_internal_set_instance_id(from._internal_instance_id());
   }
@@ -983,6 +1832,7 @@ void CreateInstanceResponse::InternalSwap(CreateInstanceResponse* PROTOBUF_RESTR
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.markup_.InternalSwap(&other->_impl_.markup_);
+  _impl_.actions_.InternalSwap(&other->_impl_.actions_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.instance_id_, &other->_impl_.instance_id_, arena);
 }
 
@@ -993,6 +1843,10 @@ void CreateInstanceResponse::InternalSwap(CreateInstanceResponse* PROTOBUF_RESTR
 
 class PerformActionRequest::_Internal {
  public:
+  using HasBits =
+      decltype(std::declval<PerformActionRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_._has_bits_);
 };
 
 PerformActionRequest::PerformActionRequest(::google::protobuf::Arena* arena)
@@ -1007,11 +1861,10 @@ PerformActionRequest::PerformActionRequest(::google::protobuf::Arena* arena)
 inline PROTOBUF_NDEBUG_INLINE PerformActionRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::spielbrett_api::instance_host::PerformActionRequest& from_msg)
-      : args_{visibility, arena, from.args_},
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
         instance_id_(arena, from.instance_id_),
-        user_id_(arena, from.user_id_),
-        action_(arena, from.action_),
-        _cached_size_{0} {}
+        user_id_(arena, from.user_id_) {}
 
 PerformActionRequest::PerformActionRequest(
     ::google::protobuf::Arena* arena,
@@ -1026,22 +1879,23 @@ PerformActionRequest::PerformActionRequest(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
-  _impl_.object_id_ = from._impl_.object_id_;
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.action_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::spielbrett_api::instance_host::Action>(
+                              arena, *from._impl_.action_)
+                        : nullptr;
 
   // @@protoc_insertion_point(copy_constructor:spielbrett_api.instance_host.PerformActionRequest)
 }
 inline PROTOBUF_NDEBUG_INLINE PerformActionRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : args_{visibility, arena},
+      : _cached_size_{0},
         instance_id_(arena),
-        user_id_(arena),
-        action_(arena),
-        _cached_size_{0} {}
+        user_id_(arena) {}
 
 inline void PerformActionRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.object_id_ = {};
+  _impl_.action_ = {};
 }
 PerformActionRequest::~PerformActionRequest() {
   // @@protoc_insertion_point(destructor:spielbrett_api.instance_host.PerformActionRequest)
@@ -1053,7 +1907,7 @@ inline void PerformActionRequest::SharedDtor(MessageLite& self) {
   ABSL_DCHECK(this_.GetArena() == nullptr);
   this_._impl_.instance_id_.Destroy();
   this_._impl_.user_id_.Destroy();
-  this_._impl_.action_.Destroy();
+  delete this_._impl_.action_;
   this_._impl_.~Impl_();
 }
 
@@ -1062,20 +1916,8 @@ inline void* PerformActionRequest::PlacementNew_(const void*, void* mem,
   return ::new (mem) PerformActionRequest(arena);
 }
 constexpr auto PerformActionRequest::InternalNewImpl_() {
-  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
-      PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.args_) +
-          decltype(PerformActionRequest::_impl_.args_)::
-              InternalGetArenaOffset(
-                  ::google::protobuf::Message::internal_visibility()),
-  });
-  if (arena_bits.has_value()) {
-    return ::google::protobuf::internal::MessageCreator::CopyInit(
-        sizeof(PerformActionRequest), alignof(PerformActionRequest), *arena_bits);
-  } else {
-    return ::google::protobuf::internal::MessageCreator(&PerformActionRequest::PlacementNew_,
-                                 sizeof(PerformActionRequest),
-                                 alignof(PerformActionRequest));
-  }
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(PerformActionRequest),
+                                            alignof(PerformActionRequest));
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
@@ -1105,17 +1947,17 @@ const ::google::protobuf::internal::ClassData* PerformActionRequest::GetClassDat
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 0, 86, 2> PerformActionRequest::_table_ = {
+const ::_pbi::TcParseTable<2, 3, 1, 76, 2> PerformActionRequest::_table_ = {
   {
-    0,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_._has_bits_),
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    3, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
-    0,  // num_aux_entries
-    offsetof(decltype(_table_), field_names),  // no aux_entries
+    3,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
     ::_pbi::TcParser::GenericFallback,  // fallback
@@ -1130,44 +1972,28 @@ const ::_pbi::TcParseTable<3, 5, 0, 86, 2> PerformActionRequest::_table_ = {
     // string user_id = 2 [json_name = "userId"];
     {::_pbi::TcParser::FastUS1,
      {18, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.user_id_)}},
-    // uint64 object_id = 3 [json_name = "objectId"];
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(PerformActionRequest, _impl_.object_id_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.object_id_)}},
-    // string action = 4 [json_name = "action"];
-    {::_pbi::TcParser::FastUS1,
-     {34, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.action_)}},
-    // repeated string args = 5 [json_name = "args"];
-    {::_pbi::TcParser::FastUR1,
-     {42, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.args_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .spielbrett_api.instance_host.Action action = 3 [json_name = "action"];
+    {::_pbi::TcParser::FastMtS1,
+     {26, 0, 0, PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.action_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string instance_id = 1 [json_name = "instanceId"];
-    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.instance_id_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.instance_id_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // string user_id = 2 [json_name = "userId"];
-    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.user_id_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.user_id_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint64 object_id = 3 [json_name = "objectId"];
-    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.object_id_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
-    // string action = 4 [json_name = "action"];
-    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.action_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // repeated string args = 5 [json_name = "args"];
-    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.args_), 0, 0,
-    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
-  }},
-  // no aux_entries
-  {{
-    "\61\13\7\0\6\4\0\0"
+    // .spielbrett_api.instance_host.Action action = 3 [json_name = "action"];
+    {PROTOBUF_FIELD_OFFSET(PerformActionRequest, _impl_.action_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::Action>()},
+  }}, {{
+    "\61\13\7\0\0\0\0\0"
     "spielbrett_api.instance_host.PerformActionRequest"
     "instance_id"
     "user_id"
-    "action"
-    "args"
   }},
 };
 
@@ -1178,11 +2004,14 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.args_.Clear();
   _impl_.instance_id_.ClearToEmpty();
   _impl_.user_id_.ClearToEmpty();
-  _impl_.action_.ClearToEmpty();
-  _impl_.object_id_ = ::uint64_t{0u};
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.action_ != nullptr);
+    _impl_.action_->Clear();
+  }
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1217,27 +2046,12 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
             target = stream->WriteStringMaybeAliased(2, _s, target);
           }
 
-          // uint64 object_id = 3 [json_name = "objectId"];
-          if (this_._internal_object_id() != 0) {
-            target = stream->EnsureSpace(target);
-            target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
-                3, this_._internal_object_id(), target);
-          }
-
-          // string action = 4 [json_name = "action"];
-          if (!this_._internal_action().empty()) {
-            const std::string& _s = this_._internal_action();
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.PerformActionRequest.action");
-            target = stream->WriteStringMaybeAliased(4, _s, target);
-          }
-
-          // repeated string args = 5 [json_name = "args"];
-          for (int i = 0, n = this_._internal_args_size(); i < n; ++i) {
-            const auto& s = this_._internal_args().Get(i);
-            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.PerformActionRequest.args");
-            target = stream->WriteString(5, s, target);
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .spielbrett_api.instance_host.Action action = 3 [json_name = "action"];
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                3, *this_._impl_.action_, this_._impl_.action_->GetCachedSize(), target,
+                stream);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -1265,17 +2079,6 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
-            // repeated string args = 5 [json_name = "args"];
-            {
-              total_size +=
-                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_args().size());
-              for (int i = 0, n = this_._internal_args().size(); i < n; ++i) {
-                total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-                    this_._internal_args().Get(i));
-              }
-            }
-          }
-           {
             // string instance_id = 1 [json_name = "instanceId"];
             if (!this_._internal_instance_id().empty()) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -1286,15 +2089,13 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_user_id());
             }
-            // string action = 4 [json_name = "action"];
-            if (!this_._internal_action().empty()) {
-              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_action());
-            }
-            // uint64 object_id = 3 [json_name = "objectId"];
-            if (this_._internal_object_id() != 0) {
-              total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
-                  this_._internal_object_id());
+          }
+           {
+            // .spielbrett_api.instance_host.Action action = 3 [json_name = "action"];
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.action_);
             }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
@@ -1304,24 +2105,29 @@ PROTOBUF_NOINLINE void PerformActionRequest::Clear() {
 void PerformActionRequest::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
   auto* const _this = static_cast<PerformActionRequest*>(&to_msg);
   auto& from = static_cast<const PerformActionRequest&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
   // @@protoc_insertion_point(class_specific_merge_from_start:spielbrett_api.instance_host.PerformActionRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  _this->_internal_mutable_args()->MergeFrom(from._internal_args());
   if (!from._internal_instance_id().empty()) {
     _this->_internal_set_instance_id(from._internal_instance_id());
   }
   if (!from._internal_user_id().empty()) {
     _this->_internal_set_user_id(from._internal_user_id());
   }
-  if (!from._internal_action().empty()) {
-    _this->_internal_set_action(from._internal_action());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.action_ != nullptr);
+    if (_this->_impl_.action_ == nullptr) {
+      _this->_impl_.action_ =
+          ::google::protobuf::Message::CopyConstruct<::spielbrett_api::instance_host::Action>(arena, *from._impl_.action_);
+    } else {
+      _this->_impl_.action_->MergeFrom(*from._impl_.action_);
+    }
   }
-  if (from._internal_object_id() != 0) {
-    _this->_impl_.object_id_ = from._impl_.object_id_;
-  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1338,11 +2144,10 @@ void PerformActionRequest::InternalSwap(PerformActionRequest* PROTOBUF_RESTRICT 
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  _impl_.args_.InternalSwap(&other->_impl_.args_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.instance_id_, &other->_impl_.instance_id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_id_, &other->_impl_.user_id_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.action_, &other->_impl_.action_, arena);
-        swap(_impl_.object_id_, other->_impl_.object_id_);
+  swap(_impl_.action_, other->_impl_.action_);
 }
 
 ::google::protobuf::Metadata PerformActionRequest::GetMetadata() const {
@@ -1441,6 +2246,96 @@ const ::_pbi::TcParseTable<1, 2, 0, 79, 2> PerformActionResponse_MarkupEntry_DoN
 
 // ===================================================================
 
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              PerformActionResponse_ActionsEntry_DoNotUse::PerformActionResponse_ActionsEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              PerformActionResponse_ActionsEntry_DoNotUse::PerformActionResponse_ActionsEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              PerformActionResponse_ActionsEntry_DoNotUse::PerformActionResponse_ActionsEntry_DoNotUse() : SuperType() {}
+              PerformActionResponse_ActionsEntry_DoNotUse::PerformActionResponse_ActionsEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* PerformActionResponse_ActionsEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) PerformActionResponse_ActionsEntry_DoNotUse(arena);
+              }
+              constexpr auto PerformActionResponse_ActionsEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(PerformActionResponse_ActionsEntry_DoNotUse),
+                                                          alignof(PerformActionResponse_ActionsEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull PerformActionResponse_ActionsEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_PerformActionResponse_ActionsEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &PerformActionResponse_ActionsEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<PerformActionResponse_ActionsEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &PerformActionResponse_ActionsEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &PerformActionResponse_ActionsEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(PerformActionResponse_ActionsEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &PerformActionResponse_ActionsEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* PerformActionResponse_ActionsEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 75, 2> PerformActionResponse_ActionsEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(PerformActionResponse_ActionsEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::PerformActionResponse_ActionsEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .spielbrett_api.instance_host.Actions value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(PerformActionResponse_ActionsEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(PerformActionResponse_ActionsEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(PerformActionResponse_ActionsEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .spielbrett_api.instance_host.Actions value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(PerformActionResponse_ActionsEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::Actions>()},
+  }}, {{
+    "\77\3\0\0\0\0\0\0"
+    "spielbrett_api.instance_host.PerformActionResponse.ActionsEntry"
+    "key"
+  }},
+};
+
+// ===================================================================
+
 class PerformActionResponse::_Internal {
  public:
 };
@@ -1458,6 +2353,7 @@ inline PROTOBUF_NDEBUG_INLINE PerformActionResponse::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::spielbrett_api::instance_host::PerformActionResponse& from_msg)
       : markup_{visibility, arena, from.markup_},
+        actions_{visibility, arena, from.actions_},
         _cached_size_{0} {}
 
 PerformActionResponse::PerformActionResponse(
@@ -1480,6 +2376,7 @@ inline PROTOBUF_NDEBUG_INLINE PerformActionResponse::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : markup_{visibility, arena},
+        actions_{visibility, arena},
         _cached_size_{0} {}
 
 inline void PerformActionResponse::SharedCtor(::_pb::Arena* arena) {
@@ -1508,6 +2405,14 @@ constexpr auto PerformActionResponse::InternalNewImpl_() {
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(PerformActionResponse, _impl_.markup_) +
           decltype(PerformActionResponse::_impl_.markup_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(PerformActionResponse, _impl_.actions_) +
+          decltype(PerformActionResponse::_impl_.actions_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(PerformActionResponse, _impl_.actions_) +
+          decltype(PerformActionResponse::_impl_.actions_)::
               InternalGetArenaOffsetAlt(
                   ::google::protobuf::Message::internal_visibility()),
   });
@@ -1548,16 +2453,16 @@ const ::google::protobuf::internal::ClassData* PerformActionResponse::GetClassDa
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 65, 2> PerformActionResponse::_table_ = {
+const ::_pbi::TcParseTable<0, 2, 3, 72, 2> PerformActionResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    2, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
+    4294967292,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    1,  // num_aux_entries
+    2,  // num_field_entries
+    3,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -1573,15 +2478,24 @@ const ::_pbi::TcParseTable<0, 1, 1, 65, 2> PerformActionResponse::_table_ = {
     // map<string, string> markup = 1 [json_name = "markup"];
     {PROTOBUF_FIELD_OFFSET(PerformActionResponse, _impl_.markup_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
+    // map<string, .spielbrett_api.instance_host.Actions> actions = 2 [json_name = "actions"];
+    {PROTOBUF_FIELD_OFFSET(PerformActionResponse, _impl_.actions_), 0, 1,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
     {::_pbi::TcParser::GetMapAuxInfo<
         decltype(PerformActionResponse()._impl_.markup_)>(
         1, 0, 0, 9,
         9)},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(PerformActionResponse()._impl_.actions_)>(
+        1, 0, 0, 9,
+        11)},
+    {::_pbi::TcParser::GetTable<::spielbrett_api::instance_host::Actions>()},
   }}, {{
-    "\62\6\0\0\0\0\0\0"
+    "\62\6\7\0\0\0\0\0"
     "spielbrett_api.instance_host.PerformActionResponse"
     "markup"
+    "actions"
   }},
 };
 
@@ -1593,6 +2507,7 @@ PROTOBUF_NOINLINE void PerformActionResponse::Clear() {
   (void) cached_has_bits;
 
   _impl_.markup_.Clear();
+  _impl_.actions_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1644,6 +2559,33 @@ PROTOBUF_NOINLINE void PerformActionResponse::Clear() {
             }
           }
 
+          // map<string, .spielbrett_api.instance_host.Actions> actions = 2 [json_name = "actions"];
+          if (!this_._internal_actions().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, ::spielbrett_api::instance_host::Actions,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_MESSAGE>;
+            const auto& field = this_._internal_actions();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    2, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.PerformActionResponse.actions");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    2, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "spielbrett_api.instance_host.PerformActionResponse.actions");
+              }
+            }
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1679,6 +2621,16 @@ PROTOBUF_NOINLINE void PerformActionResponse::Clear() {
                                                _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
               }
             }
+            // map<string, .spielbrett_api.instance_host.Actions> actions = 2 [json_name = "actions"];
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_actions_size());
+              for (const auto& entry : this_._internal_actions()) {
+                total_size += _pbi::MapEntryFuncs<std::string, ::spielbrett_api::instance_host::Actions,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_MESSAGE>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -1693,6 +2645,7 @@ void PerformActionResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, c
   (void) cached_has_bits;
 
   _this->_impl_.markup_.MergeFrom(from._impl_.markup_);
+  _this->_impl_.actions_.MergeFrom(from._impl_.actions_);
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1708,6 +2661,7 @@ void PerformActionResponse::InternalSwap(PerformActionResponse* PROTOBUF_RESTRIC
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.markup_.InternalSwap(&other->_impl_.markup_);
+  _impl_.actions_.InternalSwap(&other->_impl_.actions_);
 }
 
 ::google::protobuf::Metadata PerformActionResponse::GetMetadata() const {

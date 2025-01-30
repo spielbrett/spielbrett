@@ -57,18 +57,59 @@ void ExternalClass::Object::setTemplate(const std::string &templateStr)
 
 std::vector<Board::Object::Action> ExternalClass::Object::getAllActions()
 {
-    return pyObject.attr("__actions").cast<std::vector<Board::Object::Action>>();
+    std::vector<Board::Object::Action> actions;
+
+    for (auto action : pyObject.attr("__actions")) {
+        auto actionTuple = action.cast<pybind11::tuple>();
+        auto actionName = actionTuple[0].cast<std::string>();
+        auto pyActionArgs = actionTuple[1].cast<pybind11::tuple>();
+
+        std::vector<std::size_t> actionArgs;
+        for (auto pyActionArg : pyActionArgs) {
+            actionArgs.push_back(pyActionArg.cast<pybind11::tuple>()[0].cast<std::size_t>());
+        }
+        actions.emplace_back(actionName, actionArgs);
+    }
+
+    return actions;
 }
 
 std::vector<Board::Object::Action> ExternalClass::Object::getValidActions(int playerIndex)
 {
-    return pyObject.attr("__get_valid_actions")(playerIndex).cast<std::vector<Board::Object::Action>>();
+    std::vector<Board::Object::Action> actions;
+
+    for (auto action : pyObject.attr("__get_valid_actions")(playerIndex)) {
+        auto actionTuple = action.cast<pybind11::tuple>();
+        auto actionName = actionTuple[0].cast<std::string>();
+        auto pyActionArgs = actionTuple[1].cast<pybind11::tuple>();
+
+        std::vector<std::size_t> actionArgs;
+        for (auto pyActionArg : pyActionArgs) {
+            actionArgs.push_back(pyActionArg.cast<pybind11::tuple>()[0].cast<std::size_t>());
+        }
+        actions.emplace_back(actionName, actionArgs);
+    }
+
+    return actions;
 }
 
 void ExternalClass::Object::performAction(int playerIndex, const Board::Object::Action &action)
 {
     const auto &[actionName, actionArgs] = action;
-    pyObject.attr(pybind11::cast(actionName))(*pybind11::cast(actionArgs));
+
+    pybind11::list args;
+    auto method = pyObject.attr(pybind11::cast(actionName));
+    for (size_t i = 0; i < actionArgs.size(); i++) {
+        auto selector = method.attr("_args").cast<pybind11::tuple>()[i].cast<pybind11::tuple>()[0];
+        if (pybind11::isinstance<pybind11::function>(selector)) {
+            args.append(selector().cast<pybind11::list>()[actionArgs[i]]);
+        }
+        else {
+            args.append(selector.cast<pybind11::list>()[actionArgs[i]]);
+        }
+    }
+
+    method(playerIndex, *args);
 }
 
 Board::Object::State ExternalClass::Object::observe(int playerIndex)

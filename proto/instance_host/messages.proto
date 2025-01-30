@@ -4,6 +4,16 @@ option go_package = "github.com/spielbrett/spielbrett/gen/go/proto/instance_host
 
 import "google/protobuf/any.proto";
 
+message Action {
+  uint64 object_id = 1;
+  string action = 2;
+  repeated uint64 args = 3;
+}
+
+message Actions {
+  repeated Action actions = 1;
+}
+
 message CreateInstanceRequest {
   string instance_type = 1;
   repeated string user_ids = 2;
@@ -12,17 +22,16 @@ message CreateInstanceRequest {
 message CreateInstanceResponse {
   string instance_id = 1;
   map<string, string> markup = 2;
+  map<string, Actions> actions = 3;
 }
 
 message PerformActionRequest {
   string instance_id = 1;
   string user_id = 2;
-  uint64 object_id = 3;
-  string action = 4;
-  repeated string args = 5;
+  Action action = 3;
 }
 
 message PerformActionResponse {
   map<string, string> markup = 1;
+  map<string, Actions> actions = 2;
 }
-

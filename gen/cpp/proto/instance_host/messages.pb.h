@@ -57,12 +57,21 @@ extern const ::google::protobuf::internal::DescriptorTable
     descriptor_table_proto_2finstance_5fhost_2fmessages_2eproto;
 namespace spielbrett_api {
 namespace instance_host {
+class Action;
+struct ActionDefaultTypeInternal;
+extern ActionDefaultTypeInternal _Action_default_instance_;
+class Actions;
+struct ActionsDefaultTypeInternal;
+extern ActionsDefaultTypeInternal _Actions_default_instance_;
 class CreateInstanceRequest;
 struct CreateInstanceRequestDefaultTypeInternal;
 extern CreateInstanceRequestDefaultTypeInternal _CreateInstanceRequest_default_instance_;
 class CreateInstanceResponse;
 struct CreateInstanceResponseDefaultTypeInternal;
 extern CreateInstanceResponseDefaultTypeInternal _CreateInstanceResponse_default_instance_;
+class CreateInstanceResponse_ActionsEntry_DoNotUse;
+struct CreateInstanceResponse_ActionsEntry_DoNotUseDefaultTypeInternal;
+extern CreateInstanceResponse_ActionsEntry_DoNotUseDefaultTypeInternal _CreateInstanceResponse_ActionsEntry_DoNotUse_default_instance_;
 class CreateInstanceResponse_MarkupEntry_DoNotUse;
 struct CreateInstanceResponse_MarkupEntry_DoNotUseDefaultTypeInternal;
 extern CreateInstanceResponse_MarkupEntry_DoNotUseDefaultTypeInternal _CreateInstanceResponse_MarkupEntry_DoNotUse_default_instance_;
@@ -72,6 +81,9 @@ extern PerformActionRequestDefaultTypeInternal _PerformActionRequest_default_ins
 class PerformActionResponse;
 struct PerformActionResponseDefaultTypeInternal;
 extern PerformActionResponseDefaultTypeInternal _PerformActionResponse_default_instance_;
+class PerformActionResponse_ActionsEntry_DoNotUse;
+struct PerformActionResponse_ActionsEntry_DoNotUseDefaultTypeInternal;
+extern PerformActionResponse_ActionsEntry_DoNotUseDefaultTypeInternal _PerformActionResponse_ActionsEntry_DoNotUse_default_instance_;
 class PerformActionResponse_MarkupEntry_DoNotUse;
 struct PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal;
 extern PerformActionResponse_MarkupEntry_DoNotUseDefaultTypeInternal _PerformActionResponse_MarkupEntry_DoNotUse_default_instance_;
@@ -126,274 +138,6 @@ class PerformActionResponse_MarkupEntry_DoNotUse final
                              ::google::protobuf::Arena* arena);
   static constexpr auto InternalNewImpl_();
   static const ::google::protobuf::internal::ClassDataFull _class_data_;
-};
-// -------------------------------------------------------------------
-
-class PerformActionRequest final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:spielbrett_api.instance_host.PerformActionRequest) */ {
- public:
-  inline PerformActionRequest() : PerformActionRequest(nullptr) {}
-  ~PerformActionRequest() PROTOBUF_FINAL;
-
-#if defined(PROTOBUF_CUSTOM_VTABLE)
-  void operator delete(PerformActionRequest* msg, std::destroying_delete_t) {
-    SharedDtor(*msg);
-    ::google::protobuf::internal::SizedDelete(msg, sizeof(PerformActionRequest));
-  }
-#endif
-
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR PerformActionRequest(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline PerformActionRequest(const PerformActionRequest& from) : PerformActionRequest(nullptr, from) {}
-  inline PerformActionRequest(PerformActionRequest&& from) noexcept
-      : PerformActionRequest(nullptr, std::move(from)) {}
-  inline PerformActionRequest& operator=(const PerformActionRequest& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline PerformActionRequest& operator=(PerformActionRequest&& from) noexcept {
-    if (this == &from) return *this;
-    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const PerformActionRequest& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const PerformActionRequest* internal_default_instance() {
-    return reinterpret_cast<const PerformActionRequest*>(
-        &_PerformActionRequest_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 3;
-  friend void swap(PerformActionRequest& a, PerformActionRequest& b) { a.Swap(&b); }
-  inline void Swap(PerformActionRequest* other) {
-    if (other == this) return;
-    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(PerformActionRequest* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  PerformActionRequest* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::Message::DefaultConstruct<PerformActionRequest>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const PerformActionRequest& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const PerformActionRequest& from) { PerformActionRequest::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
-  #if defined(PROTOBUF_CUSTOM_VTABLE)
-  private:
-  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
-  static ::uint8_t* _InternalSerialize(
-      const MessageLite& msg, ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream);
-
-  public:
-  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-    return _InternalSerialize(*this, target, stream);
-  }
-  #else   // PROTOBUF_CUSTOM_VTABLE
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  #endif  // PROTOBUF_CUSTOM_VTABLE
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  static void SharedDtor(MessageLite& self);
-  void InternalSwap(PerformActionRequest* other);
- private:
-  template <typename T>
-  friend ::absl::string_view(
-      ::google::protobuf::internal::GetAnyMessageName)();
-  static ::absl::string_view FullMessageName() { return "spielbrett_api.instance_host.PerformActionRequest"; }
-
- protected:
-  explicit PerformActionRequest(::google::protobuf::Arena* arena);
-  PerformActionRequest(::google::protobuf::Arena* arena, const PerformActionRequest& from);
-  PerformActionRequest(::google::protobuf::Arena* arena, PerformActionRequest&& from) noexcept
-      : PerformActionRequest(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
-  static void* PlacementNew_(const void*, void* mem,
-                             ::google::protobuf::Arena* arena);
-  static constexpr auto InternalNewImpl_();
-  static const ::google::protobuf::internal::ClassDataFull _class_data_;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kArgsFieldNumber = 5,
-    kInstanceIdFieldNumber = 1,
-    kUserIdFieldNumber = 2,
-    kActionFieldNumber = 4,
-    kObjectIdFieldNumber = 3,
-  };
-  // repeated string args = 5 [json_name = "args"];
-  int args_size() const;
-  private:
-  int _internal_args_size() const;
-
-  public:
-  void clear_args() ;
-  const std::string& args(int index) const;
-  std::string* mutable_args(int index);
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_args(int index, Arg_&& value, Args_... args);
-  std::string* add_args();
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void add_args(Arg_&& value, Args_... args);
-  const ::google::protobuf::RepeatedPtrField<std::string>& args() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* mutable_args();
-
-  private:
-  const ::google::protobuf::RepeatedPtrField<std::string>& _internal_args() const;
-  ::google::protobuf::RepeatedPtrField<std::string>* _internal_mutable_args();
-
-  public:
-  // string instance_id = 1 [json_name = "instanceId"];
-  void clear_instance_id() ;
-  const std::string& instance_id() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_instance_id(Arg_&& arg, Args_... args);
-  std::string* mutable_instance_id();
-  PROTOBUF_NODISCARD std::string* release_instance_id();
-  void set_allocated_instance_id(std::string* value);
-
-  private:
-  const std::string& _internal_instance_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_instance_id(
-      const std::string& value);
-  std::string* _internal_mutable_instance_id();
-
-  public:
-  // string user_id = 2 [json_name = "userId"];
-  void clear_user_id() ;
-  const std::string& user_id() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_user_id(Arg_&& arg, Args_... args);
-  std::string* mutable_user_id();
-  PROTOBUF_NODISCARD std::string* release_user_id();
-  void set_allocated_user_id(std::string* value);
-
-  private:
-  const std::string& _internal_user_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(
-      const std::string& value);
-  std::string* _internal_mutable_user_id();
-
-  public:
-  // string action = 4 [json_name = "action"];
-  void clear_action() ;
-  const std::string& action() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_action(Arg_&& arg, Args_... args);
-  std::string* mutable_action();
-  PROTOBUF_NODISCARD std::string* release_action();
-  void set_allocated_action(std::string* value);
-
-  private:
-  const std::string& _internal_action() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action(
-      const std::string& value);
-  std::string* _internal_mutable_action();
-
-  public:
-  // uint64 object_id = 3 [json_name = "objectId"];
-  void clear_object_id() ;
-  ::uint64_t object_id() const;
-  void set_object_id(::uint64_t value);
-
-  private:
-  ::uint64_t _internal_object_id() const;
-  void _internal_set_object_id(::uint64_t value);
-
-  public:
-  // @@protoc_insertion_point(class_scope:spielbrett_api.instance_host.PerformActionRequest)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      3, 5, 0,
-      86, 2>
-      _table_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const PerformActionRequest& from_msg);
-    ::google::protobuf::RepeatedPtrField<std::string> args_;
-    ::google::protobuf::internal::ArenaStringPtr instance_id_;
-    ::google::protobuf::internal::ArenaStringPtr user_id_;
-    ::google::protobuf::internal::ArenaStringPtr action_;
-    ::uint64_t object_id_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_proto_2finstance_5fhost_2fmessages_2eproto;
 };
 // -------------------------------------------------------------------
 
@@ -495,7 +239,7 @@ class CreateInstanceRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateInstanceRequest*>(
         &_CreateInstanceRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 0;
+  static constexpr int kIndexInFileMessages = 2;
   friend void swap(CreateInstanceRequest& a, CreateInstanceRequest& b) { a.Swap(&b); }
   inline void Swap(CreateInstanceRequest* other) {
     if (other == this) return;
@@ -656,6 +400,742 @@ class CreateInstanceRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class Action final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:spielbrett_api.instance_host.Action) */ {
+ public:
+  inline Action() : Action(nullptr) {}
+  ~Action() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Action* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Action));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Action(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline Action(const Action& from) : Action(nullptr, from) {}
+  inline Action(Action&& from) noexcept
+      : Action(nullptr, std::move(from)) {}
+  inline Action& operator=(const Action& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Action& operator=(Action&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Action& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Action* internal_default_instance() {
+    return reinterpret_cast<const Action*>(
+        &_Action_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 0;
+  friend void swap(Action& a, Action& b) { a.Swap(&b); }
+  inline void Swap(Action* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Action* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Action* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Action>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Action& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Action& from) { Action::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Action* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "spielbrett_api.instance_host.Action"; }
+
+ protected:
+  explicit Action(::google::protobuf::Arena* arena);
+  Action(::google::protobuf::Arena* arena, const Action& from);
+  Action(::google::protobuf::Arena* arena, Action&& from) noexcept
+      : Action(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kArgsFieldNumber = 3,
+    kActionFieldNumber = 2,
+    kObjectIdFieldNumber = 1,
+  };
+  // repeated uint64 args = 3 [json_name = "args"];
+  int args_size() const;
+  private:
+  int _internal_args_size() const;
+
+  public:
+  void clear_args() ;
+  ::uint64_t args(int index) const;
+  void set_args(int index, ::uint64_t value);
+  void add_args(::uint64_t value);
+  const ::google::protobuf::RepeatedField<::uint64_t>& args() const;
+  ::google::protobuf::RepeatedField<::uint64_t>* mutable_args();
+
+  private:
+  const ::google::protobuf::RepeatedField<::uint64_t>& _internal_args() const;
+  ::google::protobuf::RepeatedField<::uint64_t>* _internal_mutable_args();
+
+  public:
+  // string action = 2 [json_name = "action"];
+  void clear_action() ;
+  const std::string& action() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_action(Arg_&& arg, Args_... args);
+  std::string* mutable_action();
+  PROTOBUF_NODISCARD std::string* release_action();
+  void set_allocated_action(std::string* value);
+
+  private:
+  const std::string& _internal_action() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_action(
+      const std::string& value);
+  std::string* _internal_mutable_action();
+
+  public:
+  // uint64 object_id = 1 [json_name = "objectId"];
+  void clear_object_id() ;
+  ::uint64_t object_id() const;
+  void set_object_id(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_object_id() const;
+  void _internal_set_object_id(::uint64_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:spielbrett_api.instance_host.Action)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 0,
+      50, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const Action& from_msg);
+    ::google::protobuf::RepeatedField<::uint64_t> args_;
+    ::google::protobuf::internal::CachedSize _args_cached_byte_size_;
+    ::google::protobuf::internal::ArenaStringPtr action_;
+    ::uint64_t object_id_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2finstance_5fhost_2fmessages_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PerformActionRequest final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:spielbrett_api.instance_host.PerformActionRequest) */ {
+ public:
+  inline PerformActionRequest() : PerformActionRequest(nullptr) {}
+  ~PerformActionRequest() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(PerformActionRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(PerformActionRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR PerformActionRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline PerformActionRequest(const PerformActionRequest& from) : PerformActionRequest(nullptr, from) {}
+  inline PerformActionRequest(PerformActionRequest&& from) noexcept
+      : PerformActionRequest(nullptr, std::move(from)) {}
+  inline PerformActionRequest& operator=(const PerformActionRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PerformActionRequest& operator=(PerformActionRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const PerformActionRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const PerformActionRequest* internal_default_instance() {
+    return reinterpret_cast<const PerformActionRequest*>(
+        &_PerformActionRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 6;
+  friend void swap(PerformActionRequest& a, PerformActionRequest& b) { a.Swap(&b); }
+  inline void Swap(PerformActionRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(PerformActionRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  PerformActionRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<PerformActionRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const PerformActionRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const PerformActionRequest& from) { PerformActionRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(PerformActionRequest* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "spielbrett_api.instance_host.PerformActionRequest"; }
+
+ protected:
+  explicit PerformActionRequest(::google::protobuf::Arena* arena);
+  PerformActionRequest(::google::protobuf::Arena* arena, const PerformActionRequest& from);
+  PerformActionRequest(::google::protobuf::Arena* arena, PerformActionRequest&& from) noexcept
+      : PerformActionRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kInstanceIdFieldNumber = 1,
+    kUserIdFieldNumber = 2,
+    kActionFieldNumber = 3,
+  };
+  // string instance_id = 1 [json_name = "instanceId"];
+  void clear_instance_id() ;
+  const std::string& instance_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_instance_id(Arg_&& arg, Args_... args);
+  std::string* mutable_instance_id();
+  PROTOBUF_NODISCARD std::string* release_instance_id();
+  void set_allocated_instance_id(std::string* value);
+
+  private:
+  const std::string& _internal_instance_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_instance_id(
+      const std::string& value);
+  std::string* _internal_mutable_instance_id();
+
+  public:
+  // string user_id = 2 [json_name = "userId"];
+  void clear_user_id() ;
+  const std::string& user_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_user_id(Arg_&& arg, Args_... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* value);
+
+  private:
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(
+      const std::string& value);
+  std::string* _internal_mutable_user_id();
+
+  public:
+  // .spielbrett_api.instance_host.Action action = 3 [json_name = "action"];
+  bool has_action() const;
+  void clear_action() ;
+  const ::spielbrett_api::instance_host::Action& action() const;
+  PROTOBUF_NODISCARD ::spielbrett_api::instance_host::Action* release_action();
+  ::spielbrett_api::instance_host::Action* mutable_action();
+  void set_allocated_action(::spielbrett_api::instance_host::Action* value);
+  void unsafe_arena_set_allocated_action(::spielbrett_api::instance_host::Action* value);
+  ::spielbrett_api::instance_host::Action* unsafe_arena_release_action();
+
+  private:
+  const ::spielbrett_api::instance_host::Action& _internal_action() const;
+  ::spielbrett_api::instance_host::Action* _internal_mutable_action();
+
+  public:
+  // @@protoc_insertion_point(class_scope:spielbrett_api.instance_host.PerformActionRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 3, 1,
+      76, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const PerformActionRequest& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr instance_id_;
+    ::google::protobuf::internal::ArenaStringPtr user_id_;
+    ::spielbrett_api::instance_host::Action* action_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2finstance_5fhost_2fmessages_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Actions final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:spielbrett_api.instance_host.Actions) */ {
+ public:
+  inline Actions() : Actions(nullptr) {}
+  ~Actions() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Actions* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Actions));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Actions(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline Actions(const Actions& from) : Actions(nullptr, from) {}
+  inline Actions(Actions&& from) noexcept
+      : Actions(nullptr, std::move(from)) {}
+  inline Actions& operator=(const Actions& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Actions& operator=(Actions&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Actions& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Actions* internal_default_instance() {
+    return reinterpret_cast<const Actions*>(
+        &_Actions_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 1;
+  friend void swap(Actions& a, Actions& b) { a.Swap(&b); }
+  inline void Swap(Actions* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Actions* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Actions* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Actions>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Actions& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Actions& from) { Actions::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Actions* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "spielbrett_api.instance_host.Actions"; }
+
+ protected:
+  explicit Actions(::google::protobuf::Arena* arena);
+  Actions(::google::protobuf::Arena* arena, const Actions& from);
+  Actions(::google::protobuf::Arena* arena, Actions&& from) noexcept
+      : Actions(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kActionsFieldNumber = 1,
+  };
+  // repeated .spielbrett_api.instance_host.Action actions = 1 [json_name = "actions"];
+  int actions_size() const;
+  private:
+  int _internal_actions_size() const;
+
+  public:
+  void clear_actions() ;
+  ::spielbrett_api::instance_host::Action* mutable_actions(int index);
+  ::google::protobuf::RepeatedPtrField<::spielbrett_api::instance_host::Action>* mutable_actions();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::spielbrett_api::instance_host::Action>& _internal_actions() const;
+  ::google::protobuf::RepeatedPtrField<::spielbrett_api::instance_host::Action>* _internal_mutable_actions();
+  public:
+  const ::spielbrett_api::instance_host::Action& actions(int index) const;
+  ::spielbrett_api::instance_host::Action* add_actions();
+  const ::google::protobuf::RepeatedPtrField<::spielbrett_api::instance_host::Action>& actions() const;
+  // @@protoc_insertion_point(class_scope:spielbrett_api.instance_host.Actions)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const Actions& from_msg);
+    ::google::protobuf::RepeatedPtrField< ::spielbrett_api::instance_host::Action > actions_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_proto_2finstance_5fhost_2fmessages_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PerformActionResponse_ActionsEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, ::google::protobuf::Message,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, ::google::protobuf::Message,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>;
+  PerformActionResponse_ActionsEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR PerformActionResponse_ActionsEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit PerformActionResponse_ActionsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const PerformActionResponse_ActionsEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const PerformActionResponse_ActionsEntry_DoNotUse*>(
+        &_PerformActionResponse_ActionsEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_proto_2finstance_5fhost_2fmessages_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      75, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
+class CreateInstanceResponse_ActionsEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, ::google::protobuf::Message,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, ::google::protobuf::Message,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>;
+  CreateInstanceResponse_ActionsEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR CreateInstanceResponse_ActionsEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit CreateInstanceResponse_ActionsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const CreateInstanceResponse_ActionsEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const CreateInstanceResponse_ActionsEntry_DoNotUse*>(
+        &_CreateInstanceResponse_ActionsEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_proto_2finstance_5fhost_2fmessages_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      76, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
 class PerformActionResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:spielbrett_api.instance_host.PerformActionResponse) */ {
  public:
@@ -715,7 +1195,7 @@ class PerformActionResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const PerformActionResponse*>(
         &_PerformActionResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 5;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(PerformActionResponse& a, PerformActionResponse& b) { a.Swap(&b); }
   inline void Swap(PerformActionResponse* other) {
     if (other == this) return;
@@ -803,6 +1283,7 @@ class PerformActionResponse final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kMarkupFieldNumber = 1,
+    kActionsFieldNumber = 2,
   };
   // map<string, string> markup = 1 [json_name = "markup"];
   int markup_size() const;
@@ -819,13 +1300,28 @@ class PerformActionResponse final : public ::google::protobuf::Message
   ::google::protobuf::Map<std::string, std::string>* _internal_mutable_markup();
 
   public:
+  // map<string, .spielbrett_api.instance_host.Actions> actions = 2 [json_name = "actions"];
+  int actions_size() const;
+  private:
+  int _internal_actions_size() const;
+
+  public:
+  void clear_actions() ;
+  const ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>& actions() const;
+  ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>* mutable_actions();
+
+  private:
+  const ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>& _internal_actions() const;
+  ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>* _internal_mutable_actions();
+
+  public:
   // @@protoc_insertion_point(class_scope:spielbrett_api.instance_host.PerformActionResponse)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 1,
-      65, 2>
+      0, 2, 3,
+      72, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -846,6 +1342,10 @@ class PerformActionResponse final : public ::google::protobuf::Message
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
         markup_;
+    ::google::protobuf::internal::MapField<PerformActionResponse_ActionsEntry_DoNotUse, std::string, ::spielbrett_api::instance_host::Actions,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>
+        actions_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -913,7 +1413,7 @@ class CreateInstanceResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const CreateInstanceResponse*>(
         &_CreateInstanceResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 2;
+  static constexpr int kIndexInFileMessages = 5;
   friend void swap(CreateInstanceResponse& a, CreateInstanceResponse& b) { a.Swap(&b); }
   inline void Swap(CreateInstanceResponse* other) {
     if (other == this) return;
@@ -1001,6 +1501,7 @@ class CreateInstanceResponse final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kMarkupFieldNumber = 2,
+    kActionsFieldNumber = 3,
     kInstanceIdFieldNumber = 1,
   };
   // map<string, string> markup = 2 [json_name = "markup"];
@@ -1016,6 +1517,21 @@ class CreateInstanceResponse final : public ::google::protobuf::Message
   private:
   const ::google::protobuf::Map<std::string, std::string>& _internal_markup() const;
   ::google::protobuf::Map<std::string, std::string>* _internal_mutable_markup();
+
+  public:
+  // map<string, .spielbrett_api.instance_host.Actions> actions = 3 [json_name = "actions"];
+  int actions_size() const;
+  private:
+  int _internal_actions_size() const;
+
+  public:
+  void clear_actions() ;
+  const ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>& actions() const;
+  ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>* mutable_actions();
+
+  private:
+  const ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>& _internal_actions() const;
+  ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>* _internal_mutable_actions();
 
   public:
   // string instance_id = 1 [json_name = "instanceId"];
@@ -1039,8 +1555,8 @@ class CreateInstanceResponse final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 2, 1,
-      77, 2>
+      0, 3, 3,
+      84, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1061,6 +1577,10 @@ class CreateInstanceResponse final : public ::google::protobuf::Message
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
         markup_;
+    ::google::protobuf::internal::MapField<CreateInstanceResponse_ActionsEntry_DoNotUse, std::string, ::spielbrett_api::instance_host::Actions,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>
+        actions_;
     ::google::protobuf::internal::ArenaStringPtr instance_id_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -1081,6 +1601,178 @@ class CreateInstanceResponse final : public ::google::protobuf::Message
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// Action
+
+// uint64 object_id = 1 [json_name = "objectId"];
+inline void Action::clear_object_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.object_id_ = ::uint64_t{0u};
+}
+inline ::uint64_t Action::object_id() const {
+  // @@protoc_insertion_point(field_get:spielbrett_api.instance_host.Action.object_id)
+  return _internal_object_id();
+}
+inline void Action::set_object_id(::uint64_t value) {
+  _internal_set_object_id(value);
+  // @@protoc_insertion_point(field_set:spielbrett_api.instance_host.Action.object_id)
+}
+inline ::uint64_t Action::_internal_object_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.object_id_;
+}
+inline void Action::_internal_set_object_id(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.object_id_ = value;
+}
+
+// string action = 2 [json_name = "action"];
+inline void Action::clear_action() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.action_.ClearToEmpty();
+}
+inline const std::string& Action::action() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:spielbrett_api.instance_host.Action.action)
+  return _internal_action();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Action::set_action(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.action_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:spielbrett_api.instance_host.Action.action)
+}
+inline std::string* Action::mutable_action() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_action();
+  // @@protoc_insertion_point(field_mutable:spielbrett_api.instance_host.Action.action)
+  return _s;
+}
+inline const std::string& Action::_internal_action() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.action_.Get();
+}
+inline void Action::_internal_set_action(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.action_.Set(value, GetArena());
+}
+inline std::string* Action::_internal_mutable_action() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.action_.Mutable( GetArena());
+}
+inline std::string* Action::release_action() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:spielbrett_api.instance_host.Action.action)
+  return _impl_.action_.Release();
+}
+inline void Action::set_allocated_action(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.action_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.action_.IsDefault()) {
+    _impl_.action_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:spielbrett_api.instance_host.Action.action)
+}
+
+// repeated uint64 args = 3 [json_name = "args"];
+inline int Action::_internal_args_size() const {
+  return _internal_args().size();
+}
+inline int Action::args_size() const {
+  return _internal_args_size();
+}
+inline void Action::clear_args() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.args_.Clear();
+}
+inline ::uint64_t Action::args(int index) const {
+  // @@protoc_insertion_point(field_get:spielbrett_api.instance_host.Action.args)
+  return _internal_args().Get(index);
+}
+inline void Action::set_args(int index, ::uint64_t value) {
+  _internal_mutable_args()->Set(index, value);
+  // @@protoc_insertion_point(field_set:spielbrett_api.instance_host.Action.args)
+}
+inline void Action::add_args(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_args()->Add(value);
+  // @@protoc_insertion_point(field_add:spielbrett_api.instance_host.Action.args)
+}
+inline const ::google::protobuf::RepeatedField<::uint64_t>& Action::args() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:spielbrett_api.instance_host.Action.args)
+  return _internal_args();
+}
+inline ::google::protobuf::RepeatedField<::uint64_t>* Action::mutable_args()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:spielbrett_api.instance_host.Action.args)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_args();
+}
+inline const ::google::protobuf::RepeatedField<::uint64_t>&
+Action::_internal_args() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.args_;
+}
+inline ::google::protobuf::RepeatedField<::uint64_t>* Action::_internal_mutable_args() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.args_;
+}
+
+// -------------------------------------------------------------------
+
+// Actions
+
+// repeated .spielbrett_api.instance_host.Action actions = 1 [json_name = "actions"];
+inline int Actions::_internal_actions_size() const {
+  return _internal_actions().size();
+}
+inline int Actions::actions_size() const {
+  return _internal_actions_size();
+}
+inline void Actions::clear_actions() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.actions_.Clear();
+}
+inline ::spielbrett_api::instance_host::Action* Actions::mutable_actions(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:spielbrett_api.instance_host.Actions.actions)
+  return _internal_mutable_actions()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::spielbrett_api::instance_host::Action>* Actions::mutable_actions()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:spielbrett_api.instance_host.Actions.actions)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_actions();
+}
+inline const ::spielbrett_api::instance_host::Action& Actions::actions(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:spielbrett_api.instance_host.Actions.actions)
+  return _internal_actions().Get(index);
+}
+inline ::spielbrett_api::instance_host::Action* Actions::add_actions() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::spielbrett_api::instance_host::Action* _add = _internal_mutable_actions()->Add();
+  // @@protoc_insertion_point(field_add:spielbrett_api.instance_host.Actions.actions)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::spielbrett_api::instance_host::Action>& Actions::actions() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:spielbrett_api.instance_host.Actions.actions)
+  return _internal_actions();
+}
+inline const ::google::protobuf::RepeatedPtrField<::spielbrett_api::instance_host::Action>&
+Actions::_internal_actions() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.actions_;
+}
+inline ::google::protobuf::RepeatedPtrField<::spielbrett_api::instance_host::Action>*
+Actions::_internal_mutable_actions() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.actions_;
+}
+
 // -------------------------------------------------------------------
 
 // CreateInstanceRequest
@@ -1201,6 +1893,8 @@ CreateInstanceRequest::_internal_mutable_user_ids() {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // CreateInstanceResponse
 
 // string instance_id = 1 [json_name = "instanceId"];
@@ -1277,6 +1971,34 @@ inline ::google::protobuf::Map<std::string, std::string>* CreateInstanceResponse
 inline ::google::protobuf::Map<std::string, std::string>* CreateInstanceResponse::mutable_markup() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_mutable_map:spielbrett_api.instance_host.CreateInstanceResponse.markup)
   return _internal_mutable_markup();
+}
+
+// map<string, .spielbrett_api.instance_host.Actions> actions = 3 [json_name = "actions"];
+inline int CreateInstanceResponse::_internal_actions_size() const {
+  return _internal_actions().size();
+}
+inline int CreateInstanceResponse::actions_size() const {
+  return _internal_actions_size();
+}
+inline void CreateInstanceResponse::clear_actions() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.actions_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>& CreateInstanceResponse::_internal_actions() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.actions_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>& CreateInstanceResponse::actions() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:spielbrett_api.instance_host.CreateInstanceResponse.actions)
+  return _internal_actions();
+}
+inline ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>* CreateInstanceResponse::_internal_mutable_actions() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.actions_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>* CreateInstanceResponse::mutable_actions() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:spielbrett_api.instance_host.CreateInstanceResponse.actions)
+  return _internal_mutable_actions();
 }
 
 // -------------------------------------------------------------------
@@ -1379,139 +2101,103 @@ inline void PerformActionRequest::set_allocated_user_id(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:spielbrett_api.instance_host.PerformActionRequest.user_id)
 }
 
-// uint64 object_id = 3 [json_name = "objectId"];
-inline void PerformActionRequest::clear_object_id() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.object_id_ = ::uint64_t{0u};
+// .spielbrett_api.instance_host.Action action = 3 [json_name = "action"];
+inline bool PerformActionRequest::has_action() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.action_ != nullptr);
+  return value;
 }
-inline ::uint64_t PerformActionRequest::object_id() const {
-  // @@protoc_insertion_point(field_get:spielbrett_api.instance_host.PerformActionRequest.object_id)
-  return _internal_object_id();
-}
-inline void PerformActionRequest::set_object_id(::uint64_t value) {
-  _internal_set_object_id(value);
-  // @@protoc_insertion_point(field_set:spielbrett_api.instance_host.PerformActionRequest.object_id)
-}
-inline ::uint64_t PerformActionRequest::_internal_object_id() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.object_id_;
-}
-inline void PerformActionRequest::_internal_set_object_id(::uint64_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.object_id_ = value;
-}
-
-// string action = 4 [json_name = "action"];
 inline void PerformActionRequest::clear_action() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.action_.ClearToEmpty();
+  if (_impl_.action_ != nullptr) _impl_.action_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const std::string& PerformActionRequest::action() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline const ::spielbrett_api::instance_host::Action& PerformActionRequest::_internal_action() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::spielbrett_api::instance_host::Action* p = _impl_.action_;
+  return p != nullptr ? *p : reinterpret_cast<const ::spielbrett_api::instance_host::Action&>(::spielbrett_api::instance_host::_Action_default_instance_);
+}
+inline const ::spielbrett_api::instance_host::Action& PerformActionRequest::action() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_get:spielbrett_api.instance_host.PerformActionRequest.action)
   return _internal_action();
 }
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void PerformActionRequest::set_action(Arg_&& arg,
-                                                     Args_... args) {
+inline void PerformActionRequest::unsafe_arena_set_allocated_action(::spielbrett_api::instance_host::Action* value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.action_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:spielbrett_api.instance_host.PerformActionRequest.action)
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.action_);
+  }
+  _impl_.action_ = reinterpret_cast<::spielbrett_api::instance_host::Action*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:spielbrett_api.instance_host.PerformActionRequest.action)
 }
-inline std::string* PerformActionRequest::mutable_action() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_action();
-  // @@protoc_insertion_point(field_mutable:spielbrett_api.instance_host.PerformActionRequest.action)
-  return _s;
-}
-inline const std::string& PerformActionRequest::_internal_action() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.action_.Get();
-}
-inline void PerformActionRequest::_internal_set_action(const std::string& value) {
+inline ::spielbrett_api::instance_host::Action* PerformActionRequest::release_action() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.action_.Set(value, GetArena());
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::spielbrett_api::instance_host::Action* released = _impl_.action_;
+  _impl_.action_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
 }
-inline std::string* PerformActionRequest::_internal_mutable_action() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.action_.Mutable( GetArena());
-}
-inline std::string* PerformActionRequest::release_action() {
+inline ::spielbrett_api::instance_host::Action* PerformActionRequest::unsafe_arena_release_action() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:spielbrett_api.instance_host.PerformActionRequest.action)
-  return _impl_.action_.Release();
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::spielbrett_api::instance_host::Action* temp = _impl_.action_;
+  _impl_.action_ = nullptr;
+  return temp;
 }
-inline void PerformActionRequest::set_allocated_action(std::string* value) {
+inline ::spielbrett_api::instance_host::Action* PerformActionRequest::_internal_mutable_action() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.action_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.action_.IsDefault()) {
-    _impl_.action_.Set("", GetArena());
+  if (_impl_.action_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::spielbrett_api::instance_host::Action>(GetArena());
+    _impl_.action_ = reinterpret_cast<::spielbrett_api::instance_host::Action*>(p);
   }
+  return _impl_.action_;
+}
+inline ::spielbrett_api::instance_host::Action* PerformActionRequest::mutable_action() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::spielbrett_api::instance_host::Action* _msg = _internal_mutable_action();
+  // @@protoc_insertion_point(field_mutable:spielbrett_api.instance_host.PerformActionRequest.action)
+  return _msg;
+}
+inline void PerformActionRequest::set_allocated_action(::spielbrett_api::instance_host::Action* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.action_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.action_ = reinterpret_cast<::spielbrett_api::instance_host::Action*>(value);
   // @@protoc_insertion_point(field_set_allocated:spielbrett_api.instance_host.PerformActionRequest.action)
 }
 
-// repeated string args = 5 [json_name = "args"];
-inline int PerformActionRequest::_internal_args_size() const {
-  return _internal_args().size();
-}
-inline int PerformActionRequest::args_size() const {
-  return _internal_args_size();
-}
-inline void PerformActionRequest::clear_args() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.args_.Clear();
-}
-inline std::string* PerformActionRequest::add_args() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  std::string* _s = _internal_mutable_args()->Add();
-  // @@protoc_insertion_point(field_add_mutable:spielbrett_api.instance_host.PerformActionRequest.args)
-  return _s;
-}
-inline const std::string& PerformActionRequest::args(int index) const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:spielbrett_api.instance_host.PerformActionRequest.args)
-  return _internal_args().Get(index);
-}
-inline std::string* PerformActionRequest::mutable_args(int index)
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable:spielbrett_api.instance_host.PerformActionRequest.args)
-  return _internal_mutable_args()->Mutable(index);
-}
-template <typename Arg_, typename... Args_>
-inline void PerformActionRequest::set_args(int index, Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::AssignToString(
-      *_internal_mutable_args()->Mutable(index),
-      std::forward<Arg_>(value), args... );
-  // @@protoc_insertion_point(field_set:spielbrett_api.instance_host.PerformActionRequest.args)
-}
-template <typename Arg_, typename... Args_>
-inline void PerformActionRequest::add_args(Arg_&& value, Args_... args) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  ::google::protobuf::internal::AddToRepeatedPtrField(*_internal_mutable_args(),
-                               std::forward<Arg_>(value),
-                               args... );
-  // @@protoc_insertion_point(field_add:spielbrett_api.instance_host.PerformActionRequest.args)
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-PerformActionRequest::args() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_list:spielbrett_api.instance_host.PerformActionRequest.args)
-  return _internal_args();
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-PerformActionRequest::mutable_args() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_mutable_list:spielbrett_api.instance_host.PerformActionRequest.args)
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _internal_mutable_args();
-}
-inline const ::google::protobuf::RepeatedPtrField<std::string>&
-PerformActionRequest::_internal_args() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.args_;
-}
-inline ::google::protobuf::RepeatedPtrField<std::string>*
-PerformActionRequest::_internal_mutable_args() {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return &_impl_.args_;
-}
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -1545,6 +2231,34 @@ inline ::google::protobuf::Map<std::string, std::string>* PerformActionResponse:
 inline ::google::protobuf::Map<std::string, std::string>* PerformActionResponse::mutable_markup() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   // @@protoc_insertion_point(field_mutable_map:spielbrett_api.instance_host.PerformActionResponse.markup)
   return _internal_mutable_markup();
+}
+
+// map<string, .spielbrett_api.instance_host.Actions> actions = 2 [json_name = "actions"];
+inline int PerformActionResponse::_internal_actions_size() const {
+  return _internal_actions().size();
+}
+inline int PerformActionResponse::actions_size() const {
+  return _internal_actions_size();
+}
+inline void PerformActionResponse::clear_actions() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.actions_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>& PerformActionResponse::_internal_actions() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.actions_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>& PerformActionResponse::actions() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:spielbrett_api.instance_host.PerformActionResponse.actions)
+  return _internal_actions();
+}
+inline ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>* PerformActionResponse::_internal_mutable_actions() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.actions_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, ::spielbrett_api::instance_host::Actions>* PerformActionResponse::mutable_actions() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:spielbrett_api.instance_host.PerformActionResponse.actions)
+  return _internal_mutable_actions();
 }
 
 #ifdef __GNUC__

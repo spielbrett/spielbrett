@@ -60,7 +60,7 @@ pybind11::object Object::getAttr(pybind11::str name) const
         return state[name];
     }
     else {
-        throw pybind11::attribute_error("attribute not found");
+        throw pybind11::attribute_error(std::format("attribute {} not found", name.cast<std::string>()));
     }
 }
 
@@ -236,10 +236,10 @@ pybind11::list Object::getActions(pybind11::object self)
         for (const auto &argTuple : method.attr("_args")) {
             auto selector = argTuple.cast<pybind11::tuple>()[0];
             if (pybind11::isinstance<pybind11::function>(selector)) {
-                args.append(selector());
+                args.append(getBuiltins().attr("enumerate")(selector()));
             }
             else {
-                args.append(selector);
+                args.append(getBuiltins().attr("enumerate")(selector));
             }
         }
         for (auto argSet : getItertools().attr("product")(*args)) {
@@ -258,13 +258,17 @@ pybind11::list Object::getValidActions(pybind11::object self, pybind11::int_ pla
     for (const auto &action : actions) {
         auto actionTuple = action.cast<pybind11::tuple>();
         auto actionName = actionTuple[0];
-        auto actionArgs = actionTuple[1];
+        auto actionArgs = actionTuple[1].cast<pybind11::tuple>();
 
-        for (size_t i = 0; i < getBuiltins().attr("len")(actionArgs).cast<size_t>(); i++) {
-            auto validator = self.attr(actionName).attr("_args").cast<pybind11::tuple>()[1];
+        for (size_t i = 0; i < pybind11::len(actionArgs); i++) {
+            auto validator = self.attr(actionName).attr("_args").cast<pybind11::tuple>()[i].cast<pybind11::tuple>()[1];
             bool valid;
             if (pybind11::isinstance<pybind11::function>(validator)) {
-                valid = validator(playerIndex, *actionArgs[pybind11::slice(std::nullopt, i, std::nullopt)]).cast<bool>();
+                pybind11::list pyActionArgs;
+                for (size_t j = 0; j < i; j++) {
+                    pyActionArgs.append(actionArgs[j].cast<pybind11::tuple>()[1]);
+                }
+                valid = validator(playerIndex, *pyActionArgs).cast<bool>();
             }
             else {
                 valid = validator.cast<bool>();

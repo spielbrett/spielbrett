@@ -3,6 +3,7 @@
 #include "Runtime/IRuntime.h"
 
 #include <__algorithm/remove.h>
+#include <iostream>
 #include <pybind11/cast.h>
 
 #include <memory>
@@ -95,9 +96,36 @@ void Board::performAction(int playerIndex, const Action &action)
     objects.at(objectId)->performAction(playerIndex, {actionName, actionArgs});
 }
 
-std::string Board::render(int playerIndex) const
+std::pair<std::string, std::vector<Board::Action>> Board::render(int playerIndex) const
 {
-    return getRoot()->render(playerIndex);
+    auto renderStr = getRoot()->render(playerIndex);
+    std::vector<Action> actions;
+    
+    pugi::xml_document doc;
+    doc.load_string(renderStr.c_str());
+
+    std::queue<pugi::xml_node> queue;
+    queue.push(doc.first_child());
+
+    while (!queue.empty()) {
+        auto node = queue.front();
+        queue.pop();
+
+        if (std::string(node.name()) == "Object") {
+            auto idAttr = node.attribute("id");
+            auto objectId = std::stoi(idAttr.value());
+            auto validActions = objects.at(objectId)->getValidActions(playerIndex);
+            for (const auto &action : validActions) {
+                actions.emplace_back(objectId, action.first, action.second);
+            }
+        }
+
+        for (auto child = node.first_child(); child; child = child.next_sibling()) {
+            queue.push(child);
+        }
+    }
+
+    return {renderStr, actions};
 }
 
 std::shared_ptr<Board::Object> Board::getRoot() const
@@ -172,7 +200,12 @@ Board::Object::State Board::Object::observe(int playerIndex) const
 
 std::string Board::Object::render(int playerIndex) const
 {
-    return std::format("<Object>{}</Object>", runtimeObject->renderContents(playerIndex));
+    auto state = observe(playerIndex);
+    std::string attributes;
+    for (const auto &[key, value] : state) {
+        attributes += std::format(" {}=\"{}\"", key, value);
+    }
+    return std::format("<Object id=\"{}\"{}>{}</Object>", id, attributes, runtimeObject->renderContents(playerIndex));
 }
 
 void Board::Object::setRuntimeObject(std::shared_ptr<Runtime::IObject> runtimeObject)

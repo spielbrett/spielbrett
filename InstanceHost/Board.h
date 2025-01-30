@@ -23,7 +23,7 @@ public:
         using Id = std::size_t;
 
         using State = std::unordered_map<std::string, double>;
-        using Action = std::pair<std::string, std::vector<std::string>>;
+        using Action = std::pair<std::string, std::vector<std::size_t>>;
 
         std::string getName() const;
         Id getId() const;
@@ -64,7 +64,7 @@ public:
         friend class Board;
     };
 
-    using Action = std::tuple<Object::Id, std::string, std::vector<std::string>>;
+    using Action = std::tuple<Object::Id, std::string, std::vector<std::size_t>>;
 
     Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const std::unordered_map<std::string, std::string> &templates);
 
@@ -76,7 +76,7 @@ public:
     void move(Object::Id objectId, Object::Id newParent, int order);
 
     void performAction(int playerIndex, const Action &action);
-    std::string render(int playerIndex) const;
+    std::pair<std::string, std::vector<Action>> render(int playerIndex) const;
 
 private:
     std::shared_ptr<Object> getRoot() const;
