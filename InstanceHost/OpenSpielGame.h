@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Board.h"
+
 #include <open_spiel/spiel.h>
 
 #include <memory>
@@ -9,7 +11,7 @@ namespace Spielbrett {
 class OpenSpielState final : public open_spiel::State
 {
 public:
-    OpenSpielState(std::shared_ptr<const open_spiel::Game> game);
+    OpenSpielState(std::shared_ptr<const open_spiel::Game> game, std::shared_ptr<Spielbrett::Board> board);
 
     open_spiel::Player CurrentPlayer() const override;
     std::vector<open_spiel::Action> LegalActions() const override;
@@ -22,6 +24,10 @@ public:
     std::string ToString() const override;
 
     std::unique_ptr<open_spiel::State> Clone() const override;
+
+private:
+    std::shared_ptr<const open_spiel::Game> game;
+    std::shared_ptr<Spielbrett::Board> board;
 };
 
 class OpenSpielGame : public open_spiel::Game
@@ -30,7 +36,8 @@ public:
     OpenSpielGame(
         const open_spiel::GameType &gameType,
         const open_spiel::GameInfo &gameInfo,
-        const open_spiel::GameParameters &params);
+        const open_spiel::GameParameters &params,
+        std::shared_ptr<Board> board);
 
     int NumDistinctActions() const override;
     int MaxChanceOutcomes() const override;
@@ -44,6 +51,7 @@ public:
 
 private:
     open_spiel::GameInfo gameInfo;
+    std::shared_ptr<Spielbrett::Board> board;
 };
 
 }

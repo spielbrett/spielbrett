@@ -2,8 +2,6 @@
 #include "Runtime/IObject.h"
 #include "Runtime/IRuntime.h"
 
-#include <__algorithm/remove.h>
-#include <iostream>
 #include <pybind11/cast.h>
 
 #include <memory>
@@ -53,9 +51,39 @@ Board::Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const 
 
     for (const auto &object : objects) {
         for (const auto &objectAction : object->getRuntimeObject()->getAllActions()) {
+            auto index = actions.size();
             actions.emplace_back(object->getId(), objectAction.first, objectAction.second);
+            actionsIndex[actions.back()] = index;
         }
     }
+}
+
+std::shared_ptr<Board> Board::clone() const
+{
+    std::shared_ptr<Board> other = std::make_shared<Board>();
+    other->objects.resize(objects.size());
+
+    std::queue<std::pair<std::shared_ptr<Object>, std::shared_ptr<Object>>> queue;
+    queue.emplace(getRoot(), nullptr);
+
+    while (!queue.empty()) {
+        auto [object, otherParent] = queue.front();
+        queue.pop();
+
+        auto &otherObject = other->objects.emplace_back(new Object(object->getName(), *other, object->getId()));
+        for (auto &[key, value] : object->getState()) {
+            otherObject->setState(key, value);
+        }
+        otherObject->setRuntimeObject(object->getRuntimeObject());
+
+        if (otherParent != nullptr) {
+            otherParent->children.push_back(otherObject);
+            otherObject->parent = otherParent;
+        }
+    }
+
+    other->actions = actions;
+    return other;
 }
 
 bool Board::hasPrivateInformation() const
@@ -133,6 +161,16 @@ std::shared_ptr<Board::Object> Board::getRoot() const
     return objects[0];
 }
 
+double Board::score(int playerIndex) const
+{
+    return getRoot()->score(playerIndex);
+}
+
+std::size_t Board::getActionIndex(Action action) const
+{
+    return actionsIndex.at(action);
+}
+
 Board::Object::Object(const std::string &name, Board &board, Id id) :
     name(name), board(board), id(id)
 {
@@ -193,6 +231,11 @@ void Board::Object::performAction(int playerIndex, const Action &action)
     runtimeObject->performAction(playerIndex, action);
 }
 
+std::vector<std::string> Board::Object::getAllObservations() const
+{
+    return runtimeObject->getAllObservations();
+}
+
 Board::Object::State Board::Object::observe(int playerIndex) const
 {
     return runtimeObject->observe(playerIndex);
@@ -211,6 +254,11 @@ std::string Board::Object::render(int playerIndex) const
 void Board::Object::setRuntimeObject(std::shared_ptr<Runtime::IObject> runtimeObject)
 {
     this->runtimeObject = runtimeObject;
+}
+
+double Board::Object::score(int playerIndex) const
+{
+    return runtimeObject->score(playerIndex);
 }
 
 }

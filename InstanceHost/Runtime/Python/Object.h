@@ -30,6 +30,7 @@ public:
 
     pybind11::str render(pybind11::int_ playerIndex) const;
 
+    static pybind11::list getObservations(pybind11::object self);
     static pybind11::dict observe(pybind11::object self, pybind11::int_ playerIndex);
     static pybind11::str renderContents(pybind11::object self, pybind11::int_ playerIndex);
 

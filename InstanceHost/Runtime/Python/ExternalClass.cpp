@@ -112,6 +112,11 @@ void ExternalClass::Object::performAction(int playerIndex, const Board::Object::
     method(playerIndex, *args);
 }
 
+std::vector<std::string> ExternalClass::Object::getAllObservations()
+{
+    return pyObject.attr("__observations").cast<std::vector<std::string>>();
+}
+
 Board::Object::State ExternalClass::Object::observe(int playerIndex)
 {
     return pyObject.attr("__observe")(playerIndex).cast<Board::Object::State>();

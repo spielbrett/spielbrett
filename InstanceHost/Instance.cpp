@@ -95,11 +95,11 @@ std::string readFile(const std::string &moduleDir, const std::string &path)
 std::shared_ptr<Spielbrett::OpenSpielGame> makeOpenSpielGame(
     const std::string &instanceType,
     const GameConfig &config,
-    const Spielbrett::Board &board,
+    std::shared_ptr<Spielbrett::Board> board,
     int numPlayers)
 {
     open_spiel::GameType::Information information;
-    if (board.hasPrivateInformation()) {
+    if (board->hasPrivateInformation()) {
         information = open_spiel::GameType::Information::kImperfectInformation;
     }
     else {
@@ -124,7 +124,7 @@ std::shared_ptr<Spielbrett::OpenSpielGame> makeOpenSpielGame(
             {"num_players", open_spiel::GameParameter(config.minPlayers)}}};
 
     auto gameInfo = open_spiel::GameInfo{
-        .num_distinct_actions = board.numDistinctActions(),
+        .num_distinct_actions = board->numDistinctActions(),
         .max_chance_outcomes = 0,
         .num_players = numPlayers,
         .min_utility = -1.0,
@@ -135,7 +135,7 @@ std::shared_ptr<Spielbrett::OpenSpielGame> makeOpenSpielGame(
     auto params = open_spiel::GameParameters{
         {"num_players", open_spiel::GameParameter(numPlayers)}};
 
-    return std::make_shared<Spielbrett::OpenSpielGame>(gameType, gameInfo, params);
+    return std::make_shared<Spielbrett::OpenSpielGame>(gameType, gameInfo, params, board);
 }
 
 } // namespace
@@ -160,7 +160,7 @@ Instance::Instance(const std::string &instanceType, const std::vector<UserID> &u
     auto blueprintXml = readFile(instanceType, config.blueprint);
     board = std::make_unique<Board>(runtime, blueprintXml, templates);
 
-    openSpielGame = makeOpenSpielGame(instanceType, config, *board, playerIndices.size());
+    openSpielGame = makeOpenSpielGame(instanceType, config, board->clone(), playerIndices.size());
 }
 
 void Instance::performAction(const std::string &userId, const Board::Action &action)

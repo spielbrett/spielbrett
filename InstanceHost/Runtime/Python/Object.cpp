@@ -164,6 +164,22 @@ pybind11::str Object::render(pybind11::int_ playerIndex) const
     return "";
 }
 
+pybind11::list Object::getObservations(pybind11::object self)
+{
+    pybind11::list observations;
+
+    for (auto methodName : getDecoratedMethods(self)) {
+        auto method = self.attr(methodName);
+        auto methodType = pybind11::getattr(method, "_method_type").cast<MethodType>();
+        if (methodType != MethodType::OBSERVATION) {
+            continue;
+        }
+        observations.append(methodName);
+    }
+
+    return observations;
+}
+
 pybind11::dict Object::observe(pybind11::object self, pybind11::int_ playerIndex)
 {
     pybind11::dict observedState;

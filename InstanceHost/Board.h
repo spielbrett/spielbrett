@@ -3,6 +3,7 @@
 #include <pybind11/embed.h>
 #include <pugixml.hpp>
 
+#include <map>
 #include <string>
 
 namespace Spielbrett {
@@ -42,8 +43,11 @@ public:
         std::vector<Action> getValidActions(int playerIndex) const;
         void performAction(int playerIndex, const Action &action);
 
+        std::vector<std::string> getAllObservations() const;
         State observe(int playerIndex) const;
         std::string render(int playerIndex) const;
+
+        double score(int playerIndex) const;
 
     private:
         Object(const std::string &name, Board &board, Id id);
@@ -66,9 +70,10 @@ public:
 
     using Action = std::tuple<Object::Id, std::string, std::vector<std::size_t>>;
 
+    Board() = default;
     Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const std::unordered_map<std::string, std::string> &templates);
 
-    // TODO: Copy and move constructors
+    std::shared_ptr<Board> clone() const;
 
     bool hasPrivateInformation() const;
     int numDistinctActions() const;
@@ -78,6 +83,10 @@ public:
     void performAction(int playerIndex, const Action &action);
     std::pair<std::string, std::vector<Action>> render(int playerIndex) const;
 
+    double score(int playerIndex) const;
+
+    std::size_t getActionIndex(Action action) const;
+
 private:
     std::shared_ptr<Object> getRoot() const;
 
@@ -85,6 +94,7 @@ private:
     std::vector<std::shared_ptr<Object>> objects;
 
     std::vector<Action> actions;
+    std::map<Action, std::size_t> actionsIndex;
 };
 
 }
