@@ -29,6 +29,10 @@ struct GameConfig {
     int minPlayers;
     int maxPlayers;
     int moveLimit;
+    bool chance;
+    double minScore;
+    double maxScore;
+    std::optional<double> sumScores;
     std::unordered_map<std::string, ObjectEntry> objects;
 };
 
@@ -66,6 +70,10 @@ GameConfig parseConfig(const std::filesystem::path &configPath)
         .minPlayers = configJson["min_players"],
         .maxPlayers = configJson["max_players"],
         .moveLimit = configJson["move_limit"],
+        .chance = configJson["chance"],
+        .minScore = configJson["min_score"],
+        .maxScore = configJson["max_score"],
+        .sumScores = configJson["sum_scores"].is_null() ? std::nullopt : std::optional<double>(configJson["sum_scores"]),
     };
 
     for (const auto& [name, entry] : configJson["objects"].items()) {
@@ -106,13 +114,34 @@ std::shared_ptr<Spielbrett::OpenSpielGame> makeOpenSpielGame(
         information = open_spiel::GameType::Information::kPerfectInformation;
     }
 
+    open_spiel::GameType::ChanceMode chanceMode;
+    if (config.chance) {
+        chanceMode = open_spiel::GameType::ChanceMode::kExplicitStochastic;
+    }
+    else {
+        chanceMode = open_spiel::GameType::ChanceMode::kDeterministic;
+    }
+
+    open_spiel::GameType::Utility utility;
+    if (config.sumScores.has_value()) {
+        if (config.sumScores.value() == 0) {
+            utility = open_spiel::GameType::Utility::kZeroSum;
+        }
+        else {
+            utility = open_spiel::GameType::Utility::kConstantSum;
+        }
+    }
+    else {
+        utility = open_spiel::GameType::Utility::kGeneralSum;
+    }
+
     auto gameType = open_spiel::GameType{
         .short_name = instanceType,
         .long_name = instanceType,
         .dynamics = open_spiel::GameType::Dynamics::kSequential,
-        .chance_mode = open_spiel::GameType::ChanceMode::kDeterministic,
+        .chance_mode = chanceMode,
         .information = information,
-        .utility = open_spiel::GameType::Utility::kZeroSum,
+        .utility = utility,
         .reward_model = open_spiel::GameType::RewardModel::kTerminal,
         .max_num_players = config.maxPlayers,
         .min_num_players = config.minPlayers,
@@ -125,11 +154,11 @@ std::shared_ptr<Spielbrett::OpenSpielGame> makeOpenSpielGame(
 
     auto gameInfo = open_spiel::GameInfo{
         .num_distinct_actions = board->numDistinctActions(),
-        .max_chance_outcomes = 0,
+        .max_chance_outcomes = config.chance ? board->numDistinctActions() : 0,
         .num_players = numPlayers,
-        .min_utility = -1.0,
-        .max_utility = 1.0 * numPlayers,
-        .utility_sum = 0.0,
+        .min_utility = config.minScore,
+        .max_utility = config.maxScore,
+        .utility_sum = config.sumScores,
         .max_game_length = config.moveLimit};
 
     auto params = open_spiel::GameParameters{

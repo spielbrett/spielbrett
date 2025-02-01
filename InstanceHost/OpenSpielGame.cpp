@@ -1,4 +1,5 @@
 #include "OpenSpielGame.h"
+#include "open_spiel/spiel.h"
 #include "open_spiel/spiel_globals.h"
 #include "open_spiel/spiel_utils.h"
 
@@ -15,7 +16,7 @@ OpenSpielState::OpenSpielState(std::shared_ptr<const open_spiel::Game> game, std
 
 open_spiel::Player OpenSpielState::CurrentPlayer() const
 {
-    for (int i = 0; i < game->NumPlayers(); i++) {
+    for (int i = game->MaxChanceOutcomes() > 0 ? -1 : 0; i < game->NumPlayers(); i++) {
         if (!board->render(i).second.empty()) {
             return i;
         }
@@ -26,7 +27,7 @@ open_spiel::Player OpenSpielState::CurrentPlayer() const
 std::vector<open_spiel::Action> OpenSpielState::LegalActions() const
 {
     std::vector<open_spiel::Action> legalActions;
-    for (int i = 0; i < game->NumPlayers(); i++) {
+    for (int i = game->MaxChanceOutcomes() > 0 ? -1 : 0; i < game->NumPlayers(); i++) {
         auto [renderStr, actions] = board->render(i);
         if (!actions.empty()) {
             for (const auto &action : actions) {
@@ -40,7 +41,7 @@ std::vector<open_spiel::Action> OpenSpielState::LegalActions() const
 
 bool OpenSpielState::IsTerminal() const
 {
-    for (int i = 0; i < game->NumPlayers(); i++) {
+    for (int i = game->MaxChanceOutcomes() > 0 ? -1 : 0; i < game->NumPlayers(); i++) {
         if (!board->render(i).second.empty()) {
             return false;
         }
@@ -51,10 +52,20 @@ bool OpenSpielState::IsTerminal() const
 std::vector<double> OpenSpielState::Returns() const
 {
     std::vector<double> returns;
-    for (int i = 0; i < game->NumPlayers(); i++) {
+    for (int i = game->MaxChanceOutcomes() > 0 ? -1 : 0; i < game->NumPlayers(); i++) {
         returns.push_back(board->score(i));
     }
     return returns;
+}
+
+open_spiel::ActionsAndProbs OpenSpielState::ChanceOutcomes() const
+{
+    open_spiel::ActionsAndProbs actionsAndProbs;
+    auto actions = board->render(open_spiel::kChancePlayerId).second;
+    for (const auto action : actions) {
+        actionsAndProbs.emplace_back(board->getActionIndex(action), 1.0 / actions.size());
+    }
+    return actionsAndProbs;
 }
 
 std::string OpenSpielState::ActionToString(

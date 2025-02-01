@@ -17,6 +17,7 @@ public:
     std::vector<open_spiel::Action> LegalActions() const override;
     bool IsTerminal() const override;
     std::vector<double> Returns() const override;
+    open_spiel::ActionsAndProbs ChanceOutcomes() const override;
 
     std::string ActionToString(
         open_spiel::Player player,
