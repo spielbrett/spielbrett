@@ -13,7 +13,7 @@
 #include <thread>
 
 std::unique_ptr<Spielbrett::GRPCServer> grpcServer;
-std::unique_ptr<Spielbrett::WebsocketServer> websocketServer;
+std::shared_ptr<Spielbrett::WebsocketServer> websocketServer;
 
 void handleShutdown(int signal)
 {
@@ -52,7 +52,7 @@ int main()
     grpcServer = std::make_unique<Spielbrett::GRPCServer>(instanceHost);
     grpcServer->run(grpcListenAddr);
 
-    websocketServer = std::make_unique<Spielbrett::WebsocketServer>(instanceHost);
+    websocketServer = std::make_shared<Spielbrett::WebsocketServer>(instanceHost);
     websocketServer->run(websocketListenAddr);
 
     grpcServer->join();

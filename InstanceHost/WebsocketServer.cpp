@@ -11,7 +11,6 @@
 namespace Spielbrett {
 
 WebsocketServer::WebsocketServer(std::shared_ptr<InstanceHost> instanceHost) :
-    std::enable_shared_from_this<WebsocketServer>(),
     instanceHost(instanceHost),
     ioContext(1),
     acceptor(ioContext)
@@ -34,21 +33,29 @@ void WebsocketServer::run(const std::string &listenAddr)
     acceptor.open(endpoint.protocol(), errorCode);
     if (errorCode) {
         std::stringstream ss;
-        ss << "failed to open acceptor: error code: " << errorCode.to_string();
+        ss << "failed to open acceptor: error code: " << errorCode.message();
         throw std::runtime_error(ss.str());
     }
 
     acceptor.set_option(boost::asio::socket_base::reuse_address(true), errorCode);
     if (errorCode) {
         std::stringstream ss;
-        ss << "failed to set_option: error code: " << errorCode.to_string();
+        ss << "failed to set_option: error code: " << errorCode.message();
         throw std::runtime_error(ss.str());
     }
 
     acceptor.bind(endpoint, errorCode);
     if (errorCode) {
         std::stringstream ss;
-        ss << "failed to bind acceptor: error code: " << errorCode.to_string();
+        ss << "failed to bind acceptor: error code: " << errorCode.message();
+        throw std::runtime_error(ss.str());
+    }
+
+    acceptor.listen(boost::asio::socket_base::max_listen_connections, errorCode);
+    if (errorCode)
+    {
+        std::stringstream ss;
+        ss << "failed to listen: error code: " << errorCode.message();
         throw std::runtime_error(ss.str());
     }
 
@@ -83,7 +90,7 @@ void WebsocketServer::onAccept(boost::beast::error_code errorCode, boost::asio::
 {
     if (errorCode) {
         std::stringstream ss;
-        ss << "failed to accept connection: error code: " << errorCode.to_string();
+        ss << "failed to accept connection: error code: " << errorCode.message();
         throw std::runtime_error(ss.str());
     }
     else {
@@ -116,7 +123,7 @@ void WebsocketServer::Session::onAccept(boost::beast::error_code errorCode)
 {
     if (errorCode) {
         std::stringstream ss;
-        ss << "failed to accept session: error code: " << errorCode.to_string();
+        ss << "failed to accept session: error code: " << errorCode.message();
         throw std::runtime_error(ss.str());
     }
 
@@ -136,7 +143,7 @@ void WebsocketServer::Session::onRead(boost::beast::error_code errorCode, std::s
 
     if (errorCode) {
         std::stringstream ss;
-        ss << "failed to read: error code: " << errorCode.to_string();
+        ss << "failed to read: error code: " << errorCode.message();
         throw std::runtime_error(ss.str());
     }
 
@@ -151,7 +158,7 @@ void WebsocketServer::Session::onWrite(boost::beast::error_code errorCode, std::
 {
     if (errorCode) {
         std::stringstream ss;
-        ss << "failed to write: error code: " << errorCode.to_string();
+        ss << "failed to write: error code: " << errorCode.message();
         throw std::runtime_error(ss.str());
     }
 
