@@ -117,14 +117,14 @@ std::vector<std::string> ExternalClass::Object::getAllObservations()
     return pyObject.attr("__observations").cast<std::vector<std::string>>();
 }
 
-Board::Object::State ExternalClass::Object::observe(int playerIndex)
+Board::Object::State ExternalClass::Object::observe(int playerIndex, bool perfectInformation)
 {
-    return pyObject.attr("__observe")(playerIndex).cast<Board::Object::State>();
+    return pyObject.attr("__observe")(playerIndex, perfectInformation).cast<Board::Object::State>();
 }
 
-std::string ExternalClass::Object::renderContents(int playerIndex)
+std::string ExternalClass::Object::renderContents(int playerIndex, bool perfectInformation)
 {
-    return pyObject.attr("_render_contents")(playerIndex).cast<std::string>();
+    return pyObject.attr("_render_contents")(playerIndex, perfectInformation).cast<std::string>();
 }
 
 double ExternalClass::Object::score(int playerIndex)

@@ -156,10 +156,10 @@ void Object::move(pybind11::object newParent, pybind11::int_ order)
     }
 }
 
-pybind11::str Object::render(pybind11::int_ playerIndex) const
+pybind11::str Object::render(pybind11::int_ playerIndex, pybind11::bool_ perfectInformation) const
 {
     if (boardObject != nullptr) {
-        return boardObject->render(playerIndex);
+        return boardObject->render(playerIndex, perfectInformation);
     }
     return "";
 }
@@ -180,12 +180,13 @@ pybind11::list Object::getObservations(pybind11::object self)
     return observations;
 }
 
-pybind11::dict Object::observe(pybind11::object self, pybind11::int_ playerIndex)
+pybind11::dict Object::observe(pybind11::object self, pybind11::int_ playerIndex, pybind11::bool_ perfectInformation)
 {
     pybind11::dict observedState;
 
-    // TODO: Add state in public information games
-    // observedState.attr("update")(self.attr("__state"));
+    if (perfectInformation) {
+        observedState.attr("update")(self.attr("__state"));
+    }
 
     for (auto methodName : getDecoratedMethods(self)) {
         auto method = self.attr(methodName);
@@ -202,7 +203,7 @@ pybind11::dict Object::observe(pybind11::object self, pybind11::int_ playerIndex
     return observedState;
 }
 
-pybind11::str Object::renderContents(pybind11::object self, pybind11::int_ playerIndex)
+pybind11::str Object::renderContents(pybind11::object self, pybind11::int_ playerIndex, pybind11::bool_ perfectInformation)
 {
     pybind11::list childRenders;
     for (auto child : self.attr("children")) {
@@ -213,7 +214,7 @@ pybind11::str Object::renderContents(pybind11::object self, pybind11::int_ playe
         "player_index"_a = playerIndex,
         "children"_a = childRenders,
         "score"_a = self.attr("score"),
-        **observe(self, playerIndex));
+        **observe(self, playerIndex, perfectInformation));
 }
 
 pybind11::list Object::getDecoratedMethods(pybind11::object self)

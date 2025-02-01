@@ -11,7 +11,8 @@
 
 namespace Spielbrett {
 
-Board::Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const std::unordered_map<std::string, std::string> &templates)
+Board::Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const std::unordered_map<std::string, std::string> &templates, bool perfectInformation)
+    : perfectInformation(perfectInformation)
 {
     pugi::xml_document doc;
 
@@ -86,10 +87,9 @@ std::shared_ptr<Board> Board::clone() const
     return other;
 }
 
-bool Board::hasPrivateInformation() const
+bool Board::hasPerfectInformation() const
 {
-    // TODO: Allow this to be set to false and enforced
-    return true;
+    return perfectInformation;
 }
 
 int Board::numDistinctActions() const
@@ -126,7 +126,7 @@ void Board::performAction(int playerIndex, const Action &action)
 
 std::pair<std::string, std::vector<Board::Action>> Board::render(int playerIndex) const
 {
-    auto renderStr = getRoot()->render(playerIndex);
+    auto renderStr = getRoot()->render(playerIndex, perfectInformation);
     std::vector<Action> actions;
     
     pugi::xml_document doc;
@@ -241,19 +241,19 @@ std::vector<std::string> Board::Object::getAllObservations() const
     return runtimeObject->getAllObservations();
 }
 
-Board::Object::State Board::Object::observe(int playerIndex) const
+Board::Object::State Board::Object::observe(int playerIndex, bool perfectInformation) const
 {
-    return runtimeObject->observe(playerIndex);
+    return runtimeObject->observe(playerIndex, perfectInformation);
 }
 
-std::string Board::Object::render(int playerIndex) const
+std::string Board::Object::render(int playerIndex, bool perfectInformation) const
 {
-    auto state = observe(playerIndex);
+    auto state = observe(playerIndex, perfectInformation);
     std::string attributes;
     for (const auto &[key, value] : state) {
         attributes += std::format(" {}=\"{}\"", key, value);
     }
-    return std::format("<Object id=\"{}\"{}>{}</Object>", id, attributes, runtimeObject->renderContents(playerIndex));
+    return std::format("<Object id=\"{}\"{}>{}</Object>", id, attributes, runtimeObject->renderContents(playerIndex, perfectInformation));
 }
 
 void Board::Object::setRuntimeObject(std::shared_ptr<Runtime::IObject> runtimeObject)

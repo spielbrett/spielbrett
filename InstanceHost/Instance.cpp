@@ -33,6 +33,7 @@ struct GameConfig {
     double minScore;
     double maxScore;
     std::optional<double> sumScores;
+    bool perfectInformation;
     std::unordered_map<std::string, ObjectEntry> objects;
 };
 
@@ -74,6 +75,7 @@ GameConfig parseConfig(const std::filesystem::path &configPath)
         .minScore = configJson["min_score"],
         .maxScore = configJson["max_score"],
         .sumScores = configJson["sum_scores"].is_null() ? std::nullopt : std::optional<double>(configJson["sum_scores"]),
+        .perfectInformation = configJson["perfect_information"],
     };
 
     for (const auto& [name, entry] : configJson["objects"].items()) {
@@ -107,11 +109,11 @@ std::shared_ptr<Spielbrett::OpenSpielGame> makeOpenSpielGame(
     int numPlayers)
 {
     open_spiel::GameType::Information information;
-    if (board->hasPrivateInformation()) {
-        information = open_spiel::GameType::Information::kImperfectInformation;
+    if (board->hasPerfectInformation()) {
+        information = open_spiel::GameType::Information::kPerfectInformation;
     }
     else {
-        information = open_spiel::GameType::Information::kPerfectInformation;
+        information = open_spiel::GameType::Information::kImperfectInformation;
     }
 
     open_spiel::GameType::ChanceMode chanceMode;
@@ -187,7 +189,7 @@ Instance::Instance(const std::string &instanceType, const std::vector<UserID> &u
     }
 
     auto blueprintXml = readFile(instanceType, config.blueprint);
-    board = std::make_unique<Board>(runtime, blueprintXml, templates);
+    board = std::make_unique<Board>(runtime, blueprintXml, templates, config.perfectInformation);
 
     openSpielGame = makeOpenSpielGame(instanceType, config, board->clone(), playerIndices.size());
 }

@@ -28,11 +28,11 @@ public:
     pybind11::dict getState() const;
     void setState(pybind11::str key, pybind11::float_ value);
 
-    pybind11::str render(pybind11::int_ playerIndex) const;
+    pybind11::str render(pybind11::int_ playerIndex, pybind11::bool_ perfectInformation) const;
 
     static pybind11::list getObservations(pybind11::object self);
-    static pybind11::dict observe(pybind11::object self, pybind11::int_ playerIndex);
-    static pybind11::str renderContents(pybind11::object self, pybind11::int_ playerIndex);
+    static pybind11::dict observe(pybind11::object self, pybind11::int_ playerIndex, pybind11::bool_ perfectInformation);
+    static pybind11::str renderContents(pybind11::object self, pybind11::int_ playerIndex, pybind11::bool_ perfectInformation);
 
     static pybind11::list getActions(pybind11::object self);
     static pybind11::list getValidActions(pybind11::object self, pybind11::int_ playerIndex);

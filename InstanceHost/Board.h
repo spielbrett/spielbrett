@@ -44,8 +44,8 @@ public:
         void performAction(int playerIndex, const Action &action);
 
         std::vector<std::string> getAllObservations() const;
-        State observe(int playerIndex) const;
-        std::string render(int playerIndex) const;
+        State observe(int playerIndex, bool perfectInformation) const;
+        std::string render(int playerIndex, bool perfectInformation) const;
 
         double score(int playerIndex) const;
 
@@ -71,11 +71,15 @@ public:
     using Action = std::tuple<Object::Id, std::string, std::vector<std::size_t>>;
 
     Board() = default;
-    Board(Runtime::IRuntime &runtime, const std::string &blueprintXml, const std::unordered_map<std::string, std::string> &templates);
+    Board(
+        Runtime::IRuntime &runtime,
+        const std::string &blueprintXml,
+        const std::unordered_map<std::string, std::string> &templates,
+        bool perfectInformation);
 
     std::shared_ptr<Board> clone() const;
 
-    bool hasPrivateInformation() const;
+    bool hasPerfectInformation() const;
     int numDistinctActions() const;
 
     void move(Object::Id objectId, Object::Id newParent, int order);
@@ -96,6 +100,8 @@ private:
 
     std::vector<Action> actions;
     std::map<Action, std::size_t> actionsIndex;
+
+    bool perfectInformation;
 };
 
 }

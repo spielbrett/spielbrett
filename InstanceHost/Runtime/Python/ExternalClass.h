@@ -25,8 +25,8 @@ public:
         void performAction(int playerIndex, const Board::Object::Action &action) override;
 
         std::vector<std::string> getAllObservations() override;
-        Board::Object::State observe(int playerIndex) override;
-        std::string renderContents(int playerIndex) override;
+        Board::Object::State observe(int playerIndex, bool perfectInformation) override;
+        std::string renderContents(int playerIndex, bool perfectInformation) override;
 
         double score(int playerIndex) override;
 
