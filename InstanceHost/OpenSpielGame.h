@@ -23,6 +23,8 @@ public:
         open_spiel::Action action_id) const override;
     std::string ToString() const override;
 
+    void ApplyAction(open_spiel::Action action_id) override;
+
     std::unique_ptr<open_spiel::State> Clone() const override;
 
 private:

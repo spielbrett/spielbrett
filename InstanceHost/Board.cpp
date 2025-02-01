@@ -171,6 +171,11 @@ std::size_t Board::getActionIndex(Action action) const
     return actionsIndex.at(action);
 }
 
+Board::Action Board::getActionByIndex(std::size_t actionIndex) const
+{
+    return actions[actionIndex];
+}
+
 Board::Object::Object(const std::string &name, Board &board, Id id) :
     name(name), board(board), id(id)
 {

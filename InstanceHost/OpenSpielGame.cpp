@@ -74,6 +74,11 @@ std::string OpenSpielState::ToString() const
     return result;
 }
 
+void OpenSpielState::ApplyAction(open_spiel::Action action_id)
+{
+    board->performAction(CurrentPlayer(), board->getActionByIndex(action_id));
+}
+
 std::unique_ptr<open_spiel::State> OpenSpielState::Clone() const
 {
     return std::make_unique<OpenSpielState>(game, board->clone());

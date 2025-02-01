@@ -86,6 +86,7 @@ public:
     double score(int playerIndex) const;
 
     std::size_t getActionIndex(Action action) const;
+    Action getActionByIndex(std::size_t actionIndex) const;
 
 private:
     std::shared_ptr<Object> getRoot() const;
