@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let lastMessage: string;
+    let { lastMessage }: { lastMessage: string } = $props();
 </script>
 
 <div class="board">

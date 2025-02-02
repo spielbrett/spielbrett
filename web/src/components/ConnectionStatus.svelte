@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let connected: boolean;
+    let { connected }: { connected: boolean } = $props();
 </script>
 
 <div class="connection-status">

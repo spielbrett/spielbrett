@@ -3,6 +3,7 @@ class Connection {
     public userId: string = $state("");
     public connected: boolean = $state(false);
     public lastMessage: string = $state("");
+    public action: string = $state("");
 
     private url: string;
     private socket: WebSocket | null;
@@ -19,6 +20,13 @@ class Connection {
         this.socket.onclose = this.onClose;
         this.socket.onerror = this.onError;
         this.socket.onmessage = this.onMessage;
+    }
+
+    public performAction = (): void => {
+        this.socket?.send(JSON.stringify({
+            message: "performAction",
+            payload: JSON.parse(this.action)
+        }));
     }
 
     private onOpen = (): void => {
