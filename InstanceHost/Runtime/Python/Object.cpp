@@ -207,14 +207,19 @@ pybind11::str Object::renderContents(pybind11::object self, pybind11::int_ playe
 {
     pybind11::list childRenders;
     for (auto child : self.attr("children")) {
-        childRenders.append(child.attr("_render")(playerIndex));
+        childRenders.append(child.attr("_render")(playerIndex, perfectInformation));
     }
 
-    return self.attr("__template").attr("render")(
+    pybind11::dict context{
         "player_index"_a = playerIndex,
         "children"_a = childRenders,
-        "score"_a = self.attr("score"),
-        **observe(self, playerIndex, perfectInformation));
+        **observe(self, playerIndex, perfectInformation)
+    };
+    if (pybind11::hasattr(self, "score")) {
+        context["score"] = self.attr("score")();
+    }
+
+    return self.attr("__template").attr("render")(**context);
 }
 
 pybind11::list Object::getDecoratedMethods(pybind11::object self)

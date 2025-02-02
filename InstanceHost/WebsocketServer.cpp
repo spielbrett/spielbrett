@@ -1,12 +1,33 @@
 #include "WebsocketServer.h"
+#include "Board.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/asio/strand.hpp>
 #include <boost/beast.hpp>
+#include <nlohmann/json.hpp>
 
 #include <iostream>
 #include <memory>
 #include <stdexcept>
+
+namespace {
+
+nlohmann::json constructRenderResponsePayload(const std::string &markup, const std::vector<Spielbrett::Board::Action> &actions)
+{
+    nlohmann::json responsePayload;
+    responsePayload["markup"] = markup;
+    responsePayload["actions"] = nlohmann::json::array();
+    for (const auto &[objectId, actionName, actionArgs] : actions) {
+        nlohmann::json actionJson;
+        actionJson["objectId"] = objectId;
+        actionJson["action"] = actionName;
+        actionJson["actionArgs"] = actionArgs;
+        responsePayload["actions"].push_back(actionJson);
+    }
+    return responsePayload;
+}
+
+}
 
 namespace Spielbrett {
 
@@ -94,15 +115,15 @@ void WebsocketServer::onAccept(boost::beast::error_code errorCode, boost::asio::
         throw std::runtime_error(ss.str());
     }
     else {
-        std::make_shared<Session>(std::move(socket))->run();
+        std::make_shared<Session>(std::move(socket), instanceHost)->run();
     }
 
     doAccept();
 }
 
-WebsocketServer::Session::Session(boost::asio::ip::tcp::socket&& socket) :
-    std::enable_shared_from_this<WebsocketServer::Session>(),
-    ws(std::move(socket))
+WebsocketServer::Session::Session(boost::asio::ip::tcp::socket&& socket, std::shared_ptr<InstanceHost> instanceHost) :
+    ws(std::move(socket)),
+    instanceHost(instanceHost)
 {
 }
 
@@ -147,11 +168,8 @@ void WebsocketServer::Session::onRead(boost::beast::error_code errorCode, std::s
         throw std::runtime_error(ss.str());
     }
 
-    // TODO: Actual logic
-    ws.text(ws.got_text());
-    ws.async_write(
-        buffer.data(),
-        boost::beast::bind_front_handler(&WebsocketServer::Session::onWrite, shared_from_this()));
+    auto message = boost::beast::buffers_to_string(buffer.data());
+    handleMessage(message);
 }
 
 void WebsocketServer::Session::onWrite(boost::beast::error_code errorCode, std::size_t bytesTransferred)
@@ -165,6 +183,58 @@ void WebsocketServer::Session::onWrite(boost::beast::error_code errorCode, std::
     // TODO: Actual logic
     buffer.consume(buffer.size());
     doRead();
+}
+
+void WebsocketServer::Session::handleMessage(const std::string &message)
+{
+    // TODO: More formal definition of the protocol
+
+    nlohmann::json response;
+    try {
+        const auto json = nlohmann::json::parse(message);
+
+        const auto &messageType = json["message"];
+        const auto &payload = json["payload"];
+
+        if (messageType == "render") {
+            const auto &instanceId = payload["instanceId"];
+            const auto &userId = payload["userId"];
+
+            const auto &[markup, actions] = instanceHost->getInstance(instanceId)->render(userId);
+
+            response["message"] = "renderResponse";
+            response["payload"] = constructRenderResponsePayload(markup, actions);
+        }
+        else if (messageType == "performAction") {
+            const auto &instanceId = payload["instanceId"];
+            const auto &userId = payload["userId"];
+
+            instanceHost->getInstance(instanceId)->performAction(userId, {
+                payload["objectId"], payload["action"], payload["actionArgs"]});
+            const auto &[markup, actions] = instanceHost->getInstance(instanceId)->render(userId);
+
+            response["message"] = "performActionResponse";
+            response["payload"] = constructRenderResponsePayload(markup, actions);
+        }
+    }
+    catch (const std::exception& e) {
+        response["message"] = "exception";
+        response["payload"] = e.what();
+    }
+
+    sendMessage(response.dump());
+}
+
+void WebsocketServer::Session::sendMessage(const std::string &message)
+{
+    buffer.consume(buffer.size());
+    boost::asio::buffer_copy(buffer.prepare(message.size()), boost::asio::buffer(message));
+    buffer.commit(message.size());
+
+    ws.text(true);
+    ws.async_write(
+        buffer.data(),
+        boost::beast::bind_front_handler(&WebsocketServer::Session::onWrite, shared_from_this()));
 }
 
 }

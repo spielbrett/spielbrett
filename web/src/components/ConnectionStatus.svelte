@@ -2,6 +2,6 @@
     export let connected: boolean;
 </script>
 
-<div class="status">
+<div class="connection-status">
     {connected ? "connected" : "disconnected"}
 </div>

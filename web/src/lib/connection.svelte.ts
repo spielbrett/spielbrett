@@ -1,32 +1,46 @@
 class Connection {
+    public instanceId: string = $state("");
+    public userId: string = $state("");
     public connected: boolean = $state(false);
     public lastMessage: string = $state("");
 
-    private socket: WebSocket;
+    private url: string;
+    private socket: WebSocket | null;
 
     constructor(url: string) {
-        this.socket = new WebSocket(url);
-
-        this.socket.onopen = this.onOpen.bind(this);
-        this.socket.onclose = this.onClose.bind(this);
-        this.socket.onerror = this.onError.bind(this);
-        this.socket.onmessage = this.onMessage.bind(this);
+        this.url = url;
+        this.socket = null;
     }
 
-    private onOpen(): void {
+    public connect = (): void => {
+        this.socket = new WebSocket(this.url);
+
+        this.socket.onopen = this.onOpen;
+        this.socket.onclose = this.onClose;
+        this.socket.onerror = this.onError;
+        this.socket.onmessage = this.onMessage;
+    }
+
+    private onOpen = (): void => {
         this.connected = true;
-        this.socket.send("12345");
+        this.socket!.send(JSON.stringify({
+            message: "render",
+            payload: {
+                instanceId: this.instanceId,
+                userId: this.userId
+            }
+        }));
     }
 
-    private onClose(event: CloseEvent): void {
+    private onClose = (event: CloseEvent): void => {
         this.connected = false;
     }
 
-    private onError(error: Event): void {
+    private onError = (error: Event): void => {
         this.connected = false;
     }
 
-    private onMessage(event: MessageEvent): void {
+    private onMessage = (event: MessageEvent): void => {
         this.lastMessage = event.data;
     }
 }

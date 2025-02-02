@@ -22,7 +22,7 @@ private:
     class Session : public std::enable_shared_from_this<Session>
     {
     public:
-        explicit Session(boost::asio::ip::tcp::socket&& socket);
+        explicit Session(boost::asio::ip::tcp::socket&& socket, std::shared_ptr<InstanceHost> instanceHost);
 
         void run();
     
@@ -33,8 +33,13 @@ private:
         void onRead(boost::beast::error_code errorCode, std::size_t bytesTransferred);
         void onWrite(boost::beast::error_code ec, std::size_t bytesTransferred);
 
+        void handleMessage(const std::string &message);
+        void sendMessage(const std::string &message);
+
         boost::beast::websocket::stream<boost::beast::tcp_stream> ws;
         boost::beast::flat_buffer buffer;
+
+        std::shared_ptr<InstanceHost> instanceHost;
     };
 
     void doAccept();
